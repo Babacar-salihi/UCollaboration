@@ -15,6 +15,8 @@ import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.Globals.Models.FonctionnaliteCompte;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewCompte;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -135,7 +137,10 @@ public class UserSpace extends AppCompatActivity {
     public void remplirInfoUser(){
         mEtudiant = sCurrentUser;
         if(mEtudiant.getPhoto() != null)
-            Picasso.with(getApplicationContext()).load(mEtudiant.getPhoto()).into(mUserProfilPic);
+            Glide.with(getApplicationContext())
+                .load(mEtudiant.getPhoto())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(mUserProfilPic);
         this.mUserName.setText(mEtudiant.getPrenomEtu()+" "+mEtudiant.getNomEtu());
 
         this.mNbArtLike.setText(mEtudiant.getFavorie().size()+"");

@@ -18,6 +18,8 @@ import com.babacar.ucollaboration.UMarket.Activitys.DetailsBIen;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.babacar.ucollaboration.UMarket.Modeles.Panier;
 import com.babacar.ucollaboration.UMarket.Popups.AlertDialogOnClickBien;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -55,7 +57,16 @@ public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
 
             holder.mVenteType.setVisibility(View.VISIBLE);
         }
-        Picasso.with(mContext).load(bien.getImages().get(0).getPhoto()).into(holder.mImageBien);
+        Picasso.with(mContext)
+                .load(bien.getImages().get(0).getPhoto())
+                .skipMemoryCache()
+                .placeholder(R.drawable.progess_bar)
+                .into(holder.mImageBien);
+        /*Glide.with(mContext)
+                .load(bien.getImages().get(0).getPhoto())
+                .placeholder(R.drawable.progess_bar)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(holder.mImageBien);*/
         holder.mLibelle.setText(bien.getLibelle());
         holder.mPrixBien.setText(bien.getPrixBien()+"fcfa");
         holder.mAdrVendeur.setText(bien.getVendeur().getNewAdresse());

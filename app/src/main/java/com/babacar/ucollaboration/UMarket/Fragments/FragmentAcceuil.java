@@ -101,20 +101,6 @@ public class FragmentAcceuil extends Fragment {
      */
     private void inflateCatalogue(){
 
-        /*List<Bien> list = new ArrayList<>();
-
-        Vendeur vendeur = new Vendeur();
-        vendeur.setAdresse("Bambilor");
-        list.add(new Bien("Iphone11",500000,vendeur));
-        list.add(new Bien("Iphone7",200000,vendeur));
-        list.add(new Bien("Iphone8 plus",310000,vendeur));
-        list.add(new Bien("Iphone4",25000,vendeur));
-
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
-        RecyclerViewBien recyclerViewBien = new RecyclerViewBien(getContext(),list);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(recyclerViewBien);*/
-
         sBienList = new ArrayList<>(20);
         mBiensNvendu = new ArrayList<>(10);
     }

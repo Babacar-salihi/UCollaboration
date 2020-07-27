@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    tools:context=".UMarket.Activitys.AcheterBien">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/acheter_titre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titreAchat"
+            android:textSize="@dimen/texteSize30"
+            android:textColor="@color/darkAppColor"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/margin20"
+            />
+
+        <TextView
+            android:id="@+id/acheter_sousTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sousTitreAchat"
+            android:textSize="@dimen/texteSize20"
+            android:textColor="@color/appColor"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+
+            android:layout_below="@id/acheter_titre"
+            />
+
+        <LinearLayout
+            android:id="@+id/acheter_layout0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding20"
+            android:layout_below="@id/acheter_sousTitre">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/acheter_checkEtape0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/step0"
+                        android:textStyle="italic"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/acheter_layoutEtape0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius5"
+                android:layout_gravity="center_horizontal">
+
+                <CalendarView
+                    android:id="@+id/acheter_calendrier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Livraison -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/margin10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/acheter_checkEtape1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/step2"
+                        android:textStyle="italic"/>
+                </LinearLayout>
+
+                <!-- Layout étape 2: Livraison -->
+                <LinearLayout
+                    android:id="@+id/acheter_layoutEtape1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:elevation="@dimen/elevation10">
+
+                    <RadioGroup
+                        android:id="@+id/acheter_radioGroupLiv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin25">
+
+                        <RadioButton
+                            android:id="@+id/acheter_checkSansLiv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sansLiv"/>
+
+                        <RadioButton
+                            android:id="@+id/acheter_checkAVLiv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/livraison"
+                            />
+
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:id="@+id/acheter_layoutEtape1AvLiv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <RadioGroup
+                            android:id="@+id/acheter_radioGroupModeLiv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin50">
+
+                            <RadioButton
+                                android:id="@+id/acheter_livVendeur"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/livVendeur"
+                                android:checked="true"/>
+
+                            <RadioButton
+                                android:id="@+id/acheter_livAutreLivreur"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/livLivreur"/>
+
+                        </RadioGroup>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/acheter_recycleviewLivreur"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"/>
+
+                        <EditText
+                            android:id="@+id/acheter_ediAdrLiv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/adrLiv"
+                            android:layout_margin="@dimen/margin10"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Paiement -->
+            <LinearLayout
+                android:id="@+id/acheter_radioGroupPaiement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/margin10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/acheter_checkEtape2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/step3"
+                        android:textStyle="italic"/>
+                </LinearLayout>
+
+                <!-- Layout étape 2: Paiement -->
+                <LinearLayout
+                    android:id="@+id/acheter_layoutEtape2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:elevation="@dimen/elevation10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/paiement"
+                        android:textColor="@android:color/black"
+                        android:layout_margin="@dimen/margin5"
+                        android:paddingLeft="@dimen/padding5"/>
+                    <!--<CheckBox
+                        android:id="@+id/acheter_checkPaiement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/paiement"/>-->
+
+                    <RadioGroup
+                        android:id="@+id/acheter_radioGroupModePaiement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin25">
+
+                        <RadioButton
+                            android:id="@+id/acheter_operateur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/modeOp"/>
+
+                        <RadioButton
+                            android:id="@+id/acheter_AP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/modeAP"
+                            />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Facturation -->
+            <LinearLayout
+                android:id="@+id/acheter_radioGroupFacturation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/margin10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/acheter_checkEtape3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/step4"
+                        android:textStyle="italic"/>
+                </LinearLayout>
+
+                <!-- Layout étape 3: Facturation -->
+                <LinearLayout
+                    android:id="@+id/acheter_layoutEtape3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:elevation="@dimen/elevation10">
+
+                    <RadioGroup
+                        android:id="@+id/acheter_radioGroupFacture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin25">
+
+                        <RadioButton
+                            android:id="@+id/acheter_checkSansfacture"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sansFacture"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/acheter_checkAVfacture"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/avecFacture"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/aheter_layoutPrixAchat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/prixAchat"
+                    android:textColor="@android:color/black"
+                    android:layout_marginRight="@dimen/margin5"/>
+
+                <EditText
+                    android:id="@+id/acheter_editPrixAchat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prixAchat2"
+                    android:inputType="number"
+                    android:textColorHint="@color/appColor"
+                    android:textSize="@dimen/texteSize17"
+                    android:textColor="@color/darkAppColor"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/acheter_btnFinaliser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fin"
+            android:textSize="@dimen/texteSize20"
+            android:textStyle="bold"
+            android:fontFamily="@font/philosopherregular"
+            android:layout_margin="@dimen/margin20"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/acheter_layout0"
+            android:background="@drawable/style_btns"
+            />
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

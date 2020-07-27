@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/margin2"
+    tools:context=".UMarket.Activitys.Facture">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/appColor">
+
+        <TextView
+            android:id="@+id/titreFacture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/facture"
+            android:textSize="@dimen/texteSize50"
+            android:textStyle="bold"
+            android:textColor="@color/darkAppColor"
+            android:layout_marginLeft="@dimen/margin10"
+            android:layout_marginTop="@dimen/margin10"/>
+
+        <TextView
+            android:id="@+id/facture_numeroFacture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/numFacture"
+            android:textSize="@dimen/texteSize15"
+            android:textStyle="normal"
+            android:textColor="@android:color/white"
+            android:layout_margin="@dimen/margin10"
+            android:layout_below="@id/titreFacture"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logo"
+            android:fontFamily="@font/logo"
+            android:textSize="@dimen/texteSize25"
+            android:textColor="@android:color/white"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin10"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding7">
+
+        <!-- Info de Vendeur -->
+        <LinearLayout
+            android:id="@+id/facture_layout_infoVendeur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical">
+
+            <!-- Nom du vendeur -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/titreNomVendeur"
+                    android:textSize="@dimen/textSize17"/>
+
+                <!-- Nom Vendeur -->
+                <TextView
+                    android:id="@+id/facture_nomVendeur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nomVendeur"
+                    android:layout_marginLeft="@dimen/margin7"
+                    android:textSize="@dimen/texteSize17"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <!-- Numéro du vendeur -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/titreNumVendeur"
+                    android:textSize="@dimen/textSize17"/>
+
+                <!-- Numéro Vendeur -->
+                <TextView
+                    android:id="@+id/facture_numeroVendeur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/numVendeur"
+                    android:layout_marginLeft="@dimen/margin7"
+                    android:textSize="@dimen/texteSize17"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Info de Facture -->
+        <LinearLayout
+            android:id="@+id/facture_layout_dateFacture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <!-- Date de la facture -->
+            <TextView
+                android:id="@+id/facture_dateFacture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dateFacture"
+                android:textSize="@dimen/textSize17"/>
+
+
+        </LinearLayout>
+
+        <!-- Info de l'acheteur -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/facture_layout_infoVendeur"
+            android:layout_marginTop="@dimen/margin20"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/titreNomVendeur"
+                android:textSize="@dimen/textSize17"/>
+
+            <!-- Nom Vendeur -->
+            <TextView
+                android:id="@+id/facture_nomAcheteur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nomAcheteur"
+                android:layout_marginLeft="@dimen/margin7"
+                android:textSize="@dimen/texteSize17"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- head -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin7"
+        android:weightSum="100">
+
+        <!-- Quantité -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <!-- Quantité -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/qtFacture"
+                android:layout_marginLeft="@dimen/margin7"
+                android:textSize="@dimen/texteSize20"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <!-- Désignation -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="35"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <!-- Désignation -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/designationFacture"
+                android:layout_marginLeft="@dimen/margin7"
+                android:textSize="@dimen/texteSize20"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <!-- Prix unitaire -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="25"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/prixFacture"
+                android:layout_marginLeft="@dimen/margin7"
+                android:textSize="@dimen/texteSize20"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <!-- Somme totale -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/totalFacture"
+                android:layout_marginLeft="@dimen/margin7"
+                android:textSize="@dimen/texteSize20"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!-- Les données -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin7"
+        android:weightSum="100">
+
+        <!-- Quantité -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <!-- Quantité -->
+            <TextView
+                android:id="@+id/facture_quantite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/qtFactureEx"
+                android:layout_marginLeft="@dimen/margin7"
+                android:textSize="@dimen/texteSize20"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <!-- Désignation -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="35"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <!-- Désignation -->
+            <TextView
+                android:id="@+id/facture_designation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/designationFactureEx"
+                android:layout_marginLeft="@dimen/margin7"
+                android:textSize="@dimen/texteSize20"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <!-- Prix unitaire -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="25"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/facture_prixUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/prixFactureEx"
+                android:layout_marginLeft="@dimen/margin7"
+                android:textSize="@dimen/texteSize20"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <!-- Somme totale -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/facture_Total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/totalFactureEx"
+                android:layout_marginLeft="@dimen/margin7"
+                android:textSize="@dimen/texteSize20"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin10">
+
+        <ImageView
+            android:layout_width="@dimen/imgSize300"
+            android:layout_height="@dimen/imgSize300"
+            android:src="@drawable/paye"/>
+
+    </LinearLayout>
+
+</LinearLayout>

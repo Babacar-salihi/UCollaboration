@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UMarket.Activitys.ListeVente"
+   >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mesVentes"
+            android:textStyle="bold"
+            android:textSize="@dimen/texteSize30"
+            android:textColor="@color/darkAppColor"
+            android:layout_margin="@dimen/margin20"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mesAchatsEnCours"
+            android:textStyle="bold"
+            android:textSize="@dimen/texteSize25"
+            android:textColor="@color/appColor"
+            android:layout_margin="@dimen/margin20"/>
+
+        <!-- Liste des biens acheter par l'utilisateur connecté -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerListAchatsEnCours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mesAchatsAcheves"
+            android:textStyle="bold"
+            android:textSize="@dimen/texteSize25"
+            android:textColor="@color/appColor"
+            android:layout_margin="@dimen/margin20"/>
+
+        <!-- Liste des biens acheter par l'utilisateur connecté -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerListAchastAcheves"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mesVentesEnCours"
+            android:textStyle="bold"
+            android:textSize="@dimen/texteSize25"
+            android:textColor="@color/appColor"
+            android:layout_margin="@dimen/margin20"/>
+
+        <!-- Liste des ventes en cours de l'utilisateur connecté -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerVenteEnCours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mesVentesAcheves"
+            android:textStyle="bold"
+            android:textSize="@dimen/texteSize25"
+            android:textColor="@color/appColor"
+            android:layout_margin="@dimen/margin20"/>
+
+        <!-- Liste des ventes déjà achevées de l'utilisateur connecté -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerVentesAchevees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

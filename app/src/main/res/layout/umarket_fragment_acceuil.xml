@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/darkWhite"
+    tools:context=".UMarket.Fragments.FragmentAcceuil">
+
+
+    <LinearLayout
+        android:id="@+id/catalogue_layoutHead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:gravity="center"
+        android:padding="@dimen/padding5"
+        android:background="@color/appColor">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/logo"
+            android:fontFamily="@font/logo"
+            android:textSize="@dimen/texteSize20"
+            android:textColor="@android:color/white"
+            android:gravity="center"/>
+
+        <SearchView
+            android:id="@+id/catalogue_barRecherche"
+            android:layout_width="0dp"
+            android:layout_weight="100"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_search_radius"
+            android:layout_margin="@dimen/margin10"
+            android:iconifiedByDefault="false"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/widthSize55">
+
+            <TextView
+                android:id="@+id/catalogue_nbArticlePanier"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:text="@string/zero"
+                android:textSize="@dimen/texteSize15"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:background="@drawable/style_nombre_panier"
+                android:elevation="@dimen/elevation10"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/margin2"/>
+
+
+            <ImageView
+                android:id="@+id/catalogue_panierUser"
+                android:layout_width="@dimen/imgSize40"
+                android:layout_height="@dimen/imgSize40"
+                android:background="@android:color/transparent"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_panier" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <!-- Shimmer design -->
+
+
+    <!-- Les Catégories de produit -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/catalague_recyclerCategorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/catalogue_layoutHead"/>
+
+    <!-- Les produits -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/catalague_recyclerProduit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/catalague_recyclerCategorie"/>
+
+    <Button
+        android:id="@+id/teste"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="teste"/>
+
+</RelativeLayout>

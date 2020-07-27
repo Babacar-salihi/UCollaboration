@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding10"
+    android:scrollbars="none"
+    tools:context=".UMarket.Fragments.FragmentVendre">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/Titre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/Publier"
+            android:textSize="@dimen/sizeTitre"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/philosopherregular"
+            android:shadowColor="@android:color/black"
+            android:shadowRadius="2"
+            android:shadowDx="1"
+            android:shadowDy="2"
+            />
+
+        <!-- Les images -->
+        <LinearLayout
+            android:id="@+id/layout_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Titre"
+            android:weightSum="100"
+            android:layout_marginBottom="@dimen/margin2"
+            android:layout_marginTop="@dimen/margin7"
+            >
+
+            <!-- Frontal -->
+            <ImageView
+                android:id="@+id/vendre_btnPrendrePhotoF"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_prendre_photo"
+                android:text="Prendre photo"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/cadre_simple"
+                android:elevation="@dimen/elevation8"
+                android:layout_marginLeft="@dimen/margin2"
+                />
+
+            <!-- Arrière -->
+            <ImageView
+                android:id="@+id/vendre_btnPrendrePhotoA"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_prendre_photo"
+                android:text="Prendre photo"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/cadre_simple"
+                android:elevation="@dimen/elevation8"
+                android:layout_marginLeft="@dimen/margin2"
+                />
+
+            <!-- Coté guauche -->
+
+            <ImageView
+                android:id="@+id/vendre_btnPrendrePhotoG"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_prendre_photo"
+                android:text="Prendre photo"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/cadre_simple"
+                android:elevation="@dimen/elevation8"
+                android:layout_marginLeft="@dimen/margin2"
+                />
+
+            <!-- Coté droit -->
+            <ImageView
+                android:id="@+id/vendre_btnPrendrePhotoD"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_prendre_photo"
+                android:text="Prendre photo"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/cadre_simple"
+                android:elevation="@dimen/elevation8"
+                android:layout_marginLeft="@dimen/margin2"
+                />
+
+        </LinearLayout>
+
+
+        <!-- Categorie du bien. ex: Hight-Tech -->
+        <RelativeLayout
+            android:id="@+id/layout_categorie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding7"
+            android:layout_below="@id/layout_images">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categorie"
+                    android:gravity="center"
+                    android:labelFor="@id/vendre_categorie"
+                    />
+
+                <Spinner
+                    android:id="@+id/vendre_categorie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RadioGroup
+            android:id="@+id/vendre_radioGroupLivraison"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/layout_categorie">
+
+            <RadioButton
+                android:id="@+id/vendre_livDispo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/livDispo"/>
+
+            <RadioButton
+                android:id="@+id/vendre_livInDispo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/livIndispo"/>
+
+        </RadioGroup>
+
+        <!-- Libelle du bien. ex: iPhoneSE -->
+        <EditText
+            android:id="@+id/vendre_libelle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/libelleProduit"
+            android:textSize="@dimen/texteSize20"
+            android:layout_margin="@dimen/margin7"
+            android:layout_below="@id/vendre_radioGroupLivraison"
+            />
+
+        <!-- Prix unitaire du bien. ex: 340000 -->
+        <EditText
+            android:id="@+id/vendre_prix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prixProduit"
+            android:inputType="number"
+            android:textSize="@dimen/texteSize20"
+            android:layout_margin="@dimen/margin7"
+            android:padding="@dimen/padding7"
+            android:layout_below="@id/vendre_libelle"
+            />
+
+
+
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vendre_prix">
+
+            <!-- Garantie du bien. ex: 3ans -->
+            <EditText
+                android:id="@+id/vendre_garantie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/garantie"
+                android:textSize="@dimen/texteSize20"
+                android:layout_margin="@dimen/margin7"
+                android:padding="@dimen/padding7"
+                />
+
+            <!-- Nombre de bien. ex: 10 -->
+            <EditText
+                android:id="@+id/vendre_nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/nombre"
+                android:textSize="@dimen/texteSize20"
+                android:inputType="number"
+                android:layout_margin="@dimen/margin7"
+                android:padding="@dimen/padding7"
+                />
+
+        </LinearLayout>
+
+
+        <!-- Description du bien. ex: iPhone SE noire  -->
+        <EditText
+            android:id="@+id/vendre_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            android:textSize="@dimen/texteSize20"
+            android:layout_margin="@dimen/margin7"
+            android:padding="@dimen/padding7"
+            android:layout_below="@id/layout1"
+            />
+
+        <!-- Nouvelle adresse de vente -->
+        <LinearLayout
+            android:id="@+id/vente_layoutNewAdr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vendre_description"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding7"
+            >
+
+            <ImageButton
+                android:id="@+id/vendre_btnNewAdr"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_new_adr"/>
+
+            <EditText
+                android:id="@+id/vendre_newAdresse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/newAddressVente"
+                android:textSize="@dimen/texteSize20"
+                android:layout_margin="@dimen/margin7"
+                android:visibility="gone"
+                android:padding="@dimen/padding7"
+                />
+
+        </LinearLayout>
+
+
+        <!-- Type de vente du bien. ex: vente Flash  -->
+        <RadioGroup
+            android:id="@+id/vendre_typeVente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="@dimen/margin10"
+            android:layout_below="@id/vente_layoutNewAdr">
+
+            <RadioButton
+                android:id="@+id/vendre_venteNormale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/normal"
+                android:checked="true"
+                android:layout_marginRight="@dimen/margin10"/>
+
+            <RadioButton
+                android:id="@+id/vendre_venteFlash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flash"
+                android:layout_marginLeft="@dimen/margin10"/>
+
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/vendre_btnContinuer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/continer"
+            android:textSize="@dimen/texteSize20"
+            android:textStyle="bold"
+            android:fontFamily="@font/philosopherbold"
+            android:layout_margin="@dimen/margin20"
+            android:layout_below="@id/vendre_typeVente"
+            android:background="@drawable/style_btns"
+            android:elevation="@dimen/elevation8"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/darkWhite2"
+    tools:context=".Globals.Activitys.Acceuil"
+    android:id="@+id/global_acceuil_layout0"
+    >
+
+    <!-- Head -->
+    <LinearLayout
+        android:id="@+id/global_acceuil_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin20"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/widthSize100"
+            android:layout_height="@dimen/widthSize100"
+            android:src="@drawable/logo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/ucollaborate"
+            android:textSize="@dimen/texteSize50"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/margin7"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/global_layout_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding2"
+        android:layout_centerInParent="true"
+        >
+
+       <!-- Umarket et Uservice-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:weightSum="100"
+            android:orientation="horizontal"
+            >
+
+            <!-- Umarket -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/acceuil_umarket"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/widthSize200"
+                app:cardElevation="@dimen/elevation8"
+                app:cardCornerRadius="@dimen/radius5"
+                app:cardUseCompatPadding="true"
+                android:onClick="switcher"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/widthSize150"
+                        android:src="@drawable/umarket"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/umarket"
+                        android:textSize="@dimen/texteSize20"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/philosopherregular"
+                        />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Uservice -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/acceuil_uservice"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/widthSize200"
+                app:cardElevation="@dimen/elevation8"
+                app:cardCornerRadius="@dimen/radius5"
+                app:cardUseCompatPadding="true"
+                android:onClick="switcher">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/widthSize150"
+                        android:src="@drawable/uservice"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/uservice"
+                        android:textSize="@dimen/texteSize20"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/philosopherregular"
+                        />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+
+        <!-- Umaps et Uinfo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:weightSum="100"
+            android:orientation="horizontal"
+            >
+
+            <!-- Umaps -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/acceuil_umaps"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/widthSize200"
+                app:cardElevation="@dimen/elevation8"
+                app:cardCornerRadius="@dimen/radius5"
+                app:cardUseCompatPadding="true"
+                android:onClick="switcher">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/padding2"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/widthSize150"
+                        android:src="@drawable/uinfo"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/uinfo"
+                        android:textSize="@dimen/texteSize20"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/philosopherregular"
+                        />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Uinfo -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/acceuil_uinfo"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/widthSize200"
+                app:cardElevation="@dimen/elevation8"
+                app:cardCornerRadius="@dimen/radius5"
+                app:cardUseCompatPadding="true"
+                android:onClick="switcher">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/widthSize150"
+                        android:src="@drawable/umaps"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/umaps"
+                        android:textSize="@dimen/texteSize20"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/philosopherregular"
+                        />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Footer Connexion -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin10"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:weightSum="100">
+
+        <!-- Connexion -->
+        <!--<androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="@dimen/widthSize40">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="30"
+                    android:layout_height="match_parent"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="70"
+                    android:layout_height="match_parent"
+                    android:text="@string/continer"
+                    android:textSize="@dimen/texteSize20"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/philosopherbold"
+                    />
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>-->
+
+        <Button
+            android:id="@+id/global_acceuil_btnConnex"
+            android:layout_width="0dp"
+            android:layout_weight="48"
+            android:layout_height="match_parent"
+            android:text="@string/connex"
+            android:textSize="@dimen/texteSize17"
+            android:textStyle="bold"
+            android:textColor="@color/darkWhite"
+            android:fontFamily="@font/philosopherregular"
+            android:layout_marginRight="@dimen/margin2"
+            android:background="@drawable/style_btns_acceuil_rigth"/>
+
+        <!-- Inscription -->
+        <Button
+            android:id="@+id/global_acceuil_btnInscript"
+            android:layout_width="0dp"
+            android:layout_weight="48"
+            android:layout_height="match_parent"
+            android:text="@string/inscript"
+            android:textSize="@dimen/texteSize17"
+            android:textStyle="bold"
+            android:textColor="@color/darkWhite"
+            android:fontFamily="@font/philosopherregular"
+            android:layout_marginLeft="@dimen/margin2"
+            android:background="@drawable/style_btns_acceuil_left"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

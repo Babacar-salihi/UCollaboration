@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkWhite"
+    android:orientation="vertical"
+    tools:context=".UMarket.Activitys.Panier">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/panier_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- S'affiche si le panier est vide! -->
+            <LinearLayout
+                android:id="@+id/panier_layoutVide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin25"
+                android:layout_below="@id/panier_recyclerView"
+                android:visibility="gone"
+                android:orientation="vertical"
+                >
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="@dimen/widthSize200"
+                    android:layout_height="@dimen/widthSize200"
+                    app:lottie_autoPlay="true"
+                    app:lottie_rawRes="@raw/panier_vide2"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vide_triste"
+                    android:textSize="@dimen/texteSize20"
+                    android:layout_margin="@dimen/margin10"
+                    android:fontFamily="@font/titre2"/>
+
+                <Button
+                    android:id="@+id/panier_trouverIdee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/findInspi"
+                    android:layout_margin="@dimen/margin25"/>
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <!-- SOUS TOTAL -->
+    <TextView
+        android:id="@+id/panier_sommeTotaleBiens"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widthSize30"
+        android:text="@string/zero"
+        android:textSize="@dimen/texteSize20"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:background="@color/appColor"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/margin10"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,159 @@
+{
+  "project_info": {
+    "project_number": "584254954467",
+    "firebase_url": "https://ucadmacket.firebaseio.com",
+    "project_id": "ucadmacket",
+    "storage_bucket": "ucadmacket.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584254954467:android:7bef552786f99e82c05ed6",
+        "android_client_info": {
+          "package_name": "com.babacar.ucadappadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584254954467-25ggqbvlb5arvosqj9hpockia0ks2c59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.babacar.ucadappadmin",
+            "certificate_hash": "6e6270ded0c20e58a084e681efe015e6d104de2b"
+          }
+        },
+        {
+          "client_id": "584254954467-5aa8jef6b7rt9a5g9o0gdlapv3cqq0dn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMxAyYcKYA_vDFqLaRNOHn6LpGD8WyhQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584254954467-5aa8jef6b7rt9a5g9o0gdlapv3cqq0dn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584254954467:android:e83712edc056ec46c05ed6",
+        "android_client_info": {
+          "package_name": "com.babacar.ucadmacket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584254954467-vgt50etp35ams09e1gvdre753gqvlkvd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.babacar.ucadmacket",
+            "certificate_hash": "6e6270ded0c20e58a084e681efe015e6d104de2b"
+          }
+        },
+        {
+          "client_id": "584254954467-5aa8jef6b7rt9a5g9o0gdlapv3cqq0dn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMxAyYcKYA_vDFqLaRNOHn6LpGD8WyhQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584254954467-5aa8jef6b7rt9a5g9o0gdlapv3cqq0dn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584254954467:android:d8bb7cb51ffcaa19c05ed6",
+        "android_client_info": {
+          "package_name": "com.babacar.ucadmaps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584254954467-02t34pft761tih7g4p928ldf0l6dqr0l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.babacar.ucadmaps",
+            "certificate_hash": "6e6270ded0c20e58a084e681efe015e6d104de2b"
+          }
+        },
+        {
+          "client_id": "584254954467-5aa8jef6b7rt9a5g9o0gdlapv3cqq0dn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMxAyYcKYA_vDFqLaRNOHn6LpGD8WyhQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584254954467-5aa8jef6b7rt9a5g9o0gdlapv3cqq0dn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584254954467:android:703d6ac8657c689bc05ed6",
+        "android_client_info": {
+          "package_name": "com.babacar.ucollaboration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584254954467-6p9sft79pv9085opr2ail7up3mkgodg0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.babacar.ucollaboration",
+            "certificate_hash": "6e6270ded0c20e58a084e681efe015e6d104de2b"
+          }
+        },
+        {
+          "client_id": "584254954467-5aa8jef6b7rt9a5g9o0gdlapv3cqq0dn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMxAyYcKYA_vDFqLaRNOHn6LpGD8WyhQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584254954467-5aa8jef6b7rt9a5g9o0gdlapv3cqq0dn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

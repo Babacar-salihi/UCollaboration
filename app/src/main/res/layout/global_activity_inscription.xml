@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    tools:context=".Globals.Activitys.Inscription">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inscript"
+            android:textSize="@dimen/sizeTitre"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/philosopherregular"
+            android:shadowColor="@android:color/black"
+            android:shadowRadius="2"
+            android:shadowDx="1"
+            android:shadowDy="2"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/margin25"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/inscription_userProfile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/usericon"
+                android:layout_centerHorizontal="true"
+                />
+
+            <ProgressBar
+                android:id="@+id/inscription_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:paddingRight="@dimen/padding30"
+                android:visibility="gone"
+                android:layout_gravity="center" />
+
+        </RelativeLayout>
+
+
+        <!-- Nom et prenom -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/margin15"
+            android:weightSum="100">
+
+            <EditText
+                android:id="@+id/inscription_userPrenom"
+                android:layout_width="0dp"
+                android:layout_weight="60"
+                android:layout_height="wrap_content"
+                android:hint="@string/userPrenom"
+                android:inputType="text"
+                android:textSize="@dimen/texteSize17"
+                />
+
+            <EditText
+                android:id="@+id/inscription_userNom"
+                android:layout_width="0dp"
+                android:layout_weight="35"
+                android:layout_height="wrap_content"
+                android:hint="@string/userName"
+                android:inputType="text"
+                android:textSize="@dimen/texteSize17"
+                android:layout_marginLeft="@dimen/margin10"
+                />
+
+        </LinearLayout>
+
+        <!-- Téléphone et numéro chambre -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/margin15"
+            android:weightSum="100">
+
+            <EditText
+                android:id="@+id/inscription_userTel"
+                android:layout_width="0dp"
+                android:layout_weight="60"
+                android:layout_height="wrap_content"
+                android:hint="@string/userTelephone"
+                android:inputType="phone"
+                android:textSize="@dimen/texteSize17"
+                />
+
+            <EditText
+                android:id="@+id/inscription_userChambre"
+                android:layout_width="0dp"
+                android:layout_weight="35"
+                android:layout_height="wrap_content"
+                android:hint="@string/userChambre"
+                android:inputType="text"
+                android:textSize="@dimen/texteSize17"
+                android:layout_marginLeft="@dimen/margin10"
+                />
+
+        </LinearLayout>
+
+        <!-- Email et mot de passe -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/margin15"
+            android:weightSum="100">
+
+            <EditText
+                android:id="@+id/inscription_userEmail"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:hint="@string/userEmail"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/texteSize17"
+                />
+
+            <EditText
+                android:id="@+id/inscription_userPwd"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:hint="@string/userPwd"
+                android:inputType="textPassword"
+                android:textSize="@dimen/texteSize17"
+                android:layout_marginLeft="@dimen/margin10"
+                />
+
+        </LinearLayout>
+
+        <!-- Adresse -->
+        <EditText
+            android:id="@+id/inscription_userAdresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/userAdress"
+            android:inputType="textEmailAddress"
+            android:textSize="@dimen/texteSize17"
+            android:layout_margin="@dimen/margin15"
+            />
+
+        <!-- Departement -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin15"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="30"
+                android:layout_height="match_parent"
+                android:text="@string/userDepart"
+                android:inputType="text"
+                android:textSize="@dimen/texteSize17"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/margin10"
+                />
+
+            <Spinner
+                android:id="@+id/inscription_spinner_userDepart"
+                android:layout_width="0dp"
+                android:layout_weight="70"
+                android:layout_gravity="center_vertical"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <!-- Si different de celle proposée -->
+        <EditText
+            android:id="@+id/inscription_userDepart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="@string/userDepart"
+            android:inputType="text"
+            android:textSize="@dimen/texteSize17"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/margin15"
+            />
+
+        <!-- Catégorie socio-économique -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/margin15"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/titreSpinnerCateg"
+                android:inputType="text"
+                android:textSize="@dimen/texteSize17"
+                android:layout_marginLeft="@dimen/margin10"
+                />
+
+            <Spinner
+                android:id="@+id/inscription_spinner_userCategorieSEco"
+                android:layout_width="0dp"
+                android:layout_weight="40"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <!-- Si different de celle proposée -->
+        <EditText
+            android:id="@+id/inscription_userCategorieSEco"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="@string/categorie"
+            android:inputType="text"
+            android:textSize="@dimen/texteSize17"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/margin15"
+            />
+
+        <!-- Bouton de soumission -->
+        <Button
+            android:id="@+id/inscription_btnContinuer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/continer"
+            android:textSize="@dimen/texteSize20"
+            android:textStyle="bold"
+            android:fontFamily="@font/philosopherbold"
+            android:background="@drawable/style_btns"
+            android:layout_margin="@dimen/margin20"
+            android:elevation="@dimen/elevation4"/>
+
+    </LinearLayout>
+
+</ScrollView>

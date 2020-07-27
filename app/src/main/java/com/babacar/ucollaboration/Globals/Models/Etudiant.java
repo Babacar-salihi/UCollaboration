@@ -1,0 +1,219 @@
+package com.babacar.ucollaboration.Globals.Models;
+
+
+
+import com.babacar.ucollaboration.UMarket.Modeles.Panier;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Etudiant {
+
+    protected String mIdEtu;
+    protected String mNomEtu;
+    protected String mPrenomEtu;
+    protected int mNumTelephoneEtu;
+    protected String mNumChambre;
+    protected String mEmail;
+    protected String mPassword;
+    protected String mAdresse;
+    protected String mCategorieSocioProf;
+    protected String mPhoto;
+    protected String mNewAdresse;
+    protected List<Panier> mPanier = new ArrayList<>(); // Panier de l'utilisateur.
+    protected List<String> mFavorie = new ArrayList<>(); // Les favories.
+    //protected List<Panier> mBienAcheter = new ArrayList<>(); // Les Bients acheter.
+    protected List<String> mDetailsPrestationsEtu = new ArrayList<>();
+
+    protected Departement mDepartement;
+
+    public Etudiant() {
+    }
+
+
+    public Etudiant(String idEtu, String prenomEtu, String nomEtu, int numTelephoneEtu, String photo, String newAdresse, List<String> detailsDespt) {
+
+        this.mIdEtu = idEtu;
+        this.mPrenomEtu = prenomEtu;
+        this.mNomEtu = nomEtu;
+        this.mNumTelephoneEtu = numTelephoneEtu;
+        this.mPhoto = photo;
+        this.mNewAdresse = newAdresse;
+        this.mDetailsPrestationsEtu = detailsDespt;
+    }
+
+    /*public Etudiant(String prenomEtu, String nomEtu, String categorieSocioProf, int numTelephoneEtu, String email, String adresse) {
+
+        this.mPrenomEtu = prenomEtu;
+        this.mNomEtu = nomEtu;
+        this.mCategorieSocioProf = categorieSocioProf;
+        this.mNumTelephoneEtu = numTelephoneEtu;
+        this.mEmail = email;
+        this.mAdresse = adresse;
+    }*/
+
+
+    public Etudiant(String mIdEtu, String mNomEtu, String mPrenomEtu, int mNumTelephoneEtu, String mNumChambre, String mEmail, String password, String mAdresse, String mCategorieSocioProf, String mPhoto, Departement mDepartement, String newAdresse) {
+        this.mIdEtu = mIdEtu;
+        this.mNomEtu = mNomEtu;
+        this.mPrenomEtu = mPrenomEtu;
+        this.mNumTelephoneEtu = mNumTelephoneEtu;
+        this.mNumChambre = mNumChambre;
+        this.mEmail = mEmail;
+        this.mPassword = password;
+        this.mAdresse = mAdresse;
+        this.mCategorieSocioProf = mCategorieSocioProf;
+        this.mPhoto = mPhoto;
+        this.mDepartement = mDepartement;
+        this.mNewAdresse = newAdresse;
+    }
+
+    public String getIdEtu() {
+        return mIdEtu;
+    }
+
+    public void setIdEtu(String idEtu) {
+        mIdEtu = idEtu;
+    }
+
+    public String getNomEtu() {
+        return mNomEtu;
+    }
+
+    public void setNomEtu(String nomEtu) {
+        mNomEtu = nomEtu;
+    }
+
+    public String getPrenomEtu() {
+        return mPrenomEtu;
+    }
+
+    public void setPrenomEtu(String prenomEtu) {
+        mPrenomEtu = prenomEtu;
+    }
+
+    public int getNumTelephoneEtu() {
+        return mNumTelephoneEtu;
+    }
+
+    public void setNumTelephoneEtu(int numTelephoneEtu) {
+        mNumTelephoneEtu = numTelephoneEtu;
+    }
+
+    public String getNumChambre() {
+        return mNumChambre;
+    }
+
+    public void setNumChambre(String numChambre) {
+        mNumChambre = numChambre;
+    }
+
+    public String getEmail() {
+        return mEmail;
+    }
+
+    public void setEmail(String email) {
+        mEmail = email;
+    }
+
+    public String getPassword() {
+        return mPassword;
+    }
+
+    public void setPassword(String password) {
+        mPassword = password;
+    }
+
+    public String getAdresse() {
+        return mAdresse;
+    }
+
+    public void setAdresse(String adresse) {
+        mAdresse = adresse;
+    }
+
+    public String getCategorieSocioProf() {
+        return mCategorieSocioProf;
+    }
+
+    public void setCategorieSocioProf(String categorieSocioProf) {
+        mCategorieSocioProf = categorieSocioProf;
+    }
+
+    public String getPhoto() {
+        return mPhoto;
+    }
+
+    public void setPhoto(String photo) {
+        mPhoto = photo;
+    }
+
+    public Departement getDepartement() {
+        return mDepartement;
+    }
+
+    public void setDepartement(Departement departement) {
+        mDepartement = departement;
+    }
+
+    public String getNewAdresse() {
+        return mNewAdresse;
+    }
+
+    public void setNewAdresse(String newAdresse) {
+        mNewAdresse = newAdresse;
+    }
+
+    public List<Panier> getPanier() {
+        return mPanier;
+    }
+
+    public void setPanier(List<Panier> panier) {
+        mPanier = panier;
+    }
+
+    public List<String> getFavorie() {
+        return mFavorie;
+    }
+
+    public void setFavorie(List<String> favorie) {
+        mFavorie = favorie;
+    }
+
+    /*public List<Panier> getBienAcheter() {
+        return mBienAcheter;
+    }
+
+    public void setBienAcheter(List<Panier> bienAcheter) {
+        mBienAcheter = bienAcheter;
+    }*/
+
+    public List<String> getDetailsPrestations() {
+        return mDetailsPrestationsEtu;
+    }
+
+    public void setDetailsPrestations(List<String> detailsPrestations) {
+        mDetailsPrestationsEtu = detailsPrestations;
+    }
+
+    @Override
+    public String toString() {
+        return "Etudiant{" +
+                "mIdEtu='" + mIdEtu + '\'' +
+                ", mNomEtu='" + mNomEtu + '\'' +
+                ", mPrenomEtu='" + mPrenomEtu + '\'' +
+                ", mNumTelephoneEtu=" + mNumTelephoneEtu +
+                ", mNumChambre='" + mNumChambre + '\'' +
+                ", mEmail='" + mEmail + '\'' +
+                ", mPassword='" + mPassword + '\'' +
+                ", mAdresse='" + mAdresse + '\'' +
+                ", mCategorieSocioProf='" + mCategorieSocioProf + '\'' +
+                ", mPhoto='" + mPhoto + '\'' +
+                ", mNewAdresse='" + mNewAdresse + '\'' +
+                ", mPanier=" + mPanier +
+                ", mFavorie=" + mFavorie +
+                ", mDetailsPrestationsEtu=" + mDetailsPrestationsEtu +
+                ", mDepartement=" + mDepartement +
+                '}';
+    }
+}

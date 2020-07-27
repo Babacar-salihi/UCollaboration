@@ -1,0 +1,168 @@
+package com.babacar.ucollaboration.UMarket.Fragments;
+
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.babacar.ucollaboration.Globals.Activitys.Connexion;
+import com.babacar.ucollaboration.Globals.Activitys.Inscription;
+import com.babacar.ucollaboration.Globals.Models.Etudiant;
+import com.babacar.ucollaboration.Globals.Models.FonctionnaliteCompte;
+import com.babacar.ucollaboration.R;
+import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewCompte;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class FragmentCompte extends Fragment {
+
+
+    private View mView;
+    private RecyclerView mRecyclerView;
+    private Button mBntConnex, mBtnInscrip;
+
+    private Etudiant mEtudiant;
+    private CircleImageView mUserProfilPic;
+    private TextView mUserName, mNbArtVendu, mNbArtAchat, mNbArtLike;
+    private TextView mTextArtVendu, mTextArtAchat, mTextArtLike;
+
+    public FragmentCompte() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mView = inflater.inflate(R.layout.umarket_fragment_compte, container, false);
+
+        referenceWidgets(); // Méthode pour référencer les widgets de fonctCompte
+        inflateFonct(); // Méthode pour adapter le recycleView.
+        pageAuth(); // Méthode pour acceder à la page de connexion ou d'inscription.
+        toggleConnex(); // Méthode pour cacher ou faire apparaitre la partie authentification. (Bouton connexion et inscription).
+        if(sCurrentUser != null){
+            remplirInfoUser(); // Méthode pour remplir les informations de l'utilisateur connecté.
+        }
+        return mView;
+    }
+
+    /**
+     * Permet de référencer les widgets de l'adapter fonctCompte.
+     */
+    private void referenceWidgets(){
+
+        this.mRecyclerView = mView.findViewById(R.id.compte_recycleView);
+        this.mBntConnex = mView.findViewById(R.id.compte_btnConnex);
+        this.mBtnInscrip = mView.findViewById(R.id.compte_btnInscript);
+
+        this.mUserProfilPic = mView.findViewById(R.id.compte_userProfilPic);
+        this.mUserName =  mView.findViewById(R.id.compte_userName);
+
+        this.mNbArtVendu = mView.findViewById(R.id.compte_articleVendu);
+        this.mNbArtAchat = mView.findViewById(R.id.compte_articleAchete);
+        this.mNbArtLike = mView.findViewById(R.id.compte_articleLike);
+
+        this.mTextArtVendu = mView.findViewById(R.id.compte_texteArtVendu);
+        this.mTextArtAchat = mView.findViewById(R.id.compte_texteArtAchat);
+        this.mTextArtLike = mView.findViewById(R.id.compte_texteArtLike);
+    }
+
+    /**
+     * Permet d'afficher les fonctionnalité dans le RecyclerView.
+     */
+    private void inflateFonct(){
+
+        List<FonctionnaliteCompte> list = new ArrayList<>();
+
+        list.add(new FonctionnaliteCompte("ic_liste_vente", "Mes Achats et ventes"));
+        list.add(new FonctionnaliteCompte("favorite_card", "Ma liste d'envis"));
+        list.add(new FonctionnaliteCompte("modifier", "Gerer mon compte"));
+        list.add(new FonctionnaliteCompte("deconnex", "Déconnexion"));
+        list.add(new FonctionnaliteCompte("supprimer", "Supprimer mon compte"));
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
+        RecyclerViewCompte recyclerViewBien = new RecyclerViewCompte(getContext(),list);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(recyclerViewBien);
+
+    }
+
+    /**
+     * Permet à un utilisateur d'acceder à la page de connexion ou d'inscription.
+     */
+    private void pageAuth(){
+
+        // Clique sur le bouton connexion.
+        mBntConnex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), Connexion.class));
+            }
+        });
+
+        // Clique sur le bouton inscription.
+        mBtnInscrip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), Inscription.class));
+            }
+        });
+    }
+
+    /**
+     * Permet de cacher ou d'afficher le layout contenant " Connexion et Inscription" et la listView
+     */
+    private void toggleConnex(){
+
+        LinearLayout layout = mView.findViewById(R.id.compte_layoutConnex);
+        if(sCurrentUser != null){
+            layout.setVisibility(View.GONE); // On cache la partie "connexion inscription" s'il y a un utilisateur connecté.
+            mRecyclerView.setEnabled(true);
+        }
+        else {
+            layout.setVisibility(View.VISIBLE); // On affiche la partie "connexion inscription" s'il n'y a pas d'utilisateur connecté.
+            mRecyclerView.setEnabled(false);
+        }
+    }
+
+    /**
+     * Permet d'afficher les informations de l'utilisateur s'il est connecté.
+     */
+    public void remplirInfoUser(){
+        mEtudiant = sCurrentUser;
+        if(mEtudiant.getPhoto() != null)
+            Picasso.with(getContext()).load(mEtudiant.getPhoto()).into(mUserProfilPic);
+        this.mUserName.setText(mEtudiant.getPrenomEtu()+" "+mEtudiant.getNomEtu());
+
+        this.mNbArtLike.setText(mEtudiant.getFavorie().size()+"");
+        this.mNbArtAchat.setText(mEtudiant.getDetailsPrestations().size()+"");
+
+        if (Integer.parseInt(mNbArtVendu.getText().toString()) > 1)
+            mTextArtVendu.setText("articles vendu");
+        if (Integer.parseInt(mNbArtAchat.getText().toString()) > 1)
+            mTextArtAchat.setText("articles acheté");
+        if (Integer.parseInt(mNbArtLike.getText().toString()) > 1)
+            mTextArtLike.setText("articles aimé");
+    }
+
+}

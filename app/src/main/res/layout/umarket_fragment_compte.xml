@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UMarket.Fragments.FragmentCompte">
+
+    <!-- Boutton de connexion et inscription -->
+    <LinearLayout
+        android:id="@+id/compte_layoutConnex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100"
+        android:gravity="center"
+        android:background="@color/darkGrey">
+
+        <Button
+            android:id="@+id/compte_btnConnex"
+            android:layout_width="0dp"
+            android:layout_weight="45"
+            android:layout_height="wrap_content"
+            android:text="@string/connex"
+            />
+
+        <Button
+            android:id="@+id/compte_btnInscript"
+            android:layout_width="0dp"
+            android:layout_weight="45"
+            android:layout_height="wrap_content"
+            android:text="@string/inscript"
+            />
+
+    </LinearLayout>
+
+    <!-- Gére le compte de l'utilisateur connecter -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding10"
+        android:gravity="center"
+        android:background="@color/appColor">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/compte_userProfilPic"
+            android:layout_width="@dimen/imgSize110"
+            android:layout_height="@dimen/imgSize110"
+            android:layout_gravity="center"
+            android:src="@drawable/usericon"/>
+
+        <TextView
+            android:id="@+id/compte_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userName"
+            android:textSize="@dimen/texteSize17"
+            android:textStyle="bold"
+            android:fontFamily="@font/philosopherregular"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding7">
+
+            <!-- Article vendu --> <!-- PAS ENCORE GERER -->
+            <LinearLayout
+                android:id="@+id/layout_artVendu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true">
+
+                <TextView
+                    android:id="@+id/compte_articleVendu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zero"
+                    android:textStyle="bold"
+                    android:layout_marginRight="@dimen/margin5"/>
+
+                <TextView
+                    android:id="@+id/compte_texteArtVendu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/artVendu"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/texteSize15" />
+
+            </LinearLayout>
+
+            <!-- Article acheter --> <!-- PAS ENCORE GERER -->
+            <LinearLayout
+                android:id="@+id/layout_artAchat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_artVendu">
+
+                <TextView
+                    android:id="@+id/compte_articleAchete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zero"
+                    android:textStyle="bold"
+                    android:layout_marginRight="@dimen/margin5"/>
+
+                <TextView
+                    android:id="@+id/compte_texteArtAchat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artAchete"
+                    android:textColor="@android:color/white"/>
+
+            </LinearLayout>
+
+            <!-- Article Aimer -->
+            <LinearLayout
+                android:id="@+id/layout_artLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/layout_artAchat">
+
+                <TextView
+                    android:id="@+id/compte_articleLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zero"
+                    android:textStyle="bold"
+                    android:layout_marginRight="@dimen/margin5"/>
+
+                <TextView
+                    android:id="@+id/compte_texteArtLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artLike"
+                    android:textSize="@dimen/texteSize15"
+                    android:textColor="@android:color/white"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/compte_recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

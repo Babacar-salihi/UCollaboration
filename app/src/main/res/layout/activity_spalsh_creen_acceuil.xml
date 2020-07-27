@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".Globals.Utilitaires.SpalshCreenAcceuil">
+
+    <!--<com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAcceuil"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/welcome2"
+        />-->
+
+    <ImageView
+        android:id="@+id/splash_acceuilLogo"
+        android:layout_width="@dimen/imgSize300"
+        android:layout_height="@dimen/imgSize300"
+        android:src="@drawable/ucadlogo"/>
+
+    <TextView
+        android:id="@+id/splash_acceuilText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bienvenue"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        android:textColor="@color/darkAppColor"
+        android:fontFamily="@font/logo"
+        android:layout_margin="@dimen/margin7"
+        />
+
+    <TextView
+        android:id="@+id/splash_userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/userName"
+        android:textSize="@dimen/texteSize15"
+        android:visibility="gone"
+        android:layout_margin="@dimen/margin7"
+        />
+
+</LinearLayout>

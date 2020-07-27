@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId "com.babacar.ucollaboration"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:28.0.0'
+
+    //noinspection GradleCompatible
+    implementation 'com.android.support:support-v4:23.0.1'
+
+    // RecycleView
+    //noinspection GradleCompatible
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    //Animations
+    implementation "com.airbnb.android:lottie:3.4.0"
+
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //Picasso: pour afficher les images avec url.
+    implementation 'com.squareup.picasso:picasso:2.0.0'
+
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //GSON: pour serialisateur objet en json
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+
+    // Code QR, pour les achats
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+
+    // SwipeMenuRecyclerView
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
+
+    //
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.google.firebase:firebase-database:16.0.4'
+    implementation 'com.google.firebase:firebase-storage:16.0.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+}

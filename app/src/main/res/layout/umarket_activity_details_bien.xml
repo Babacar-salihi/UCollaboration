@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkWhite"
+    android:padding="@dimen/padding7"
+    android:scrollbars="none"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UMarket.Activitys.DetailsBIen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding7"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            >
+
+            <!-- View détails images-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_weight="55"
+                app:cardElevation="0dp"
+                android:background="@android:color/transparent"
+                android:layout_height="300dp">
+
+                <LinearLayout
+                    android:id="@+id/Details_LayoutImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp">
+
+                        <!--<ImageView
+                            android:id="@+id/detailsImages"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/iphone11"
+                            />-->
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/Details_viewPagerImages"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Autres fonctionnalités (ex: ajouter au panier) -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin5"
+                android:layout_weight="45"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/Details_LayoutAjouter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="@dimen/elevation4"
+                        android:layout_alignParentTop="true"
+                        android:layout_margin="@dimen/margin10">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/achat"
+                            android:textSize="@dimen/texteSize20"
+                            android:textColor="@android:color/black"
+                            android:gravity="center"
+                            />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/details_somme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Calculsomme"
+                        android:textSize="@dimen/texteSize15"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:padding="@dimen/margin10"
+                        android:layout_above="@id/layoutCalcule"/>
+
+                    <!-- Fonction d'ajout -->
+                    <LinearLayout
+                        android:id="@+id/layoutCalcule"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="100"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:layout_marginBottom="@dimen/margin5"
+                        android:layout_above="@id/details_BtnAjout">
+
+                        <ImageButton
+                            android:id="@+id/details_BtnMoins"
+                            android:layout_width="0dp"
+                            android:layout_weight="30"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_moins_details"
+                            android:textSize="@dimen/texteSize20"/>
+
+                        <TextView
+                            android:id="@+id/detailsNombreAchat"
+                            android:layout_width="0dp"
+                            android:layout_weight="40"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textSize="@dimen/texteSize20"
+                            android:textStyle="bold"
+                            android:background="@color/appColor"/>
+
+
+                        <ImageButton
+                            android:id="@+id/details_BtnPlus"
+                            android:layout_width="0dp"
+                            android:layout_weight="30"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_plus_details"
+                            android:textSize="@dimen/texteSize20"/>
+
+                    </LinearLayout>
+
+                    <!-- Bouton Ajouter au panier -->
+                    <Button
+                        android:id="@+id/details_BtnAjout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ajouterPanier"
+                        android:background="@drawable/style_btn_gmail"
+                        android:elevation="@dimen/elevation4"
+                        android:layout_above="@id/details_BtnContinuer"/>
+
+                    <!-- Bouton Acheter -->
+                    <Button
+                        android:id="@+id/details_BtnContinuer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_alignParentBottom="true"
+                        android:text="@string/acheter"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:elevation="@dimen/elevation4"
+                        android:visibility="invisible"
+                        android:background="@drawable/style_btn_gmail"
+                        />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- View Détails -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardElevation="@dimen/elevation4"
+            app:cardCornerRadius="@dimen/radius5"
+            android:layout_marginTop="@dimen/margin10"
+            android:layout_marginBottom="@dimen/margin10">
+
+            <LinearLayout
+                android:id="@+id/Details_LayoutProduit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/padding7"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="@dimen/elevation4"
+                    android:layout_margin="@dimen/margin10"
+                    android:layout_marginBottom="@dimen/margin10"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titreDetailBien"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"
+                        android:textSize="@dimen/texteSize20"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding7"
+                    >
+
+                    <TextView
+                        android:id="@+id/detailsCategorie"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detailsCategie"/>
+
+                    <TextView
+                        android:id="@+id/detailsLibelle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detailsLibelle"/>
+
+                    <TextView
+                        android:id="@+id/detailsPrix"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detailsPrix"/>
+
+                    <TextView
+                        android:id="@+id/detailsGarantie"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detailsGarantie"/>
+
+                    <TextView
+                        android:id="@+id/detailsNombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detailsNombre"/>
+
+                    <TextView
+                        android:id="@+id/detailsDescript"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detailsDescript"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Informations sur le vendeur -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardElevation="@dimen/elevation4"
+            app:cardCornerRadius="@dimen/radius5"
+            android:layout_marginTop="@dimen/margin10"
+            android:layout_marginBottom="@dimen/margin10">
+
+            <LinearLayout
+                android:id="@+id/Details_LayoutVendeur"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/padding7"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="@dimen/elevation4"
+                    android:layout_margin="@dimen/margin10"
+                    android:layout_marginBottom="@dimen/margin10"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titreInfoVendeur"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"
+                        android:textSize="@dimen/texteSize20"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding7"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        >
+
+                        <TextView
+                            android:id="@+id/details_Vendeur_NomVendeur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/userName"
+                            android:textColor="@color/darkAppColor"
+                            android:fontFamily="@font/philosopherregular"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="@dimen/margin10"
+                            />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/details_Vendeur_PpVendeur"
+                            android:layout_width="@dimen/imgSize80"
+                            android:layout_height="@dimen/imgSize80"
+                            android:src="@drawable/usericon"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/details_Vendeur_Adresse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/adresseVendeur"/>
+
+                    <TextView
+                        android:id="@+id/details_Vendeur_livDispo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/livDispo"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:id="@+id/details_Vendeur_negoc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/negociation"
+                            android:textSize="@dimen/texteSize17"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:layout_margin="@dimen/margin7"
+                            />
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content">
+
+
+                           <!-- Appeler le vendeur -->
+                           <LinearLayout
+                               android:id="@+id/details_BtnAppeler"
+                               android:layout_width="@dimen/widthSize120"
+                               android:layout_height="wrap_content"
+                               android:gravity="center"
+                               android:background="@drawable/style_btn_gmail"
+                               android:padding="@dimen/padding2">
+
+                               <ImageView
+                                   android:layout_width="@dimen/imgSize40"
+                                   android:layout_height="@dimen/imgSize40"
+                                   android:src="@drawable/ic_appel"/>
+
+                               <TextView
+                                   android:layout_width="match_parent"
+                                   android:layout_height="match_parent"
+                                   android:gravity="center_vertical"
+                                   android:text="@string/appeler"/>
+
+                           </LinearLayout>
+
+                           <!-- WhatsApp -->
+                           <LinearLayout
+                               android:id="@+id/details_BtnWhatsApp"
+                               android:layout_width="@dimen/widthSize120"
+                               android:layout_height="wrap_content"
+                               android:gravity="center"
+                               android:background="@drawable/style_btn_gmail"
+                               android:padding="@dimen/padding2"
+                               android:layout_marginLeft="@dimen/margin5">
+
+                               <de.hdodenhof.circleimageview.CircleImageView
+                                   android:layout_width="@dimen/imgSize40"
+                                   android:layout_height="@dimen/imgSize40"
+                                   android:src="@drawable/whatsapp"/>
+
+                               <TextView
+                                   android:layout_width="match_parent"
+                                   android:layout_height="match_parent"
+                                   android:gravity="center_vertical"
+                                   android:text="@string/whatsApp"/>
+
+                           </LinearLayout>
+
+                       </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardElevation="@dimen/elevation4"
+            app:cardCornerRadius="@dimen/radius5"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding7"
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="@dimen/elevation4"
+                    android:layout_margin="@dimen/margin10"
+                    android:layout_marginBottom="@dimen/margin10"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titreSameCategorie"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"
+                        android:textSize="@dimen/texteSize20"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding7">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerMemeCateg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

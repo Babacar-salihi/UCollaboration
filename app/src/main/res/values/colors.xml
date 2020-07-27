@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- Mes couleurs -->
+    <color name="appColor">#fab1a0</color>
+    <color name="darkGrey">#7D7D7D</color>
+    <color name="darkWhite2">#EFEFEF</color>
+    <color name="darkWhite">#EAEAEA</color>
+    <color name="darkAppColor">#e17055</color>
+    <color name="darkGreen">#00b894</color>
+    <color name="darkWhiten2">#AAAAAA</color>
+    <color name="green">#55efc4</color>
+    <color name="yellow">#ffeaa7</color>
+    <color name="darkYellow">#fdcb6e</color>
+
+
+</resources>

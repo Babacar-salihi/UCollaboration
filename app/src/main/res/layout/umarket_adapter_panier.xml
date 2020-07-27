@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/adapter_panier_cardView"
+    android:elevation="@dimen/elevation5"
+    app:cardCornerRadius="@dimen/radius5"
+    app:cardUseCompatPadding="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding7"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardElevation="@dimen/elevation4"
+            android:padding="@dimen/margin2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/margin2"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/adapter_panier_photo"
+                    android:layout_width="@dimen/produitImageSize150"
+                    android:layout_height="@dimen/produitImageSize150"
+                    android:src="@drawable/iphone11"/>
+
+                <TextView
+                    android:id="@+id/adapter_panier_Libelle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/libelleProduit"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkAppColor"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/texteSize20"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            >
+
+            <LinearLayout
+                android:id="@+id/panier_layout_Infos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <!-- Quantité -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="33"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quantite"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="@dimen/texteSize15"
+                            android:layout_marginBottom="@dimen/margin10"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin5"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            >
+
+                            <!-- Bouton augmenter -->
+                            <ImageButton
+                                android:id="@+id/adapter_panier_btnPlus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/ic_plus"/>
+
+                            <TextView
+                                android:id="@+id/adapter_panier_quantite"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/qt"
+                                android:textColor="@android:color/black"
+                                android:gravity="center"
+                                android:background="@color/appColor"
+                                android:textSize="@dimen/texteSize20"/>
+
+                            <!-- Bouton Diminuer -->
+
+                            <ImageButton
+                                android:id="@+id/adapter_panier_btnMoin"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/ic_moins"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Prix unitaire -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="34"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Punitaire"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="@dimen/texteSize15"
+                            android:layout_marginBottom="@dimen/margin10"/>
+
+                        <TextView
+                            android:id="@+id/adapter_panier_prixUnitaire"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/unitaire"
+                            android:textColor="@android:color/black"
+                            android:gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin5"
+                            android:textSize="@dimen/texteSize20"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Date d"expiration -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="33"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/expiration"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="@dimen/texteSize15"
+                            android:layout_marginBottom="@dimen/margin10"/>
+
+                        <TextView
+                            android:id="@+id/adapter_panier_dateExpiration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/expiration"
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold"
+                            android:gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin5"
+                            android:background="@android:color/holo_red_dark"
+                            android:textSize="@dimen/texteSize20"/>
+
+                       <!-- <Chronometer
+                            android:id="@+id/adapter_panier_chronometre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/widthSize17"
+                            android:layout_gravity="center"/>-->
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/panier_layout_Infos"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/margin10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sousTolal"/>
+
+                <TextView
+                    android:id="@+id/adapter_panier_souTotalBien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sousTolal"
+                    android:textColor="@color/darkAppColor"
+                    android:textSize="@dimen/textSize17"
+                    android:layout_alignParentRight="true"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/adapter_panier_layoutSuppLike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding7"
+                android:layout_alignParentBottom="true"
+                >
+
+                <ImageButton
+                    android:id="@+id/adapter_panier_btnSupprimer"
+                    android:layout_width="@dimen/iconSize20"
+                    android:layout_height="@dimen/iconSize20"
+                    android:src="@drawable/ic_supprimer"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentLeft="true"/>
+
+                <LinearLayout
+                    android:id="@+id/adapter_panier_btnLike"
+                    android:layout_width="@dimen/widthSize20"
+                    android:layout_height="@dimen/widthSize20"
+                    android:clickable="true"
+                    android:layout_alignParentRight="true">
+
+                    <ImageButton
+                        android:id="@+id/adapter_panier_LikeFalse"
+                        android:layout_width="@dimen/iconSize20"
+                        android:layout_height="@dimen/iconSize20"
+                        android:src="@drawable/ic_favorite"
+                        android:background="@android:color/transparent"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/adapter_panier_LikeTrue"
+                        android:layout_width="@dimen/iconSize20"
+                        android:layout_height="@dimen/iconSize20"
+                        android:src="@drawable/ic_favorite_true"
+                        android:background="@android:color/transparent"
+                        android:visibility="gone"
+                        />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

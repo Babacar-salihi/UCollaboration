@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/connexion_layout0"
+    tools:context=".Globals.Activitys.Connexion">
+
+    <LinearLayout
+        android:id="@+id/contener"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin160"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/titreConnex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/CapiConnex"
+            android:textSize="@dimen/sizeTitre"
+            android:textColor="@color/darkAppColor"
+            android:textStyle="bold"
+            android:fontFamily="@font/philosopherregular"
+            android:shadowColor="@android:color/black"
+            android:shadowRadius="2"
+            android:shadowDx="1"
+            android:shadowDy="2"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/margin25"/>
+
+
+        <LinearLayout
+            android:id="@+id/layout_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin30"
+            android:layout_marginLeft="@dimen/margin10"
+            android:layout_marginRight="@dimen/margin10"
+
+            android:weightSum="100"
+            android:background="@drawable/style_input_email"
+            android:layout_below="@id/titreConnex"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="15"
+                android:layout_height="23dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_email"/>
+
+
+
+            <EditText
+                android:id="@+id/connex_email"
+                android:layout_width="0dp"
+                android:layout_weight="85"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/texteSize17"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin10"
+            android:layout_marginLeft="@dimen/margin10"
+            android:layout_marginRight="@dimen/margin10"
+            android:gravity="center"
+            android:weightSum="100"
+            android:background="@drawable/style_input_pwd"
+            android:layout_below="@id/layout_email"
+            >
+
+            <!--<ImageView
+                android:layout_width="0dp"
+                android:layout_weight="15"
+                android:layout_height="40dp"
+                android:src="@drawable/icon_pwd"/>-->
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="@dimen/widthSize0"
+                android:layout_weight="15"
+                android:layout_height="40dp"
+                app:lottie_rawRes="@raw/pwd_icon"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"/>
+
+
+
+            <EditText
+                android:id="@+id/connex_pwd"
+                android:layout_width="0dp"
+                android:layout_weight="85"
+                android:layout_height="wrap_content"
+                android:hint="@string/userPwd"
+                android:inputType="textPassword"
+                android:textSize="@dimen/texteSize17" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/pwdOublie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pwdForget"
+            android:textSize="@dimen/texteSize17"
+            android:fontFamily="@font/philosopheritalic"
+            android:layout_margin="@dimen/margin10"
+            android:textColor="@color/appColor"
+            android:layout_below="@id/layout_email"
+
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/connex_btnContinuer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/continer"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/texteSize20"
+        android:textStyle="bold"
+        android:fontFamily="@font/philosopherbold"
+        android:background="@drawable/style_btns"
+        android:elevation="@dimen/elevation4"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin60"
+        android:paddingLeft="@dimen/padding20"
+        android:paddingRight="@dimen/padding20"
+        />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_toRightOf="@id/connex_btnContinuer"
+        android:layout_marginBottom="@dimen/margin60"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:padding="@dimen/padding10"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/popup_bien_titre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titre"
+        android:textSize="@dimen/texteSize20"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/popup_bien_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/message"
+        android:textSize="@dimen/texteSize15"
+        android:gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/popup_btnPanier"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/ajouterPanier"
+            android:layout_margin="@dimen/margin5"
+            />
+
+        <Button
+            android:id="@+id/popup_btnDetails"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/voirDetails"
+            android:layout_margin="@dimen/margin5" />
+
+    </LinearLayout>
+
+</LinearLayout>

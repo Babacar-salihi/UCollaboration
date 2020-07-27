@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin10"
+    android:id="@+id/listeVente_cardview"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="@dimen/radius10"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding10"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/adapter_listeVente_checkBoxVente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
+
+            <!-- Image et libelle -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/adapter_listeVente_image"
+                    android:layout_width="@dimen/imgSize100"
+                    android:layout_height="@dimen/imgSize110"/>
+
+                <TextView
+                    android:id="@+id/adapter_listeVente_libelle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/libelleProduit"/>
+
+            </LinearLayout>
+
+            <!-- Informations détails -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/margin7"
+                android:orientation="vertical">
+
+                <!-- Date de vente -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dateVente"/>
+
+                    <TextView
+                        android:id="@+id/adapter_listeVente_dateVente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dateVente"
+                        android:layout_marginLeft="@dimen/margin7"/>
+
+                </LinearLayout>
+
+                <!-- Date de rendez-vous -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dateRv"/>
+
+                    <TextView
+                        android:id="@+id/adapter_listeVente_dateRV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dateRv"
+                        android:layout_marginLeft="@dimen/margin7"/>
+
+                </LinearLayout>
+
+                <!-- Prix vente -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prixProduit"/>
+
+                    <TextView
+                        android:id="@+id/adapter_listeVente_Prix"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prixProduit"
+                        android:layout_marginLeft="@dimen/margin7"/>
+
+                </LinearLayout>
+
+                <!-- Quantité -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quantite"/>
+
+                    <TextView
+                        android:id="@+id/adapter_listeVente_Quantite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quantite"
+                        android:layout_marginLeft="@dimen/margin7"/>
+
+                </LinearLayout>
+
+                <!-- Livraison -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/estLivré"/>
+
+                    <TextView
+                        android:id="@+id/adapter_listeVente_Livraison"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/estLivré"
+                        android:layout_marginLeft="@dimen/margin7"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

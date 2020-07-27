@@ -141,7 +141,7 @@
 
             <!-- Umaps -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/acceuil_umaps"
+                android:id="@+id/acceuil_uinfo"
                 android:layout_width="0dp"
                 android:layout_weight="50"
                 android:layout_height="@dimen/widthSize200"
@@ -178,7 +178,7 @@
 
             <!-- Uinfo -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/acceuil_uinfo"
+                android:id="@+id/acceuil_umaps"
                 android:layout_width="0dp"
                 android:layout_weight="50"
                 android:layout_height="@dimen/widthSize200"

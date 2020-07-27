@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UMaps.Activitys.MainActivity"
+    android:gravity="center"
+    >
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin20"
+        android:background="@drawable/umaps_style_search_radius"
+        android:elevation="@dimen/elevetion5"
+        android:gravity="center"
+        android:clickable="true"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/imgSize30"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_search"
+            android:layout_marginRight="@dimen/margin10"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/search_lieu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/recherche"
+            android:textSize="@dimen/texteSize17"
+            android:completionThreshold="2"
+            android:completionHint="@string/hintSearch"
+            android:inputType="textAutoComplete"
+            android:imeOptions="actionSearch"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_above="@id/umaps_floattingBtn_ajouter_lieu">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/umaps_floattingBtn_explorer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/bleuLight"
+            android:src="@drawable/compass"
+            android:layout_marginLeft="@dimen/margin20"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/umaps_floattingBtn_ajouter_lieu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/darkBlue"
+        android:src="@drawable/more"
+        android:layout_margin="@dimen/margin20"
+        />
+
+</RelativeLayout>

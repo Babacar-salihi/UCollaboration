@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 
 import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.Globals.Utilitaires.PhotoUtilitaire;
+import com.babacar.ucollaboration.UMaps.Models.Lieu;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.babacar.ucollaboration.UMarket.Modeles.DetailsPrestation;
 import com.babacar.ucollaboration.UMarket.Modeles.ImageBien;
@@ -37,6 +38,7 @@ import com.google.firebase.storage.UploadTask;
 
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -635,4 +637,64 @@ public class DataBase {
                     }
                 });
     }
+
+    //================================ UMAPS ====================================
+    private static DatabaseReference sRefUmaps = FirebaseDatabase.getInstance().getReference().child("UMaps");
+    public static DatabaseReference sRefLieux = sRefUmaps.child("Lieux");
+    private static String sKeyLieu = sRefLieux.push().getKey();
+    public static List<Lieu> sLieux = new ArrayList<>();
+    public static List<String> sNomLieu = new ArrayList<>();
+
+    /**
+     * Permet d'ajouter un lieu à la carte.
+     * @param lieu
+     */
+    public static void ajouterLieux(Lieu lieu) {
+
+        lieu.setIdLieu(sKeyLieu);
+        sRefLieux.child(sKeyLieu).setValue(lieu);
+    }
+
+    /**
+     * Permet d'ajouter plusieurs lieu à la fois.
+     * @param lieux
+     */
+    public static void ajouterLieux(List<Lieu> lieux) {
+
+        Iterator<Lieu> iterator = lieux.iterator();
+        while (iterator.hasNext()) {
+
+            String keyLieu = sRefLieux.push().getKey();
+            iterator.next().setIdLieu(keyLieu);
+        }
+
+        sRefLieux.setValue(lieux);
+    }
+
+    /**
+     * Permet de récupérer les lieux.
+     */
+    /*public static void getLieux() {
+
+        sRefLieux.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                sLieux.clear();
+                sNomLieu.clear();
+                for (DataSnapshot lieu : dataSnapshot.getChildren()) {
+
+                    Lieu lieu1 = lieu.getValue(Lieu.class);
+                    sLieux.add(lieu1);
+                    sNomLieu.add(lieu1.getPosition());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }*/
+
 }

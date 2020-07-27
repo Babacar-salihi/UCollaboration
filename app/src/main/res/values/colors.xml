@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <!-- Mes couleurs -->
+    <!-- UMarket -->
     <color name="appColor">#fab1a0</color>
     <color name="darkGrey">#7D7D7D</color>
     <color name="darkWhite2">#EFEFEF</color>
@@ -15,6 +15,16 @@
     <color name="green">#55efc4</color>
     <color name="yellow">#ffeaa7</color>
     <color name="darkYellow">#fdcb6e</color>
+
+    <!-- Umaps -->
+    <color name="umaps_darkGreen">#43A047</color>
+    <color name="darkBlue">#0D47A1</color>
+    <color name="bleu">#01579B</color>
+
+    <color name="bleuLight">#00ACC1</color>
+    <color name="umaps_darkYellow">#FDD835</color>
+
+
 
 
 </resources>

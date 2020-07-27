@@ -15,7 +15,7 @@ import com.babacar.ucollaboration.Globals.Activitys.Acceuil;
 import com.babacar.ucollaboration.Globals.Activitys.Connexion;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Fragments.FragmentAcceuil;
-import com.babacar.ucollaboration.UMarket.Fragments.FragmentCompte;
+import com.babacar.ucollaboration.UMarket.Fragments.FragmentCategorieBien;
 import com.babacar.ucollaboration.UMarket.Fragments.FragmentVendre;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         selectFragment = new FragmentVendre(); break;
                     }
-                case R.id.menu_compte :
-                    selectFragment = new FragmentCompte();
+                case R.id.menu_categ :
+                    selectFragment = new FragmentCategorieBien();
                     break;
 
                 default :

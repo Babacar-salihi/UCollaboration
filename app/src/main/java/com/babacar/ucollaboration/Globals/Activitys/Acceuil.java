@@ -4,16 +4,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Activitys.MainActivity;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 
 
 public class Acceuil extends AppCompatActivity {
 
-    private Button mBntConnexion, mBtnInscription;
+    private LinearLayout mUserSpace; // Expace regroupant: Connexion, Inscription, Compte.
+    private CircleImageView mUserProfilePic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +32,7 @@ public class Acceuil extends AppCompatActivity {
 
         referenceWidgets(); // Méthode permettent de référencer les widgets de "layout.activity_acceuil".
         listener(); // Méthode permettant de gérer les listeners sur le boutons.
+        showProfilePic(); // Méthode permettant de gérer l'affichage du profile de l'utilisateur.
     }
 
     /**
@@ -29,10 +40,26 @@ public class Acceuil extends AppCompatActivity {
      */
     private void referenceWidgets() {
 
-        this.mBntConnexion = findViewById(R.id.global_acceuil_btnConnex);
-        this.mBtnInscription = findViewById(R.id.global_acceuil_btnInscript);
+        this.mUserSpace = findViewById(R.id.acceuil_space_user);
+        this.mUserProfilePic = findViewById(R.id.acceuil_userPP);
     }
 
+    /**
+     * Permet de gérer l'affichage du profile de l'utilisateur.
+     */
+    private void showProfilePic() {
+
+        if (sCurrentUser != null)
+            Glide.with(getApplicationContext())
+                .load(sCurrentUser.getPhoto())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(mUserProfilePic);
+    }
+
+    /**
+     * Permet de choisir parmis les quatres applications.
+     * @param view
+     */
     public void switcher(View view) {
 
         switch (view.getId()) {
@@ -59,21 +86,11 @@ public class Acceuil extends AppCompatActivity {
      */
     private void listener() {
 
-        this.mBntConnexion.setOnClickListener(new View.OnClickListener() {
+        mUserSpace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(), Connexion.class));
-                overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left);
-            }
-        });
-
-        this.mBtnInscription.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(getApplicationContext(), Inscription.class));
-                overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left);
+                startActivity(new Intent(getApplicationContext(), UserSpace.class));
             }
         });
     }

@@ -1,21 +1,16 @@
-package com.babacar.ucollaboration.UMarket.Fragments;
+package com.babacar.ucollaboration.Globals.Activitys;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.babacar.ucollaboration.Globals.Activitys.Connexion;
-import com.babacar.ucollaboration.Globals.Activitys.Inscription;
 import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.Globals.Models.FonctionnaliteCompte;
 import com.babacar.ucollaboration.R;
@@ -29,14 +24,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 
+public class UserSpace extends AppCompatActivity {
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class FragmentCompte extends Fragment {
-
-
-    private View mView;
     private RecyclerView mRecyclerView;
     private Button mBntConnex, mBtnInscrip;
 
@@ -45,14 +34,10 @@ public class FragmentCompte extends Fragment {
     private TextView mUserName, mNbArtVendu, mNbArtAchat, mNbArtLike;
     private TextView mTextArtVendu, mTextArtAchat, mTextArtLike;
 
-    public FragmentCompte() {
-        // Required empty public constructor
-    }
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.umarket_fragment_compte, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_space);
 
         referenceWidgets(); // Méthode pour référencer les widgets de fonctCompte
         inflateFonct(); // Méthode pour adapter le recycleView.
@@ -61,7 +46,6 @@ public class FragmentCompte extends Fragment {
         if(sCurrentUser != null){
             remplirInfoUser(); // Méthode pour remplir les informations de l'utilisateur connecté.
         }
-        return mView;
     }
 
     /**
@@ -69,20 +53,20 @@ public class FragmentCompte extends Fragment {
      */
     private void referenceWidgets(){
 
-        this.mRecyclerView = mView.findViewById(R.id.compte_recycleView);
-        this.mBntConnex = mView.findViewById(R.id.compte_btnConnex);
-        this.mBtnInscrip = mView.findViewById(R.id.compte_btnInscript);
+        this.mRecyclerView = findViewById(R.id.compte_recycleView);
+        this.mBntConnex = findViewById(R.id.compte_btnConnex);
+        this.mBtnInscrip = findViewById(R.id.compte_btnInscript);
 
-        this.mUserProfilPic = mView.findViewById(R.id.compte_userProfilPic);
-        this.mUserName =  mView.findViewById(R.id.compte_userName);
+        this.mUserProfilPic = findViewById(R.id.compte_userProfilPic);
+        this.mUserName =  findViewById(R.id.compte_userName);
 
-        this.mNbArtVendu = mView.findViewById(R.id.compte_articleVendu);
-        this.mNbArtAchat = mView.findViewById(R.id.compte_articleAchete);
-        this.mNbArtLike = mView.findViewById(R.id.compte_articleLike);
+        this.mNbArtVendu = findViewById(R.id.compte_articleVendu);
+        this.mNbArtAchat = findViewById(R.id.compte_articleAchete);
+        this.mNbArtLike = findViewById(R.id.compte_articleLike);
 
-        this.mTextArtVendu = mView.findViewById(R.id.compte_texteArtVendu);
-        this.mTextArtAchat = mView.findViewById(R.id.compte_texteArtAchat);
-        this.mTextArtLike = mView.findViewById(R.id.compte_texteArtLike);
+        this.mTextArtVendu = findViewById(R.id.compte_texteArtVendu);
+        this.mTextArtAchat = findViewById(R.id.compte_texteArtAchat);
+        this.mTextArtLike = findViewById(R.id.compte_texteArtLike);
     }
 
     /**
@@ -98,8 +82,8 @@ public class FragmentCompte extends Fragment {
         list.add(new FonctionnaliteCompte("deconnex", "Déconnexion"));
         list.add(new FonctionnaliteCompte("supprimer", "Supprimer mon compte"));
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false );
-        RecyclerViewCompte recyclerViewBien = new RecyclerViewCompte(getContext(),list);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false );
+        RecyclerViewCompte recyclerViewBien = new RecyclerViewCompte(getApplicationContext(),list);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(recyclerViewBien);
 
@@ -115,7 +99,7 @@ public class FragmentCompte extends Fragment {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getContext(), Connexion.class));
+                startActivity(new Intent(getApplicationContext(), Connexion.class));
             }
         });
 
@@ -124,7 +108,7 @@ public class FragmentCompte extends Fragment {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getContext(), Inscription.class));
+                startActivity(new Intent(getApplicationContext(), Inscription.class));
             }
         });
     }
@@ -134,7 +118,7 @@ public class FragmentCompte extends Fragment {
      */
     private void toggleConnex(){
 
-        LinearLayout layout = mView.findViewById(R.id.compte_layoutConnex);
+        LinearLayout layout = findViewById(R.id.compte_layoutConnex);
         if(sCurrentUser != null){
             layout.setVisibility(View.GONE); // On cache la partie "connexion inscription" s'il y a un utilisateur connecté.
             mRecyclerView.setEnabled(true);
@@ -151,7 +135,7 @@ public class FragmentCompte extends Fragment {
     public void remplirInfoUser(){
         mEtudiant = sCurrentUser;
         if(mEtudiant.getPhoto() != null)
-            Picasso.with(getContext()).load(mEtudiant.getPhoto()).into(mUserProfilPic);
+            Picasso.with(getApplicationContext()).load(mEtudiant.getPhoto()).into(mUserProfilPic);
         this.mUserName.setText(mEtudiant.getPrenomEtu()+" "+mEtudiant.getNomEtu());
 
         this.mNbArtLike.setText(mEtudiant.getFavorie().size()+"");
@@ -164,5 +148,4 @@ public class FragmentCompte extends Fragment {
         if (Integer.parseInt(mNbArtLike.getText().toString()) > 1)
             mTextArtLike.setText("articles aimé");
     }
-
 }

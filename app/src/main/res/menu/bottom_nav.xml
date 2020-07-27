@@ -15,8 +15,8 @@
 
     <!-- Item compte -->
     <item
-        android:id="@+id/menu_compte"
-        android:title="@string/Compte"
-        android:icon="@drawable/ic_userplain"/>
+        android:id="@+id/menu_categ"
+        android:title="@string/categorie"
+        android:icon="@drawable/ic_categorie"/>
 
 </menu>

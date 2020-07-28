@@ -29,8 +29,8 @@ import static com.babacar.ucollaboration.UMarket.Activitys.MainActivity.getBienB
 
 public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
 
-    private Context mContext;
-    private List<Panier> mPaniers;
+    private final Context mContext;
+    private final List<Panier> mPaniers;
     //private long timer = 864001000;
     private int mNbBien;
     public static CountDownTimer sCountDownTimer;
@@ -45,8 +45,7 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
     @Override
     public ViewHolderPanier onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.umarket_adapter_panier, null);
-        ViewHolderPanier viewHolderPanier = new ViewHolderPanier(view);
-        return viewHolderPanier;
+        return new ViewHolderPanier(view);
     }
 
     @Override
@@ -58,9 +57,9 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
         //final Bien bien = gson.fromJson(panier.getBiens(), Bien.class);
         final Bien bien = getBienById(panier);
 
-        Picasso.with(mContext).load(bien.getImages().get(0).getPhoto()).into(holder.mImageBien);
+        Picasso.with(mContext).load(bien.getImages().get(0).getPhoto()).placeholder(R.drawable.progess_bar).into(holder.mImageBien);
         holder.mLibelle.setText(bien.getLibelle()); // Libelle du bien.
-        holder.mNbArticle.setText(String.valueOf(panier.getQuantiteAchat())); // Nombre d'article de ce bien ajouter.
+        holder.mNombreAchat.setText(String.valueOf(panier.getQuantiteAchat())); // Nombre d'article de ce bien ajouter.
         holder.mPrixU.setText(bien.getPrixBien()+"\nfcfa"); // Prix unitaire du bien.
         //holder.mExpiration.setText(); // Avant 24H.
         startMinuteur(holder, panier, position); // Méthode pour démarrer le compte à rebour de 24H.
@@ -167,7 +166,7 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
      * Démarrer le muniteur.
      * @param holder
      */
-    public void startMinuteur(final ViewHolderPanier holder, final Panier panier, final int position) {
+    private void startMinuteur(final ViewHolderPanier holder, final Panier panier, final int position) {
 
         sCountDownTimer = new CountDownTimer(panier.getTimeToExpire(), 1000){
             @Override
@@ -199,7 +198,7 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
      * Pertmet de formater le temps en h:mm:ss et l'afficher
      * @param holder
      */
-    public static void updateTimer(ViewHolderPanier holder, Panier panier) {
+    private static void updateTimer(ViewHolderPanier holder, Panier panier) {
 
         int hour = (int) (panier.getTimeToExpire() / 1000) / 36000;
         int minute = (int) ((panier.getTimeToExpire() / 1000) % 3600) / 60;
@@ -211,7 +210,7 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
     /**
      * Permet de gérer les boutons qui augmentent ou diminues le nombre à commander.
      */
-    public void PlusMoin(final ViewHolderPanier holder, final Bien mCurrentBien, final Panier panier, final int position) {
+    private void PlusMoin(final ViewHolderPanier holder, final Bien mCurrentBien, final Panier panier, final int position) {
         Log.d("TAGNBBIEN",mNbBien+"");
         //final int max = mCurrentBien.getNombreBien();
         // Augmenter le nombre à acheter.

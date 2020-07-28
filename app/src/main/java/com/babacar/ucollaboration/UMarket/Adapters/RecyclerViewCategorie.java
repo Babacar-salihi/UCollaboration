@@ -23,9 +23,9 @@ import static com.babacar.ucollaboration.UMarket.Fragments.FragmentAcceuil.sBien
 
 public class RecyclerViewCategorie extends RecyclerView.Adapter<ViewHolderCategorie> {
 
-    private Context mContext;
-    private List<Categories> mCategories;
-    public static List<Bien> mBienCateg = new ArrayList<>();
+    private final Context mContext;
+    private final List<Categories> mCategories;
+    public static final List<Bien> mBienCateg = new ArrayList<>();
     public static String categ; // Le titre de cardView séléctionné.
 
     public RecyclerViewCategorie(Context context, List<Categories> list){
@@ -39,9 +39,8 @@ public class RecyclerViewCategorie extends RecyclerView.Adapter<ViewHolderCatego
     public ViewHolderCategorie onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.umarket_adapter_catalogue_categorie_bien, null);
-        ViewHolderCategorie viewHolderCategorie = new ViewHolderCategorie(view);
 
-        return viewHolderCategorie;
+        return new ViewHolderCategorie(view);
     }
 
     @Override

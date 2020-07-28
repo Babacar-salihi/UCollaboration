@@ -30,6 +30,8 @@ import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewBien;
 import com.babacar.ucollaboration.UMarket.Adapters.ViewPagerAdapter;
 import com.babacar.ucollaboration.UMarket.Fragments.FragmentAcceuil;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -58,7 +60,7 @@ public class DetailsBIen extends AppCompatActivity {
     private TextView mNombreAchat, mSomme;
 
     private RecyclerView mRecyclerView;
-    public static int sNb; // Nombre d'article à acheter.
+    private static int sNb; // Nombre d'article à acheter.
     private final int REQUEST_CALL = 23;
 
     private LinearLayout mFieldSetBien, mFieldSetVendeur, mFieldSetImage;
@@ -143,7 +145,7 @@ public class DetailsBIen extends AppCompatActivity {
     /**
      * Animations
      */
-    public void animations(){
+    private void animations(){
 
         Animation left_initPosition, right_initPosition, top_initPosition;
         left_initPosition = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slider_left_position);
@@ -179,7 +181,7 @@ public class DetailsBIen extends AppCompatActivity {
     /**
      * Permet de remplir les textViews de l'Activité "DétailsBien".
      */
-    public void remplirTextViews() {
+    private void remplirTextViews() {
 
         // Informations sur le produit.
         //Picasso.with(getApplicationContext()).load(mCurrentBien.getImages().get(0).getPhoto()).into(mPhotos);
@@ -214,7 +216,11 @@ public class DetailsBIen extends AppCompatActivity {
 
         // Informations sur le vendeur.
         if (mCurrentBien.getVendeur().getPhoto() != null)
-            Picasso.with(getApplicationContext()).load(mCurrentBien.getVendeur().getPhoto()).into(mPpVendeur);
+           // Picasso.with(getApplicationContext()).load(mCurrentBien.getVendeur().getPhoto()).into(mPpVendeur);
+            Glide.with(getApplicationContext())
+                    .load(mCurrentBien.getVendeur().getPhoto())
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .into(mPpVendeur);
         mNomVendeur.setText(mCurrentBien.getVendeur().getPrenomEtu());
         mAdresseVendeur.setText("Adresse: " + mCurrentBien.getVendeur().getNewAdresse());
         if (mCurrentBien.getLivraison())
@@ -228,13 +234,11 @@ public class DetailsBIen extends AppCompatActivity {
      * Permet de séléctionner les biens de même catégorie que
      * le bien courramment séléctionner pour le proposer au visiteur.
      */
-    public List<Bien> memeCateg(Bien bien, final List<Bien> bienList) {
+    private List<Bien> memeCateg(Bien bien, final List<Bien> bienList) {
 
         List<Bien> list = new ArrayList<>();
         list.clear();
-        Iterator<Bien> iterator = bienList.iterator();
-        while (iterator.hasNext()) {
-            Bien bien1 = iterator.next();
+        for (Bien bien1 : bienList) {
             if (bien1.getCategorie().equalsIgnoreCase(bien.getCategorie()) && bien1 != bien) {
                 list.add(bien1);
             }
@@ -246,7 +250,7 @@ public class DetailsBIen extends AppCompatActivity {
     /**
      * Permet de gérer les boutons qui augmentent ou diminues le nombre à commander.
      */
-    public void PlusMoin() {
+    private void PlusMoin() {
 
         // Augmenter le nombre à acheter.
         mBtnPlus.setOnClickListener(new View.OnClickListener() {
@@ -364,7 +368,7 @@ public class DetailsBIen extends AppCompatActivity {
     /**
      * Permet à l'acheteur d'appeler directement le vendeur.
      */
-    public void appelerVendeur() {
+    private void appelerVendeur() {
 
         mCall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -384,7 +388,7 @@ public class DetailsBIen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (appIsInstalled("com.whatsapp")) {
+                if (appIsInstalled()) {
 
                     Intent whatsApp = new Intent(Intent.ACTION_VIEW);
                     whatsApp.setData(Uri.parse("https://api.whatsapp.com/send?phone=+221"+mCurrentBien.getVendeur().getNumTelephoneEtu()+"text=Salut "+mCurrentBien.getVendeur().getNomEtu()+"! j\'aimerais acheter un de vos biens sur UMarcket."));
@@ -400,16 +404,15 @@ public class DetailsBIen extends AppCompatActivity {
 
     /**
      * Permet d'ouvrir whatsApp pour contacter le vendeur.
-     * @param url
      * @return
      */
-    private boolean appIsInstalled(String url) {
+    private boolean appIsInstalled() {
 
         PackageManager packageManager = getPackageManager();
         boolean isInstall;
         try {
 
-            packageManager.getPackageInfo(url, PackageManager.GET_ACTIVITIES);
+            packageManager.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES);
             isInstall = true;
         } catch (PackageManager.NameNotFoundException e) {
 

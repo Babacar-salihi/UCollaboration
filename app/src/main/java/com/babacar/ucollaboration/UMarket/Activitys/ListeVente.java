@@ -133,7 +133,7 @@ public class ListeVente extends AppCompatActivity {
     /**
      * Permet de distribuer les details aux deux listes de détails que sont : ventes achevées et ventes en cours.
      */
-    public void listeVentes() {
+    private void listeVentes() {
 
         for (String details : sCurrentUser.getDetailsPrestations()) {
 

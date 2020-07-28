@@ -110,9 +110,9 @@ public class AcheterBien extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.acheter_recycleviewLivreur);
 
-        this.mAdrLivraison = findViewById(R.id.acheter_ediAdrLiv);
-        this.mPrixAchat = findViewById(R.id.acheter_editPrixAchat);
-        this.mBtnFinaliser = findViewById(R.id.acheter_btnFinaliser);
+        mAdrLivraison = findViewById(R.id.acheter_ediAdrLiv);
+        mPrixAchat = findViewById(R.id.acheter_editPrixAchat);
+        mBtnFinaliser = findViewById(R.id.acheter_btnFinaliser);
     }
 
     /**
@@ -136,7 +136,7 @@ public class AcheterBien extends AppCompatActivity {
     /**
      * Permet de mettre fin à une étape, lors de l'achat d'un bien.
      */
-    public void etapeTerminer() {
+    private void etapeTerminer() {
 
         // Etape0: - Rendez-vous - terminer
         mBoxEtape0.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -204,7 +204,7 @@ public class AcheterBien extends AppCompatActivity {
     /**
      * Permet de gérer les radioGroups
      */
-    public void radioGroupManager() {
+    private void radioGroupManager() {
 
         // RadioGroup Livraison.
         mRadioGroupChoixLiv.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

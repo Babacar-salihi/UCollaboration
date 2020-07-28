@@ -13,8 +13,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ViewHolderLivreur extends RecyclerView.ViewHolder {
 
-    public CircleImageView mLivProfilPic;
-    public TextView mLivName;
+    private final CircleImageView mLivProfilPic;
+    public final TextView mLivName;
 
     public ViewHolderLivreur(@NonNull View itemView) {
         super(itemView);

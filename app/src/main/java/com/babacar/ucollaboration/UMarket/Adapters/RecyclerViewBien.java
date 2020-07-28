@@ -18,8 +18,6 @@ import com.babacar.ucollaboration.UMarket.Activitys.DetailsBIen;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.babacar.ucollaboration.UMarket.Modeles.Panier;
 import com.babacar.ucollaboration.UMarket.Popups.AlertDialogOnClickBien;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -28,8 +26,8 @@ import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurr
 
 public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
 
-    private Context mContext;
-    private List<Bien> mBienList;
+    private final Context mContext;
+    private final List<Bien> mBienList;
     public static Bien selectBien;
 
     public RecyclerViewBien(Context context, List<Bien> list){
@@ -43,8 +41,7 @@ public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
     public ViewHolderBien onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.umarket_adapter_catalogue_produit, null);
-        ViewHolderBien viewHolder = new ViewHolderBien(view);
-        return viewHolder;
+        return new ViewHolderBien(view);
     }
 
     @Override
@@ -92,10 +89,8 @@ public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
                 holder.mLikeTrue.setVisibility(View.GONE);
                 holder.mLikeFalse.setVisibility(View.VISIBLE);
             }
-        } else {
+        }  //holder.mLikeFalse.setVisibility(View.VISIBLE);
 
-            //holder.mLikeFalse.setVisibility(View.VISIBLE);
-        }
 
 
         /* Aimmer un bien */

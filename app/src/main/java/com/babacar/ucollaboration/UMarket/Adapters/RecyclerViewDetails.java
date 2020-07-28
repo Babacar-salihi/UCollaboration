@@ -33,8 +33,8 @@ import static com.babacar.ucollaboration.UMarket.Activitys.ListeUser.getBienById
 
 public class RecyclerViewDetails extends RecyclerView.Adapter<ViewHolderDetails> {
 
-    private Context mContext;
-    private List<DetailsPrestation> mDetailsPrestations;
+    private final Context mContext;
+    private final List<DetailsPrestation> mDetailsPrestations;
 
     public RecyclerViewDetails(Context context, List<DetailsPrestation> list) {
 
@@ -48,8 +48,7 @@ public class RecyclerViewDetails extends RecyclerView.Adapter<ViewHolderDetails>
     public ViewHolderDetails onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.umarket_adapter_liste_vente, null);
-        ViewHolderDetails viewHolderDetails = new ViewHolderDetails(view);
-        return viewHolderDetails;
+        return new ViewHolderDetails(view);
     }
 
     @Override

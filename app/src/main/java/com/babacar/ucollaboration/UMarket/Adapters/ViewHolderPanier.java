@@ -15,11 +15,19 @@ import com.babacar.ucollaboration.R;
 
 public class ViewHolderPanier extends RecyclerView.ViewHolder {
 
-    public CardView mBien;
-    public ImageView mImageBien;
-    public TextView mLibelle, mNbArticle, mPrixU, mExpiration, mTotalCom, mNombreAchat;
-    public ImageButton mBtnSupp, mLikeFalse, mLikeTrue, mBtnPlus, mBtnMoin;
-    public LinearLayout mBtnLike;
+    public final CardView mBien;
+    public final ImageView mImageBien;
+    public final TextView mLibelle;
+    public final TextView mPrixU;
+    public final TextView mExpiration;
+    public final TextView mTotalCom;
+    public final TextView mNombreAchat;
+    public final ImageButton mBtnSupp;
+    public final ImageButton mLikeFalse;
+    public final ImageButton mLikeTrue;
+    public final ImageButton mBtnPlus;
+    public final ImageButton mBtnMoin;
+    public final LinearLayout mBtnLike;
 
 
     public ViewHolderPanier(@NonNull View itemView) {
@@ -28,7 +36,6 @@ public class ViewHolderPanier extends RecyclerView.ViewHolder {
         this.mBien = itemView.findViewById(R.id.adapter_panier_cardView);
         this.mImageBien = itemView.findViewById(R.id.adapter_panier_photo);
         this.mLibelle = itemView.findViewById(R.id.adapter_panier_Libelle);
-        this.mNbArticle = itemView.findViewById(R.id.adapter_panier_quantite);
         this.mPrixU = itemView.findViewById(R.id.adapter_panier_prixUnitaire);
         this.mExpiration = itemView.findViewById(R.id.adapter_panier_dateExpiration);
         this.mTotalCom = itemView.findViewById(R.id.adapter_panier_souTotalBien);

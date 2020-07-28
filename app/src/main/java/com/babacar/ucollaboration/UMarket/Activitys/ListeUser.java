@@ -32,7 +32,7 @@ public class ListeUser extends AppCompatActivity {
         setContentView(R.layout.umarket_activity_liste_user);
 
         referenceWidgets(); // Méthode pour référencer les widgets du layout "umarket_activity_liste_user".
-        typeListe = (String) getIntent().getStringExtra("TASK");
+        typeListe = getIntent().getStringExtra("TASK");
         recycler(); // Méthode permettant d'afficher la liste des biens favoris de l'utilisateur courrant.
     }
 
@@ -63,23 +63,26 @@ public class ListeUser extends AppCompatActivity {
 
         List<Bien> list = new ArrayList<>();
 
-        if (typeListe.equals("listeEnvie")) {
-            mTitreListe.setText("Mes Biens Favoris");
-            for (String bienString : sCurrentUser.getFavorie()) {
-                Bien bien = getBienById(bienString);
-                list.add(bien);
-            }
-        } else if (typeListe.equals("listeVente")){
-            mTitreListe.setText("Mes Ventes");
-            for (Bien bien : sBienList) {
-
-                if (bien.getVendeur().getIdEtu().equals(sCurrentUser.getIdEtu())) {
-
+        switch (typeListe) {
+            case "listeEnvie":
+                mTitreListe.setText("Mes Biens Favoris");
+                for (String bienString : sCurrentUser.getFavorie()) {
+                    Bien bien = getBienById(bienString);
                     list.add(bien);
                 }
-            }
-        } else if (typeListe.equals("listeVenteEnCours")) {
-            mTitreListe.setText("Ventes en cours");
+                break;
+            case "listeVente":
+                mTitreListe.setText("Mes Ventes");
+                for (Bien bien : sBienList) {
+
+                    if (bien.getVendeur().getIdEtu().equals(sCurrentUser.getIdEtu())) {
+
+                        list.add(bien);
+                    }
+                }
+                break;
+            case "listeVenteEnCours":
+                mTitreListe.setText("Ventes en cours");
             /*for (Bien bien : sBienList) {
 
                 if (bien.getVendeur().getIdEtu().equals(sCurrentUser.getIdEtu())) {
@@ -87,6 +90,7 @@ public class ListeUser extends AppCompatActivity {
                     list.add(bien);
                 }
             }*/
+                break;
         }
 
         return list;

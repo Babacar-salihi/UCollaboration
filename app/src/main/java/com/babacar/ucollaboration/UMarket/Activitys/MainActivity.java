@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Permet de changer le fragment choisi lors du clique sur un item du menu.
      */
-    private BottomNavigationView.OnNavigationItemSelectedListener navigation = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private final BottomNavigationView.OnNavigationItemSelectedListener navigation = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             Fragment selectFragment = new Fragment();

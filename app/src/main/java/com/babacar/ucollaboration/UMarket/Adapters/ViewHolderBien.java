@@ -14,10 +14,17 @@ import com.babacar.ucollaboration.R;
 
 public class ViewHolderBien extends RecyclerView.ViewHolder {
 
-    public CardView mBienObject;
-    public ImageView mImageBien, mLikeFalse, mLikeTrue;
-    public TextView mLibelle, mPrixBien, mAdrVendeur, mVenteType, mQuantite, mNbLike;
-    public LinearLayout mLayoutLike;
+    public final CardView mBienObject;
+    public final ImageView mImageBien;
+    public final ImageView mLikeFalse;
+    public final ImageView mLikeTrue;
+    public final TextView mLibelle;
+    public final TextView mPrixBien;
+    public final TextView mAdrVendeur;
+    public final TextView mVenteType;
+    public final TextView mQuantite;
+    public final TextView mNbLike;
+    public final LinearLayout mLayoutLike;
 
 
     public ViewHolderBien(@NonNull View itemView) {

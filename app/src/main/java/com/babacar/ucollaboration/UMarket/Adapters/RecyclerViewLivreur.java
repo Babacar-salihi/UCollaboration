@@ -17,7 +17,7 @@ import java.util.List;
 public class RecyclerViewLivreur extends RecyclerView.Adapter<ViewHolderLivreur> {
 
     private Context mContext;
-    private List<Livreur>  mLivreurs;
+    private final List<Livreur>  mLivreurs;
 
     public RecyclerViewLivreur(Context context, List<Livreur> livreurs) {
 

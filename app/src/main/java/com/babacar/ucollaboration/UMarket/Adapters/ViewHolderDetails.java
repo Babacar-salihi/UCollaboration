@@ -14,10 +14,15 @@ import com.babacar.ucollaboration.R;
 
 public class ViewHolderDetails extends RecyclerView.ViewHolder {
 
-    public CardView mCardViewListe;
-    public CheckBox mBoxAchevee;
-    public ImageView mImageBien;
-    public TextView mLibelle, mDateVente, mDateRV, mPrixUnitaire, mQuantite, mLivraison;
+    public final CardView mCardViewListe;
+    public final CheckBox mBoxAchevee;
+    public final ImageView mImageBien;
+    public final TextView mLibelle;
+    public final TextView mDateVente;
+    public final TextView mDateRV;
+    public final TextView mPrixUnitaire;
+    public final TextView mQuantite;
+    public final TextView mLivraison;
 
     public ViewHolderDetails(@NonNull View itemView) {
         super(itemView);

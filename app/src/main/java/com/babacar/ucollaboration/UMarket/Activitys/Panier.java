@@ -66,7 +66,7 @@ public class Panier extends AppCompatActivity {
 
     }
 
-    public int sommeTotale(List<com.babacar.ucollaboration.UMarket.Modeles.Panier> paniers) {
+    private int sommeTotale(List<com.babacar.ucollaboration.UMarket.Modeles.Panier> paniers) {
 
         int somme = 0;
         for (com.babacar.ucollaboration.UMarket.Modeles.Panier panier : paniers) {

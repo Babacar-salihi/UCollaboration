@@ -16,18 +16,14 @@
 
  public class Facture extends AppCompatActivity {
 
-     // Info facture
-     private TextView mTextNumFacture, mTextDate;
+     private TextView mTextDate;
      private int factureDispo;
-
-     // Info vendeur
-     private TextView mTextNomVendeur, mTextNumVendeur;
 
      // Info Acheteur
      private TextView mTextNomAcheteur;
 
      // Détails facture
-     private TextView mTextQuantité, mTextDesignation, mTextPrixUnitaire, mTextTotal;
+     private TextView mTextQuantite, mTextDesignation, mTextPrixUnitaire, mTextTotal;
 
 
     @Override
@@ -46,14 +42,16 @@
       */
      private void referenceWidgets() {
 
-         this.mTextNumFacture = findViewById(R.id.facture_numeroFacture);
+         // Info facture
+         TextView textNumFacture = findViewById(R.id.facture_numeroFacture);
          this.mTextDate = findViewById(R.id.facture_dateFacture);
-         this.mTextNomVendeur = findViewById(R.id.facture_nomVendeur);
-         this.mTextNumVendeur = findViewById(R.id.facture_numeroVendeur);
+         // Info vendeur
+         TextView textNomVendeur = findViewById(R.id.facture_nomVendeur);
+         TextView textNumVendeur = findViewById(R.id.facture_numeroVendeur);
 
          this.mTextNomAcheteur = findViewById(R.id.facture_nomAcheteur);
 
-         this.mTextQuantité = findViewById(R.id.facture_quantite);
+         this.mTextQuantite = findViewById(R.id.facture_quantite);
          this.mTextDesignation = findViewById(R.id.facture_designation);
          this.mTextPrixUnitaire = findViewById(R.id.facture_prixUnit);
          this.mTextTotal = findViewById(R.id.facture_Total);
@@ -69,7 +67,7 @@
 
          this.mTextDate.setText("Date:"+ details.getDateRV());
          this.mTextNomAcheteur.setText(sCurrentUser.getPrenomEtu()+" "+sCurrentUser.getNomEtu());
-         this.mTextQuantité.setText(details.getQuantite()+"");
+         this.mTextQuantite.setText(details.getQuantite()+"");
          this.mTextDesignation.setText(bien.getLibelle());
          this.mTextPrixUnitaire.setText(details.getPrixAchat()+"\nfcfa");
          this.mTextTotal.setText(details.getPrixAchat()*details.getQuantite()+"\nfcfa");

@@ -27,8 +27,8 @@ import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurr
 
 public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
 
-    private Context mContext;
-    private List<FonctionnaliteCompte> mCompteList;
+    private final Context mContext;
+    private final List<FonctionnaliteCompte> mCompteList;
 
     public RecyclerViewCompte(Context context, List<FonctionnaliteCompte> list){
 
@@ -41,9 +41,8 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
     public ViewHolderCompte onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.global_adapter_compte_fonct, null);
-        ViewHolderCompte viewHolderCompte = new ViewHolderCompte(view);
 
-        return viewHolderCompte;
+        return new ViewHolderCompte(view);
     }
 
     @Override

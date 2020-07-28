@@ -13,9 +13,9 @@ import com.babacar.ucollaboration.R;
 
 public class ViewHolderCompte extends RecyclerView.ViewHolder {
 
-    public CardView mCardView;
-    public ImageView mIcon;
-    public TextView mTitre;
+    public final CardView mCardView;
+    public final ImageView mIcon;
+    public final TextView mTitre;
 
     public ViewHolderCompte(@NonNull View itemView) {
         super(itemView);

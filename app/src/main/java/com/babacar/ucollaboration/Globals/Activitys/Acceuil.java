@@ -77,7 +77,6 @@ public class Acceuil extends AppCompatActivity {
     }
 
 
-
     /**
      * Permet de gérer les cliques sur les boutons.
      */

@@ -17,12 +17,11 @@
     <color name="darkYellow">#fdcb6e</color>
 
     <!-- Umaps -->
-    <color name="umaps_darkGreen">#43A047</color>
-    <color name="darkBlue">#0D47A1</color>
-    <color name="bleu">#01579B</color>
+    <color name="umaps_limonGreen">#8BC34A</color>
+    <color name="umaps_lightLimonGreen">#CDDC39</color>
 
-    <color name="bleuLight">#00ACC1</color>
-    <color name="umaps_darkYellow">#FDD835</color>
+    <color name="umaps_lightYellow">#FFC107</color>
+
 
 
 

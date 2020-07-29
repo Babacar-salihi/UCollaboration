@@ -11,10 +11,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private final int REQUEST_CODE = 30;
     private Lieu mYourPosition;
     private FloatingActionButton mBtnPlus, mBtnExplorer; // Boutons flottants.
+    private LinearLayout mMoreOptions;
     private boolean testeToogle = false; // autres boutons en vue ou pas.
     private AutoCompleteTextView mAutoSearch; // AutoCompletion
 
@@ -98,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         mFragment = getSupportFragmentManager().findFragmentById(R.id.fragment1);
         mYourPosition = new Lieu();
         mAutoSearch = findViewById(R.id.search_lieu);
+        mMoreOptions = findViewById(R.id.umaps_moreOptions);
         mBtnPlus = findViewById(R.id.umaps_floattingBtn_ajouter_lieu);
         mBtnExplorer = findViewById(R.id.umaps_floattingBtn_explorer);
     }
@@ -259,11 +264,13 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
                 if (testeToogle) {
 
-                    mBtnExplorer.setVisibility(View.GONE);
+                    mMoreOptions.setVisibility(View.GONE);
                     testeToogle = false;
                 } else {
 
-                    mBtnExplorer.setVisibility(View.VISIBLE);
+                    Animation showOpstions = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.umaps_show_more_options);
+                    mMoreOptions.setVisibility(View.VISIBLE);
+                    mMoreOptions.setAnimation(showOpstions);
                     mBtnExplorer.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

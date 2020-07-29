@@ -46,19 +46,31 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/umaps_moreOptions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_above="@id/umaps_floattingBtn_ajouter_lieu">
+        android:layout_above="@id/umaps_floattingBtn_ajouter_lieu"
+        android:visibility="gone"
+        >
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/umaps_floattingBtn_explorer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/bleuLight"
+            android:backgroundTint="@color/umaps_lightYellow"
             android:src="@drawable/compass"
             android:layout_marginLeft="@dimen/margin20"
-            android:visibility="gone"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/umaps_floattingBtn_itineraire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/umaps_lightLimonGreen"
+            android:src="@drawable/destination"
+            android:layout_marginLeft="@dimen/margin20"
+            android:layout_marginTop="@dimen/texteSize10"
             />
 
     </LinearLayout>
@@ -68,9 +80,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/darkBlue"
+        android:backgroundTint="@color/umaps_limonGreen"
         android:src="@drawable/more"
-        android:layout_margin="@dimen/margin20"
+        android:layout_marginLeft="@dimen/margin20"
+        android:layout_marginBottom="@dimen/margin23"
+        android:layout_marginTop="@dimen/margin15"
         />
 
 </RelativeLayout>

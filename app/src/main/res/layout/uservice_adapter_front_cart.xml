@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/width_180"
+    android:layout_margin="@dimen/margin20"
+    app:cardElevation="@dimen/elevation5"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/radius20">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@drawable/uservice_style_carte"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <!-- Photo profil ou logo -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/front_carte_image"
+                android:layout_width="@dimen/imgSize65"
+                android:layout_height="@dimen/imgSize65"
+                android:src="@drawable/steve"
+                android:layout_margin="@dimen/margin10"/>
+
+            <!-- Prenom et nom -->
+            <TextView
+                android:id="@+id/front_carte_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/user_name"
+                android:textSize="@dimen/texteSize17"
+                android:layout_marginBottom="@dimen/margin10"
+                android:gravity="center"
+                />
+
+            <!-- Profession -->
+            <TextView
+                android:id="@+id/front_carte_profess"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/user_profession"
+                android:textSize="@dimen/texteSize20"
+                android:textStyle="bold"
+                android:gravity="center"
+                />
+
+            <!-- Like -->
+            <RatingBar
+                android:id="@+id/front_carte_noterBosseur"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:numStars="5"
+                style="?android:attr/ratingBarStyleSmall"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

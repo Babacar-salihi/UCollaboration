@@ -66,7 +66,8 @@ public class Acceuil extends AppCompatActivity {
                 overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left); break;
 
             case R.id.acceuil_uservice :
-                break;
+                startActivity(new Intent(getApplicationContext(), com.babacar.ucollaboration.UService.Activitys.MainActivity.class));
+                overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left); break;
             case R.id.acceuil_umaps :
                 startActivity(new Intent(getApplicationContext(), com.babacar.ucollaboration.UMaps.Activitys.MainActivity.class));
                 overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left); break;

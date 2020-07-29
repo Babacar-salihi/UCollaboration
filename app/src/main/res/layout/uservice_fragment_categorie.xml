@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbars="none"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UService.Fragments.FragmentCategorie">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- row 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin7"
+            android:weightSum="100">
+
+            <!-- Infographie -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/uservice_infoGraphie"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                android:onClick="selectItem"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/uservice_lightBlue"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_infographie"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/infographie"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Etudiant professeur -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/uservice_EtuProf"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                android:onClick="selectItem"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/umaps_limonGreen"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_cours"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/etuProf"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- row 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin7"
+            android:weightSum="100">
+
+            <!-- Traitement de ic_texte -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/uservice_traiteTexte"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                android:onClick="selectItem"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/umaps_lightYellow"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_texte"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/traiteTexte"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- inscription en ligne -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/uservice_inscripOnLine"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                android:onClick="selectItem"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/darkGrey"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_preinscript"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inscriptOnLine"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- row 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin7"
+            android:weightSum="100">
+
+            <!-- Photo munite -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/uservice_photoMin"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                android:onClick="selectItem"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/appColor"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_photo"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/photoMin"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Etudiant professeur -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/uservice_maintenance"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                android:onClick="selectItem"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/darkGreen"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_maintenance"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/maint"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- row 4 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin7"
+            android:weightSum="100">
+
+            <!-- Coiffure -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/uservice_coiffure"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                android:onClick="selectItem"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/darkYellow"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_coiff"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/coiffure"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Etudiant professeur -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/uservice_cv"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                android:onClick="selectItem"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/violet"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_cv"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cv"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

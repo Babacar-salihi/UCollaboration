@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/uservice_menu_acceuil"
+        android:title="Acceuil"
+        android:icon="@drawable/ic_uservice_acceuil"/>
+
+    <item
+        android:id="@+id/uservice_menu_categ"
+        android:title="Catégorie"
+        android:icon="@drawable/ic_uservice_categ"/>
+
+    <item
+        android:id="@+id/uservice_menu_compte"
+        android:title="Compte"
+        android:icon="@drawable/ic_uservice_compte"/>
+
+</menu>

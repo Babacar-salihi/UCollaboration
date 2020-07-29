@@ -140,6 +140,18 @@
     <string name="ucollaborate">UCAD</string>
     <string name="direction">Itinéraire</string>
 
+    <string name="user_name">Prenom Nom</string>
+    <string name="user_profession">Profession</string>
+    <string name="numeroTel">780000000</string>
+    <string name="infographie">Infographie</string>
+    <string name="etuProf">Cours particuliers</string>
+    <string name="traiteTexte">Traitement de texte</string>
+    <string name="inscriptOnLine">Inscription en ligne</string>
+    <string name="photoMin">Photo minutes</string>
+    <string name="maint">Maintenance</string>
+    <string name="coiffure">Coiffure</string>
+    <string name="cv">Curriculum Vitae(CV)</string>
+
     <!-- Spinner categorie socio-economique-->
     <string-array name="categorieSocioEconomique">
         <item>Etudiant</item>

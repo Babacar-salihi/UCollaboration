@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/width_180"
+    android:layout_margin="@dimen/margin20"
+    app:cardElevation="@dimen/elevation5"
+    app:cardCornerRadius="@dimen/radius20">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/uservice_pp_et_nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/margin10">
+
+            <!-- Photo profil ou logo -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/back_carte_image"
+                android:layout_width="@dimen/imgSize65"
+                android:layout_height="@dimen/imgSize65"
+                android:src="@drawable/steve"
+                android:layout_margin="@dimen/margin10"/>
+
+            <!-- Profession -->
+            <TextView
+                android:id="@+id/back_carte_profess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/user_profession"
+                android:textSize="@dimen/texteSize15"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <!-- Plus d'info -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_toRightOf="@id/uservice_pp_et_nom"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/padding10"
+                >
+
+                <!-- Adresse -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin7"
+                    >
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize24"
+                        android:layout_height="@dimen/imgSize24"
+                        android:layout_marginRight="@dimen/margin7"
+                        android:src="@drawable/adr"
+                        />
+
+                    <TextView
+                        android:id="@+id/back_carte_adr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/adresse"
+                        android:textSize="@dimen/texteSize17"
+                        android:gravity="center"
+                        />
+
+                </LinearLayout>
+
+                <!-- Numero de téléphone -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin7"
+                    >
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize24"
+                        android:layout_height="@dimen/imgSize24"
+                        android:layout_marginRight="@dimen/margin7"
+                        android:src="@drawable/appel"/>
+
+                    <TextView
+                        android:id="@+id/back_carte_tel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/numeroTel"
+                        android:textSize="@dimen/texteSize17"
+                        android:gravity="center"
+                        />
+
+                </LinearLayout>
+
+                <!-- Email -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin7"
+                    >
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize24"
+                        android:layout_height="@dimen/imgSize24"
+                        android:layout_marginRight="@dimen/margin7"
+                        android:src="@drawable/email"
+                        />
+
+                    <TextView
+                        android:id="@+id/back_carte_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/email"
+                        android:textSize="@dimen/texteSize17"
+                        android:gravity="center"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

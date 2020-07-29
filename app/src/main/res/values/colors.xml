@@ -16,11 +16,17 @@
     <color name="yellow">#ffeaa7</color>
     <color name="darkYellow">#fdcb6e</color>
 
+
     <!-- Umaps -->
     <color name="umaps_limonGreen">#8BC34A</color>
     <color name="umaps_lightLimonGreen">#CDDC39</color>
-
     <color name="umaps_lightYellow">#FFC107</color>
+
+    <!-- UService -->
+    <color name="uservice_lightBlue">#00BCD4</color>
+    <color name="uservice_darkBlue">#2196F3</color>
+    <color name="violet">#a29bfe</color>
+
 
 
 

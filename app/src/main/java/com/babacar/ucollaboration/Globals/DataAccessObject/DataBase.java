@@ -18,6 +18,7 @@ import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.babacar.ucollaboration.UMarket.Modeles.DetailsPrestation;
 import com.babacar.ucollaboration.UMarket.Modeles.ImageBien;
 import com.babacar.ucollaboration.UMarket.Modeles.Panier;
+import com.babacar.ucollaboration.UService.Models.Bosseur;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -514,17 +515,6 @@ public class DataBase {
     }
 
     /**
-     * Mettre à jour les infos d'un utilisateur.
-     * @param user
-     */
-    public static void upDateUser(Etudiant user){
-        sReference.child("Etudiants")
-                .child(user.getIdEtu())
-                .setValue(user);
-
-    }
-
-    /**
      * Mettre à jour les infos d'un utilisateur, utiliser surtout lors des achats.
      * @param user
      */
@@ -696,5 +686,36 @@ public class DataBase {
             }
         });
     }*/
+
+    /**
+     * Permet d'ajouter le lieu dans la liste des lieux inconnus, et serra ultérieurement ajouter par l'administrateur.
+     * @param lieu
+     */
+    public static void addLieuInconnu(String lieu) {
+
+        DatabaseReference lieuInconnu = sRefUmaps.child("LieuInconnus");
+        lieuInconnu.child(lieu).setValue(lieu);
+    }
+
+    // =================================== UService =====================================
+
+    public static DatabaseReference sRefUService = FirebaseDatabase.getInstance().getReference().child("UService");
+
+    /**
+     * Permet de mettre à jour le compte de l'utilisateur, utilisé lors d'ouverture d'un comptePro.
+     * @param user
+     */
+    public static void createBosseur(Etudiant user){
+
+        // Dans Etudiant
+        sReference.child("Etudiants")
+                .child(user.getIdEtu())
+                .setValue(user);
+
+        Bosseur bosseur = new Bosseur(user.getIdEtu(), 0);
+        // Dans Uservices
+        sRefUService.child(user.getIdEtu())
+                .setValue(bosseur);
+    }
 
 }

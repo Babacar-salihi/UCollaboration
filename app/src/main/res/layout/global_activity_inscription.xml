@@ -197,43 +197,6 @@
             android:layout_marginLeft="@dimen/margin15"
             />
 
-        <!-- Catégorie socio-économique -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="@dimen/margin15"
-            android:weightSum="100">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/titreSpinnerCateg"
-                android:inputType="text"
-                android:textSize="@dimen/texteSize17"
-                android:layout_marginLeft="@dimen/margin10"
-                />
-
-            <Spinner
-                android:id="@+id/inscription_spinner_userCategorieSEco"
-                android:layout_width="0dp"
-                android:layout_weight="40"
-                android:layout_height="match_parent"/>
-
-        </LinearLayout>
-
-        <!-- Si different de celle proposée -->
-        <EditText
-            android:id="@+id/inscription_userCategorieSEco"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="@string/categorie"
-            android:inputType="text"
-            android:textSize="@dimen/texteSize17"
-            android:visibility="gone"
-            android:layout_marginLeft="@dimen/margin15"
-            />
-
         <!-- Bouton de soumission -->
         <Button
             android:id="@+id/inscription_btnContinuer"

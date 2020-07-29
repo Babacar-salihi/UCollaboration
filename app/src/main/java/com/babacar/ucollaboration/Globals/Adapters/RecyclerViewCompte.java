@@ -1,4 +1,4 @@
-package com.babacar.ucollaboration.UMarket.Adapters;
+package com.babacar.ucollaboration.Globals.Adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.babacar.ucollaboration.Globals.Activitys.CreerComptePro;
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.Globals.Models.FonctionnaliteCompte;
 import com.babacar.ucollaboration.R;
@@ -82,7 +83,7 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                             alert.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    Toast.makeText(mContext, "deconnexion", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(mContext, "déconnexion", Toast.LENGTH_SHORT).show();
                                     DataBase.deconnexionUser();
                                     sCurrentUser = null; mContext.startActivity(new Intent(mContext, MainActivity.class));
                                 }
@@ -115,6 +116,15 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                                 }
                             });
                             alert1.show(); break;
+
+                        case 5:
+                            Intent comptePro = new Intent(mContext, CreerComptePro.class);
+                            comptePro.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            if (sCurrentUser != null)
+                                mContext.startActivity(comptePro);
+                            else
+                                Toast.makeText(mContext, "Connectez à votre compte", Toast.LENGTH_LONG).show();
+                            break;
                     }
 
                 }

@@ -1,7 +1,9 @@
 package com.babacar.ucollaboration.Globals.Activitys;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -11,6 +13,7 @@ import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Activitys.MainActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.gson.Gson;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -97,5 +100,19 @@ public class Acceuil extends AppCompatActivity {
         super.finish();
 
         overridePendingTransition(R.anim.slider_left_position, R.anim.slider_out_right);
+    }
+
+    /**
+     * Méthode qui s'execute quand l'activité passe en arriére plan.
+     */
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("ON_TEST", "PAUSE");
+        Gson gson = new Gson();
+        SharedPreferences sharedPreferences = getSharedPreferences("currentUser", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("User", gson.toJson(sCurrentUser));
+        editor.apply();
     }
 }

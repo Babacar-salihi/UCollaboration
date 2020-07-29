@@ -14,10 +14,9 @@ import android.widget.TextView;
 import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.Globals.Models.FonctionnaliteCompte;
 import com.babacar.ucollaboration.R;
-import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewCompte;
+import com.babacar.ucollaboration.Globals.Adapters.RecyclerViewCompte;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +82,9 @@ public class UserSpace extends AppCompatActivity {
         list.add(new FonctionnaliteCompte("modifier", "Gerer mon compte"));
         list.add(new FonctionnaliteCompte("deconnex", "Déconnexion"));
         list.add(new FonctionnaliteCompte("supprimer", "Supprimer mon compte"));
+
+        /* Compte bosseur */
+        list.add(new FonctionnaliteCompte("bosseur", "Compte bosseur"));
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false );
         RecyclerViewCompte recyclerViewBien = new RecyclerViewCompte(getApplicationContext(),list);

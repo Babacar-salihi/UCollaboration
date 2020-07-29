@@ -1,4 +1,4 @@
-package com.babacar.ucollaboration.UMarket.Adapters;
+package com.babacar.ucollaboration.Globals.Adapters;
 
 import android.view.View;
 import android.widget.ImageView;

@@ -1,5 +1,6 @@
 package com.babacar.ucollaboration.UService.Activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.babacar.ucollaboration.Globals.Activitys.Acceuil;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UService.Fragments.FragmentAcceuil;
 import com.babacar.ucollaboration.UService.Fragments.FragmentCategorie;
@@ -69,5 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), Acceuil.class));
     }
 }

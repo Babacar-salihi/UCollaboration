@@ -32,9 +32,8 @@ import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sInsc
 public class Inscription extends AppCompatActivity {
 
     private CircleImageView mUserProfilePic;
-    private Spinner mSpinnerCateg, mSpinnerDepart;
-    private EditText mPrenom, mNom, mNumTel, mNumChambre, mEmail, mPwd, mDomicile, mEditTextCategSocio, mEditTextDepart;
-    private String mCategSocio;
+    private Spinner mSpinnerDepart;
+    private EditText mPrenom, mNom, mNumTel, mNumChambre, mEmail, mPwd, mDomicile, mEditTextDepart;
     private String mDepartement;
     private Button mBtnContinuer;
     private ProgressBar mInsProgress;
@@ -49,7 +48,6 @@ public class Inscription extends AppCompatActivity {
 
         referenceWidgets(); // Méthode permettant de référencer les widgets.
         choisirPhoto(); // Méthode permettant de choisir une photo de profile.
-        categSocioEco(); // Méthode permettant de choisir une catégorie seocio économique.
         creerCompte(); // Méthode permettant de créer un compte utilisateur.
     }
 
@@ -61,7 +59,6 @@ public class Inscription extends AppCompatActivity {
         this.mUserProfilePic = findViewById(R.id.inscription_userProfile);
         this.mInsProgress = findViewById(R.id.inscription_progress);
         this.mSpinnerDepart = findViewById(R.id.inscription_spinner_userDepart);
-        this.mSpinnerCateg = findViewById(R.id.inscription_spinner_userCategorieSEco);
         this.mPrenom = findViewById(R.id.inscription_userPrenom);
         this.mNom = findViewById(R.id.inscription_userNom);
         this.mNumTel = findViewById(R.id.inscription_userTel);
@@ -69,7 +66,6 @@ public class Inscription extends AppCompatActivity {
         this.mEmail = findViewById(R.id.inscription_userEmail);
         this.mPwd = findViewById(R.id.inscription_userPwd);
         this.mDomicile = findViewById(R.id.inscription_userAdresse);
-        this.mEditTextCategSocio = findViewById(R.id.inscription_userCategorieSEco);
         this.mEditTextDepart = findViewById(R.id.inscription_userDepart);
         this.mBtnContinuer = findViewById(R.id.inscription_btnContinuer);
     }
@@ -103,32 +99,6 @@ public class Inscription extends AppCompatActivity {
             mUserProfilePic.setImageBitmap(mImageBitmap);*/
 
         }
-    }
-
-    /**
-     * Permet de choisir parmis les catégories qui sont propososée.
-     */
-    public void categSocioEco() {
-
-        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.categorieSocioEconomique, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinnerCateg.setAdapter(adapter);
-        mSpinnerCateg.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                mCategSocio = parent.getItemAtPosition(position).toString();
-                if (mCategSocio.equalsIgnoreCase("autres")) {
-                    mSpinnerCateg.setVisibility(View.GONE);
-                    mEditTextCategSocio.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                mCategSocio = "Etudiant";
-            }
-        });
     }
 
     /**
@@ -179,14 +149,7 @@ public class Inscription extends AppCompatActivity {
                         return;
                     }
                 }*/
-                // Si l'utilisateur saisie une "autre" catégorie socio.
-                if (mCategSocio.equalsIgnoreCase("autres")) {
-                    mCategSocio = mEditTextCategSocio.getText().toString().trim();
-                    if (TextUtils.isEmpty(mCategSocio)) {
-                        Toast.makeText(getApplicationContext(), "Donnez votre catégorie socio-economique", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                }
+
                 mBtnContinuer.setEnabled(false);
                 mInsProgress.setVisibility(View.VISIBLE);
 
@@ -199,7 +162,6 @@ public class Inscription extends AppCompatActivity {
                 etudiant.setPassword(pwd);
                 etudiant.setAdresse(adresse);
                 etudiant.setNewAdresse(adresse);
-                etudiant.setCategorieSocioProf(mCategSocio);
 
                 Log.d("ETUDIANTTT", etudiant.toString());
 

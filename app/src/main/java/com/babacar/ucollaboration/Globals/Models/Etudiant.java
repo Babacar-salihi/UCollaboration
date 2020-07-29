@@ -30,6 +30,10 @@ public class Etudiant {
     public Etudiant() {
     }
 
+    public Etudiant(String idEtu, String categorieSocioProf) {
+        mIdEtu = idEtu;
+        mCategorieSocioProf = categorieSocioProf;
+    }
 
     public Etudiant(String idEtu, String prenomEtu, String nomEtu, int numTelephoneEtu, String photo, String newAdresse, List<String> detailsDespt) {
 

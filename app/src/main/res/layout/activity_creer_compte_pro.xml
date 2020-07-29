@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Globals.Activitys.CreerComptePro"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!-- Catégorie socio-économique -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/margin15"
+        android:weightSum="100"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/titreSpinnerCateg"
+            android:inputType="text"
+            android:textSize="@dimen/texteSize17"
+            android:layout_marginLeft="@dimen/margin10"
+            />
+
+        <Spinner
+            android:id="@+id/comptePro_spinner"
+            android:layout_width="0dp"
+            android:layout_weight="40"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <!-- Si different de celle proposée -->
+    <EditText
+        android:id="@+id/autre_Profession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/categorie"
+        android:inputType="text"
+        android:textSize="@dimen/texteSize17"
+        android:visibility="invisible"
+        />
+
+    <!-- Bouton de soumission -->
+    <Button
+        android:id="@+id/comptePro_BtnContinuer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/continer"
+        android:textSize="@dimen/texteSize20"
+        android:textStyle="bold"
+        android:fontFamily="@font/philosopherbold"
+        android:background="@drawable/style_btns"
+        android:layout_margin="@dimen/margin20"
+        android:elevation="@dimen/elevation4"/>
+
+</LinearLayout>

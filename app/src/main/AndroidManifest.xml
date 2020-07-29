@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Globals.Activitys.UserSpace"></activity>
+        <activity android:name=".Globals.Activitys.CreerComptePro"></activity>
+        <activity android:name=".Globals.Activitys.UserSpace" />
         <activity android:name=".Globals.Utilitaires.SpalshCreenAcceuil">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,12 +40,13 @@
 
         <service android:name=".UMarket.Activitys.ServiceMinuteur" /> <!-- UMaps -->
         <activity android:name=".UMaps.Activitys.MainActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/api_key" />
 
-        <activity android:name=".UService.Activitys.MainActivity"/>
-        <activity android:name=".UService.Models.Categorie"/>
+        <activity android:name=".UService.Activitys.MainActivity" />
+        <activity android:name=".UService.Models.Categorie" />
     </application>
 
 </manifest>

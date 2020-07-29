@@ -3,6 +3,7 @@ package com.babacar.ucollaboration.UMaps.Activitys;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -19,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +28,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 
+import com.babacar.ucollaboration.Globals.Activitys.Acceuil;
+import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
 import com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte;
@@ -234,16 +238,22 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
                         if (mAutoSearch.getText().toString().trim().length() != 0) {
 
-                            hideKeyBoard(); // Cacher le clavier.
-                            for (Lieu lieu : sLieux) {
+                            if (sNomLieu.contains(mAutoSearch.getText().toString().trim())) { // Le lieu est connu.
 
-                                if (lieu.getPosition().equalsIgnoreCase(mAutoSearch.getText().toString())) {
-                                    moveCamera(lieu);
-                                    mAutoSearch.clearFocus(); // Pour effacer la zone de texte.
+                                hideKeyBoard(); // Cacher le clavier.
+                                for (Lieu lieu : sLieux) {
+
+                                    if (lieu.getPosition().equalsIgnoreCase(mAutoSearch.getText().toString())) {
+                                        moveCamera(lieu);
+                                        mAutoSearch.clearFocus(); // Pour effacer la zone de texte.
+                                    }
                                 }
+                            } else { // Le lieu n'est pas connu.
+
+                                Toast.makeText(MainActivity.this, "Désolé! mais ce lieu n'est pas encore connu\n réessayez dans un court instant.", Toast.LENGTH_LONG).show();
+                                DataBase.addLieuInconnu(mAutoSearch.getText().toString().trim()); // Ajouter le lieu dans la liste des lieux inconnus.
                             }
                         }
-
                         break;
                 }
 
@@ -294,5 +304,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             input.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), Acceuil.class));
     }
 }

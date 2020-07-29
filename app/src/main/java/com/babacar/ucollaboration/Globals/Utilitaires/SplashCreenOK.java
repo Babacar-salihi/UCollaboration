@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.babacar.ucollaboration.Globals.Activitys.Acceuil;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Activitys.MainActivity;
 
@@ -19,7 +20,7 @@ public class SplashCreenOK extends AppCompatActivity {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                Intent versAcceuil = new Intent(getApplicationContext(), MainActivity.class);
+                Intent versAcceuil = new Intent(getApplicationContext(), Acceuil.class);
                 startActivity(versAcceuil);
                 finish();
             }

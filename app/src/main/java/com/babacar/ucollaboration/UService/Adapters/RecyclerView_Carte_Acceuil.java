@@ -40,17 +40,17 @@ public class RecyclerView_Carte_Acceuil extends RecyclerView.Adapter<ViewHolderC
         Bosseur bosseur = mBosseurList.get(position);
 
         /* Front */
-        holder.mFrontName.setText(bosseur.getPrenom()+" "+bosseur.getNom());
-        holder.mFrontPress.setText(bosseur.getPrefession());
-        int res = mContext.getResources().getIdentifier(bosseur.getPP(), "drawable", mContext.getPackageName());
+        holder.mFrontName.setText(bosseur.getPrenomEtu()+" "+bosseur.getNomEtu());
+        holder.mFrontPress.setText(bosseur.getCategorieSocioProf());
+        int res = mContext.getResources().getIdentifier(bosseur.getPhoto(), "drawable", mContext.getPackageName());
         holder.mFrontPP.setImageResource(res);
         like(holder, bosseur); // Permet de noter le bosseur.
 
         /* Back */
         holder.mBackPP.setImageResource(res);
-        holder.mBackPress.setText(bosseur.getPrefession());
+        holder.mBackPress.setText(bosseur.getCategorieSocioProf());
         holder.mBackAdr.setText(bosseur.getAdresse());
-        holder.mBackTel.setText("+221 "+bosseur.getNumTel());
+        holder.mBackTel.setText("+221 "+bosseur.getNumTelephoneEtu());
         holder.mBackEmail.setText(bosseur.getEmail());
 
 

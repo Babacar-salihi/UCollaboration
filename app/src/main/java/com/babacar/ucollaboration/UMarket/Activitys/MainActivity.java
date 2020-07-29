@@ -19,8 +19,6 @@ import com.babacar.ucollaboration.UMarket.Fragments.FragmentCategorieBien;
 import com.babacar.ucollaboration.UMarket.Fragments.FragmentVendre;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
-
 
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 import static com.babacar.ucollaboration.UMarket.Fragments.FragmentAcceuil.sBienList;
@@ -105,19 +103,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), Acceuil.class));
     }
 
-    /**
-     * Méthode qui s'execute quand l'activité passe en arriére plan.
-     */
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("ON_TEST", "PAUSE");
-        Gson gson = new Gson();
-        SharedPreferences sharedPreferences = getSharedPreferences("currentUser", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("User", gson.toJson(sCurrentUser));
-        editor.apply();
-    }
+
 
     @Override
     public void finish() {

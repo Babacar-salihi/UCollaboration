@@ -122,11 +122,12 @@ public class FragmentAcceuil extends Fragment {
                 for(DataSnapshot bienSnapshot : dataSnapshot.getChildren()){
                     Bien bien = bienSnapshot.getValue(Bien.class);
                     Log.d("CurrentBien", bien.toString());
-                    sBienList.add(bien); // Liste contenant tous les biens.
 
-                    if(bien.getEtatBien() == 0 ) // Si le bien n'est pas encore vendu on l'affiche.
+                    if (bien.getEtatBien() != 1)
+                        sBienList.add(bien); // Liste contenant tous les biens.
+
+                    if(bien.getEtatBien() == 0 && bien.isActiver()) // Si le bien n'est pas encore vendu on l'affiche.
                         mBiensNvendu.add(bien); // Liste contenant les biens toujours disponible.
-
                 }
                 RecyclerViewBien adapter = new RecyclerViewBien(getContext(), mBiensNvendu);
                 RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);

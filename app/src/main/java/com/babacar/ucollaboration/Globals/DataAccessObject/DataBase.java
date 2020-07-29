@@ -712,8 +712,8 @@ public class DataBase {
                 .child(user.getIdEtu())
                 .setValue(user);
 
-        Bosseur bosseur = new Bosseur(user.getIdEtu(), 0);
         // Dans Uservices
+        Bosseur bosseur = new Bosseur(user.getIdEtu(), 0);
         sRefUService.child(user.getIdEtu())
                 .setValue(bosseur);
     }

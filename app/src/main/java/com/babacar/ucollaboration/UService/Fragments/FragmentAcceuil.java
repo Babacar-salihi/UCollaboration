@@ -2,6 +2,7 @@ package com.babacar.ucollaboration.UService.Fragments;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,25 +72,23 @@ public class FragmentAcceuil extends Fragment {
                 for (DataSnapshot bosseurSnapshot : dataSnapshot.getChildren()) {
 
                     final Bosseur bosseur = bosseurSnapshot.getValue(Bosseur.class);
-                    sReference.child("Etudiants").addValueEventListener(new ValueEventListener() {
+                    sReference.child("Etudiants").child(bosseur.getIdEtu()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                            for (DataSnapshot etudientSnapshot : dataSnapshot.getChildren()) {
+                            Etudiant etudiant = dataSnapshot.getValue(Etudiant.class);
 
-                                Etudiant etudiant = etudientSnapshot.getValue(Etudiant.class);
-                                if (bosseur.getIdEtu().equals(etudiant.getIdEtu())) {
+                            bosseur.setPrenomEtu(etudiant.getPrenomEtu());
+                            bosseur.setNomEtu(etudiant.getNomEtu());
+                            bosseur.setNumTelephoneEtu(etudiant.getNumTelephoneEtu());
+                            bosseur.setEmail(etudiant.getEmail());
+                            bosseur.setPhoto(etudiant.getPhoto());
+                            bosseur.setNewAdresse(etudiant.getNewAdresse());
+                            bosseur.setCategorieSocioProf(etudiant.getCategorieSocioProf());
 
-                                    bosseur.setPrenomEtu(etudiant.getPrenomEtu());
-                                    bosseur.setNomEtu(etudiant.getNomEtu());
-                                    bosseur.setNumTelephoneEtu(etudiant.getNumTelephoneEtu());
-                                    bosseur.setEmail(etudiant.getEmail());
-                                    bosseur.setPhoto(etudiant.getPhoto());
-                                    bosseur.setNewAdresse(etudiant.getNewAdresse());
-                                    bosseur.setCategorieSocioProf(etudiant.getCategorieSocioProf());
-                                }
-                            }
                             mBosseurs.add(bosseur);
+                            Log.d("Bossss", bosseur.toString());
+                            inflater(mBosseurs);
                         }
 
                         @Override
@@ -99,7 +98,6 @@ public class FragmentAcceuil extends Fragment {
                     });
                 }
 
-                inflater(mBosseurs);
                 /*mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
                 mRecyclerView.setAdapter(new RecyclerView_Carte_Acceuil(getContext(), mBosseurs));
 */

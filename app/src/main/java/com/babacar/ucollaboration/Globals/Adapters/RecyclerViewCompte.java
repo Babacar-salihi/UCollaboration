@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.babacar.ucollaboration.Globals.Activitys.Acceuil;
 import com.babacar.ucollaboration.Globals.Activitys.CreerComptePro;
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.Globals.Models.FonctionnaliteCompte;
@@ -73,9 +74,19 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                             bienFavorite.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             mContext.startActivity(bienFavorite);
                             Toast.makeText(mContext,"Favorites", Toast.LENGTH_SHORT).show(); break;
-                        case 2: // Gerer compte.
+
+                        case 2:
+                            Intent comptePro = new Intent(mContext, CreerComptePro.class);
+                            comptePro.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            if (sCurrentUser != null)
+                                mContext.startActivity(comptePro);
+                            else
+                                Toast.makeText(mContext, "Connectez à votre compte", Toast.LENGTH_LONG).show();
+                            break;
+
+                        case 3: // Gerer compte.
                             Toast.makeText(mContext,"Changer", Toast.LENGTH_SHORT).show(); break;
-                        case 3: // Déconnexion
+                        case 4: // Déconnexion
 
                             AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
                             alert.setTitle("Déconnexion de compte");
@@ -85,7 +96,7 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                                 public void onClick(DialogInterface dialog, int which) {
                                     Toast.makeText(mContext, "déconnexion", Toast.LENGTH_SHORT).show();
                                     DataBase.deconnexionUser();
-                                    sCurrentUser = null; mContext.startActivity(new Intent(mContext, MainActivity.class));
+                                    sCurrentUser = null; mContext.startActivity(new Intent(mContext, Acceuil.class));
                                 }
                             });
                             alert.setNegativeButton("Non", new DialogInterface.OnClickListener() {
@@ -96,7 +107,7 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                             });
                             alert.show(); break;
 
-                        case 4: // Suppression compte.
+                        case 5: // Suppression compte.
                             AlertDialog.Builder alert1 = new AlertDialog.Builder(mContext);
                             alert1.setTitle("Suppression de compte");
                             alert1.setMessage("Voulez vous vraiment supprimer votre compte?");
@@ -105,7 +116,7 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                                 public void onClick(DialogInterface dialog, int which) {
                                     DataBase.supprimerUser();
                                     Toast.makeText(mContext, "Supprimer", Toast.LENGTH_SHORT).show();
-                                    mContext.startActivity(new Intent(mContext, MainActivity.class));
+                                    mContext.startActivity(new Intent(mContext, Acceuil.class));
                                     Toast.makeText(mContext,"Votre compte est supprimer avec succés!", Toast.LENGTH_LONG).show();
                                 }
                             });
@@ -117,14 +128,6 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                             });
                             alert1.show(); break;
 
-                        case 5:
-                            Intent comptePro = new Intent(mContext, CreerComptePro.class);
-                            comptePro.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            if (sCurrentUser != null)
-                                mContext.startActivity(comptePro);
-                            else
-                                Toast.makeText(mContext, "Connectez à votre compte", Toast.LENGTH_LONG).show();
-                            break;
                     }
 
                 }

@@ -25,7 +25,7 @@
                 android:id="@+id/back_carte_image"
                 android:layout_width="@dimen/imgSize65"
                 android:layout_height="@dimen/imgSize65"
-                android:src="@drawable/steve"
+                android:src="@drawable/usericon"
                 android:layout_margin="@dimen/margin10"/>
 
             <!-- Profession -->
@@ -124,7 +124,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/email"
-                        android:textSize="@dimen/texteSize17"
+                        android:textSize="@dimen/texteSize15"
                         android:gravity="center"
                         />
 

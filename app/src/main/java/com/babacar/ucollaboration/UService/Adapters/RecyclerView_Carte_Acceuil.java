@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UService.Models.Bosseur;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -42,18 +43,15 @@ public class RecyclerView_Carte_Acceuil extends RecyclerView.Adapter<ViewHolderC
         /* Front */
         holder.mFrontName.setText(bosseur.getPrenomEtu()+" "+bosseur.getNomEtu());
         holder.mFrontPress.setText(bosseur.getCategorieSocioProf());
-        int res = mContext.getResources().getIdentifier(bosseur.getPhoto(), "drawable", mContext.getPackageName());
-        holder.mFrontPP.setImageResource(res);
+        Glide.with(mContext).load(bosseur.getPhoto()).into(holder.mFrontPP);
         like(holder, bosseur); // Permet de noter le bosseur.
 
         /* Back */
-        holder.mBackPP.setImageResource(res);
+        Glide.with(mContext).load(bosseur.getPhoto()).into(holder.mBackPP);
         holder.mBackPress.setText(bosseur.getCategorieSocioProf());
-        holder.mBackAdr.setText(bosseur.getAdresse());
+        holder.mBackAdr.setText(bosseur.getNewAdresse());
         holder.mBackTel.setText("+221 "+bosseur.getNumTelephoneEtu());
         holder.mBackEmail.setText(bosseur.getEmail());
-
-
     }
 
     @Override

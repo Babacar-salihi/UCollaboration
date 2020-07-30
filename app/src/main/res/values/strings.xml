@@ -154,12 +154,14 @@
 
     <!-- Spinner categorie socio-economique-->
     <string-array name="categorieSocioEconomique">
-        <item>Etudiant</item>
-        <item>Livreur professionel</item>
-        <item>Maintenancier</item>
-        <item>Taiteur de texte</item>
-        <item>Multi-services</item>
-        <item>Coiffeur</item>
+        <item>Infographie</item>
+        <item>Cours en ligne</item>
+        <item>Traitement de texte</item>
+        <item>Inscription en ligne</item>
+        <item>Photo minutes</item>
+        <item>Mainenance</item>
+        <item>Coiffure</item>
+        <item>Curriculum Vitae</item>
         <item>Autres</item>
     </string-array>
 

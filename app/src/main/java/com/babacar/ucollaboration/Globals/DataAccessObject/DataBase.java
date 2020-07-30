@@ -693,7 +693,7 @@ public class DataBase {
      */
     public static void addLieuInconnu(String lieu) {
 
-        DatabaseReference lieuInconnu = sRefUmaps.child("LieuInconnus");
+        DatabaseReference lieuInconnu = sRefUmaps.child("LieuxInconnus");
         lieuInconnu.child(lieu).setValue(lieu);
     }
 

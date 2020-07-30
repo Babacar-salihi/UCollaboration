@@ -62,7 +62,7 @@ public class EmailVerification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), Acceuil.class));
             }
         });
     }

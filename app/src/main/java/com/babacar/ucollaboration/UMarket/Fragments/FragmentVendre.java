@@ -293,34 +293,6 @@ public class FragmentVendre extends Fragment implements AdapterView.OnItemSelect
     }
 
     /**
-     * Permet d'ouvrir l'appareil photo et prendre une photo.
-     */
-    /*public void prendrePhoto(){
-
-        mPhotoBienF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{ Manifest.permission.CAMERA }, REQUEST_CODE);
-                } else {
-
-                    if(camera.resolveActivity(getContext().getPackageManager()) != null ){
-
-                        startActivityForResult(camera, REQUEST_CODE);
-                    } else {
-                        Toast.makeText(getContext(), "Appareil photo non disponible sur cet appareil !", Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-        });
-    }*/
-
-
-
-    /**
      * Permet de récupérer le resultat retourné par intent (takePic)
      * @param requestCode
      * @param resultCode
@@ -330,31 +302,6 @@ public class FragmentVendre extends Fragment implements AdapterView.OnItemSelect
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d("Execution", "Bien");
-
-        /*if(requestCode == REQUEST_CODE_F){
-
-            mImageBitmapF = (Bitmap) data.getExtras().get("data");
-            //mBitmapList.add(mImageBitmapF);
-            mPhotoBienF.setImageBitmap(mImageBitmapF);
-
-        } else if(requestCode == REQUEST_CODE_A) {
-
-            mImageBitmapA = (Bitmap) data.getExtras().get("data");
-            //mBitmapList.add(mImageBitmapA);
-            mPhotoBienA.setImageBitmap(mImageBitmapA);
-
-        } else if(requestCode == REQUEST_CODE_D) {
-
-            mImageBitmapD = (Bitmap) data.getExtras().get("data");
-            //mBitmapList.add(mImageBitmapD);
-            mPhotoBienD.setImageBitmap(mImageBitmapD);
-
-        } else if (requestCode == REQUEST_CODE_G) {
-
-            mImageBitmapG = (Bitmap) data.getExtras().get("data");
-            //mBitmapList.add(mImageBitmapG);
-            mPhotoBienG.setImageBitmap(mImageBitmapG);
-        }*/
 
         switch (requestCode) {
 
@@ -422,7 +369,6 @@ public class FragmentVendre extends Fragment implements AdapterView.OnItemSelect
                 startActivityResult(REQUEST_CODE_G);
             }
         });
-
 
     }
 

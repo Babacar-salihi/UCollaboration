@@ -30,6 +30,7 @@ import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewLivreur;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.babacar.ucollaboration.UMarket.Modeles.DetailsPrestation;
 import com.babacar.ucollaboration.UMarket.Modeles.Livreur;
+import com.google.android.gms.common.internal.Objects;
 import com.google.gson.Gson;
 
 import java.text.DateFormat;
@@ -37,9 +38,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.getVendeurById;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.getUserById;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.keyDetails;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sTestGettingSalesMan;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.vendeur1;
 import static com.babacar.ucollaboration.UMarket.Activitys.ListeUser.getBienById;
 
@@ -293,139 +295,158 @@ public class AcheterBien extends AppCompatActivity {
      * Permet de finaliser l'achat
      */
     private void finalisationAchat() {
+
         mBtnFinaliser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                /* Les testes */
+                // Choix livraison.
+                if (mLiv == 1) { // Avec livraison, il faut forcement donner l'adresse de livraison
+
+                    // Choix du livreur.
+                    if (mLivreur == 1) { // Le vendeur doit livrer le bien.
+                        //detail.getLivreur().add(vendeur.getIdEtu());
+                        Toast.makeText(AcheterBien.this, "Vendeur livreur", Toast.LENGTH_SHORT).show();
+                    } else if (mLivreur == -1) { // Autre livreur.
+
+                        Toast.makeText(AcheterBien.this, "Autre livreur", Toast.LENGTH_SHORT).show();
+                    } else { // Pas de choix.
+
+                        Toast.makeText(AcheterBien.this, "Votre choix livreur n'est pas faites!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    String adrLivraison = mAdrLivraison.getText().toString().trim();
+                    if (TextUtils.isEmpty(adrLivraison)) {
+
+                        Toast.makeText(getApplicationContext(), "Donnez l'adresse de livraison", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                } else if (mLiv == -1){ // Sans livraison
+
+                    Toast.makeText(AcheterBien.this, "Sans livraison", Toast.LENGTH_SHORT).show();
+                } else { // Pas de choix.
+
+                    Toast.makeText(AcheterBien.this, "Votre choix sur la livraison n'est pas faites!", Toast.LENGTH_SHORT).show();
+                }
+
+                // Choix mode de paiement.
+                if (mTypePaiement == 1) { // Paiement arrivé payé.
+
+                    Toast.makeText(AcheterBien.this, "Arrivé payé", Toast.LENGTH_SHORT).show();
+                } else if (mTypePaiement == -1) { // Paiement avec service opérateur.
+
+                    Toast.makeText(AcheterBien.this, "Operateur", Toast.LENGTH_SHORT).show();
+                } else { // Pas de choix.
+
+                    Toast.makeText(AcheterBien.this, "Votre choix sur le type de paiement n'est pas faites!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                // Choix de facturation.
+                if (mFacture == 1) { // Avec facture.
+
+                    Toast.makeText(AcheterBien.this, "Avec facturation", Toast.LENGTH_SHORT).show();
+                } else if (mFacture == -1) { // Sans facture.
+
+                    Toast.makeText(AcheterBien.this, "Sans facturation", Toast.LENGTH_SHORT).show();
+
+                } else { // Pas de choix.
+
+                    Toast.makeText(AcheterBien.this, "Votre choix sur la facturation n'est pas faites!", Toast.LENGTH_LONG).show();
+                }
+
+                // Prix d'achat
+                final String prixAchat = mPrixAchat.getText().toString().trim();
+                if (TextUtils.isEmpty(prixAchat)) { // Il faut donner le prix d'achat aprés négociation.
+
+                    Toast.makeText(AcheterBien.this, "Donnez le prix d'achat aprés négociation", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                final ProgressDialog progressDialog = new ProgressDialog(AcheterBien.this);
+                progressDialog.setTitle("Enregistrement en cours");
+                progressDialog.setMessage("Veuillez patientez s'il vous plait!");
+                progressDialog.show();
+
+                /* Création d'objets */
+                Bien bien = getBienById(mAchatBien.getBiens());
+                getUserById(bien.getVendeur().getIdEtu()); // DownLoading salesman informations.
+
+                /*int text = 0;
+                Log.d("GettingTeste", sTestGettingSalesMan+"");*/
+
+                // Waitting... to get salesman informations. IMPORTANT: NE PAS SUPPRIMER.
+                /*do {
+                    Log.d("WaitAchat", "Waitting... "+text);
+
+                    if (text == 1)
+                        getUserById(bien.getVendeur().getIdEtu()); // DownLoading salesman informations.
+                    if (sTestGettingSalesMan == -1) {
+
+                        Toast.makeText(getApplicationContext(), "Vérifier votre connexion", Toast.LENGTH_LONG).show();
+                        break;
+                    }
+                    ++text;
+                } while (sTestGettingSalesMan != 1);*/
+
                 final int position = getIntent().getIntExtra("PositionAchatBien", 0);
                 final DetailsPrestation detail = new DetailsPrestation();
-                Bien bien = getBienById(mAchatBien.getBiens());
 
-                getVendeurById(bien.getVendeur().getIdEtu());
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
-                final Etudiant vendeur = vendeur1;
+                        final Etudiant vendeur = vendeur1;
+                        Log.d("GettingTeste", vendeur1+"");
 
-                if (sCurrentUser != null && vendeur.getIdEtu() != null) {
+                        if (sCurrentUser != null && vendeur.getIdEtu() != null) {
 
-                    // Choix livraison.
-                    if (mLiv == 1) { // Avec livraison, il faut forcement donner l'adresse de livraison
+                            Calendar calendar = Calendar.getInstance();
+                            String currentDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(calendar.getTime()); // Jour de l'achat.
 
-                        // Choix du livreur.
-                        if (mLivreur == 1) { // Le vendeur doit livrer le bien.
-                            //detail.getLivreur().add(vendeur.getIdEtu());
-                            Toast.makeText(AcheterBien.this, "Vendeur livreur", Toast.LENGTH_SHORT).show();
-                        } else if (mLivreur == -1) { // Autre livreur.
-
-                            Toast.makeText(AcheterBien.this, "Autre livreur", Toast.LENGTH_SHORT).show();
-                        } else { // Pas de choix.
-
-                            Toast.makeText(AcheterBien.this, "Votre choix livreur n'est pas faites!", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-
-                        String adrLivraison = mAdrLivraison.getText().toString().trim();
-                        if (TextUtils.isEmpty(adrLivraison)) {
-
-                            Toast.makeText(getApplicationContext(), "Donnez l'adresse de livraison", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                    } else if (mLiv == -1){ // Sans livraison
-
-                        Toast.makeText(AcheterBien.this, "Sans livraison", Toast.LENGTH_SHORT).show();
-                    } else { // Pas de choix.
-
-                        Toast.makeText(AcheterBien.this, "Votre choix sur la livraison n'est pas faites!", Toast.LENGTH_SHORT).show();
-                    }
-
-                    // Choix mode de paiement.
-                    if (mTypePaiement == 1) { // Paiement arrivé payé.
-
-                        Toast.makeText(AcheterBien.this, "Arrivé payé", Toast.LENGTH_SHORT).show();
-                    } else if (mTypePaiement == -1) { // Paiement avec service opérateur.
-
-                        Toast.makeText(AcheterBien.this, "Operateur", Toast.LENGTH_SHORT).show();
-                    } else { // Pas de choix.
-
-                        Toast.makeText(AcheterBien.this, "Votre choix sur le type de paiement n'est pas faites!", Toast.LENGTH_LONG).show();
-                        return;
-                    }
-
-                    // Choix de facturation.
-                    if (mFacture == 1) { // Avec facture.
-
-                        Toast.makeText(AcheterBien.this, "Avec facturation", Toast.LENGTH_SHORT).show();
-                    } else if (mFacture == -1) { // Sans facture.
-
-                        Toast.makeText(AcheterBien.this, "Sans facturation", Toast.LENGTH_SHORT).show();
-
-                    } else { // Pas de choix.
-
-                        Toast.makeText(AcheterBien.this, "Votre choix sur la facturation n'est pas faites!", Toast.LENGTH_LONG).show();
-                    }
-
-                    // Prix d'achat
-                    String prixAchat = mPrixAchat.getText().toString().trim();
-                    if (TextUtils.isEmpty(prixAchat)) { // Il faut donner le prix d'achat aprés négociation.
-
-                        Toast.makeText(AcheterBien.this, "Donnez le prix d'achat aprés négociation", Toast.LENGTH_LONG).show();
-                        return;
-                    }
-
-
-                    Calendar calendar = Calendar.getInstance();
-                    String currentDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(calendar.getTime()); // Jour de l'achat.
-
-                    detail.setIdDetail(keyDetails); // Id du detail(idAcheteur+today+idPanier
-                    detail.setBiens(mAchatBien.getBiens());
-                    detail.setQuantite(mAchatBien.getQuantiteAchat()); // Quantité de bien acheter.
-                    detail.setDateVente(currentDate); // Date d'achat du bien (Date de négociation), déterminer par l'acheteur.
-                    detail.setDateRV(mDateRV); // Date de rendez-vous, Déterminée par le vendeur.
-                    /*Ligne de fantôme*///detail.setAcheteur(new Gson().toJson(sCurrentUser));
-                    detail.setPrixAchat(Integer.parseInt(prixAchat));
-                    detail.setAchatAcheve(false);
-                    //detail.setVendeur(new Gson().toJson(sCurrentUser));
-                    //detail.setLivreur();
-                    //detail.setCodeLivraison();
-                    detail.setAcheteur(new Gson().toJson(sCurrentUser));
-                    detail.setVendeur(new Gson().toJson(vendeur));
-
-                    /*Acheteur*/sCurrentUser.getDetailsPrestations().add(new Gson().toJson(detail)); // L'utilisateur (sCurrenteUser = Acheteur) pourra accéder aux details.
-
-                    /*Vendeur*/vendeur.getDetailsPrestations().add(new Gson().toJson(detail));
-                    //upDateVendeurInBien(bien);
-                    DataBase.upDateUserDetails(vendeur);
-
-                    final ProgressDialog progressDialog = new ProgressDialog(AcheterBien.this);
-                    progressDialog.setTitle("Enregistrement en cours");
-                    progressDialog.setMessage("Veuillez patientez s'il vous plait!");
-                    progressDialog.show();
-
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
+                            detail.setIdDetail(keyDetails); // Id du detail(idAcheteur+today+idPanier
+                            detail.setBiens(mAchatBien.getBiens());
+                            detail.setQuantite(mAchatBien.getQuantiteAchat()); // Quantité de bien acheter.
+                            detail.setDateVente(currentDate); // Date d'achat du bien (Date de négociation), déterminer par l'acheteur.
+                            detail.setDateRV(mDateRV); // Date de rendez-vous, Déterminée par le vendeur.
+                            /*Ligne de fantôme*///detail.setAcheteur(new Gson().toJson(sCurrentUser));
+                            detail.setPrixAchat(Integer.parseInt(prixAchat));
+                            detail.setAchatAcheve(false);
+                            //detail.setLivreur();
+                            //detail.setCodeLivraison();
+                            /*==Modif==*/detail.setAcheteur(sCurrentUser.getIdEtu());
+                            /*==Modif==*/detail.setVendeur(vendeur.getIdEtu());
+                            /*==Modif==*/sCurrentUser.getDetailsPrestations().add(detail.getIdDetail()); // retail's id instead all retail infos into buyer.
+                            /*==Modif==*/vendeur.getDetailsPrestations().add(detail.getIdDetail()); // retail's id instead all retail infos into salesman.
+                            //upDateVendeurInBien(bien);
+                            DataBase.upDateUserDetails(vendeur);
                             DataBase.ajouterDetails(detail); // Ajouter un nouveau details.
+                            sCurrentUser.getPanier().remove(position); // Supprimer le bien au panier de l'acheteur.
+                            DataBase.upDateUserDetails(sCurrentUser); // Save information to database
 
-                            sCurrentUser.getPanier().remove(position);
-                            DataBase.upDateUserDetails(sCurrentUser);
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
 
-                            startActivity(new Intent(getApplicationContext(), SplashCreenOK.class));
+                                    progressDialog.dismiss();
+                                    startActivity(new Intent(getApplicationContext(), SplashCreenOK.class));
+                                    finish();
+                                }
+
+                            }, 2000); // Attendre 2s.
+                        } else {
                             progressDialog.dismiss();
-                            finish();
+                            Toast.makeText(AcheterBien.this, "Vous n'êtes pas connecté à votre compte", Toast.LENGTH_LONG).show();
                         }
 
-                        }, 2000); // Attendre 2s.
-
-
-                } else {
-
-                    Toast.makeText(AcheterBien.this, "Vous n'êtes pas connecté à votre compte", Toast.LENGTH_LONG).show();
-                }
+                    }
+                }, 5000);
 
             }
         });
     }
-
 
     /**
      * Permet de séléctionner la date de rendez-vous entre l'acheteur et le vendeur.

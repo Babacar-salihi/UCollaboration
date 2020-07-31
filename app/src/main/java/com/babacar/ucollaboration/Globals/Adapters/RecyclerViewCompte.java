@@ -75,7 +75,7 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                             mContext.startActivity(bienFavorite);
                             Toast.makeText(mContext,"Favorites", Toast.LENGTH_SHORT).show(); break;
 
-                        case 2:
+                        case 2: // ComptePro
                             Intent comptePro = new Intent(mContext, CreerComptePro.class);
                             comptePro.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             if (sCurrentUser != null)

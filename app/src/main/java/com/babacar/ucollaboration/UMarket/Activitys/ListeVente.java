@@ -1,12 +1,15 @@
 package com.babacar.ucollaboration.UMarket.Activitys;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewDetails;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
@@ -17,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
+
 import static com.babacar.ucollaboration.UMarket.Activitys.ListeUser.getBienById;
 
 public class ListeVente extends AppCompatActivity {
@@ -26,10 +30,10 @@ public class ListeVente extends AppCompatActivity {
     private RecyclerView mRecyclerViewAchatEnCours;
     private RecyclerView mRecyclerViewAchatAcheves;
 
-    private List<DetailsPrestation> mListEnCours; // Liste des ventes en cours de l'utilisateur connecté.
-    private List<DetailsPrestation> mListAchevees; // Liste des ventes déjà achevées de l'utilisateur connecté.
-    private List<DetailsPrestation> mListAchatsEnCours; // Liste des achats en cours de l'utilisateur connecté.
-    private List<DetailsPrestation> mListAchatsAcheves; // Liste des achats déjà achevées de l'utilisateur connecté.
+    private static List<DetailsPrestation> mListEnCours; // Liste des ventes en cours de l'utilisateur connecté.
+    private static List<DetailsPrestation> mListAchevees; // Liste des ventes déjà achevées de l'utilisateur connecté.
+    private static List<DetailsPrestation> mListAchatsEnCours; // Liste des achats en cours de l'utilisateur connecté.
+    private static List<DetailsPrestation> mListAchatsAcheves; // Liste des achats déjà achevées de l'utilisateur connecté.
 
 
     @Override
@@ -133,26 +137,31 @@ public class ListeVente extends AppCompatActivity {
     /**
      * Permet de distribuer les details aux deux listes de détails que sont : ventes achevées et ventes en cours.
      */
-    private void listeVentes() {
+    public static void listeVentes() {
 
         for (String details : sCurrentUser.getDetailsPrestations()) {
 
-            DetailsPrestation detailsPrestation = new Gson().fromJson(details, DetailsPrestation.class);
-            Bien bien = getBienById(detailsPrestation.getBiens());
+            // Details user, joint au noeud DetailsPrestation
+            DetailsPrestation detailsPrestation = DataBase.getDetailById(details);
 
             Log.d("DetailllllListe",detailsPrestation.toString());
-            if (bien.getVendeur().getIdEtu().equals(sCurrentUser.getIdEtu())) { // Si le produit est vendu par l'utilisateur connecté.
+            if (detailsPrestation != null) {
 
-                if (detailsPrestation.isAchatAcheve()) // Si la vente est déjà réglée.
-                    mListAchevees.add(detailsPrestation);
-                else                                   // Vente pas encore réglée.
-                    mListEnCours.add(detailsPrestation);
-            } else { // Le bien n'est pas vendu par l'utilisateur connecter donc il la acheté.
+                Bien bien = getBienById(detailsPrestation.getBiens());
 
-                if (detailsPrestation.isAchatAcheve()) // Achats déjà réglés.
-                    mListAchatsAcheves.add(detailsPrestation);
-                else                                   // Achats pas encore réglés.
-                    mListAchatsEnCours.add(detailsPrestation);
+                if (bien.getVendeur().getIdEtu().equals(sCurrentUser.getIdEtu())) { // Si le produit est vendu par l'utilisateur connecté.
+
+                    if (detailsPrestation.isAchatAcheve()) // Si la vente est déjà réglée.
+                        mListAchevees.add(detailsPrestation);
+                    else                                   // Vente pas encore réglée.
+                        mListEnCours.add(detailsPrestation);
+                } else { // Le bien n'est pas vendu par l'utilisateur connecter donc il la acheté.
+
+                    if (detailsPrestation.isAchatAcheve()) // Achats déjà réglés.
+                        mListAchatsAcheves.add(detailsPrestation);
+                    else                                   // Achats pas encore réglés.
+                        mListAchatsEnCours.add(detailsPrestation);
+                }
             }
         }
     }

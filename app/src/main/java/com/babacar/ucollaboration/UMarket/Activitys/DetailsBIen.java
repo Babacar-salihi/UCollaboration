@@ -40,6 +40,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.mBiensNvendu;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 
 public class DetailsBIen extends AppCompatActivity {
@@ -102,7 +103,7 @@ public class DetailsBIen extends AppCompatActivity {
     private void referenceWidgets() {
 
         // Bien courant.
-        this.mBiensList = FragmentAcceuil.mBiensNvendu;
+        this.mBiensList = mBiensNvendu;
 
         // Informations sur le produit.
         //this.mPhotos = findViewById(R.id.detailsImages);
@@ -191,28 +192,6 @@ public class DetailsBIen extends AppCompatActivity {
         mGarantie.setText("Garantie: " + mCurrentBien.getGarantie());
         mNombre.setText("Nombre: " + mCurrentBien.getNombreBien());
         mDescription.setText("Déscription: " + mCurrentBien.getDescription());
-
-        /*if (sCurrentUser != null) {
-
-            int teste = 0;
-            int index = 0;
-            for (Panier panier : sCurrentUser.getPanier()) {
-
-                if (new Gson().fromJson(panier.getBiens(), Bien.class).getIdBien().equals(mCurrentBien.getIdBien())) {
-
-                    teste = 1; break;
-                }
-                ++index;
-            }
-
-            if (teste == 1) {
-
-                mNombreAchat.setText(sCurrentUser.getPanier().get(index).getQuantiteAchat()+"");
-            } else {
-
-                mNombreAchat.setText("0");
-            }
-        }*/
 
         // Informations sur le vendeur.
         if (mCurrentBien.getVendeur().getPhoto() != null)

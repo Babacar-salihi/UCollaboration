@@ -20,8 +20,8 @@ import com.babacar.ucollaboration.UMarket.Fragments.FragmentVendre;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sBienList;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
-import static com.babacar.ucollaboration.UMarket.Fragments.FragmentAcceuil.sBienList;
 
 public class MainActivity extends AppCompatActivity {
 

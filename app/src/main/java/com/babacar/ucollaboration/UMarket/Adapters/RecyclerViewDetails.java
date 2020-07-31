@@ -70,7 +70,7 @@ public class RecyclerViewDetails extends RecyclerView.Adapter<ViewHolderDetails>
 
             holder.mBoxAchevee.setChecked(true);
             holder.mBoxAchevee.setVisibility(View.VISIBLE);
-            //holder.mBoxAchevee.setEnabled(false);
+            holder.mBoxAchevee.setEnabled(false);
         }
 
         Picasso.with(mContext).load(bien.getImages().get(0).getPhoto()).into(holder.mImageBien);
@@ -89,7 +89,8 @@ public class RecyclerViewDetails extends RecyclerView.Adapter<ViewHolderDetails>
         }
 
         // Achever une vente.
-        holder.mBoxAchevee.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.mBoxAchevee
+                .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -111,18 +112,18 @@ public class RecyclerViewDetails extends RecyclerView.Adapter<ViewHolderDetails>
 
 
                 DataBase.upDateDetailsPrestation(detailsPrestation);
-                /*Vendeur*/sCurrentUser.getDetailsPrestations().set(position, new Gson().toJson(detailsPrestation));
+                ///*Vendeur*/sCurrentUser.getDetailsPrestations().set(position, new Gson().toJson(detailsPrestation));
                 /*Vendeur*/
-                upDateUserDetails(sCurrentUser);
+                //upDateUserDetails(sCurrentUser);
 
                 /*Acheteur*/
-                Etudiant acheteur = new Gson().fromJson(detailsPrestation.getAcheteur(), Etudiant.class);
+                //Etudiant acheteur = new Gson().fromJson(detailsPrestation.getAcheteur(), Etudiant.class);
                 //acheteur.getDetailsPrestations().clear();
-                Log.d("ACHETRERRE_AV", acheteur.toString());
-                acheteur.getDetailsPrestations().add(new Gson().toJson(detailsPrestation));
-                Log.d("ACHETRERRE_AP", acheteur.toString());
+                //Log.d("ACHETRERRE_AV", acheteur.toString());
+                //acheteur.getDetailsPrestations().add(new Gson().toJson(detailsPrestation));
+                //Log.d("ACHETRERRE_AP", acheteur.toString());
 
-                upDateUserDetails(acheteur);
+                //upDateUserDetails(acheteur);
 
             }
         });
@@ -135,7 +136,7 @@ public class RecyclerViewDetails extends RecyclerView.Adapter<ViewHolderDetails>
                 if (detailsPrestation.isAchatAcheve()) {
 
                     Intent facture = new Intent(mContext, Facture.class);
-                    facture.putExtra("Facture", position);
+                    facture.putExtra("Facture", detailsPrestation.getIdDetail());
                     facture.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mContext.startActivity(facture);
                 } else {

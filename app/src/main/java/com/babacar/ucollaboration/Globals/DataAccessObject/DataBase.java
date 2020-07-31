@@ -6,14 +6,19 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.Globals.Utilitaires.PhotoUtilitaire;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
+import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewBien;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.babacar.ucollaboration.UMarket.Modeles.DetailsPrestation;
 import com.babacar.ucollaboration.UMarket.Modeles.ImageBien;
@@ -562,6 +567,37 @@ public class DataBase {
 
     //======================================== DETAILS PRESTATION ===================================================
 
+    public static List<Bien> sBienList = new ArrayList<>();
+    public static List<Bien> mBiensNvendu = new ArrayList<>();
+
+    /**
+     * Permet de récupérer les biens de la base de données.
+     */
+    public static void getBien() {
+
+        DataBase.sReference.child("Biens")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        sBienList.clear();
+                        mBiensNvendu.clear();
+                        for(DataSnapshot bienSnapshot : dataSnapshot.getChildren()){
+                            Bien bien = bienSnapshot.getValue(Bien.class);
+                            Log.d("CurrentBien", bien.toString());
+                            sBienList.add(bien); // Liste contenant tous les biens de la base.
+
+                            if(bien.getEtatBien() == 0 && bien.isActiver()) // Si le bien n'est pas encore vendu on l'affiche.
+                                mBiensNvendu.add(bien); // Liste contenant les biens toujours disponible.
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+    }
+
     private static DatabaseReference refDeatils = sReference.child("Details Prestations");
     public static String keyDetails = refDeatils.push().push().getKey();
 
@@ -607,11 +643,13 @@ public class DataBase {
     }
 
     public static Etudiant vendeur1 = new Etudiant();
+    public static short sTestGettingSalesMan = 0; // -1: Failure, 0: default, 1: OK;
+
     /**
      * Permet de récupérer les infos du vendeur.
      */
-    public static void getVendeurById(String idVendeur) {
-
+    public static void getUserById(String idVendeur) {
+        Log.d("GettingTesteDANSDATA", sTestGettingSalesMan+"");
         sReference.child("Etudiants")
                 .child(idVendeur)
                 .addValueEventListener(new ValueEventListener() {
@@ -619,14 +657,69 @@ public class DataBase {
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
                         vendeur1 = dataSnapshot.getValue(Etudiant.class);
+                        Log.d("GettingTesteDANSDATA", vendeur1+"");
+                        if (vendeur1 != null) // Après récupération.
+                            sTestGettingSalesMan = 1; // Infos obtenues.
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
+                        sTestGettingSalesMan = -1; // Infos non obtenues.
+                    }
+                })
+        ;
+    }
+
+
+    public static List<DetailsPrestation> sAllDetails = new ArrayList<>();
+    //public static short sTestGettingRetail; // -1: Failure, 0: default, 1: OK;
+
+    /**
+     * Permet de récupérer les infos du details.
+     */
+    public static void getDetailsPrestation() {
+
+        Log.d("JKKKLLL", "HBHJBJB");
+        sReference.child("Details Prestations")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        sAllDetails.clear();
+                        for (DataSnapshot detailSnapshot : dataSnapshot.getChildren()) {
+
+                            DetailsPrestation details = detailSnapshot.getValue(DetailsPrestation.class);
+                            Log.d("JKKKLLL", details.toString());
+                            sAllDetails.add(details);
+                        }
+                        //sTestGettingRetail = 1;
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                        //sTestGettingRetail = -1; // Infos non obtenues.
                     }
                 });
     }
+
+    /**
+     * Permet de récupérer les infos du details à partir de son identifiant.
+     */
+    public static DetailsPrestation getDetailById(String idDetail) {
+
+        for (DetailsPrestation details : sAllDetails) {
+
+            if (details.getIdDetail().equals(idDetail)) {
+
+                return details;
+            }
+        }
+
+        return null;
+    }
+
 
     //================================ UMAPS ====================================
     private static DatabaseReference sRefUmaps = FirebaseDatabase.getInstance().getReference().child("UMaps");
@@ -717,5 +810,4 @@ public class DataBase {
         sRefUService.child(user.getIdEtu())
                 .setValue(bosseur);
     }
-
 }

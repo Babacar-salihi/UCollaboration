@@ -81,13 +81,11 @@ public class UserSpace extends AppCompatActivity {
         list.add(new FonctionnaliteCompte("favorite_card", "Ma liste d'envis"));
         /* Compte bosseur */
         list.add(new FonctionnaliteCompte("bosseur", "Compte bosseur"));
-
         list.add(new FonctionnaliteCompte("modifier", "Gerer mon compte"));
         list.add(new FonctionnaliteCompte("deconnex", "Déconnexion"));
         list.add(new FonctionnaliteCompte("supprimer", "Supprimer mon compte"));
 
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false );
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false );
         RecyclerViewCompte recyclerViewBien = new RecyclerViewCompte(this,list);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(recyclerViewBien);

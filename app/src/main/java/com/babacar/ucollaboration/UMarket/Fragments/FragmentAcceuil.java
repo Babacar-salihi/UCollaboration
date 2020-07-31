@@ -29,6 +29,7 @@ import com.babacar.ucollaboration.UMarket.Activitys.Panier;
 import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewBien;
 import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewCategorie;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
+import com.babacar.ucollaboration.UMarket.Modeles.DetailsPrestation;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -36,6 +37,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.mBiensNvendu;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sBienList;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 
 /**
@@ -47,9 +50,8 @@ public class FragmentAcceuil extends Fragment {
     private SearchView mSearchBar;
     private RecyclerView mRecyclerView, mRecyclerViewCateg;
     private ImageView mIconPanier;
-    public static List<Bien> sBienList;
-    public static List<Bien> mBiensNvendu;
     public TextView mNbArticlePanier;
+
 
     public FragmentAcceuil() {
         // Required empty public constructor
@@ -62,7 +64,7 @@ public class FragmentAcceuil extends Fragment {
         mView = inflater.inflate(R.layout.umarket_fragment_acceuil, container, false);
 
         referenceWidgets(); // Méthode pour référencer les widgets de l'adapter catalogue.
-        inflateCatalogue(); // Méthide pour afficher les produits dans le RecyclerView.
+        //inflateCatalogue(); // Méthide pour afficher les produits dans le RecyclerView.
         monPanier(); // Méthode pour accéder au panier de l'utilisateur.
         recherche(); // Méthode pour gérer la recherche d'article.
 
@@ -97,15 +99,6 @@ public class FragmentAcceuil extends Fragment {
     }
 
     /**
-     * Permet d'afficher les produits dans le RecyclerView.
-     */
-    private void inflateCatalogue(){
-
-        sBienList = new ArrayList<>(20);
-        mBiensNvendu = new ArrayList<>(10);
-    }
-
-    /**
      * Permet de faire les différents traitements.
      */
     @Override
@@ -122,9 +115,7 @@ public class FragmentAcceuil extends Fragment {
                 for(DataSnapshot bienSnapshot : dataSnapshot.getChildren()){
                     Bien bien = bienSnapshot.getValue(Bien.class);
                     Log.d("CurrentBien", bien.toString());
-
-                    if (bien.getEtatBien() != 1)
-                        sBienList.add(bien); // Liste contenant tous les biens.
+                    sBienList.add(bien); // Liste contenant tous les biens de la base.
 
                     if(bien.getEtatBien() == 0 && bien.isActiver()) // Si le bien n'est pas encore vendu on l'affiche.
                         mBiensNvendu.add(bien); // Liste contenant les biens toujours disponible.
@@ -215,7 +206,5 @@ public class FragmentAcceuil extends Fragment {
             }
 
         });
-
     }
-
 }

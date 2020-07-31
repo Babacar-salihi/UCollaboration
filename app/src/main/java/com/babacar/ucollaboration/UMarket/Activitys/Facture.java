@@ -10,6 +10,7 @@
  import com.babacar.ucollaboration.UMarket.Modeles.DetailsPrestation;
  import com.google.gson.Gson;
 
+ import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.getDetailById;
  import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
  import static com.babacar.ucollaboration.UMarket.Activitys.ListeUser.getBienById;
 
@@ -17,7 +18,7 @@
  public class Facture extends AppCompatActivity {
 
      private TextView mTextDate;
-     private int factureDispo;
+     private String factureDispo;
 
      // Info Acheteur
      private TextView mTextNomAcheteur;
@@ -31,7 +32,7 @@
         super.onCreate(savedInstanceState);
         setContentView(R.layout.umarket_activity_facture);
 
-        factureDispo = getIntent().getIntExtra("Facture", -1);
+        factureDispo = getIntent().getStringExtra("Facture");
         referenceWidgets(); // Méthode pour lier les composants graphiques avec le code Java.
         infalterFacture(); // Permet d'afficher les details du facture.
 
@@ -62,7 +63,7 @@
       */
      private void infalterFacture() {
 
-         DetailsPrestation details = new Gson().fromJson(sCurrentUser.getDetailsPrestations().get(factureDispo), DetailsPrestation.class);
+         DetailsPrestation details = getDetailById(factureDispo);
          Bien bien = getBienById(details.getBiens());
 
          this.mTextDate.setText("Date:"+ details.getDateRV());

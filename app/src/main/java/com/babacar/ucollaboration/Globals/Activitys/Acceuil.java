@@ -17,6 +17,8 @@ import com.google.gson.Gson;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.getBien;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.getDetailsPrestation;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 
 
@@ -33,6 +35,18 @@ public class Acceuil extends AppCompatActivity {
         referenceWidgets(); // Méthode permettent de référencer les widgets de "layout.activity_acceuil".
         listener(); // Méthode permettant de gérer les listeners sur le boutons.
         showProfilePic(); // Méthode permettant de gérer l'affichage du profile de l'utilisateur.
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (sCurrentUser != null) {
+
+            getBien(); // Récupérer l'ensemble des biens.
+            getDetailsPrestation(); // Récupérer l'ensemble des details
+        }
     }
 
     /**

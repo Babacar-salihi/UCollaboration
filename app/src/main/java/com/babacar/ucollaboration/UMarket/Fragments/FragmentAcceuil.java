@@ -5,13 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -34,6 +39,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,10 +53,12 @@ import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurr
 public class FragmentAcceuil extends Fragment {
 
     private View mView;
-    private SearchView mSearchBar;
+    private AutoCompleteTextView mSearchBar;
     private RecyclerView mRecyclerView, mRecyclerViewCateg;
     private ImageView mIconPanier;
     public TextView mNbArticlePanier;
+    private List<String> mSearchString = new ArrayList<>();
+
 
 
     public FragmentAcceuil() {
@@ -112,13 +120,18 @@ public class FragmentAcceuil extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 sBienList.clear();
                 mBiensNvendu.clear();
+                mSearchString.clear();
                 for(DataSnapshot bienSnapshot : dataSnapshot.getChildren()){
                     Bien bien = bienSnapshot.getValue(Bien.class);
                     Log.d("CurrentBien", bien.toString());
                     sBienList.add(bien); // Liste contenant tous les biens de la base.
 
-                    if(bien.getEtatBien() == 0 && bien.isActiver()) // Si le bien n'est pas encore vendu on l'affiche.
+                    if(bien.getEtatBien() == 0 && bien.isActiver()) { // Si le bien n'est pas encore vendu on l'affiche.
+
                         mBiensNvendu.add(bien); // Liste contenant les biens toujours disponible.
+                        mSearchString.add(bien.getLibelle());
+                        mSearchString.add(bien.getVendeur().getNewAdresse());
+                    }
                 }
                 RecyclerViewBien adapter = new RecyclerViewBien(getContext(), mBiensNvendu);
                 RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
@@ -177,7 +190,7 @@ public class FragmentAcceuil extends Fragment {
      */
     private void recherche() {
 
-        mSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+       /* mSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
@@ -205,6 +218,49 @@ public class FragmentAcceuil extends Fragment {
                 return false;
             }
 
+        });*/
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                getContext(), android.R.layout.simple_list_item_1, mSearchString
+        );
+        mSearchBar.setAdapter(adapter);
+
+        final List<Bien> list = new ArrayList<>();
+
+        mSearchBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                switch (actionId) {
+
+                    case EditorInfo
+                            .IME_ACTION_SEARCH :
+                        Toast.makeText(getContext(), mSearchBar.getText(), Toast.LENGTH_LONG).show();
+
+                        if (mSearchBar.getText().toString().length() != 0) {
+
+                            for (Bien bien : mBiensNvendu){
+                                Log.d("vendeurrr", bien.getVendeur().getNewAdresse());
+                                if (bien.getLibelle().toLowerCase().contains(mSearchBar.getText().toString().trim().toLowerCase())  // Recherche selon le nom, l'adresse du vendeur,
+                                        || bien.getVendeur().getNewAdresse().equalsIgnoreCase(mSearchBar.getText().toString().trim())) { // Si c'est l'adresse du vendeur il faut tout écrire.
+                                    Log.d("vendeurrrr", "BIEN_TROUVER");
+                                    list.add(bien);
+                                }
+                            }
+                            mRecyclerView.setAdapter(new RecyclerViewBien(getContext(), list));
+                            mSearchBar.clearFocus();
+                        } break;
+                }
+
+/*                if (mSearchBar.getText().toString().length() == 0) {
+
+                    list.clear();
+                }*/
+
+                return false;
+            }
         });
     }
+
+
 }

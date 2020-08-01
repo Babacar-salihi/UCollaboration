@@ -8,4 +8,10 @@
     <solid
         android:color="@android:color/white"/>
 
+
+    <padding
+        android:top="@dimen/padding7"
+        android:bottom="@dimen/padding7"
+        />
+
 </shape>

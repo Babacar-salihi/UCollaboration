@@ -22,6 +22,7 @@ import com.babacar.ucollaboration.UMarket.Modeles.DetailsPrestation;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.nio.file.attribute.DosFileAttributes;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -112,6 +113,7 @@ public class RecyclerViewDetails extends RecyclerView.Adapter<ViewHolderDetails>
 
 
                 DataBase.upDateDetailsPrestation(detailsPrestation);
+                DataBase.getBuyerById(detailsPrestation.getAcheteur());
                 ///*Vendeur*/sCurrentUser.getDetailsPrestations().set(position, new Gson().toJson(detailsPrestation));
                 /*Vendeur*/
                 //upDateUserDetails(sCurrentUser);

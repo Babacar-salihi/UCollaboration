@@ -20,7 +20,7 @@
         android:id="@+id/splash_acceuilLogo"
         android:layout_width="@dimen/imgSize300"
         android:layout_height="@dimen/imgSize300"
-        android:src="@drawable/ucadlogo"/>
+        android:src="@drawable/welcome"/>
 
     <TextView
         android:id="@+id/splash_acceuilText"
@@ -29,8 +29,8 @@
         android:text="@string/bienvenue"
         android:textStyle="bold"
         android:textSize="35dp"
-        android:textColor="@color/darkAppColor"
-        android:fontFamily="@font/logo"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/philosopheritalic"
         android:layout_margin="@dimen/margin7"
         />
 

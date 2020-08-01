@@ -646,7 +646,7 @@ public class DataBase {
     public static short sTestGettingSalesMan = 0; // -1: Failure, 0: default, 1: OK;
 
     /**
-     * Permet de récupérer les infos du vendeur.
+     * Permet de récupérer les infos sur les utilsateurs.
      */
     public static void getUserById(String idVendeur) {
         Log.d("GettingTesteDANSDATA", sTestGettingSalesMan+"");
@@ -658,8 +658,34 @@ public class DataBase {
 
                         vendeur1 = dataSnapshot.getValue(Etudiant.class);
                         Log.d("GettingTesteDANSDATA", vendeur1+"");
-                        if (vendeur1 != null) // Après récupération.
+                        if (vendeur1 != null) {// Après récupération.
                             sTestGettingSalesMan = 1; // Infos obtenues.
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                        sTestGettingSalesMan = -1; // Infos non obtenues.
+                    }
+                })
+        ;
+    }
+
+    public static String acheteurName;
+
+    public static void getBuyerById(String idAcheteur) {
+
+        final Etudiant[] acheteur = {new Etudiant()};
+        sReference.child("Etudiants")
+                .child(idAcheteur)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        acheteur[0] = dataSnapshot.getValue(Etudiant.class);
+                        acheteurName = acheteur[0].getPrenomEtu()+" "+acheteur[0].getNomEtu();
+                        Log.d("BuyerName", acheteurName);
                     }
 
                     @Override

@@ -15,6 +15,7 @@ import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.Globals.Models.FonctionnaliteCompte;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.Globals.Adapters.RecyclerViewCompte;
+import com.babacar.ucollaboration.UMarket.Modeles.DetailsPrestation;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -23,6 +24,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.getDetailById;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 
 public class UserSpace extends AppCompatActivity {
@@ -30,7 +32,6 @@ public class UserSpace extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private Button mBntConnex, mBtnInscrip;
 
-    private Etudiant mEtudiant;
     private CircleImageView mUserProfilPic;
     private TextView mUserName, mNbArtVendu, mNbArtAchat, mNbArtLike;
     private TextView mTextArtVendu, mTextArtAchat, mTextArtLike;
@@ -136,16 +137,30 @@ public class UserSpace extends AppCompatActivity {
      * Permet d'afficher les informations de l'utilisateur s'il est connecté.
      */
     public void remplirInfoUser(){
-        mEtudiant = sCurrentUser;
-        if(mEtudiant.getPhoto() != null)
+
+        int nbVente = 0;
+        int nbAchat = 0;
+        for (String details : sCurrentUser.getDetailsPrestations()) {
+
+            DetailsPrestation detailsPrestation = getDetailById(details);
+            if (detailsPrestation.getVendeur().equals(sCurrentUser.getIdEtu())) // Vendeur
+                ++nbVente;
+            else
+                ++nbAchat;
+        }
+
+        if(sCurrentUser.getPhoto() != null)
             Glide.with(getApplicationContext())
-                .load(mEtudiant.getPhoto())
+                .load(sCurrentUser.getPhoto())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(mUserProfilPic);
-        this.mUserName.setText(mEtudiant.getPrenomEtu()+" "+mEtudiant.getNomEtu());
+        this.mUserName.setText(sCurrentUser.getPrenomEtu()+" "+sCurrentUser.getNomEtu());
 
-        this.mNbArtLike.setText(mEtudiant.getFavorie().size()+"");
-        this.mNbArtAchat.setText(mEtudiant.getDetailsPrestations().size()+"");
+        if(nbVente != 0)
+            this.mNbArtVendu.setText(String.valueOf(nbVente));
+        if (nbAchat != 0)
+            this.mNbArtAchat.setText(String.valueOf(nbAchat));
+        this.mNbArtLike.setText(String.valueOf(sCurrentUser.getFavorie().size()));
 
         if (Integer.parseInt(mNbArtVendu.getText().toString()) > 1)
             mTextArtVendu.setText("articles vendu");

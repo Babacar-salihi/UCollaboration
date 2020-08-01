@@ -27,14 +27,46 @@
             android:textColor="@android:color/white"
             android:gravity="center"/>
 
-        <SearchView
+        <!--<SearchView
             android:id="@+id/catalogue_barRecherche"
             android:layout_width="0dp"
             android:layout_weight="100"
             android:layout_height="wrap_content"
             android:background="@drawable/style_search_radius"
             android:layout_margin="@dimen/margin10"
-            android:iconifiedByDefault="false"/>
+            android:iconifiedByDefault="false"/>-->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="100"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin10"
+            android:background="@drawable/umaps_style_search_radius"
+            android:elevation="@dimen/elevetion5"
+            android:gravity="center"
+            android:clickable="true"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/imgSize30"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_search"
+                android:layout_marginRight="@dimen/margin10"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/catalogue_barRecherche"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hintSearchBien"
+                android:textSize="@dimen/texteSize17"
+                android:completionThreshold="2"
+                android:completionHint="@string/hintSearch"
+                android:inputType="textAutoComplete"
+                android:imeOptions="actionSearch"
+                />
+
+        </LinearLayout>
+
 
         <RelativeLayout
             android:layout_width="wrap_content"

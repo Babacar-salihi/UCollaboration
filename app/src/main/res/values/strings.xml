@@ -53,7 +53,7 @@
     <string name="adresseVendeur">Adresse</string>
     <string name="appeler">Appeler</string>
     <string name="whatsApp">WhatsApp</string>
-    <string name="titreSameCategorie">Du même catégorie</string>
+    <string name="titreSameCategorie">Même catégorie</string>
     <string name="achat">Acheter</string>
     <string name="Calculsomme">Somme totale</string>
     <string name="moins">-</string>
@@ -117,20 +117,21 @@
     <string name="passer">passer</string>
     <string name="facture">Facture</string>
     <string name="numFacture">N° 0000001</string>
-    <string name="dateFacture">Date: 5 juillet 2020</string>
-    <string name="titreNomVendeur">Facturé à:  </string>
-    <string name="nomAcheteur">Babacar Ndong</string>
-    <string name="nomVendeur">Nabou ndong</string>
-    <string name="numVendeur">781739204</string>
+    <string name="dateFacture">Date: achat</string>
+    <string name="titreNomVendeur">Vendeur:  </string>
+    <string name="titreNomAcheteur">Facturé à:  </string>
+    <string name="nomAcheteur">nomAcheteur</string>
+    <string name="nomVendeur">nomVendeur</string>
+    <string name="numVendeur">numVendeur</string>
     <string name="titreNumVendeur">Téléphone:</string>
     <string name="qtFacture">Qt.</string>
     <string name="designationFacture">Désignation</string>
     <string name="prixFacture">P.U.</string>
     <string name="totalFacture">Total</string>
-    <string name="qtFactureEx">2</string>
-    <string name="designationFactureEx">Iphone 7</string>
-    <string name="prixFactureEx">210000 fcfa</string>
-    <string name="totalFactureEx">420000 fcfa</string>
+    <string name="qtFactureEx">qtFact</string>
+    <string name="designationFactureEx">designation</string>
+    <string name="prixFactureEx">prixUnit</string>
+    <string name="totalFactureEx">TotalFact</string>
     <string name="livVendeur">Vendeur</string>
     <string name="livLivreur">Autre livreur</string>
     <string name="umarket">Umarket</string>
@@ -139,7 +140,6 @@
     <string name="umaps">Umaps</string>
     <string name="ucollaborate">UCAD</string>
     <string name="direction">Itinéraire</string>
-
     <string name="user_name">Prenom Nom</string>
     <string name="user_profession">Profession</string>
     <string name="numeroTel">780000000</string>
@@ -151,6 +151,7 @@
     <string name="maint">Maintenance</string>
     <string name="coiffure">Coiffure</string>
     <string name="cv">Curriculum Vitae(CV)</string>
+    <string name="hintSearchBien">Vous cherchez quoi?</string>
 
     <!-- Spinner categorie socio-economique-->
     <string-array name="categorieSocioEconomique">
@@ -192,6 +193,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="textComptePro">Avec ce compte c\'est sûr que vous aurez plus de visibilité et augmanter ainsin votre productivité.</string>
+    <string name="selectOneItem">Laissez vous guidez</string>
 
 
 </resources>

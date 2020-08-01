@@ -63,11 +63,17 @@ public class Acceuil extends AppCompatActivity {
      */
     private void showProfilePic() {
 
-        if (sCurrentUser != null)
-            Glide.with(getApplicationContext())
-                .load(sCurrentUser.getPhoto())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(mUserProfilePic);
+        if (sCurrentUser != null) {
+
+            if (sCurrentUser.getPhoto()!= null )
+                Glide.with(getApplicationContext())
+                        .load(sCurrentUser.getPhoto())
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(mUserProfilePic);
+            else
+                mUserProfilePic.setImageResource(R.drawable.usericon);
+        }
+
     }
 
     /**

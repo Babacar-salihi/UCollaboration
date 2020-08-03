@@ -3,6 +3,7 @@ package com.babacar.ucollaboration.UMaps.Utilitaires;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Parcelable;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -13,6 +14,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
@@ -123,6 +125,15 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
         mGoogleMap.clear();
         mGoogleMap.addMarker(markerOptions);
         mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+        if (lieu.getPosition().toLowerCase().trim().contains("fac")) {
+
+            CircleOptions circleOptions = new CircleOptions();
+            circleOptions.radius(100);
+            circleOptions.center(latLng);
+            circleOptions.strokeColor(Color.TRANSPARENT);
+            circleOptions.fillColor(Color.argb(50, 0, 255, 0));
+            mGoogleMap.addCircle(circleOptions);
+        }
 
         aireUcad(); // Méthode pour aficher la zone UCAD.
     }

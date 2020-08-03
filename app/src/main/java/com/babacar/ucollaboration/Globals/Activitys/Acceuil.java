@@ -86,16 +86,20 @@ public class Acceuil extends AppCompatActivity {
 
             case R.id.acceuil_umarket :
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left); break;
+                overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left);
+                finish(); break;
 
             case R.id.acceuil_uservice :
                 startActivity(new Intent(getApplicationContext(), com.babacar.ucollaboration.UService.Activitys.MainActivity.class));
-                overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left); break;
+                overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left);
+                finish(); break;
             case R.id.acceuil_umaps :
                 startActivity(new Intent(getApplicationContext(), com.babacar.ucollaboration.UMaps.Activitys.MainActivity.class));
-                overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left); break;
+                overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left);
+                finish(); break;
 
             case R.id.acceuil_uinfo :
+                finish();
                 break;
         }
     }

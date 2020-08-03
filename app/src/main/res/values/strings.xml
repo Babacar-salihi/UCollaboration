@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UCollaboration</string>
+    <string name="app_name">L\'Etudiant</string>
 
     <!-- Umarket -->
     <string name="libelle">Libelle</string>
@@ -151,7 +151,7 @@
     <string name="maint">Maintenance</string>
     <string name="coiffure">Coiffure</string>
     <string name="cv">Curriculum Vitae(CV)</string>
-    <string name="hintSearchBien">Vous cherchez quoi?</string>
+    <string name="hintSearchBien">Que cherchez vous?</string>
 
     <!-- Spinner categorie socio-economique-->
     <string-array name="categorieSocioEconomique">

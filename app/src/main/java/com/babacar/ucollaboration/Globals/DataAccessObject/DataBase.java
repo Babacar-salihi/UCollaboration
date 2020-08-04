@@ -822,18 +822,12 @@ public class DataBase {
 
     /**
      * Permet de mettre à jour le compte de l'utilisateur, utilisé lors d'ouverture d'un comptePro.
-     * @param user
+     * @param bosseur
      */
-    public static void createBosseur(Etudiant user){
-
-        // Dans Etudiant
-        sReference.child("Etudiants")
-                .child(user.getIdEtu())
-                .setValue(user);
+    public static void createBosseur(Bosseur bosseur){
 
         // Dans Uservices
-        Bosseur bosseur = new Bosseur(user.getIdEtu(), 0);
-        sRefUService.child(user.getIdEtu())
+        sRefUService.child(bosseur.getIdEtu())
                 .setValue(bosseur);
     }
 }

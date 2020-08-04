@@ -17,7 +17,6 @@ public class Etudiant {
     protected String mEmail;
     protected String mPassword;
     protected String mAdresse;
-    protected String mCategorieSocioProf;
     protected String mPhoto;
     protected String mNewAdresse;
     protected List<Panier> mPanier = new ArrayList<>(); // Panier de l'utilisateur.
@@ -30,10 +29,10 @@ public class Etudiant {
     public Etudiant() {
     }
 
-    public Etudiant(String idEtu, String categorieSocioProf) {
+    /*public Etudiant(String idEtu, String categorieSocioProf) {
         mIdEtu = idEtu;
         mCategorieSocioProf = categorieSocioProf;
-    }
+    }*/
 
     public Etudiant(String idEtu, String prenomEtu, String nomEtu, int numTelephoneEtu, String photo, String newAdresse, List<String> detailsDespt) {
 
@@ -57,7 +56,7 @@ public class Etudiant {
     }*/
 
 
-    public Etudiant(String mIdEtu, String mNomEtu, String mPrenomEtu, int mNumTelephoneEtu, String mNumChambre, String mEmail, String password, String mAdresse, String mCategorieSocioProf, String mPhoto, Departement mDepartement, String newAdresse) {
+    public Etudiant(String mIdEtu, String mNomEtu, String mPrenomEtu, int mNumTelephoneEtu, String mNumChambre, String mEmail, String password, String mAdresse, String mPhoto, Departement mDepartement, String newAdresse) {
         this.mIdEtu = mIdEtu;
         this.mNomEtu = mNomEtu;
         this.mPrenomEtu = mPrenomEtu;
@@ -66,7 +65,7 @@ public class Etudiant {
         this.mEmail = mEmail;
         this.mPassword = password;
         this.mAdresse = mAdresse;
-        this.mCategorieSocioProf = mCategorieSocioProf;
+        //this.mCategorieSocioProf = mCategorieSocioProf;
         this.mPhoto = mPhoto;
         this.mDepartement = mDepartement;
         this.mNewAdresse = newAdresse;
@@ -136,13 +135,13 @@ public class Etudiant {
         mAdresse = adresse;
     }
 
-    public String getCategorieSocioProf() {
+    /*public String getCategorieSocioProf() {
         return mCategorieSocioProf;
     }
 
     public void setCategorieSocioProf(String categorieSocioProf) {
         mCategorieSocioProf = categorieSocioProf;
-    }
+    }*/
 
     public String getPhoto() {
         return mPhoto;
@@ -211,7 +210,6 @@ public class Etudiant {
                 ", mEmail='" + mEmail + '\'' +
                 ", mPassword='" + mPassword + '\'' +
                 ", mAdresse='" + mAdresse + '\'' +
-                ", mCategorieSocioProf='" + mCategorieSocioProf + '\'' +
                 ", mPhoto='" + mPhoto + '\'' +
                 ", mNewAdresse='" + mNewAdresse + '\'' +
                 ", mPanier=" + mPanier +

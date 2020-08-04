@@ -85,4 +85,5 @@
     <dimen name="width_100">100dp</dimen>
     <dimen name="width_180">180dp</dimen>
     <dimen name="imgSize65">65dp</dimen>
+    <dimen name="radius120">120dp</dimen>
 </resources>

@@ -6,18 +6,24 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.babacar.ucollaboration.R;
+import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 class ViewHolderCarte extends RecyclerView.ViewHolder {
 
+    public EasyFlipView mFlipView;
     public ImageView mFrontPP, mBackPP;
     public TextView mFrontName, mFrontPress, mBackPress, mBackAdr, mBackTel, mBackEmail;
     public RatingBar mRatingBar;
+    public CardView mBtnCall, mBtnMsg;
 
     public ViewHolderCarte(@NonNull View itemView) {
         super(itemView);
+
+        this.mFlipView = itemView.findViewById(R.id.flipper);
 
         this.mFrontPP = itemView.findViewById(R.id.front_carte_image);
         this.mFrontName = itemView.findViewById(R.id.front_carte_name);
@@ -28,6 +34,9 @@ class ViewHolderCarte extends RecyclerView.ViewHolder {
         this.mBackAdr = itemView.findViewById(R.id.back_carte_adr);
         this.mBackTel = itemView.findViewById(R.id.back_carte_tel);
         this.mBackEmail = itemView.findViewById(R.id.back_carte_email);
+
+        this.mBtnCall = itemView.findViewById(R.id.uservice_btn_call_bosseur);
+        this.mBtnMsg = itemView.findViewById(R.id.uservice_btn_whats_bosseur);
 
         this.mRatingBar = itemView.findViewById(R.id.front_carte_noterBosseur);
     }

@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <com.wajahatkarim3.easyflipview.EasyFlipView
+        android:id="@+id/flipper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:flipOnTouch="true"
@@ -13,11 +14,11 @@
         app:flipDuration="400"
         app:flipType="vertical"
         app:flipFrom="front"
-        app:autoFlipBack="false"
+        app:autoFlipBack="true"
         app:autoFlipBackTime="1000"
         >
 
-    <!-- Arrier -->
+    <!-- back -->
     <include layout="@layout/uservice_adapter_back_cart"/>
 
     <!-- Front -->

@@ -5,14 +5,16 @@ import com.babacar.ucollaboration.Globals.Models.Etudiant;
 public class Bosseur extends Etudiant {
 
     private int nbStart;
+    protected String mCategorieSocioProf;
 
     public Bosseur() {
 
     }
 
-    public Bosseur(String idBosseur, int nbStart) {
+    public Bosseur(String idBosseur, int nbStart, String categorieSocioProf) {
         super.mIdEtu = idBosseur;
         this.nbStart = nbStart;
+        mCategorieSocioProf = categorieSocioProf;
     }
 
     public Bosseur(String idEtu, String prenom, String nom, String email, int numTel, String categorieSocioProf) {
@@ -21,7 +23,7 @@ public class Bosseur extends Etudiant {
         super.mNomEtu = nom;
         super.mEmail = email;
         super.mNumTelephoneEtu = numTel;
-        super.mCategorieSocioProf = categorieSocioProf;
+        this.mCategorieSocioProf = categorieSocioProf;
     }
 
     public int getNbStart() {
@@ -30,6 +32,14 @@ public class Bosseur extends Etudiant {
 
     public void setNbStart(int nbStart) {
         this.nbStart = nbStart;
+    }
+
+    public String getCategorieSocioProf() {
+        return mCategorieSocioProf;
+    }
+
+    public void setCategorieSocioProf(String categorieSocioProf) {
+        mCategorieSocioProf = categorieSocioProf;
     }
 
     @Override

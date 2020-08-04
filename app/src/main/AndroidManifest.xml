@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Globals.Activitys.CreerComptePro"></activity>
+        <activity android:name=".UService.Activitys.CategoriesService"></activity>
+        <activity android:name=".Globals.Activitys.CreerComptePro" />
         <activity android:name=".Globals.Activitys.UserSpace" />
         <activity android:name=".Globals.Utilitaires.SpalshCreenAcceuil">
             <intent-filter>

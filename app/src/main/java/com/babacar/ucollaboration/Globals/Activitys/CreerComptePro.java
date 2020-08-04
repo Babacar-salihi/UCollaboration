@@ -1,7 +1,9 @@
 package com.babacar.ucollaboration.Globals.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -14,7 +16,9 @@ import android.widget.Toast;
 
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.Globals.Models.Etudiant;
+import com.babacar.ucollaboration.Globals.Utilitaires.SplashCreenOK;
 import com.babacar.ucollaboration.R;
+import com.babacar.ucollaboration.UMaps.Activitys.MainActivity;
 import com.babacar.ucollaboration.UService.Models.Bosseur;
 
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
@@ -25,6 +29,7 @@ public class CreerComptePro extends AppCompatActivity {
     private String mCategSocio;
     private EditText mEditTextCategSocio;
     private Button mBtnSave;
+    //private CardView mCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,7 @@ public class CreerComptePro extends AppCompatActivity {
         referencerWidget(); // Méthode permettant de référencer les widgets.
         categSocioEco(); // Méthode permettant de choisir une catégorie seocio économique.
         saveInfo(); // Méthode permettant de mettre les informations dans la base de données.
-
+        //ajouterLieu(); // Méthode permettant d'ajouter un lieu sur la carte par un bosseur.
     }
 
     /**
@@ -45,6 +50,7 @@ public class CreerComptePro extends AppCompatActivity {
         this.mSpinnerProfession = findViewById(R.id.comptePro_spinner);
         this.mEditTextCategSocio = findViewById(R.id.autre_Profession);
         this.mBtnSave = findViewById(R.id.comptePro_BtnContinuer);
+        //this.mCardView = findViewById(R.id.uservice_addLieu);
     }
 
     /**
@@ -93,10 +99,27 @@ public class CreerComptePro extends AppCompatActivity {
                     }
                 }
 
-                sCurrentUser.setCategorieSocioProf(mCategSocio);
-                DataBase.createBosseur(sCurrentUser);
+                Bosseur bosseur = new Bosseur(sCurrentUser.getIdEtu(), 0, mCategSocio);
+
+                DataBase.createBosseur(bosseur);
+                startActivity(new Intent(getApplicationContext(), SplashCreenOK.class));
             }
         });
     }
+
+    /**
+     * Permet d'accerder à la carte et ajouter un lieu
+     */
+    /*private void ajouterLieu() {
+
+        mCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent addLieu = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(addLieu);
+            }
+        });
+    }*/
 
 }

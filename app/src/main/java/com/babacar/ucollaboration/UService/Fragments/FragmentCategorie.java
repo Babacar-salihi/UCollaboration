@@ -1,6 +1,7 @@
 package com.babacar.ucollaboration.UService.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.babacar.ucollaboration.R;
+import com.babacar.ucollaboration.UService.Activitys.CategoriesService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +21,7 @@ public class FragmentCategorie extends Fragment implements View.OnClickListener 
 
     private View mView;
     private CardView mInfoGraph, mProf, mTexte, mInscript, mPhotoMin, mMaintenance, mCoiffure, mCv;
+    private String categorie;
 
 
     public FragmentCategorie() {
@@ -68,31 +71,56 @@ public class FragmentCategorie extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
 
+        Intent filtre = new Intent(getActivity(), CategoriesService.class);
         switch (v.getId()) {
 
             case R.id.uservice_infoGraphie:
                 Toast.makeText(mView.getContext(), "Infographie", Toast.LENGTH_SHORT).show();
+                categorie = "Infographie";
+                filtre.putExtra("Categ",categorie);
+                startActivity(filtre);
                 break;
             case R.id.uservice_EtuProf:
                 Toast.makeText(mView.getContext(), "Professeur", Toast.LENGTH_SHORT).show();
+                categorie = "Professeur";
+                filtre.putExtra("Categ",categorie);
+                startActivity(filtre);
                 break;
             case R.id.uservice_traiteTexte:
                 Toast.makeText(mView.getContext(), "Texte", Toast.LENGTH_SHORT).show();
+                categorie = "Texte";
+                filtre.putExtra("Categ",categorie);
+                startActivity(filtre);
                 break;
             case R.id.uservice_inscripOnLine:
                 Toast.makeText(mView.getContext(), "Inscription en ligne", Toast.LENGTH_SHORT).show();
+                categorie = "Inscription en ligne";
+                filtre.putExtra("Categ",categorie);
+                startActivity(filtre);
                 break;
             case R.id.uservice_photoMin:
                 Toast.makeText(mView.getContext(), "Photo minutes", Toast.LENGTH_SHORT).show();
+                categorie = "Photo minutes";
+                filtre.putExtra("Categ",categorie);
+                startActivity(filtre);
                 break;
             case R.id.uservice_maintenance:
                 Toast.makeText(mView.getContext(), "Maintenance", Toast.LENGTH_SHORT).show();
+                categorie = "Maintenance";
+                filtre.putExtra("Categ",categorie);
+                startActivity(filtre);
                 break;
             case R.id.uservice_coiffure:
                 Toast.makeText(mView.getContext(), "Coiffure", Toast.LENGTH_SHORT).show();
+                categorie = "Coiffure";
+                filtre.putExtra("Categ",categorie);
+                startActivity(filtre);
                 break;
             case R.id.uservice_cv:
                 Toast.makeText(mView.getContext(), "Curriculum Vitae", Toast.LENGTH_SHORT).show();
+                categorie = "Curriculum Vitae";
+                filtre.putExtra("Categ",categorie);
+                startActivity(filtre);
                 break;
         }
     }

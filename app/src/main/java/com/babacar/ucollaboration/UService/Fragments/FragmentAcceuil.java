@@ -34,7 +34,7 @@ public class FragmentAcceuil extends Fragment {
 
     private View mView;
     private RecyclerView mRecyclerView;
-    private List<Bosseur> mBosseurs;
+    public static List<Bosseur> sBosseurs;
 
     public FragmentAcceuil() {
         // Required empty public constructor
@@ -45,7 +45,7 @@ public class FragmentAcceuil extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         mView = inflater.inflate(R.layout.uservice_fragment_acceuil, container, false);
-        mBosseurs = new ArrayList<>(10);
+        sBosseurs = new ArrayList<>(10);
 
         referenceWidgets(); // Méthode pour rérérencer les widgets.
 
@@ -68,7 +68,7 @@ public class FragmentAcceuil extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                mBosseurs.clear();
+                sBosseurs.clear();
                 for (DataSnapshot bosseurSnapshot : dataSnapshot.getChildren()) {
 
                     final Bosseur bosseur = bosseurSnapshot.getValue(Bosseur.class);
@@ -84,11 +84,11 @@ public class FragmentAcceuil extends Fragment {
                             bosseur.setEmail(etudiant.getEmail());
                             bosseur.setPhoto(etudiant.getPhoto());
                             bosseur.setNewAdresse(etudiant.getNewAdresse());
-                            bosseur.setCategorieSocioProf(etudiant.getCategorieSocioProf());
+                            bosseur.setCategorieSocioProf(bosseur.getCategorieSocioProf());
 
-                            mBosseurs.add(bosseur);
+                            sBosseurs.add(bosseur);
                             Log.d("Bossss", bosseur.toString());
-                            inflater(mBosseurs);
+                            inflater(sBosseurs);
                         }
 
                         @Override

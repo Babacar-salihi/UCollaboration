@@ -55,7 +55,7 @@
         android:textStyle="bold"
         android:fontFamily="@font/philosopherbold"
         android:background="@drawable/style_btns"
-        android:layout_margin="@dimen/margin20"
+        android:layout_margin="@dimen/margin25"
         android:elevation="@dimen/elevation4"/>
 
 </LinearLayout>

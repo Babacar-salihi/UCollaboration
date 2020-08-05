@@ -22,7 +22,7 @@
         <ImageView
             android:layout_width="@dimen/widthSize100"
             android:layout_height="@dimen/widthSize100"
-            android:src="@drawable/l_etudiant_logo_2"/>
+            android:src="@drawable/logofinalforme"/>
 
         <TextView
             android:layout_width="wrap_content"

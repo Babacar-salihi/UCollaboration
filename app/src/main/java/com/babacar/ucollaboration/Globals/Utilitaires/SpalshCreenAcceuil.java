@@ -31,7 +31,6 @@ public class SpalshCreenAcceuil extends AppCompatActivity {
         setContentView(R.layout.activity_spalsh_creen_acceuil);
 
         mUserName = findViewById(R.id.splash_userName);
-        animation(); // Méthode pour animer le texte (fondu et se deplace).
         loadCurrentUser(); // Permet de charger le dernier utilisateur connecté.
     }
 
@@ -40,7 +39,6 @@ public class SpalshCreenAcceuil extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        declencheur(); // Méthode pour déclencher le countDownTimer.
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -48,7 +46,9 @@ public class SpalshCreenAcceuil extends AppCompatActivity {
                 startActivity(catalogue);
                 finish();
             }
-        }, 3000); // 3s.
+        }, 5000); // 3s.
+
+        animation(); // Méthode pour animer le texte (fondu et se deplace).
     }
 
     /**
@@ -58,9 +58,16 @@ public class SpalshCreenAcceuil extends AppCompatActivity {
         Animation bottom = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slider_bottom_init_position);
         mBienvenue = findViewById(R.id.splash_acceuilText);
         mBienvenue.setAnimation(bottom);
-        Animation logo = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fondu_logo);
-        ImageView mImageView = findViewById(R.id.splash_acceuilLogo);
-        mImageView.setAnimation(logo);
+        Animation logoForme = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.logo_forme_rotate);
+        Animation logoTrait = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.logo_trait_hideshow);
+        Animation logoName = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.logo_name_droit);
+
+        ImageView mLogoForme = findViewById(R.id.splash_acceuilLogoForme);
+        mLogoForme.setAnimation(logoForme);
+        ImageView mLogoTrait = findViewById(R.id.splash_acceuilLogoTrait);
+        mLogoTrait.setAnimation(logoTrait);
+        ImageView mLogoName = findViewById(R.id.splash_acceuilLogoName);
+        mLogoName.setAnimation(logoName);
     }
 
 
@@ -83,13 +90,4 @@ public class SpalshCreenAcceuil extends AppCompatActivity {
             }
         }
     }
-
-    /**
-     * Permet de déclencher la méthode startTimer qui est dans l'activité Panier/RecyclerViewPanier.
-     */
-    private void declencheur() {
-
-        //RecyclerViewPanier.startMinuteur();
-    }
-
 }

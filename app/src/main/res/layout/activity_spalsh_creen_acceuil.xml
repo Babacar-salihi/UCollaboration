@@ -16,19 +16,11 @@
         app:lottie_rawRes="@raw/welcome2"
         />-->
 
-    <ImageView
-        android:id="@+id/splash_acceuilLogo"
-        android:layout_width="@dimen/imgSize300"
-        android:layout_height="@dimen/imgSize300"
-        android:src="@drawable/welcome"
-        android:visibility="gone"/>
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginBottom="@dimen/margin20"
         android:weightSum="100">
 
         <ImageView
@@ -63,17 +55,18 @@
         android:textSize="35dp"
         android:textColor="@android:color/black"
         android:fontFamily="@font/philosopheritalic"
-        android:layout_margin="@dimen/margin7"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/margin30"
         />
 
     <TextView
         android:id="@+id/splash_userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/margin40"
         android:text="@string/userName"
         android:textColor="@color/darkAppColor"
-        android:visibility="gone"
-        android:layout_margin="@dimen/margin7"
-        />
+        android:visibility="gone" />
 
 </LinearLayout>

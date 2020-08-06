@@ -186,7 +186,8 @@ public class Connexion extends AppCompatActivity {
     private void alertDialog() {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setMessage("Vous n'étes pas connecter à internet")
+        alert.setTitle("Pas de connexion à internet")
+                .setMessage("Allumer votre connexion à internet ou réessayer plus tard!")
                 .setCancelable(false)
                 .setPositiveButton("Se connecter", new DialogInterface.OnClickListener() {
                     @Override

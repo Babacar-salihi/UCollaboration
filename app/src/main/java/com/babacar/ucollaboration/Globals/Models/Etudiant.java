@@ -4,6 +4,7 @@ package com.babacar.ucollaboration.Globals.Models;
 
 import com.babacar.ucollaboration.UMarket.Modeles.Panier;
 
+import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Etudiant {
     //protected List<Panier> mBienAcheter = new ArrayList<>(); // Les Bients acheter.
     protected List<String> mDetailsPrestationsEtu = new ArrayList<>();
 
-    protected Departement mDepartement;
+    protected String mFaculte;
 
     public Etudiant() {
     }
@@ -56,7 +57,7 @@ public class Etudiant {
     }*/
 
 
-    public Etudiant(String mIdEtu, String mNomEtu, String mPrenomEtu, int mNumTelephoneEtu, String mNumChambre, String mEmail, String password, String mAdresse, String mPhoto, Departement mDepartement, String newAdresse) {
+    public Etudiant(String mIdEtu, String mNomEtu, String mPrenomEtu, int mNumTelephoneEtu, String mNumChambre, String mEmail, String password, String mAdresse, String mPhoto, String mFaculte, String newAdresse) {
         this.mIdEtu = mIdEtu;
         this.mNomEtu = mNomEtu;
         this.mPrenomEtu = mPrenomEtu;
@@ -67,7 +68,7 @@ public class Etudiant {
         this.mAdresse = mAdresse;
         //this.mCategorieSocioProf = mCategorieSocioProf;
         this.mPhoto = mPhoto;
-        this.mDepartement = mDepartement;
+        this.mFaculte = mFaculte;
         this.mNewAdresse = newAdresse;
     }
 
@@ -151,12 +152,12 @@ public class Etudiant {
         mPhoto = photo;
     }
 
-    public Departement getDepartement() {
-        return mDepartement;
+    public String getFaculte() {
+        return mFaculte;
     }
 
-    public void setDepartement(Departement departement) {
-        mDepartement = departement;
+    public void setFaculte(String faculte) {
+        mFaculte = faculte;
     }
 
     public String getNewAdresse() {
@@ -215,7 +216,7 @@ public class Etudiant {
                 ", mPanier=" + mPanier +
                 ", mFavorie=" + mFavorie +
                 ", mDetailsPrestationsEtu=" + mDetailsPrestationsEtu +
-                ", mDepartement=" + mDepartement +
+                ", mFaculte=" + mFaculte +
                 '}';
     }
 }

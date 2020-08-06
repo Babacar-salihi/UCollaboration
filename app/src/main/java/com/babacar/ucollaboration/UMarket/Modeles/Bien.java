@@ -20,7 +20,6 @@ public class Bien implements Serializable {
     private String mTypeVente;
     private String  mDatePublication;
     private int mEtatBien; // -1: Non disponible, 0: Disponible(Par defaut), 1: Vendu.
-    private String mDateExpiration;
     private boolean mLivraison; // livraison disponible : true, livraison indisponible: false.
 
     private boolean mActiver; // Bien activer ou pas.
@@ -164,14 +163,6 @@ public class Bien implements Serializable {
         mDetailsPrestation = detailsPrestation;
     }
 
-    public String getDateExpiration() {
-        return mDateExpiration;
-    }
-
-    public void setDateExpiration(String dateExpiration) {
-        mDateExpiration = dateExpiration;
-    }
-
     public int getLike() {
         return mLike;
     }
@@ -210,7 +201,6 @@ public class Bien implements Serializable {
                 ", mTypeVente='" + mTypeVente + '\'' +
                 ", mDatePublication='" + mDatePublication + '\'' +
                 ", mEtatBien=" + mEtatBien +
-                ", mDateExpiration='" + mDateExpiration + '\'' +
                 ", mLivraison=" + mLivraison +
                 ", activer=" + mActiver +
                 ", mVendeur=" + mVendeur +

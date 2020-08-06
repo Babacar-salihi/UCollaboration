@@ -36,9 +36,9 @@ import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sInsc
 public class Inscription extends AppCompatActivity {
 
     private CircleImageView mUserProfilePic;
-    private Spinner mSpinnerDepart;
+    private Spinner mSpinnerFac;
     private EditText mPrenom, mNom, mNumTel, mNumChambre, mEmail, mPwd, mDomicile, mEditTextDepart;
-    private String mDepartement;
+    private String mFac;
     private Button mBtnContinuer;
     private ProgressBar mInsProgress;
     private final int REQUEST_CODE = 133;
@@ -52,6 +52,7 @@ public class Inscription extends AppCompatActivity {
 
         referenceWidgets(); // Méthode permettant de référencer les widgets.
         choisirPhoto(); // Méthode permettant de choisir une photo de profile.
+        faculte(); // Méthode permettant de choisir une faculté.
         creerCompte(); // Méthode permettant de créer un compte utilisateur.
     }
 
@@ -62,7 +63,7 @@ public class Inscription extends AppCompatActivity {
 
         this.mUserProfilePic = findViewById(R.id.inscription_userProfile);
         this.mInsProgress = findViewById(R.id.inscription_progress);
-        this.mSpinnerDepart = findViewById(R.id.inscription_spinner_userDepart);
+        this.mSpinnerFac = findViewById(R.id.inscription_spinner_userDepart);
         this.mPrenom = findViewById(R.id.inscription_userPrenom);
         this.mNom = findViewById(R.id.inscription_userNom);
         this.mNumTel = findViewById(R.id.inscription_userTel);
@@ -106,6 +107,28 @@ public class Inscription extends AppCompatActivity {
     }
 
     /**
+     * Permert de renseigner sa faculté
+     */
+    private void faculte() {
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplication(), R.array.facultes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        mSpinnerFac.setAdapter(adapter);
+        mSpinnerFac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                mFac = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    /**
      * Permet de créer un compte pour l'utilisateur.
      */
     public void creerCompte() {
@@ -126,9 +149,7 @@ public class Inscription extends AppCompatActivity {
                     String pwd = mPwd.getText().toString().trim();
                     String adresse = mDomicile.getText().toString().trim();
 
-                    /**
-                     * Données obligatoires pour s'inscrire.
-                     */
+                    //Données obligatoires pour s'inscrire.
                     if (TextUtils.isEmpty(prenom)) {
                         Toast.makeText(getApplicationContext(), "Donnez votre prenom", Toast.LENGTH_SHORT).show();
                         return;
@@ -148,9 +169,9 @@ public class Inscription extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Pour plus de sécurité, votre mot de passe doit contenir au minimum 6 caractères!", Toast.LENGTH_LONG).show();
                         return;
                     }
-                /*if (mDepartement.equalsIgnoreCase("autre")){
-                    mDepartement = mEditTextDepart.getText().toString().trim();
-                    if(TextUtils.isEmpty(mDepartement)){
+                /*if (mFaculte.equalsIgnoreCase("autre")){
+                    mFaculte = mEditTextDepart.getText().toString().trim();
+                    if(TextUtils.isEmpty(mFaculte)){
                         Toast.makeText(getApplicationContext(), "Donnez votre departement", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -168,6 +189,7 @@ public class Inscription extends AppCompatActivity {
                     etudiant.setPassword(pwd);
                     etudiant.setAdresse(adresse);
                     etudiant.setNewAdresse(adresse);
+                    etudiant.setFaculte(mFac);
 
                     Log.d("ETUDIANTTT", etudiant.toString());
 
@@ -324,7 +346,8 @@ public class Inscription extends AppCompatActivity {
     private void alertDialog() {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setMessage("Vous n'étes pas connecter à internet")
+        alert.setTitle("Pas de connexion à internet")
+                .setMessage("Allumer votre connexion à internet ou réessayer plus tard!")
                 .setCancelable(false)
                 .setPositiveButton("Se connecter", new DialogInterface.OnClickListener() {
                     @Override

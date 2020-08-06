@@ -156,7 +156,7 @@
             android:layout_margin="@dimen/margin15"
             />
 
-        <!-- Departement -->
+        <!-- Faculte -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="30"
                 android:layout_height="match_parent"
-                android:text="@string/userDepart"
+                android:text="@string/userFac"
                 android:inputType="text"
                 android:textSize="@dimen/texteSize17"
                 android:layout_gravity="center_vertical"
@@ -205,6 +205,7 @@
             android:text="@string/continer"
             android:textSize="@dimen/texteSize20"
             android:textStyle="bold"
+            android:textColor="@android:color/white"
             android:fontFamily="@font/philosopherbold"
             android:background="@drawable/style_btns"
             android:layout_margin="@dimen/margin20"

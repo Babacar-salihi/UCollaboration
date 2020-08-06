@@ -49,7 +49,7 @@
     <string name="detailsGarantie">Garantie :</string>
     <string name="detailsNombre">Nombre disponible :</string>
     <string name="detailsDescript">Description :</string>
-    <string name="titreInfoVendeur">LE VENDEUR</string>
+    <string name="titreInfoVendeur">VENDEUR</string>
     <string name="adresseVendeur">Adresse</string>
     <string name="appeler">Appeler</string>
     <string name="whatsApp">WhatsApp</string>
@@ -177,6 +177,16 @@
         <item>Autres</item>
     </string-array>
 
+    <!-- Spinner categorie -->
+    <string-array name="facultes">
+        <item>Faculté des Sciences et Techniques (FST)</item>
+        <item>Faculté des Sciences juridiques et politiques (FSJP)</item>
+        <item>Faculté de Médecine, de Pharmacie et d’Odontologie (FMPO)</item>
+        <item>Faculté des Lettres et Sciences humaines (FLSH)</item>
+        <item>Faculté des Sciences économiques et de Gestion (FASEG)</item>
+        <item>Faculté des Sciences et Technologies de l’Éducation et de la Formation (FASTEF)</item>
+    </string-array>
+
 
     <!-- UMaps -->
     <!-- GoogleMap key -->
@@ -195,6 +205,7 @@
     <string name="textComptePro">Avec ce compte c\'est sûr que vous aurez plus de visibilité et augmanter ainsin votre productivité.</string>
     <string name="selectOneItem">Laissez vous guidez</string>
     <string name="monEmplacement">Ajoutez votre emplacement</string>
+    <string name="userFac">Faculté</string>
 
 
 </resources>

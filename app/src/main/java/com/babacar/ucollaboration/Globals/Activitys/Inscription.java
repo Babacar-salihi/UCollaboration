@@ -1,10 +1,12 @@
 package com.babacar.ucollaboration.Globals.Activitys;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
@@ -26,6 +29,7 @@ import com.babacar.ucollaboration.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.babacar.ucollaboration.Globals.Activitys.Connexion.checkConnectivity;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sInscriptTest;
 
 
@@ -112,36 +116,38 @@ public class Inscription extends AppCompatActivity {
 
                 cacheClavier(); // Méthode pour cacher le clavier.
 
-                String prenom = mPrenom.getText().toString().trim();
-                String nom = mNom.getText().toString().trim();
-                String tel = mNumTel.getText().toString().trim();
-                String chambre = mNumChambre.getText().toString().trim();
-                String email = mEmail.getText().toString().trim();
-                String pwd = mPwd.getText().toString().trim();
-                String adresse = mDomicile.getText().toString().trim();
+                if (checkConnectivity(Inscription.this)) {
 
-                /**
-                 * Données obligatoires pour s'inscrire.
-                 */
-                if (TextUtils.isEmpty(prenom)) {
-                    Toast.makeText(getApplicationContext(), "Donnez votre prenom", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(nom)) {
-                    Toast.makeText(getApplicationContext(), "Donnez votre nom", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Donnez un email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(pwd)) {
-                    Toast.makeText(getApplicationContext(), "Donnez un mot de passe", Toast.LENGTH_SHORT).show();
-                    return;
-                } else if (pwd.length() < 6) { // 6 caractères au moins.
-                    Toast.makeText(getApplicationContext(), "Pour plus de sécurité, votre mot de passe doit contenir au minimum 6 caractères!", Toast.LENGTH_LONG).show();
-                    return;
-                }
+                    String prenom = mPrenom.getText().toString().trim();
+                    String nom = mNom.getText().toString().trim();
+                    String tel = mNumTel.getText().toString().trim();
+                    String chambre = mNumChambre.getText().toString().trim();
+                    String email = mEmail.getText().toString().trim();
+                    String pwd = mPwd.getText().toString().trim();
+                    String adresse = mDomicile.getText().toString().trim();
+
+                    /**
+                     * Données obligatoires pour s'inscrire.
+                     */
+                    if (TextUtils.isEmpty(prenom)) {
+                        Toast.makeText(getApplicationContext(), "Donnez votre prenom", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (TextUtils.isEmpty(nom)) {
+                        Toast.makeText(getApplicationContext(), "Donnez votre nom", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (TextUtils.isEmpty(email)) {
+                        Toast.makeText(getApplicationContext(), "Donnez un email", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (TextUtils.isEmpty(pwd)) {
+                        Toast.makeText(getApplicationContext(), "Donnez un mot de passe", Toast.LENGTH_SHORT).show();
+                        return;
+                    } else if (pwd.length() < 6) { // 6 caractères au moins.
+                        Toast.makeText(getApplicationContext(), "Pour plus de sécurité, votre mot de passe doit contenir au minimum 6 caractères!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                 /*if (mDepartement.equalsIgnoreCase("autre")){
                     mDepartement = mEditTextDepart.getText().toString().trim();
                     if(TextUtils.isEmpty(mDepartement)){
@@ -150,60 +156,60 @@ public class Inscription extends AppCompatActivity {
                     }
                 }*/
 
-                mBtnContinuer.setEnabled(false);
-                mInsProgress.setVisibility(View.VISIBLE);
+                    mBtnContinuer.setEnabled(false);
+                    mInsProgress.setVisibility(View.VISIBLE);
 
-                final Etudiant etudiant = new Etudiant();
-                etudiant.setPrenomEtu(prenom);
-                etudiant.setNomEtu(nom);
-                etudiant.setNumTelephoneEtu(Integer.parseInt(tel));
-                etudiant.setNumChambre(chambre);
-                etudiant.setEmail(email);
-                etudiant.setPassword(pwd);
-                etudiant.setAdresse(adresse);
-                etudiant.setNewAdresse(adresse);
+                    final Etudiant etudiant = new Etudiant();
+                    etudiant.setPrenomEtu(prenom);
+                    etudiant.setNomEtu(nom);
+                    etudiant.setNumTelephoneEtu(Integer.parseInt(tel));
+                    etudiant.setNumChambre(chambre);
+                    etudiant.setEmail(email);
+                    etudiant.setPassword(pwd);
+                    etudiant.setAdresse(adresse);
+                    etudiant.setNewAdresse(adresse);
 
-                Log.d("ETUDIANTTT", etudiant.toString());
+                    Log.d("ETUDIANTTT", etudiant.toString());
 
-                sInscriptTest = false;
-                if (mImageUri != null) { // Inscription avec photo de profile.
-                    DataBase.creationCompte(getApplicationContext(), etudiant, mImageUri);
-                    // Cette partie permet de bloquer l'ecran de l'utilisateur le temps que l'inscription passe.
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.d("mInscriptTest1", sInscriptTest + "");
-                            if (sInscriptTest) {
+                    sInscriptTest = false;
+                    if (mImageUri != null) { // Inscription avec photo de profile.
+                        DataBase.creationCompte(getApplicationContext(), etudiant, mImageUri);
+                        // Cette partie permet de bloquer l'ecran de l'utilisateur le temps que l'inscription passe.
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.d("mInscriptTest1", sInscriptTest + "");
+                                if (sInscriptTest) {
 
-                                Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
-                                Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class); // accéder à la 2ème étape (Vérification email).
-                                startActivity(versAcceuil);
-                                finish();
-                            } else { // Else on attend encore 3 secondes.
+                                    Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
+                                    Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class); // accéder à la 2ème étape (Vérification email).
+                                    startActivity(versAcceuil);
+                                    finish();
+                                } else { // Else on attend encore 3 secondes.
 
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
 
-                                        if (sInscriptTest) {
+                                            if (sInscriptTest) {
 
-                                            Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
-                                            Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class);
-                                            startActivity(versAcceuil);
-                                            finish();
-                                        } else { // Sinon on a redonne la main à l'utilisateur.
-                                            Toast.makeText(getApplicationContext(), "Votre connexion est faible réessayez ulterieurment", Toast.LENGTH_LONG).show();
-                                            mBtnContinuer.setEnabled(true);
-                                            mInsProgress.setVisibility(View.GONE);
+                                                Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
+                                                Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class);
+                                                startActivity(versAcceuil);
+                                                finish();
+                                            } else { // Sinon on a redonne la main à l'utilisateur.
+                                                Toast.makeText(getApplicationContext(), "Votre connexion est faible réessayez ulterieurment", Toast.LENGTH_LONG).show();
+                                                mBtnContinuer.setEnabled(true);
+                                                mInsProgress.setVisibility(View.GONE);
+                                            }
                                         }
-                                    }
-                                }, 2000);
+                                    }, 2000);
 
+                                }
                             }
-                        }
-                    }, 10000);
+                        }, 10000);
 
-                    // Cette partie permet de bloquer l'ecran de l'utilisateur le temps que l'inscription passe.
+                        // Cette partie permet de bloquer l'ecran de l'utilisateur le temps que l'inscription passe.
                     /*if (handler(10000)){ // On attend 10s.
                         Toast.makeText(getApplicationContext(), "Inscription reussi0", Toast.LENGTH_SHORT).show();
                     } else {
@@ -218,36 +224,41 @@ public class Inscription extends AppCompatActivity {
 
                     }*/
 
-                } else { // Inscription sans photo de profile.
+                    } else { // Inscription sans photo de profile.
 
-                    DataBase.creationCompte(getApplicationContext(), etudiant);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (sInscriptTest) {
-                                Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
-                                Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class);
-                                startActivity(versAcceuil);
-                                finish();
-                            } else {
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if (sInscriptTest) {
-                                            Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
-                                            Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class); // accéder à la 2ème étape (Vérification email).
-                                            startActivity(versAcceuil);
-                                            finish();
-                                        } else {
-                                            Toast.makeText(getApplicationContext(), "Votre connexion est faible réessayez ulterieurment", Toast.LENGTH_LONG).show();
-                                            mBtnContinuer.setEnabled(true);
-                                            mInsProgress.setVisibility(View.GONE);
+                        DataBase.creationCompte(getApplicationContext(), etudiant);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (sInscriptTest) {
+                                    Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
+                                    Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class);
+                                    startActivity(versAcceuil);
+                                    finish();
+                                } else {
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (sInscriptTest) {
+                                                Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
+                                                Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class); // accéder à la 2ème étape (Vérification email).
+                                                startActivity(versAcceuil);
+                                                finish();
+                                            } else {
+                                                Toast.makeText(getApplicationContext(), "Votre connexion est faible réessayez ulterieurment", Toast.LENGTH_LONG).show();
+                                                mBtnContinuer.setEnabled(true);
+                                                mInsProgress.setVisibility(View.GONE);
+                                            }
                                         }
-                                    }
-                                }, 3000);
+                                    }, 3000);
+                                }
                             }
-                        }
-                    }, 5000);
+                        }, 5000);
+                    }
+
+                } else {
+
+                    alertDialog();
                 }
 
             }
@@ -304,5 +315,32 @@ public class Inscription extends AppCompatActivity {
         super.finish();
 
         overridePendingTransition(R.anim.slider_left_position, R.anim.slider_out_right);
+    }
+
+    /**
+     * Permet de renvoyer l'utilisateur dans les parametres
+     * pour qu'il active sa connection à internet (Wifi ou Mobile).
+     */
+    private void alertDialog() {
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setMessage("Vous n'étes pas connecter à internet")
+                .setCancelable(false)
+                .setPositiveButton("Se connecter", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        startActivity(new Intent(Settings.ACTION_NETWORK_OPERATOR_SETTINGS));
+                    }
+                })
+                .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        startActivity(new Intent(getApplicationContext(), UserSpace.class));
+                        finish();
+                    }
+                })
+                .show();
     }
 }

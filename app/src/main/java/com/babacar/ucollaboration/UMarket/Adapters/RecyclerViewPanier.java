@@ -53,7 +53,7 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
 
         final Panier panier = mPaniers.get(position);
 
-        Log.d("HelloWord", panier.getQuantiteAchat()+"");
+        Log.d("HelloWord", position+"");
         //final Bien bien = gson.fromJson(panier.getBiens(), Bien.class);
         final Bien bien = getBienById(panier);
 
@@ -132,12 +132,8 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
             @Override
             public void onClick(View v) {
 
-                Log.d("BIENLOGBAV", bien.toString());
-                Log.d("BIENLOGPAV", panier.getQuantiteAchat()+"");
-
                 bien.setNombreBien(bien.getNombreBien()+panier.getQuantiteAchat());
-                Log.d("BIENLOGBAP", bien.toString());
-                Log.d("BIENLOGBAP", panier.getQuantiteAchat()+"");
+
                 if (bien.getEtatBien() == -1) {
                     bien.setEtatBien(0);
                 }

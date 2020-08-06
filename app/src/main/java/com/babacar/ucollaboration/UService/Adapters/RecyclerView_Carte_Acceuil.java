@@ -54,6 +54,8 @@ public class RecyclerView_Carte_Acceuil extends RecyclerView.Adapter<ViewHolderC
         holder.mFrontPress.setText(bosseur.getCategorieSocioProf());
         Glide.with(mContext).load(bosseur.getPhoto()).into(holder.mFrontPP);
         like(holder, bosseur); // Permet de noter le bosseur.
+        if (bosseur.isOnLine())
+            holder.mOnLine.setVisibility(View.VISIBLE);
 
         /* Back */
         Glide.with(mContext).load(bosseur.getPhoto()).into(holder.mBackPP);

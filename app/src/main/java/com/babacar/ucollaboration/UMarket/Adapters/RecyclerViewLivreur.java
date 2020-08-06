@@ -9,17 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Modeles.Livreur;
+import com.babacar.ucollaboration.UService.Models.Bosseur;
 
 import java.util.List;
 
 public class RecyclerViewLivreur extends RecyclerView.Adapter<ViewHolderLivreur> {
 
     private Context mContext;
-    private final List<Livreur>  mLivreurs;
+    private final List<Etudiant>  mLivreurs;
 
-    public RecyclerViewLivreur(Context context, List<Livreur> livreurs) {
+    public RecyclerViewLivreur(Context context, List<Etudiant> livreurs) {
 
         this.mContext = context;
         this.mLivreurs = livreurs;
@@ -37,8 +39,7 @@ public class RecyclerViewLivreur extends RecyclerView.Adapter<ViewHolderLivreur>
     @Override
     public void onBindViewHolder(@NonNull ViewHolderLivreur holder, int position) {
 
-        Livreur livreur = mLivreurs.get(position);
-
+        Etudiant livreur = mLivreurs.get(position);
         holder.mLivName.setText(livreur.getPrenomEtu());
     }
 

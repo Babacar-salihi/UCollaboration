@@ -22,6 +22,16 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
+            <View
+                android:id="@+id/uservice_onLine"
+                android:layout_width="@dimen/widthSize8"
+                android:layout_height="@dimen/widthSize8"
+                android:layout_gravity="right"
+                android:background="@android:color/holo_red_light"
+                android:layout_marginRight="@dimen/margin10"
+                android:layout_marginTop="@dimen/margin10"
+                android:visibility="gone"/>
+
             <!-- Photo profil ou logo -->
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/front_carte_image"

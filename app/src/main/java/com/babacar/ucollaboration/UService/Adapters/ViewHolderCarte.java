@@ -15,6 +15,7 @@ import com.wajahatkarim3.easyflipview.EasyFlipView;
 class ViewHolderCarte extends RecyclerView.ViewHolder {
 
     public EasyFlipView mFlipView;
+    public View mOnLine;
     public ImageView mFrontPP, mBackPP;
     public TextView mFrontName, mFrontPress, mBackPress, mBackAdr, mBackTel, mBackEmail;
     public RatingBar mRatingBar;
@@ -25,6 +26,7 @@ class ViewHolderCarte extends RecyclerView.ViewHolder {
 
         this.mFlipView = itemView.findViewById(R.id.flipper);
 
+        this.mOnLine = itemView.findViewById(R.id.uservice_onLine);
         this.mFrontPP = itemView.findViewById(R.id.front_carte_image);
         this.mFrontName = itemView.findViewById(R.id.front_carte_name);
         this.mFrontPress = itemView.findViewById(R.id.front_carte_profess);

@@ -95,7 +95,7 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     Toast.makeText(mContext, "déconnexion", Toast.LENGTH_SHORT).show();
-                                    DataBase.deconnexionUser();
+                                    DataBase.deconnexionUser(sCurrentUser.getIdEtu());
                                     sCurrentUser = null; mContext.startActivity(new Intent(mContext, Acceuil.class));
                                 }
                             });

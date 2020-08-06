@@ -411,7 +411,7 @@ public class DataBase {
     /**
      * Permet d'obtenir les infos supplementaires de l'utilisateur connecté.
      */
-    private static void getCurrentUser_FB_RTDB(FirebaseUser user){
+    private static void getCurrentUser_FB_RTDB(final FirebaseUser user){
 
         DatabaseReference etudiant = sReference.child("Etudiants").child(user.getUid());
         etudiant.addValueEventListener(new ValueEventListener() {
@@ -421,6 +421,7 @@ public class DataBase {
                 sConnexTest = true;
                 loadPanier(sCurrentUser);
                 loadFavorie(sCurrentUser);
+                onLine(user.getUid()); // Permet de dire que l'utilisateur est en ligne.
             }
 
             @Override
@@ -557,10 +558,11 @@ public class DataBase {
     /**
      * Permet de deconnecter l'utilisateur.
      */
-    public static void deconnexionUser() {
+    public static void deconnexionUser(String idUser) {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.signOut();
+        offLine(idUser);
     }
 
     // ================================== Fin Partie Utilisateur ====================================================
@@ -830,4 +832,23 @@ public class DataBase {
         sRefUService.child(bosseur.getIdEtu())
                 .setValue(bosseur);
     }
+
+    /**
+     * Permet de dire que l'utilisateur qui tente de se connecter
+     * est un bosseur en ligne.
+     */
+    private static void onLine(String idUser) {
+
+        sRefUService.child(idUser).child("onLine").setValue(true);
+    }
+
+    /**
+     * Permet de dire que l'utilisateur qui tente de se connecter
+     * est un bosseur offLine.
+     */
+    private static void offLine(String idUser) {
+
+        sRefUService.child(idUser).child("onLine").setValue(false);
+    }
+
 }

@@ -5,7 +5,9 @@ import com.babacar.ucollaboration.Globals.Models.Etudiant;
 public class Bosseur extends Etudiant {
 
     private int nbStart;
-    protected String mCategorieSocioProf;
+    private String mCategorieSocioProf;
+    private boolean onLine; // Le bosseur est en ligne ou pas.
+
 
     public Bosseur() {
 
@@ -40,6 +42,14 @@ public class Bosseur extends Etudiant {
 
     public void setCategorieSocioProf(String categorieSocioProf) {
         mCategorieSocioProf = categorieSocioProf;
+    }
+
+    public boolean isOnLine() {
+        return onLine;
+    }
+
+    public void setOnLine(boolean onLine) {
+        this.onLine = onLine;
     }
 
     @Override

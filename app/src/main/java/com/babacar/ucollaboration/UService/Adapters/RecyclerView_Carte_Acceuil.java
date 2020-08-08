@@ -107,6 +107,7 @@ public class RecyclerView_Carte_Acceuil extends RecyclerView.Adapter<ViewHolderC
         });
     }
 
+    /*TODO: remplacer l'objet bosseur par le numéro de téléphone tout simplement*/
     /**
      * Permet d'appeler le bosseur pour bénéficier de ses services.
      * @param bosseur
@@ -122,6 +123,7 @@ public class RecyclerView_Carte_Acceuil extends RecyclerView.Adapter<ViewHolderC
         }
     }
 
+    /*TODO: remplacer l'objet bosseur par le numéro de téléphone tout simplement*/
     /**
      * Permet de joindre le bosseur sur WhatsApp
      * @param

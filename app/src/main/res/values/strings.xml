@@ -150,7 +150,7 @@
     <string name="photoMin">Photo minutes</string>
     <string name="maint">Maintenance</string>
     <string name="coiffure">Coiffure</string>
-    <string name="cv">Curriculum Vitae(CV)</string>
+    <string name="liv">Livreur</string>
     <string name="hintSearchBien">Que cherchez vous?</string>
 
     <!-- Spinner categorie socio-economique-->
@@ -162,7 +162,7 @@
         <item>Photo minutes</item>
         <item>Mainenance</item>
         <item>Coiffure</item>
-        <item>Curriculum Vitae</item>
+        <item>Livreur</item>
         <item>Autres</item>
     </string-array>
 

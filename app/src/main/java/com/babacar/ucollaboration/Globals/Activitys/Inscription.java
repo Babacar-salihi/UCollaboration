@@ -158,6 +158,11 @@ public class Inscription extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Donnez votre nom", Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    if (tel != null && tel.length() != 9) {
+
+                        Toast.makeText(getApplicationContext(), "Le numéro doit contenir que 9 chiffres!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     if (TextUtils.isEmpty(email)) {
                         Toast.makeText(getApplicationContext(), "Donnez un email", Toast.LENGTH_SHORT).show();
                         return;

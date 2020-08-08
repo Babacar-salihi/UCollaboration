@@ -315,7 +315,7 @@
 
             <!-- Etudiant professeur -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/uservice_cv"
+                android:id="@+id/uservice_liv"
                 android:layout_width="0dp"
                 android:layout_weight="50"
                 android:layout_height="@dimen/width_100"
@@ -341,7 +341,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/cv"
+                        android:text="@string/liv"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="@dimen/margin7"
                         android:textSize="@dimen/texteSize17"

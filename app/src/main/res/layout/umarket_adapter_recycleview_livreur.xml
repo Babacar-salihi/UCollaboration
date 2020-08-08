@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/adapter_livreur_Card"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -16,6 +17,11 @@
         android:background="@android:color/transparent"
         android:padding="@dimen/padding2"
         android:orientation="vertical">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/adapter_livreur_profil"

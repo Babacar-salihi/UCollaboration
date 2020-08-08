@@ -127,7 +127,7 @@ public class AcheterBien extends AppCompatActivity {
                         });
                     }
                 }
-                afficheLiv(mLivreurs); // Méthode pour afficher les livreurs.
+                afficheLiv(); // Méthode pour afficher les livreurs.
 
             }
 
@@ -176,7 +176,7 @@ public class AcheterBien extends AppCompatActivity {
     /**
      * Permet d'afficher les livreurs
      */
-    private void afficheLiv(List<Etudiant> livreurs) {
+    private void afficheLiv() {
 
         /*List<Livreur> livreurs = new ArrayList<>(10);
         livreurs.add(new Livreur("Babacar", "Ndong", 781401217));
@@ -188,7 +188,7 @@ public class AcheterBien extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(new RecyclerViewLivreur(getApplicationContext(), livreurs));
+        mRecyclerView.setAdapter(new RecyclerViewLivreur(this, mLivreurs));
     }
 
     /**

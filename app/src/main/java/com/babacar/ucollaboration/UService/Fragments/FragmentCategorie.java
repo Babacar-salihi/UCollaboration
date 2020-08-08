@@ -61,7 +61,7 @@ public class FragmentCategorie extends Fragment implements View.OnClickListener 
         this.mPhotoMin = mView.findViewById(R.id.uservice_photoMin);
         this.mMaintenance = mView.findViewById(R.id.uservice_maintenance);
         this.mCoiffure = mView.findViewById(R.id.uservice_coiffure);
-        this.mCv = mView.findViewById(R.id.uservice_cv);
+        this.mCv = mView.findViewById(R.id.uservice_liv);
     }
 
     /**
@@ -116,7 +116,7 @@ public class FragmentCategorie extends Fragment implements View.OnClickListener 
                 filtre.putExtra("Categ",categorie);
                 startActivity(filtre);
                 break;
-            case R.id.uservice_cv:
+            case R.id.uservice_liv:
                 Toast.makeText(mView.getContext(), "Curriculum Vitae", Toast.LENGTH_SHORT).show();
                 categorie = "Curriculum Vitae";
                 filtre.putExtra("Categ",categorie);

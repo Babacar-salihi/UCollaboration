@@ -99,7 +99,7 @@ public class CreerComptePro extends AppCompatActivity {
                     }
                 }
 
-                Bosseur bosseur = new Bosseur(sCurrentUser.getIdEtu(), 0, mCategSocio);
+                Bosseur bosseur = new Bosseur(sCurrentUser.getIdEtu(), 0, mCategSocio, true);
 
                 DataBase.createBosseur(bosseur);
                 startActivity(new Intent(getApplicationContext(), SplashCreenOK.class));

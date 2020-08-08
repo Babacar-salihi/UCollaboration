@@ -162,7 +162,7 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
 
         PolygonOptions polygonOptions = new PolygonOptions()
                 .strokeColor(Color.RED)
-                .fillColor(Color.argb(10, 0, 0, 255))
+                .fillColor(Color.argb(20, 0, 0, 255))
                 .add(new LatLng(14.692578044222667, -17.461818382143974))
                 .add(new LatLng(14.692832305313065, -17.46186800301075))
                 .add(new LatLng(14.693034027549317, -17.462043687701225))

@@ -206,6 +206,11 @@
     <string name="selectOneItem">Laissez vous guidez</string>
     <string name="monEmplacement">Ajoutez votre emplacement</string>
     <string name="userFac">Faculté</string>
+    <string name="nomLieu">Nom du lieu</string>
+    <string name="hintNomLieu">Donnez le nom du lieu</string>
+    <string name="deatilsLieu">Description</string>
+    <string name="hintDescLieu">Donnez plus de détails</string>
+    <string name="ajouterLieu">Valider</string>
 
 
 </resources>

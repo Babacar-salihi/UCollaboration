@@ -19,6 +19,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
 import com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private LinearLayout mMoreOptions;
     private boolean testeToogle = false; // autres boutons en vue ou pas.
     private AutoCompleteTextView mAutoSearch; // AutoCompletion
+
+    private RelativeLayout mRelativeLayout; // Pour l'affichage du Snackbar.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
      */
     private void referenceWidgets() {
 
+        mRelativeLayout = findViewById(R.id.umaps_layout);
         mFragment = getSupportFragmentManager().findFragmentById(R.id.fragment1);
         mYourPosition = new Lieu();
         mAutoSearch = findViewById(R.id.search_lieu);
@@ -236,11 +241,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     case EditorInfo
                             .IME_ACTION_SEARCH :
 
+                        hideKeyBoard(); // Cacher le clavier.
+
                         if (mAutoSearch.getText().toString().trim().length() != 0) {
 
                             if (sNomLieu.contains(mAutoSearch.getText().toString().trim())) { // Le lieu est connu.
 
-                                hideKeyBoard(); // Cacher le clavier.
                                 for (Lieu lieu : sLieux) {
 
                                     if (lieu.getPosition().equalsIgnoreCase(mAutoSearch.getText().toString())) {
@@ -251,7 +257,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                             } else { // Le lieu n'est pas connu.
 
                                 Toast.makeText(MainActivity.this, "Désolé! mais ce lieu n'est pas encore connu\n réessayez dans un court instant.", Toast.LENGTH_LONG).show();
-                                DataBase.addLieuInconnu(mAutoSearch.getText().toString().trim()); // Ajouter le lieu dans la liste des lieux inconnus.
+                                showSnackBar(); // Méthode permettant d'afficher le Snackbar.
                             }
                         }
                         break;
@@ -304,6 +310,26 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             input.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    /**
+     * Permet d'afficher le Snackbar pour aider à ajouter le lieu.
+     */
+    private void showSnackBar() {
+
+        Snackbar.make(mRelativeLayout, "Aidez à améliorer la carte", Snackbar.LENGTH_INDEFINITE)
+                .setAction("OUI", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent ameliorer = new Intent(getApplicationContext(), Aide.class);
+                        ameliorer.putExtra("inconnu", mAutoSearch.getText().toString().trim());
+                        startActivity(ameliorer);
+//                        DataBase.addLieuInconnu(mAutoSearch.getText().toString().trim()); // Ajouter le lieu dans la liste des lieux inconnus.
+
+                    }
+                })
+                .show();
     }
 
     @Override

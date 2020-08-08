@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.Globals.Utilitaires.PhotoUtilitaire;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
+import com.babacar.ucollaboration.UMaps.Models.LieuInconnu;
 import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewBien;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.babacar.ucollaboration.UMarket.Modeles.DetailsPrestation;
@@ -812,10 +813,12 @@ public class DataBase {
      * Permet d'ajouter le lieu dans la liste des lieux inconnus, et serra ultérieurement ajouter par l'administrateur.
      * @param lieu
      */
-    public static void addLieuInconnu(String lieu) {
+    public static void addLieuInconnu(LieuInconnu lieu) {
 
+        String key = sReference.push().getKey();
+        lieu.setIdLieu(key);
         DatabaseReference lieuInconnu = sRefUmaps.child("LieuxInconnus");
-        lieuInconnu.child(lieu).setValue(lieu);
+        lieuInconnu.child(key).setValue(lieu);
     }
 
     // =================================== UService =====================================
@@ -837,18 +840,50 @@ public class DataBase {
      * Permet de dire que l'utilisateur qui tente de se connecter
      * est un bosseur en ligne.
      */
-    private static void onLine(String idUser) {
+    private static void onLine(final String idUser) {
 
-        sRefUService.child(idUser).child("onLine").setValue(true);
+        //sRefUService.child(idUser).child("onLine").setValue(true);
+        sRefUService.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot bosseurSnapshot : dataSnapshot.getChildren()) {
+                    Bosseur bosseur = bosseurSnapshot.getValue(Bosseur.class);
+                    if (bosseur.getIdEtu().equals(idUser))
+                        sRefUService.child(idUser).child("onLine").setValue(true);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     /**
      * Permet de dire que l'utilisateur qui tente de se connecter
      * est un bosseur offLine.
      */
-    private static void offLine(String idUser) {
+    private static void offLine(final String idUser) {
 
-        sRefUService.child(idUser).child("onLine").setValue(false);
+        sRefUService.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot bosseurSnapshot : dataSnapshot.getChildren()) {
+                    Bosseur bosseur = bosseurSnapshot.getValue(Bosseur.class);
+                    if (bosseur.getIdEtu().equals(idUser))
+                        sRefUService.child(idUser).child("onLine").setValue(false);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 }

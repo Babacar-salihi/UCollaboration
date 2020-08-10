@@ -2,10 +2,10 @@ package com.babacar.ucollaboration.UMaps.Models;
 
 public class Lieu {
 
-    private String mIdLieu;
-    private String mPosition;
-    private double mLat;
-    private double mLong;
+    protected String mIdLieu;
+    protected String mPosition;
+    protected double mLat;
+    protected double mLong;
 
     public Lieu() {
     }

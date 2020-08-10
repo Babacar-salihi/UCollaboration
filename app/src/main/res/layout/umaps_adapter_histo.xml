@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/umaps_adapter_card"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="@dimen/elevation5"
+    app:cardUseCompatPadding="true"
+    android:layout_margin="@dimen/margin2"
+    app:cardCornerRadius="@dimen/radius5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding10"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/umaps_adapter_nomLieu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nomLieu"
+            android:textSize="@dimen/texteSize20"
+            android:fontFamily="@font/philosopherregular"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/umaps_adapter_heure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/heureHisto"
+            android:textSize="@dimen/texteSize17"
+            android:fontFamily="@font/philosopheritalic"
+            android:gravity="center_vertical"
+            android:layout_below="@id/umaps_adapter_nomLieu"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

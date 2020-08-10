@@ -32,7 +32,9 @@ import androidx.fragment.app.Fragment;
 import com.babacar.ucollaboration.Globals.Activitys.Acceuil;
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.R;
+import com.babacar.ucollaboration.UMaps.Models.Histo;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
+import com.babacar.ucollaboration.UMaps.SqliteDB.HistoHelper;
 import com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -40,7 +42,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sLieux;
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private LocationManager mLocationManager; // Localisation de l'utilisateur.
     private final int REQUEST_CODE = 30;
     private Lieu mYourPosition;
-    private FloatingActionButton mBtnPlus, mBtnExplorer; // Boutons flottants.
+    private FloatingActionButton mBtnPlus, mBtnExplorer, mBtnHisto; // Boutons flottants.
     private LinearLayout mMoreOptions;
     private boolean testeToogle = false; // autres boutons en vue ou pas.
     private AutoCompleteTextView mAutoSearch; // AutoCompletion
@@ -114,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         mMoreOptions = findViewById(R.id.umaps_moreOptions);
         mBtnPlus = findViewById(R.id.umaps_floattingBtn_ajouter_lieu);
         mBtnExplorer = findViewById(R.id.umaps_floattingBtn_explorer);
+        mBtnHisto = findViewById(R.id.umaps_floattingBtn_historiques);
     }
 
 
@@ -250,6 +255,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                                 for (Lieu lieu : sLieux) {
 
                                     if (lieu.getPosition().equalsIgnoreCase(mAutoSearch.getText().toString())) {
+
+                                        insertIntoDB(lieu);
                                         moveCamera(lieu);
                                         mAutoSearch.clearFocus(); // Pour effacer la zone de texte.
                                     }
@@ -266,6 +273,23 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 return false;
             }
         });
+    }
+
+    /**
+     * Permet d'inserer les historiques de recherche dans la base de données.
+     */
+    private void insertIntoDB(Lieu lieu) {
+
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance(DateFormat.MEDIUM).format(calendar.getTime());
+        Histo histo = new Histo(lieu.getPosition(), lieu.getLat(), lieu.getLong(), currentDate);
+        HistoHelper helper = new HistoHelper(getApplicationContext());
+        boolean insert = helper.insertIntoDB(histo);
+
+        if (insert)
+            Toast.makeText(this, "OKKKKKKKKK", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "KOOOOOOOOO", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -287,11 +311,22 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     Animation showOpstions = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.umaps_show_more_options);
                     mMoreOptions.setVisibility(View.VISIBLE);
                     mMoreOptions.setAnimation(showOpstions);
+
+                    /* Exlorqtion */
                     mBtnExplorer.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
 
                             UcadCarte.explorer();
+                        }
+                    });
+
+                    /* Historique */
+                    mBtnHisto.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            startActivity(new Intent(getApplicationContext(), Historique.class));
                         }
                     });
                     testeToogle = true;
@@ -329,6 +364,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
                     }
                 })
+                .setDuration(7000)
                 .show();
     }
 

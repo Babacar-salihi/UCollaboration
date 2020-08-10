@@ -8,7 +8,6 @@ public class Bosseur extends Etudiant {
     private String mCategorieSocioProf;
     private boolean mOnLine; // Le bosseur est en ligne ou pas.
 
-
     public Bosseur() {
 
     }

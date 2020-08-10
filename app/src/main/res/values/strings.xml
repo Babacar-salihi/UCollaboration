@@ -211,6 +211,10 @@
     <string name="deatilsLieu">Description</string>
     <string name="hintDescLieu">Donnez plus de détails</string>
     <string name="ajouterLieu">Valider</string>
+    <string name="titleHisto">Historiques</string>
+    <string name="heureHisto">date</string>
+    <string name="supAll">Supprimer tout</string>
+    <string name="zeroHisto">Aucun historique</string>
 
 
 </resources>

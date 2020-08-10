@@ -55,6 +55,7 @@
         android:visibility="gone"
         >
 
+        <!-- Exxplorer -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/umaps_floattingBtn_explorer"
             android:layout_width="wrap_content"
@@ -64,12 +65,24 @@
             android:layout_marginLeft="@dimen/margin20"
             />
 
+        <!-- Itinéraire -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/umaps_floattingBtn_itineraire"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/umaps_lightLimonGreen"
+            android:backgroundTint="@color/darkGreen"
             android:src="@drawable/destination"
+            android:layout_marginLeft="@dimen/margin20"
+            android:layout_marginTop="@dimen/texteSize10"
+            />
+
+        <!-- Historique de recherche -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/umaps_floattingBtn_historiques"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/uservice_darkBlue"
+            android:src="@drawable/histo"
             android:layout_marginLeft="@dimen/margin20"
             android:layout_marginTop="@dimen/texteSize10"
             />

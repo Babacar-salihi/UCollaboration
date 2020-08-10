@@ -9,6 +9,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
+import com.babacar.ucollaboration.UMaps.SqliteDB.HistoHelper;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -134,6 +135,7 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
             circleOptions.fillColor(Color.argb(50, 0, 255, 0));
             mGoogleMap.addCircle(circleOptions);
         }
+
 
         aireUcad(); // Méthode pour aficher la zone UCAD.
     }

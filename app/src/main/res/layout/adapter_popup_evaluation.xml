@@ -53,7 +53,7 @@
             android:text="@string/tard"
             android:textSize="@dimen/textSize17"
             android:background="@drawable/style_btn_evaluer"
-            android:textColor="@android:color/white"
+            android:textColor="@color/darkGrey"
             android:textStyle="bold"
             android:fontFamily="@font/philosopherregular"
             android:layout_margin="@dimen/margin10"/>

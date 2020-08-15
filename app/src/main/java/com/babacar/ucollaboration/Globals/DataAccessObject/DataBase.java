@@ -399,8 +399,11 @@ public class DataBase {
                         if(task.isSuccessful()){
                             FirebaseUser user = auth.getCurrentUser();
                             if(user.isEmailVerified()) {
+                                Log.d("VERIFIER", "IF");
                                 getCurrentUser_FB_RTDB(user); // Permet d'obtenir les infos supplementaires de l'utilisateur connecté dans FBRTDatabase.
                             } else {
+                                Log.d("VERIFIER", "ELSE");
+                                sConnexTest = false;
                                 Toast.makeText(context, "Validez votre compte svp!", Toast.LENGTH_LONG).show();
                                 Intent verif = new Intent(context, EmailVerification.class);
                                 verif.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

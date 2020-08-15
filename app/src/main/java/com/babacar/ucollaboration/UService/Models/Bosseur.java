@@ -7,15 +7,17 @@ public class Bosseur extends Etudiant {
     private int nbStart;
     private String mCategorieSocioProf;
     private boolean mOnLine; // Le bosseur est en ligne ou pas.
+    private int mNCI;
 
     public Bosseur() {
 
     }
 
-    public Bosseur(String idBosseur, int nbStart, String categorieSocioProf, boolean onLine) {
+    public Bosseur(String idBosseur, int nbStart, String categorieSocioProf, int nci, boolean onLine) {
         super.mIdEtu = idBosseur;
         this.nbStart = nbStart;
         this.mCategorieSocioProf = categorieSocioProf;
+        this.mNCI = nci;
         this.mOnLine = onLine;
     }
 
@@ -50,6 +52,14 @@ public class Bosseur extends Etudiant {
 
     public void setOnLine(boolean onLine) {
         this.mOnLine = onLine;
+    }
+
+    public int getNCI() {
+        return mNCI;
+    }
+
+    public void setNCI(int NCI) {
+        mNCI = NCI;
     }
 
     @Override

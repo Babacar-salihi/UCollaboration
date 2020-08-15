@@ -87,4 +87,5 @@
     <dimen name="imgSize65">65dp</dimen>
     <dimen name="radius120">120dp</dimen>
     <dimen name="widthSize8">8dp</dimen>
+    <dimen name="margin35">35dp</dimen>
 </resources>

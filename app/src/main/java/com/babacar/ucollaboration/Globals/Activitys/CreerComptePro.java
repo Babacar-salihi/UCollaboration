@@ -27,7 +27,8 @@ public class CreerComptePro extends AppCompatActivity {
 
     private Spinner mSpinnerProfession;
     private String mCategSocio;
-    private EditText mEditTextCategSocio;
+    private int mNci;
+    private EditText mEditTextCategSocio, mEditTextNCI;
     private Button mBtnSave;
     //private CardView mCardView;
 
@@ -50,6 +51,7 @@ public class CreerComptePro extends AppCompatActivity {
         this.mSpinnerProfession = findViewById(R.id.comptePro_spinner);
         this.mEditTextCategSocio = findViewById(R.id.autre_Profession);
         this.mBtnSave = findViewById(R.id.comptePro_BtnContinuer);
+        this.mEditTextNCI = findViewById(R.id.comptePro_NCI);
         //this.mCardView = findViewById(R.id.uservice_addLieu);
     }
 
@@ -69,6 +71,12 @@ public class CreerComptePro extends AppCompatActivity {
                 if (mCategSocio.equalsIgnoreCase("autres")) {
                     mSpinnerProfession.setVisibility(View.GONE);
                     mEditTextCategSocio.setVisibility(View.VISIBLE);
+                }
+                if (mCategSocio.equalsIgnoreCase("Livreur")) {
+
+                    mEditTextNCI.setVisibility(View.VISIBLE);
+                } else {
+                    mEditTextNCI.setVisibility(View.GONE);
                 }
             }
 
@@ -94,12 +102,21 @@ public class CreerComptePro extends AppCompatActivity {
                 if (mCategSocio.equalsIgnoreCase("autres")) {
                     mCategSocio = mEditTextCategSocio.getText().toString().trim();
                     if (TextUtils.isEmpty(mCategSocio)) {
-                        Toast.makeText(getApplicationContext(), "Donnez votre catégorie socio-économique", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Donnez votre catégorie socio-économique", Toast.LENGTH_LONG).show();
                         return;
                     }
                 }
+                if (mCategSocio.equalsIgnoreCase("Livreur")) {
+                    String str_nci = mEditTextNCI.getText().toString().trim();
+                    if (TextUtils.isEmpty(str_nci)) {
+                        Toast.makeText(getApplicationContext(), "Donnez votre numéro de carte", Toast.LENGTH_LONG).show();
+                        return;
+                    } else {
+                        mNci = Integer.parseInt(str_nci);
+                    }
+                }
 
-                Bosseur bosseur = new Bosseur(sCurrentUser.getIdEtu(), 0, mCategSocio, true);
+                Bosseur bosseur = new Bosseur(sCurrentUser.getIdEtu(), 0, mCategSocio, mNci, true);
 
                 DataBase.createBosseur(bosseur);
                 startActivity(new Intent(getApplicationContext(), SplashCreenOK.class));

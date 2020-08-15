@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         >
 
@@ -27,6 +27,9 @@
             android:shadowRadius="2"
             android:shadowDx="1"
             android:shadowDy="2"
+            android:layout_margin="@dimen/margin7"
+            android:layout_alignParentTop="true"
+
             />
 
         <!-- Les images -->
@@ -37,7 +40,6 @@
             android:layout_below="@id/Titre"
             android:weightSum="100"
             android:layout_marginBottom="@dimen/margin2"
-            android:layout_marginTop="@dimen/margin7"
             >
 
             <!-- Frontal -->
@@ -291,6 +293,7 @@
             android:text="@string/continer"
             android:textSize="@dimen/texteSize20"
             android:textStyle="bold"
+            android:textColor="@android:color/white"
             android:fontFamily="@font/philosopherbold"
             android:layout_margin="@dimen/margin20"
             android:layout_below="@id/vendre_typeVente"

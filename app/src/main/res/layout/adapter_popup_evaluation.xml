@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="@dimen/padding15"
+    android:layout_margin="@dimen/margin10"
+    android:elevation="@dimen/elevation8"
+    >
+
+    <!-- Bar d'évaluation -->
+    <TextView
+        android:id="@+id/adapater_evaluation_titre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titre"
+        android:textStyle="bold"
+        android:textSize="@dimen/texteSize20"
+        android:fontFamily="@font/philosopherregular"
+        android:layout_margin="@dimen/margin7"/>
+
+    <TextView
+        android:id="@+id/adapater_evaluation_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sousTitreAchat"
+        android:textSize="@dimen/texteSize17"
+        android:fontFamily="@font/philosopherregular"
+        android:layout_marginBottom="@dimen/margin10"/>
+
+    <RatingBar
+        android:id="@+id/adapater_evaluation_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="20"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="100">
+
+        <Button
+            android:id="@+id/adapater_evaluation_btn_no"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent"
+            android:text="@string/tard"
+            android:textSize="@dimen/textSize17"
+            android:background="@drawable/style_btn_evaluer"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/philosopherregular"
+            android:layout_margin="@dimen/margin10"/>
+
+        <Button
+            android:id="@+id/adapater_evaluation_btn_oui"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent"
+            android:text="@string/evaluer"
+            android:textSize="@dimen/textSize17"
+            android:background="@drawable/style_btns"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/philosopherregular"
+            android:layout_margin="@dimen/margin10"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

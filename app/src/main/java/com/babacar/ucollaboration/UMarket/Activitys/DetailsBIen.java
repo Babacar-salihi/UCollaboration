@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -12,6 +13,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,8 +42,10 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.getUserById;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.mBiensNvendu;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.vendeur1;
 
 public class DetailsBIen extends AppCompatActivity {
 
@@ -55,6 +59,7 @@ public class DetailsBIen extends AppCompatActivity {
 
     private TextView mNomVendeur, mAdresseVendeur, mLivraison;  //Informations sur le vendeur.
     private CircleImageView mPpVendeur;
+    private RatingBar mNoteBAr;
 
     private Button mBtnAjoutPanier, mBtnAcheter;
     private ImageButton mBtnPlus, mBtnMoins;
@@ -89,6 +94,7 @@ public class DetailsBIen extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        getUserById(mCurrentBien.getVendeur().getIdEtu());
         remplirTextViews(); // Méthode pour référencer les widgets.
         recycler(); // Méthode pour afficher les biens de la même catégorie que le bien courant.
         PlusMoin(); // Méthode permettant de incrémenter ou décrémenter le nombre de bien.
@@ -123,6 +129,7 @@ public class DetailsBIen extends AppCompatActivity {
         this.mWhatsApp = findViewById(R.id.details_BtnWhatsApp);
         this.mPpVendeur = findViewById(R.id.details_Vendeur_PpVendeur);
         this.mNomVendeur = findViewById(R.id.details_Vendeur_NomVendeur);
+        this.mNoteBAr = findViewById(R.id.details_Vendeur_note);
 
 
         //RecyclerView: suggestion de bien de même catégorie.
@@ -202,6 +209,15 @@ public class DetailsBIen extends AppCompatActivity {
                     .into(mPpVendeur);
         mNomVendeur.setText(mCurrentBien.getVendeur().getPrenomEtu());
         mAdresseVendeur.setText("Adresse: " + mCurrentBien.getVendeur().getNewAdresse());
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                if (vendeur1 != null)
+                    mNoteBAr.setRating(vendeur1.getNote()/vendeur1.getNbEval());
+            }
+        }, 3000); // Wait two seconds.
         if (mCurrentBien.getLivraison())
             mLivraison.setText("Livraison: Disponible");
         else

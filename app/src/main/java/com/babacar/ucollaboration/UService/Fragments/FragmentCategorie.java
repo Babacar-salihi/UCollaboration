@@ -117,8 +117,8 @@ public class FragmentCategorie extends Fragment implements View.OnClickListener 
                 startActivity(filtre);
                 break;
             case R.id.uservice_liv:
-                Toast.makeText(mView.getContext(), "Curriculum Vitae", Toast.LENGTH_SHORT).show();
-                categorie = "Curriculum Vitae";
+                Toast.makeText(mView.getContext(), "Livreur", Toast.LENGTH_SHORT).show();
+                categorie = "Livreur";
                 filtre.putExtra("Categ",categorie);
                 startActivity(filtre);
                 break;

@@ -319,12 +319,30 @@
                             android:layout_margin="@dimen/margin10"
                             />
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/details_Vendeur_PpVendeur"
-                            android:layout_width="@dimen/imgSize80"
-                            android:layout_height="@dimen/imgSize80"
-                            android:src="@drawable/usericon"
-                            />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/details_Vendeur_PpVendeur"
+                                android:layout_width="@dimen/imgSize80"
+                                android:layout_height="@dimen/imgSize80"
+                                android:src="@drawable/usericon"
+                                />
+
+                            <RatingBar
+                                android:id="@+id/details_Vendeur_note"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:numStars="5"
+                                style="?attr/ratingBarStyleSmall"
+                                />
+
+
+                        </LinearLayout>
+
+
 
                     </LinearLayout>
 

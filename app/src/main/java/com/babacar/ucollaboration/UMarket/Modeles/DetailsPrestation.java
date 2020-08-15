@@ -16,8 +16,9 @@ public class DetailsPrestation {
     private String dateRV; // Jour de rencontre du vendeur et de l'acheteur.
     private boolean estLivre; // Permet de savoir si le bien acheter avec l'option livrer ou pas.
     private boolean achatAcheve; // Permet de savoir si l'achat est reglé ou pas.
-
+    private boolean isNoted; // l'Acheteur à t'il noter le vendeur pour cette vente.
     private List<String> mLivreur;
+
 
     public DetailsPrestation() {
 
@@ -127,6 +128,14 @@ public class DetailsPrestation {
         mVendeur = vendeur;
     }
 
+    public boolean isNoted() {
+        return isNoted;
+    }
+
+    public void setNoted(boolean noted) {
+        isNoted = noted;
+    }
+
     @Override
     public String toString() {
         return "DetailsPrestation{" +
@@ -136,10 +145,12 @@ public class DetailsPrestation {
                 ", mCodeLivraison='" + mCodeLivraison + '\'' +
                 ", mBiens='" + mBiens + '\'' +
                 ", mAcheteur='" + mAcheteur + '\'' +
+                ", mVendeur='" + mVendeur + '\'' +
                 ", mPrixAchat=" + mPrixAchat +
                 ", dateRV='" + dateRV + '\'' +
                 ", estLivre=" + estLivre +
                 ", achatAcheve=" + achatAcheve +
+                ", isNoted=" + isNoted +
                 ", mLivreur=" + mLivreur +
                 '}';
     }

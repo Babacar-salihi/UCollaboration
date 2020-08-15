@@ -160,7 +160,7 @@
         <item>Traitement de texte</item>
         <item>Inscription en ligne</item>
         <item>Photo minutes</item>
-        <item>Mainenance</item>
+        <item>Maintenance</item>
         <item>Coiffure</item>
         <item>Livreur</item>
         <item>Autres</item>
@@ -215,6 +215,8 @@
     <string name="heureHisto">date</string>
     <string name="supAll">Supprimer tout</string>
     <string name="zeroHisto">Aucun historique</string>
+    <string name="evaluer">Evaluer</string>
+    <string name="tard">Ne plus afficher</string>
 
 
 </resources>

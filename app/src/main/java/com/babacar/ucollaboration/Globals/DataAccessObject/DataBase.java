@@ -3,6 +3,7 @@ package com.babacar.ucollaboration.Globals.DataAccessObject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.babacar.ucollaboration.Globals.Activitys.EmailVerification;
 import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.Globals.Utilitaires.PhotoUtilitaire;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
@@ -94,7 +96,6 @@ public class DataBase {
 
             final UploadTask uploadTask = sStorageRef.child(key).child(keyImg)
                     .putBytes(photo);
-
 
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -214,8 +215,7 @@ public class DataBase {
                             mappingFBSg(context, user, etudiant, photo);
                             //user.sendEmailVerification(); // Verification de email.
 
-                            user.sendEmailVerification();
-                                    /*.addOnCompleteListener(new OnCompleteListener<Void>() {
+                            /*.addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
 
@@ -280,10 +280,17 @@ public class DataBase {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                        String urlPhoto = sUserProfile.child(user.getUid()).toString();
-                        etudiant.setPhoto(urlPhoto);
-                        // Informations supplementaires dans FB_RealTime.
-                        mappingFBRT(context, user, etudiant);
+                        sUserProfile.child(user.getUid()).getDownloadUrl()
+                                .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Uri> task) {
+
+                                        //String urlPhoto = sUserProfile.child(user.getUid()).toString();
+                                        etudiant.setPhoto(task.getResult().toString());
+                                        // Informations supplementaires dans FB_RealTime.
+                                        mappingFBRT(context, user, etudiant);
+                                    }
+                                });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -302,13 +309,16 @@ public class DataBase {
      * @param context
      * @param user
      */
-    private static void mappingFBRT(final Context context, FirebaseUser user, final Etudiant etudiant){
+    private static void mappingFBRT(final Context context, final FirebaseUser user, final Etudiant etudiant){
 
         sReference.child("Etudiants").child(user.getUid())
                 .setValue(etudiant)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+
+                        user.sendEmailVerification();
+
                         sInscriptTest = true;
                         Log.d("InscriptionUserFin", etudiant.toString());
                     }
@@ -342,7 +352,7 @@ public class DataBase {
                             mappingPlusInfosFB_Auth(user, etudiant);
                             // Photo de l'utilisateur dans Fb_RealTime.
                             mappingFBRT(context, user, etudiant);
-                            user.sendEmailVerification(); // Verification de email.
+                            //user.sendEmailVerification(); // Verification de email.
                         }
                     }
                 })
@@ -388,14 +398,14 @@ public class DataBase {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             FirebaseUser user = auth.getCurrentUser();
-                            /*if(user.isEmailVerified()) {
+                            if(user.isEmailVerified()) {
                                 getCurrentUser_FB_RTDB(user); // Permet d'obtenir les infos supplementaires de l'utilisateur connecté dans FBRTDatabase.
                             } else {
                                 Toast.makeText(context, "Validez votre compte svp!", Toast.LENGTH_LONG).show();
                                 Intent verif = new Intent(context, EmailVerification.class);
                                 verif.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 context.startActivity(verif);
-                            }*/
+                            }
                             getCurrentUser_FB_RTDB(user); // Permet d'obtenir les infos supplementaires de l'utilisateur connecté dans FBRTDatabase.
                         }
                     }
@@ -554,6 +564,7 @@ public class DataBase {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         user.delete();
+        sCurrentUser = null;
     }
 
     /**
@@ -886,4 +897,38 @@ public class DataBase {
 
     }
 
+    /**
+     * Permet d'évaluer le vendeur et les autres bosseurs.
+     * @param idVendeur
+     * @param note
+     */
+    public static void setElevaluation(final String idVendeur, final float note) {
+
+        /*sReference.child("Etudiants")
+                .child(idVendeur).child("note").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                etudiant = dataSnapshot.getValue(Etudiant.class);
+                etudiant.setNote(note+etudiant.getNote());
+                etudiant.setNbEval(etudiant.getNbEval()+1);
+                //sReference.child("Etudiants").child(idVendeur).setValue(etudiant);
+                Log.d("ETUDIANNN", etudiant.toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });*/
+
+        getUserById(idVendeur);
+        vendeur1.setNote(note+vendeur1.getNote());
+        vendeur1.setNbEval(vendeur1.getNbEval()+1);
+        //sReference.child("Etudiants").child(idVendeur).setValue(etudiant);
+        Log.d("ETUDIANNN", vendeur1.toString());
+        sReference.child("Etudiants").child(idVendeur).child("note").setValue(vendeur1.getNote());
+        sReference.child("Etudiants").child(idVendeur).child("nbEval").setValue(vendeur1.getNbEval());
+
+    }
 }

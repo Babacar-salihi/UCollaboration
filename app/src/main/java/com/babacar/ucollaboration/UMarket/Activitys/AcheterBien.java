@@ -479,6 +479,7 @@ public class AcheterBien extends AppCompatActivity {
                                 /*Ligne de fantôme*///detail.setAcheteur(new Gson().toJson(sCurrentUser));
                                 detail.setPrixAchat(Integer.parseInt(prixAchat));
                                 detail.setAchatAcheve(false);
+                                detail.setNoted(false);
                                 //detail.setLivreur();
                                 //detail.setCodeLivraison();
                                 /*==Modif==*/detail.setAcheteur(sCurrentUser.getIdEtu());
@@ -486,6 +487,7 @@ public class AcheterBien extends AppCompatActivity {
                                 /*==Modif==*/sCurrentUser.getDetailsPrestations().add(detail.getIdDetail()); // retail's id instead all retail infos into buyer.
                                 /*==Modif==*/vendeur.getDetailsPrestations().add(detail.getIdDetail()); // retail's id instead all retail infos into salesman.
                                 //upDateVendeurInBien(bien);
+
                                 DataBase.upDateUserDetails(vendeur);
                                 DataBase.ajouterDetails(detail); // Ajouter un nouveau details.
                                 sCurrentUser.getPanier().remove(position); // Supprimer le bien au panier de l'acheteur.

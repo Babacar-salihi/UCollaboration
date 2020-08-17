@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/margin5"
+    app:cardCornerRadius="@dimen/margin5"
+    android:id="@+id/adapter_catalogue_cardview"
+    app:cardUseCompatPadding="true"
+    android:elevation="@dimen/elevation4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="left"
+            android:padding="@dimen/padding5">
+
+            <!-- Bouton Like -->
+            <LinearLayout
+                android:id="@+id/adapter_catalogue_layoutLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_alignParentLeft="true">
+
+                <ImageView
+                    android:id="@+id/adapter_catalogue_LikeFalse"
+                    android:layout_width="@dimen/imgSize20"
+                    android:layout_height="@dimen/imgSize20"
+                    android:src="@drawable/ic_favorite"/>
+
+                <ImageView
+                    android:id="@+id/adapter_catalogue_likeTrue"
+                    android:layout_width="@dimen/imgSize20"
+                    android:layout_height="@dimen/imgSize20"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_favorite_true"/>
+
+                <TextView
+                    android:id="@+id/adapter_catalogue_nbLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/like"
+                    android:textColor="@color/appColor"/>
+
+            </LinearLayout>
+
+            <!-- Text Type de vente -->
+            <TextView
+                android:id="@+id/adapter_catalogue_typeVente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flash"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:background="@android:color/holo_red_dark"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/padding7"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/adapter_catalogue_produit_imgProd"
+            android:layout_width="@dimen/imgSize180"
+            android:layout_height="@dimen/imgSize200"
+            android:src="@drawable/iphone11"
+            android:layout_marginBottom="@dimen/margin7"
+            />
+
+        <TextView
+            android:id="@+id/adapter_catalogue_produit_libelleProd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/libelle"
+            android:layout_gravity="center"
+            android:textSize="@dimen/textSize17"
+            android:textColor="@color/darkAppColor"/>
+
+        <TextView
+            android:id="@+id/adapter_catalogue_produit_prixProd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prixProd"
+            android:layout_gravity="center"
+            android:textSize="@dimen/textSize17"
+            android:textColor="@android:color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:weightSum="100">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="10"
+                android:layout_height="@dimen/imgSize20"
+                android:padding="@dimen/padding2"
+                android:src="@drawable/vadr"/>
+
+            <TextView
+                android:id="@+id/adapter_catalogue_produit_adressVendeur"
+                android:layout_width="0dp"
+                android:layout_weight="70"
+                android:layout_height="wrap_content"
+                android:text="@string/adrVendeur"
+                android:layout_gravity="center"
+                android:textSize="@dimen/textSize17"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/margin5"
+                />
+
+            <TextView
+                android:id="@+id/adapter_catalogue_quantite"
+                android:layout_width="0dp"
+                android:layout_weight="10"
+                android:layout_height="match_parent"
+                android:text="@string/zero"
+                android:layout_gravity="center"
+                android:textSize="@dimen/texteSize10"
+                android:textStyle="bold"
+                android:background="@color/appColor"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -6,11 +6,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.R;
@@ -25,27 +28,27 @@ import java.util.List;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 import static com.babacar.ucollaboration.UMarket.Fragments.FragmentAcceuil.selectBien;
 
-public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
+public class RecyclerviewCategorieBien extends RecyclerView.Adapter<RecyclerviewCategorieBien.ViewHolderCategBien> {
 
-    private final Context mContext;
-    private final List<Bien> mBienList;
+    private Context mContext;
+    private List<Bien> mBienList;
 
-    public RecyclerViewBien(Context context, List<Bien> list){
-
-        this.mContext = context;
-        this.mBienList = list;
+    public RecyclerviewCategorieBien(Context context, List<Bien> bienList) {
+        mContext = context;
+        mBienList = bienList;
     }
 
     @NonNull
     @Override
-    public ViewHolderBien onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolderCategBien onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.umarket_adapter_catalogue_produit, null);
-        return new ViewHolderBien(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.umarket_adapter_categ_bien, null);
+        ViewHolderCategBien viewHolderCategBien = new ViewHolderCategBien(view);
+        return viewHolderCategBien;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolderBien holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolderCategBien holder, final int position) {
 
         final Bien bien = mBienList.get(position);
         Log.d("BJGHJKN", bien.toString());
@@ -96,42 +99,42 @@ public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
         /* Aimmer un bien */
         holder.mLayoutLike
                 .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                    @Override
+                    public void onClick(View v) {
 
-                if (sCurrentUser != null) {
+                        if (sCurrentUser != null) {
 
-                    int teste = 0;
-                    for (String favorite : sCurrentUser.getFavorie()) {
+                            int teste = 0;
+                            for (String favorite : sCurrentUser.getFavorie()) {
 
-                        if (favorite.equals(bien.getIdBien())) {
+                                if (favorite.equals(bien.getIdBien())) {
 
-                            sCurrentUser.getFavorie().remove(favorite); teste = 1;
-                            bien.setLike(bien.getLike()-1);
-                            holder.mLikeFalse.setVisibility(View.VISIBLE);
-                            holder.mLikeTrue.setVisibility(View.GONE);
-                            break;
+                                    sCurrentUser.getFavorie().remove(favorite); teste = 1;
+                                    bien.setLike(bien.getLike()-1);
+                                    holder.mLikeFalse.setVisibility(View.VISIBLE);
+                                    holder.mLikeTrue.setVisibility(View.GONE);
+                                    break;
+                                }
+                            }
+
+                            Log.d("Favorieee", String.valueOf(teste));
+                            if (teste == 0) {
+
+                                sCurrentUser.getFavorie().add(bien.getIdBien());
+                                bien.setLike(bien.getLike()+1);
+                                holder.mLikeFalse.setVisibility(View.GONE);
+                                holder.mLikeTrue.setVisibility(View.VISIBLE);
+                            }
+                            holder.mNbLike.setText(bien.getLike()+"");
+                            DataBase.updateBien(bien);
+                            DataBase.upDateUserFavorite(sCurrentUser);
+                        } else {
+
+                            Toast.makeText(mContext, "Connecté vous d'abord à votre compte!", Toast.LENGTH_SHORT).show();
                         }
+
                     }
-
-                    Log.d("Favorieee", String.valueOf(teste));
-                    if (teste == 0) {
-
-                        sCurrentUser.getFavorie().add(bien.getIdBien());
-                        bien.setLike(bien.getLike()+1);
-                        holder.mLikeFalse.setVisibility(View.GONE);
-                        holder.mLikeTrue.setVisibility(View.VISIBLE);
-                    }
-                    holder.mNbLike.setText(bien.getLike()+"");
-                    DataBase.updateBien(bien);
-                    DataBase.upDateUserFavorite(sCurrentUser);
-                } else {
-
-                    Toast.makeText(mContext, "Connecté vous d'abord à votre compte!", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
+                });
 
         /* Ouvrir un popup */
         holder.mBienObject.setOnClickListener(new View.OnClickListener() {
@@ -217,14 +220,14 @@ public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
                 // Voir les détails.
                 dialog.getBtnDetails()
                         .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        selectBien = bien;
-                        mContext.startActivity(new Intent(mContext, DetailsBIen.class));
-                        Toast.makeText(mContext, "Details", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
-                });
+                            @Override
+                            public void onClick(View v) {
+                                selectBien = bien;
+                                mContext.startActivity(new Intent(mContext, DetailsBIen.class));
+                                Toast.makeText(mContext, "Details", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            }
+                        });
                 dialog.buil();
             }
         });
@@ -234,4 +237,40 @@ public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
     public int getItemCount() {
         return mBienList.size();
     }
+
+
+    public class ViewHolderCategBien extends RecyclerView.ViewHolder {
+
+        public final CardView mBienObject;
+        public final ImageView mImageBien;
+        public final ImageView mLikeFalse;
+        public final ImageView mLikeTrue;
+        public final TextView mLibelle;
+        public final TextView mPrixBien;
+        public final TextView mAdrVendeur;
+        public final TextView mVenteType;
+        public final TextView mQuantite;
+        public final TextView mNbLike;
+        public final LinearLayout mLayoutLike;
+
+
+        public ViewHolderCategBien(@NonNull View itemView) {
+            super(itemView);
+
+            /* Like */
+            this.mLayoutLike = itemView.findViewById(R.id.adapter_catalogue_layoutLike);
+            this.mLikeFalse = itemView.findViewById(R.id.adapter_catalogue_LikeFalse);
+            this.mNbLike = itemView.findViewById(R.id.adapter_catalogue_nbLike);
+            this.mLikeTrue = itemView.findViewById(R.id.adapter_catalogue_likeTrue);
+
+            mVenteType = itemView.findViewById(R.id.adapter_catalogue_typeVente);
+            mImageBien = itemView.findViewById(R.id.adapter_catalogue_produit_imgProd);
+            mLibelle = itemView.findViewById(R.id.adapter_catalogue_produit_libelleProd);
+            mPrixBien = itemView.findViewById(R.id.adapter_catalogue_produit_prixProd);
+            mAdrVendeur = itemView.findViewById(R.id.adapter_catalogue_produit_adressVendeur);
+            mBienObject = itemView.findViewById(R.id.adapter_catalogue_cardview);
+            this.mQuantite = itemView.findViewById(R.id.adapter_catalogue_quantite);
+        }
+    }
+
 }

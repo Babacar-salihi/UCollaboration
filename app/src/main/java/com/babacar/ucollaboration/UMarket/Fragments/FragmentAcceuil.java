@@ -58,6 +58,7 @@ public class FragmentAcceuil extends Fragment {
     private ImageView mIconPanier;
     public TextView mNbArticlePanier;
     private List<String> mSearchString = new ArrayList<>();
+    public static Bien selectBien;
 
 
 

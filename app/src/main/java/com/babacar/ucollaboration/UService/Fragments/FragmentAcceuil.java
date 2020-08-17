@@ -36,6 +36,7 @@ public class FragmentAcceuil extends Fragment {
     private RecyclerView mRecyclerView;
     public static List<Bosseur> sBosseurs;
 
+
     public FragmentAcceuil() {
         // Required empty public constructor
     }

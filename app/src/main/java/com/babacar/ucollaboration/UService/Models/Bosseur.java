@@ -4,7 +4,6 @@ import com.babacar.ucollaboration.Globals.Models.Etudiant;
 
 public class Bosseur extends Etudiant {
 
-    private int nbStart;
     private String mCategorieSocioProf;
     private boolean mOnLine; // Le bosseur est en ligne ou pas.
     private int mNCI;
@@ -15,7 +14,6 @@ public class Bosseur extends Etudiant {
 
     public Bosseur(String idBosseur, int nbStart, String categorieSocioProf, int nci, boolean onLine) {
         super.mIdEtu = idBosseur;
-        this.nbStart = nbStart;
         this.mCategorieSocioProf = categorieSocioProf;
         this.mNCI = nci;
         this.mOnLine = onLine;
@@ -30,13 +28,6 @@ public class Bosseur extends Etudiant {
         this.mCategorieSocioProf = categorieSocioProf;
     }
 
-    public int getNbStart() {
-        return nbStart;
-    }
-
-    public void setNbStart(int nbStart) {
-        this.nbStart = nbStart;
-    }
 
     public String getCategorieSocioProf() {
         return mCategorieSocioProf;
@@ -65,7 +56,6 @@ public class Bosseur extends Etudiant {
     @Override
     public String toString() {
         return "Bosseur{" +
-                "nbStart=" + nbStart +
                 ", mIdEtu='" + mIdEtu + '\'' +
                 ", mNomEtu='" + mNomEtu + '\'' +
                 ", mPrenomEtu='" + mPrenomEtu + '\'' +

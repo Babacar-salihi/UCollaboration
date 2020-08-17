@@ -46,6 +46,7 @@ import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.getUs
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.mBiensNvendu;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.vendeur1;
+import static com.babacar.ucollaboration.UMarket.Fragments.FragmentAcceuil.selectBien;
 
 public class DetailsBIen extends AppCompatActivity {
 
@@ -81,7 +82,7 @@ public class DetailsBIen extends AppCompatActivity {
         setContentView(R.layout.umarket_activity_details_bien);
 
 
-        mCurrentBien = RecyclerViewBien.selectBien; // Le bien sur le quel l'utilisateur à cliquer.
+        mCurrentBien = selectBien; // Le bien sur le quel l'utilisateur à cliquer.
         sNb = 0;
         referenceWidgets(); // Méthode pour référencer les widgets.
 

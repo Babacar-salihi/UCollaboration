@@ -172,9 +172,13 @@
         <item>Fournitures</item>
         <item>Ticket</item>
         <item>High-Tech</item>
+        <item>Téléphone</item>
+        <item>Santé et beauté</item>
+        <item>Electronique</item>
         <item>Alimentation</item>
         <item>Fashion</item>
         <item>Autres</item>
+
     </string-array>
 
     <!-- Spinner categorie -->
@@ -219,6 +223,15 @@
     <string name="tard">Ne plus afficher</string>
     <string name="nci">Votre Numéro de carte d\'identité</string>
     <string name="titreComptePro">Compte professionnel</string>
+    <string name="document">Documents</string>
+    <string name="fourniture">Fournitures</string>
+    <string name="ticket">Tickets restaut</string>
+    <string name="highTech">High-tech</string>
+    <string name="mode">Fashion</string>
+    <string name="aliment">Alimentations</string>
+    <string name="santeEtBeaute">Santé et beauté</string>
+    <string name="elect">Eléctronique</string>
+    <string name="smartPhone">Téléphone</string>
 
 
 </resources>

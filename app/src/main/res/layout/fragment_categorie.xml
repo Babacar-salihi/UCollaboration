@@ -1,14 +1,435 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbars="none"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UMarket.Fragments.FragmentCategorieBien">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <!-- row 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin7"
+            android:weightSum="100">
+
+            <!-- Infographie -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/umarket_categ_docs"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/uservice_lightBlue"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_docs"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/document"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Etudiant professeur -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/umarket_categ_fourniture"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/umaps_limonGreen"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_fourniture"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fourniture"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- row 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin7"
+            android:weightSum="100">
+
+            <!-- Traitement de ic_texte -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/umarket_categ_ticket"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/umaps_lightYellow"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_texte"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ticket"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- inscription en ligne -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/umarket_categ_highTech"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/darkGrey"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_preinscript"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/highTech"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- row 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin7"
+            android:weightSum="100">
+
+            <!-- Photo munite -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/umarket_categ_mode"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/darkGreen"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_fashion"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mode"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Etudiant professeur -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/umarket_categ_aliment"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/appColor"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_alimentation"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/aliment"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- row 4 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin7"
+            android:weightSum="100">
+
+            <!-- Coiffure -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/umarket_categ_beauty"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/rose"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_beauty"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/santeEtBeaute"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Etudiant professeur -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/umarket_categ_elect"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/violet"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_photo"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/elect"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- row 4 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin7"
+            android:weightSum="100">
+
+            <!-- Coiffure -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/umarket_categ_tel"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/darkYellow"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_smartphone"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/smartPhone"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Etudiant professeur -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="@dimen/width_100"
+                android:layout_margin="@dimen/margin7"
+                app:cardElevation="@dimen/elevation5"
+                app:cardCornerRadius="@dimen/radius10"
+                android:visibility="gone"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/violet"
+                    android:padding="@dimen/padding7"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/imgSize50"
+                        android:layout_height="@dimen/imgSize50"
+                        android:src="@drawable/ic_photo"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/elect"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/margin7"
+                        android:textSize="@dimen/texteSize17"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

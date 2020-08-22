@@ -1,6 +1,8 @@
 package com.babacar.ucollaboration.UMaps.Models;
 
-public class Lieu {
+import java.io.Serializable;
+
+public class Lieu implements Serializable {
 
     protected String mIdLieu;
     protected String mPosition;

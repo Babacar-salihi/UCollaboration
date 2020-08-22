@@ -200,8 +200,7 @@
 
     <!-- Mes string -->
     <string name="addLieu">Ajouter un lieu</string>
-    <string name="recherche">Chercher un lieu</string>
-    <string name="hintSearch">Choisissez un lieu</string>
+    <string name="recherche">Quel lieu cherchez vous?</string>
     <string name="userSpace">Mon espace</string>
 
     <!-- TODO: Remove or change this placeholder text -->

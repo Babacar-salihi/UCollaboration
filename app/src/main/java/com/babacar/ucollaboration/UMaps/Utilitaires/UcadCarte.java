@@ -24,11 +24,15 @@ import java.util.Random;
 
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sLieux;
 
+import static com.babacar.ucollaboration.UMaps.Activitys.MainActivity.sNbMarker;
+import static com.babacar.ucollaboration.UMaps.Activitys.MainActivity.sSearchByHisto;
+
 
 public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback {
 
     private static final int REQUEST_CODE = 32;
     private static GoogleMap mGoogleMap;
+    public static Lieu sHistoR;
 
 
     public UcadCarte() {
@@ -40,60 +44,69 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
     public void onMapReady(GoogleMap googleMap) {
 
         mGoogleMap = googleMap;
-
-        LatLng ucad = new LatLng(14.691393650652753, -17.46302403509617);
-
-        mGoogleMap.addMarker(new MarkerOptions()
-                .position(ucad)
-                .title("Université Cheikh Anta Diop")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-
-        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ucad, 15));
-
         mGoogleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
 
-        mGoogleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng latLng) {
+        if (!sSearchByHisto) {
 
-                MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.position(latLng);
-                markerOptions.title(latLng.latitude+" "+latLng.longitude);
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+            LatLng ucad = new LatLng(14.691393650652753, -17.46302403509617);
 
-                mGoogleMap.clear();
-                mGoogleMap.addMarker(markerOptions);
-                mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
-                mGoogleMap.getUiSettings().setMapToolbarEnabled(true);
-                aireUcad(); // Méthode pour aficher la zone UCAD.
-            }
-        });
-        aireUcad(); // Méthode pour aficher la zone UCAD.
+            mGoogleMap.addMarker(new MarkerOptions()
+                    .position(ucad)
+                    .title("Université Cheikh Anta Diop")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
+            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ucad, 15));
+
+            mGoogleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(LatLng latLng) {
+
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    markerOptions.position(latLng);
+                    markerOptions.title(latLng.latitude+" "+latLng.longitude);
+                    markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+
+                    mGoogleMap.clear();
+                    mGoogleMap.addMarker(markerOptions);
+                    mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+                    mGoogleMap.getUiSettings().setMapToolbarEnabled(true);
+                    aireUcad(); // Méthode pour aficher la zone UCAD.
+                }
+            });
+            aireUcad(); // Méthode pour aficher la zone UCAD.
+
+        } else {
+
+            moveCamera(sHistoR);
+            sSearchByHisto = false;
+        }
 
         mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
         //mGoogleMap.setMyLocationEnabled(true);
-        localisation(); // Méthode permettant de localiser l'utilisateur.
+        //localisation(); // Méthode permettant de localiser l'utilisateur.
         mGoogleMap.getUiSettings().setScrollGesturesEnabledDuringRotateOrZoom(true);
+
+
+
 
     }
 
     /**
      * Permission d'utilisation de la position actuelle de l'utilisateur
      */
-    private void localisation() {
-
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            if (mGoogleMap != null) {
-                mGoogleMap.setMyLocationEnabled(true);
-            }
-        } else {
-
-            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
-        }
-    }
+//    private void localisation() {
+//
+//        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+//                == PackageManager.PERMISSION_GRANTED) {
+//            if (mGoogleMap != null) {
+//                mGoogleMap.setMyLocationEnabled(true);
+//            }
+//        } else {
+//
+//            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+//        }
+//    }
 
     /**
      * Permet de connaitre la position actuctuelle de l'utilisateur.
@@ -107,14 +120,14 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
 //                .title(lieu.getPosition())
 //                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 //
-//        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(maPosition, 16));
+//        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(maPosition, 17));
 //    }
 
     /**
      * Permet de chercher un lieu sur la carte.
      * @param lieu
      */
-    public static void moveCamera (Lieu lieu) {
+    public static void moveCamera(Lieu lieu) {
 
         LatLng latLng = new LatLng(lieu.getLat(), lieu.getLong());
 
@@ -126,7 +139,18 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
         mGoogleMap.clear();
         mGoogleMap.addMarker(markerOptions);
         mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
-        if (lieu.getPosition().toLowerCase().trim().contains("fac")) {
+        addCircle(lieu, latLng); // Méthode pour mettre un cercle si on recherche une faculté.
+        aireUcad(); // Méthode pour aficher la zone UCAD.
+    }
+
+    /**
+     * Permet de mettre un cercle pour délimiter la zone occupée par la faculté.
+     * @param lieu
+     * @param latLng
+     */
+    private static void addCircle(Lieu lieu, LatLng latLng) {
+
+        if (lieu.getPosition().toLowerCase().contains("fac")) {
 
             CircleOptions circleOptions = new CircleOptions();
             circleOptions.radius(100);
@@ -135,9 +159,24 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
             circleOptions.fillColor(Color.argb(50, 0, 255, 0));
             mGoogleMap.addCircle(circleOptions);
         }
+    }
 
+    /**
+     * permet d'ajouter autant de marqueurs qu'il y a de lieu commencant par la valeur courante du champs de recherche.
+     * @param lieu
+     */
+    public static void addMarker(Lieu lieu) {
 
-        aireUcad(); // Méthode pour aficher la zone UCAD.
+        LatLng newLieu = new LatLng(lieu.getLat(), lieu.getLong());
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(newLieu).title(lieu.getPosition());
+        if (sNbMarker == 0) {
+            mGoogleMap.clear();
+            aireUcad(); // Limité la zone UCAD.
+        }
+        addCircle(lieu, newLieu); // Méthode pour mettre un cercle si on recherche une faculté.
+        mGoogleMap.addMarker(markerOptions);
+        mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(newLieu, 15));
     }
 
 
@@ -163,7 +202,7 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
     private static void aireUcad() {
 
         PolygonOptions polygonOptions = new PolygonOptions()
-                .strokeColor(Color.RED)
+                .strokeColor(Color.GREEN)
                 .fillColor(Color.argb(20, 0, 0, 255))
                 .add(new LatLng(14.692578044222667, -17.461818382143974))
                 .add(new LatLng(14.692832305313065, -17.46186800301075))

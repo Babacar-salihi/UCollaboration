@@ -1,6 +1,8 @@
 package com.babacar.ucollaboration.UMaps.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +12,14 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.babacar.ucollaboration.R;
+import com.babacar.ucollaboration.UMaps.Activitys.MainActivity;
 import com.babacar.ucollaboration.UMaps.Models.Histo;
+import com.babacar.ucollaboration.UMaps.Models.Lieu;
 
 import java.util.List;
+
+import static com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte.sHistoR;
+import static com.babacar.ucollaboration.UMaps.Activitys.MainActivity.sSearchByHisto;
 
 public class RecyclerViewHisto extends RecyclerView.Adapter<ViewHolderRecyclerHisto> {
 
@@ -38,7 +45,7 @@ public class RecyclerViewHisto extends RecyclerView.Adapter<ViewHolderRecyclerHi
     @Override
     public void onBindViewHolder(@NonNull ViewHolderRecyclerHisto holder, final int position) {
 
-        Histo histo = mHistoList.get(position);
+        final Histo histo = mHistoList.get(position);
 
         holder.mNomLieu.setText(histo.getPosition());
         holder.mHeure.setText("Date: "+histo.getDate());
@@ -48,6 +55,12 @@ public class RecyclerViewHisto extends RecyclerView.Adapter<ViewHolderRecyclerHi
             public void onClick(View v) {
 
                 /* TODO: Rechercher le lieu */
+                sSearchByHisto = true;
+                sHistoR = histo;
+                Log.d("SURCLASSEMENT", sHistoR.toString());
+                Intent carte = new Intent(mContext, MainActivity.class);
+                carte.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(carte);
             }
         });
     }

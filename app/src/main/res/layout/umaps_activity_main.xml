@@ -39,7 +39,7 @@
             android:hint="@string/recherche"
             android:textSize="@dimen/texteSize17"
             android:completionThreshold="2"
-            android:completionHint="@string/hintSearch"
+            android:completionHint="@string/selectOneItem"
             android:inputType="textAutoComplete"
             android:imeOptions="actionSearch"
             />

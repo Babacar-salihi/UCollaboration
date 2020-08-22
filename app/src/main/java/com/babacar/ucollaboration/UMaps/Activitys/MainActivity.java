@@ -50,6 +50,7 @@ import java.util.List;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sLieux;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sNomLieu;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sRefLieux;
+import static com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte.addMarker;
 import static com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte.moveCamera;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private AutoCompleteTextView mAutoSearch; // AutoCompletion
 
     private RelativeLayout mRelativeLayout; // Pour l'affichage du Snackbar.
+    public static int sNbMarker = 0;
+    public static boolean sSearchByHisto; // Chercher un lieu depuis l'historique.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +75,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         setContentView(R.layout.umaps_activity_main);
 
         referenceWidgets(); // Méthode pour référencer les widgets.
-        //mSearchView.setVisibility(View.GONE);
         mLieux = new ArrayList<>(4);
+
     }
 
     @Override
@@ -261,10 +264,24 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                                         mAutoSearch.clearFocus(); // Pour effacer la zone de texte.
                                     }
                                 }
-                            } else { // Le lieu n'est pas connu.
+                            } else { // Si le lieu demendez n'est pas dans la liste proposé.
+                                sNbMarker = 0;
+                                for(Lieu lieu : sLieux) {
+                                    /* Parcourir l'ensemble des lieux et récupérer ceux qui commence par la valeur du AutoCompleteTextView.getText()*/
 
-                                Toast.makeText(MainActivity.this, "Désolé! mais ce lieu n'est pas encore connu\n réessayez dans un court instant.", Toast.LENGTH_LONG).show();
-                                showSnackBar(); // Méthode permettant d'afficher le Snackbar.
+                                    if (lieu.getPosition().toLowerCase().startsWith(mAutoSearch.getText().toString().trim().toLowerCase())) { // Si le lieu n'est pas proposé mais qu'il ressemble à un lieu déja ajouté (Faculté, Toilette, ...).
+
+                                        addMarker(lieu); // Méthode pour ajouter autant de marqueurs qu'il y a de lieu commencant par la valeur courante du champs de recherche.
+                                        ++sNbMarker;
+                                    }
+                                }
+                                if(sNbMarker == 0) { // Le lieu n'est pas connu.
+
+                                    Toast.makeText(MainActivity.this, "Désolé! mais ce lieu n'est pas encore connu\n réessayez dans un court instant.", Toast.LENGTH_LONG).show();
+                                    showSnackBar(); // Méthode permettant d'afficher le Snackbar.
+                                }
+                                Log.d("NBLIEUSSS", sNbMarker+"");
+
                             }
                         }
                         break;
@@ -286,10 +303,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         HistoHelper helper = new HistoHelper(getApplicationContext());
         boolean insert = helper.insertIntoDB(histo);
 
-        if (insert)
+        /*if (insert)
             Toast.makeText(this, "OKKKKKKKKK", Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(this, "KOOOOOOOOO", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "KOOOOOOOOO", Toast.LENGTH_SHORT).show();*/
     }
 
     /**

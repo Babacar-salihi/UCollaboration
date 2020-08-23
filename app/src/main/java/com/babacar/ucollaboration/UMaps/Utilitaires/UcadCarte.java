@@ -111,17 +111,17 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
     /**
      * Permet de connaitre la position actuctuelle de l'utilisateur.
      */
-//    public static void location(Lieu lieu) {
-//
-//        LatLng maPosition = new LatLng(lieu.getLat(), lieu.getLong());
-//
-//        mGoogleMap.addMarker(new MarkerOptions()
-//                .position(maPosition)
-//                .title(lieu.getPosition())
-//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-//
-//        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(maPosition, 17));
-//    }
+    public static void location(Lieu lieu) {
+
+        LatLng maPosition = new LatLng(lieu.getLat(), lieu.getLong());
+
+        mGoogleMap.addMarker(new MarkerOptions()
+                .position(maPosition)
+                .title(lieu.getPosition())
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(maPosition, 17));
+    }
 
     /**
      * Permet de chercher un lieu sur la carte.

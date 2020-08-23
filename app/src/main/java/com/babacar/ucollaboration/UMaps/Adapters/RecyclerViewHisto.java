@@ -54,7 +54,6 @@ public class RecyclerViewHisto extends RecyclerView.Adapter<ViewHolderRecyclerHi
             @Override
             public void onClick(View v) {
 
-                /* TODO: Rechercher le lieu */
                 sSearchByHisto = true;
                 sHistoR = histo;
                 Log.d("SURCLASSEMENT", sHistoR.toString());

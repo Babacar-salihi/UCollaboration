@@ -5,6 +5,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -36,6 +39,8 @@ import com.babacar.ucollaboration.UMaps.Models.Histo;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
 import com.babacar.ucollaboration.UMaps.SqliteDB.HistoHelper;
 import com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
@@ -47,10 +52,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sConnexTest;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sLieux;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sNomLieu;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sRefLieux;
 import static com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte.addMarker;
+import static com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte.location;
 import static com.babacar.ucollaboration.UMaps.Utilitaires.UcadCarte.moveCamera;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
@@ -61,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private final int REQUEST_CODE = 30;
     private Lieu mYourPosition;
     private FloatingActionButton mBtnPlus, mBtnExplorer, mBtnHisto; // Boutons flottants.
+    private CircleImageView mMaPosition;
     private LinearLayout mMoreOptions;
     private boolean testeToogle = false; // autres boutons en vue ou pas.
     private AutoCompleteTextView mAutoSearch; // AutoCompletion
@@ -103,6 +114,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         });
 
+        /*TODO: Récfaire ca*/
+        if (sCurrentUser != null && (sCurrentUser.getPhoto().length() > 0)) {
+
+            Glide.with(this)
+                    .load(sCurrentUser.getPhoto())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(mMaPosition);
+        }
+
         plus(); // Méthode pour afficher plus options.
         //getLieux(); // Méthode pour remplir sLieux.
         //chercher(); // Méthode pour chercher un lieu sur la carte.
@@ -117,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         mRelativeLayout = findViewById(R.id.umaps_layout);
         mFragment = getSupportFragmentManager().findFragmentById(R.id.fragment1);
         mYourPosition = new Lieu();
+        mMaPosition = findViewById(R.id.umaps_user_maPosition);
         mAutoSearch = findViewById(R.id.search_lieu);
         mMoreOptions = findViewById(R.id.umaps_moreOptions);
         mBtnPlus = findViewById(R.id.umaps_floattingBtn_ajouter_lieu);
@@ -329,7 +350,16 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     mMoreOptions.setVisibility(View.VISIBLE);
                     mMoreOptions.setAnimation(showOpstions);
 
-                    /* Exlorqtion */
+                    /* Position actuelle de l'utilisateur */
+                    mMaPosition.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            location(mYourPosition);
+                        }
+                    });
+
+                    /* Exloration */
                     mBtnExplorer.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -347,6 +377,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         }
                     });
                     testeToogle = true;
+
                 }
             }
         });

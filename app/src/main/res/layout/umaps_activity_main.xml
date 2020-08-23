@@ -55,7 +55,17 @@
         android:visibility="gone"
         >
 
-        <!-- Exxplorer -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/umaps_user_maPosition"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imgSize65"
+            android:backgroundTint="@color/umaps_limonGreen"
+            android:src="@drawable/ma_position"
+            android:layout_marginLeft="@dimen/margin20"
+            android:clickable="true"
+            />
+
+        <!-- Explorer -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/umaps_floattingBtn_explorer"
             android:layout_width="wrap_content"
@@ -63,6 +73,8 @@
             android:backgroundTint="@color/umaps_lightYellow"
             android:src="@drawable/compass"
             android:layout_marginLeft="@dimen/margin20"
+            android:layout_marginTop="@dimen/texteSize10"
+
             />
 
         <!-- Itinéraire -->

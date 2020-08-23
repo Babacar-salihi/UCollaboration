@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UMarket.Activitys.CategoriesBien"></activity>
+        <activity android:name=".Globals.Activitys.GererCompte"></activity>
+        <activity android:name=".UMarket.Activitys.CategoriesBien" />
         <activity android:name=".UMaps.Activitys.Historique" />
         <activity android:name=".UMaps.Activitys.Aide" />
         <activity android:name=".UMarket.Activitys.ProfileLivreur" />

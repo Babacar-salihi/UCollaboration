@@ -63,6 +63,9 @@ dependencies {
     // Fliper carte
     implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:3.0.0'
 
+    // ViewPager
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:3.0.3'
+
 
     implementation 'com.google.firebase:firebase-auth:16.0.5'
     implementation 'com.google.firebase:firebase-database:16.0.4'

@@ -82,7 +82,7 @@ public class UserSpace extends AppCompatActivity {
         list.add(new FonctionnaliteCompte("favorite_card", "Ma liste d'envis"));
         /* Compte bosseur */
         list.add(new FonctionnaliteCompte("bosseur", "Compte bosseur"));
-        list.add(new FonctionnaliteCompte("modifier", "Gerer mon compte"));
+        list.add(new FonctionnaliteCompte("modifier", "Gérer mon compte"));
         list.add(new FonctionnaliteCompte("deconnex", "Déconnexion"));
         list.add(new FonctionnaliteCompte("supprimer", "Supprimer mon compte"));
 
@@ -133,6 +133,7 @@ public class UserSpace extends AppCompatActivity {
         }
     }
 
+    // TODO: NBvente, ... dans etudiant.
     /**
      * Permet d'afficher les informations de l'utilisateur s'il est connecté.
      */

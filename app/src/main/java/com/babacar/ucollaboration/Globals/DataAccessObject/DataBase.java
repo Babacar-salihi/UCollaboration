@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.icu.util.LocaleData;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
@@ -411,7 +412,6 @@ public class DataBase {
                                 Log.d("VERIFIER", "IF");
                                 getCurrentUser_FB_RTDB(user); // Permet d'obtenir les infos supplementaires de l'utilisateur connecté dans FBRTDatabase.
                             }
-                            getCurrentUser_FB_RTDB(user); // Permet d'obtenir les infos supplementaires de l'utilisateur connecté dans FBRTDatabase.
                         }
                     }
                 })
@@ -763,6 +763,126 @@ public class DataBase {
         }
 
         return null;
+    }
+
+    /* UPDATE USER */
+    /**
+     * Permet de modifier les informations d'un utilisateur donné
+     * @param verifList
+     * @param etudiant
+     * @param photo
+     */
+    public static void upDateUserProfile(Context context, ProgressDialog dialog, List<Integer> verifList, final Etudiant etudiant, Uri photo) {
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.signInWithEmailAndPassword(sCurrentUser.getEmail(), sCurrentUser.getPassword());
+        final FirebaseUser user = auth.getCurrentUser();
+
+        /* Modification de la photo de profile */
+        if (verifList.contains(0)) {
+
+            changeProfilePic(dialog, user.getUid(), etudiant, photo, verifList);
+        }
+
+        /* Prénom */
+        if (verifList.contains(1)) {
+
+            sReference.child("Etudiants").child(user.getUid()).child("prenomEtu").setValue(etudiant.getPrenomEtu());
+            sCurrentUser.setPrenomEtu(etudiant.getPrenomEtu());
+
+            if (!verifList.contains(0))
+                dialog.dismiss();
+        }
+
+        /* Nom */
+        if (verifList.contains(2)) {
+
+            sReference.child("Etudiants").child(user.getUid()).child("nomEtu").setValue(etudiant.getNomEtu());
+            sCurrentUser.setNomEtu(etudiant.getNomEtu());
+
+            if (!verifList.contains(0))
+                dialog.dismiss();
+        }
+
+        /* Email */
+        if (verifList.contains(3)) {
+
+            user.updateEmail(etudiant.getEmail());
+            sReference.child("Etudiants").child(user.getUid()).child("email").setValue(etudiant.getEmail());
+            sCurrentUser.setEmail(etudiant.getEmail());
+
+            if (!verifList.contains(0))
+                dialog.dismiss();
+        }
+
+        /* Pwd */
+        if (verifList.contains(4)) {
+
+            user.updatePassword(etudiant.getPassword());
+            sReference.child("Etudiants").child(user.getUid()).child("password").setValue(etudiant.getPassword());
+            sCurrentUser.setPassword(etudiant.getPassword());
+
+            if (!verifList.contains(0))
+                dialog.dismiss();
+        }
+
+        /* Téléphone */
+        if (verifList.contains(5)) {
+
+            sReference.child("Etudiants").child(user.getUid()).child("numTelephoneEtu").setValue(etudiant.getNumTelephoneEtu());
+            sCurrentUser.setNumTelephoneEtu(etudiant.getNumTelephoneEtu());
+
+            if (!verifList.contains(0))
+                dialog.dismiss();
+        }
+
+        /* Adresse */
+        if (verifList.contains(6)) {
+
+            sReference.child("Etudiants").child(user.getUid()).child("adresse").setValue(etudiant.getAdresse());
+            sCurrentUser.setAdresse(etudiant.getAdresse());
+
+            if (!verifList.contains(0))
+                dialog.dismiss();
+        }
+    }
+
+    /**
+     * Permet de changer la photo de profile de l'utilisateur.
+     * @param idUser
+     * @param etudiant
+     * @param photo
+     */
+    private static void changeProfilePic(final ProgressDialog dialog, final String idUser, final Etudiant etudiant, final Uri photo, final List<Integer> list) {
+
+        sUserProfile.child(idUser).delete();
+        sUserProfile.child(idUser)
+                .putFile(photo)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                sUserProfile.child(idUser).getDownloadUrl()
+                        .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+
+                                etudiant.setPhoto(task.getResult().toString());
+                                Log.d("ETUDOPIOIO",etudiant.toString());
+                                sReference.child("Etudiants").child(idUser).child("photo").setValue(etudiant.getPhoto());
+                                sCurrentUser.setPhoto(etudiant.getPhoto());
+                                dialog.dismiss();
+                            }
+                        });
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                Log.d("Erreur00", "ERREUR d'ENREGISTREMANT DE LA PHOTO");
+            }
+        });
     }
 
 

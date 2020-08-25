@@ -5,15 +5,15 @@
     <string name="libelle">Libelle</string>
     <string name="prixProd">Prix Unitaire</string>
     <string name="adrVendeur">Adresse du vendeur</string>
-    <string name="userName">Votre nom  *</string>
+    <string name="userName">Votre nom</string>
     <string name="titleFonct">Titre</string>
     <string name="connex">Connexion</string>
     <string name="inscript">INSCRIPTION</string>
-    <string name="userPrenom">Votre prenom *</string>
+    <string name="userPrenom">Votre prenom</string>
     <string name="userTelephone">Téléphone</string>
     <string name="userChambre">Votre chambre</string>
-    <string name="userEmail">Email *</string>
-    <string name="userPwd">Mot de passe *</string>
+    <string name="userEmail">Email</string>
+    <string name="userPwd">Mot de passe</string>
     <string name="userAdress">Votre domicile</string>
     <string name="userDepart">Departement :</string>
     <string name="titreSpinnerCateg">Categorie socio économique :</string>
@@ -231,6 +231,7 @@
     <string name="santeEtBeaute">Santé et beauté</string>
     <string name="elect">Eléctronique</string>
     <string name="smartPhone">Téléphone</string>
+    <string name="enregistrer">Enregister</string>
 
 
 </resources>

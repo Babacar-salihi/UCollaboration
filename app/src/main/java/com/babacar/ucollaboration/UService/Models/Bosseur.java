@@ -69,7 +69,7 @@ public class Bosseur extends Etudiant {
                 ", mNewAdresse='" + mNewAdresse + '\'' +
                 ", mPanier=" + mPanier +
                 ", mFavorie=" + mFavorie +
-                ", mDetailsPrestationsEtu=" + mDetailsPrestationsEtu +
+                ", mDetailsPrestationsEtu=" + mDetailsPrestations +
                 ", mFaculte=" + mFaculte +
                 '}';
     }

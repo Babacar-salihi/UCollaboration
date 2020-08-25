@@ -7,65 +7,84 @@
     tools:context=".UMaps.Activitys.Aide"
     android:orientation="vertical"
     android:padding="@dimen/padding10"
+    android:background="@color/darkWhite2"
     android:gravity="center">
 
     <!-- Nom du lieu à ajouter -->
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_margin="@dimen/margin15"
+        >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nomLieu"
-            android:textSize="@dimen/texteSize20"
-            android:textColor="@android:color/black"
-            android:fontFamily="@font/philosopherbold"/>
-
-        <EditText
-            android:id="@+id/umaps_ajouterLieu_nom"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/imgSize80"
-            android:hint="@string/hintNomLieu"
-            android:textColor="@android:color/black"
-            android:paddingLeft="@dimen/padding15"
-            android:layout_margin="@dimen/margin10"
-            android:background="@drawable/style_ajouter_lieu"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/padding10">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nomLieu"
+                android:textSize="@dimen/texteSize20"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/philosopherbold"/>
+
+            <EditText
+                android:id="@+id/umaps_ajouterLieu_nom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/imgSize80"
+                android:hint="@string/hintNomLieu"
+                android:textColorHint="@color/appColor"
+                android:textColor="@color/darkAppColor"
+                android:paddingLeft="@dimen/padding15"
+                android:layout_margin="@dimen/margin10"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 
     <!-- Description du lieu à ajouter -->
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/margin15">
+        android:layout_margin="@dimen/margin15">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/deatilsLieu"
-            android:textSize="@dimen/texteSize20"
-            android:textColor="@android:color/black"
-            android:fontFamily="@font/philosopherbold"/>
-
-        <EditText
-            android:id="@+id/umaps_ajouterLieu_descript"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/padding15"
-            android:paddingBottom="@dimen/width_180"
-            android:paddingLeft="@dimen/padding15"
-            android:layout_margin="@dimen/margin10"
-            android:hint="@string/hintDescLieu"
-            android:textColor="@android:color/black"
-            android:background="@drawable/style_ajouter_lieu"/>
+            android:orientation="vertical"
+            android:padding="@dimen/padding10"
+            android:gravity="center">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deatilsLieu"
+                android:textSize="@dimen/texteSize20"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/philosopherbold"/>
+
+            <EditText
+                android:id="@+id/umaps_ajouterLieu_descript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding15"
+                android:paddingBottom="@dimen/width_180"
+                android:paddingLeft="@dimen/padding15"
+                android:layout_margin="@dimen/margin10"
+                android:hint="@string/hintDescLieu"
+                android:textColorHint="@color/appColor"
+                android:textColor="@color/darkAppColor"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/umaps_ajouterLieu_Btn"
@@ -73,10 +92,12 @@
         android:layout_height="wrap_content"
         android:text="@string/ajouterLieu"
         android:textStyle="bold"
+        android:textSize="@dimen/textSize17"
+        android:textColor="@android:color/white"
         android:fontFamily="@font/philosopherregular"
         android:layout_margin="@dimen/margin50"
+        android:background="@drawable/style_btns"
         android:onClick="validder"
         />
-
 
 </LinearLayout>

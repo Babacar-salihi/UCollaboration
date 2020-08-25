@@ -290,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                                 for(Lieu lieu : sLieux) {
                                     /* Parcourir l'ensemble des lieux et récupérer ceux qui commence par la valeur du AutoCompleteTextView.getText()*/
 
-                                    if (lieu.getPosition().toLowerCase().startsWith(mAutoSearch.getText().toString().trim().toLowerCase())) { // Si le lieu n'est pas proposé mais qu'il ressemble à un lieu déja ajouté (Faculté, Toilette, ...).
+                                    if ((mAutoSearch.getText().toString().trim().length() > 2) && (lieu.getPosition().toLowerCase().startsWith(mAutoSearch.getText().toString().trim().toLowerCase()))) { // Si le lieu n'est pas proposé mais qu'il ressemble à un lieu déja ajouté (Faculté, Toilette, ...).
 
                                         addMarker(lieu); // Méthode pour ajouter autant de marqueurs qu'il y a de lieu commencant par la valeur courante du champs de recherche.
                                         ++sNbMarker;

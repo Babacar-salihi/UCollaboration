@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.babacar.ucollaboration.Globals.Activitys.Acceuil;
 import com.babacar.ucollaboration.Globals.Activitys.CreerComptePro;
+import com.babacar.ucollaboration.Globals.Activitys.GererCompte;
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.Globals.Models.FonctionnaliteCompte;
 import com.babacar.ucollaboration.R;
@@ -85,7 +86,11 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                             break;
 
                         case 3: // Gerer compte.
-                            Toast.makeText(mContext,"Changer", Toast.LENGTH_SHORT).show(); break;
+                            Toast.makeText(mContext,"Changer", Toast.LENGTH_SHORT).show();
+                            Intent gererMonCompte = new Intent(mContext, GererCompte.class);
+                            gererMonCompte.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            mContext.startActivity(gererMonCompte);
+                            break;
                         case 4: // Déconnexion
 
                             AlertDialog.Builder alert = new AlertDialog.Builder(mContext);

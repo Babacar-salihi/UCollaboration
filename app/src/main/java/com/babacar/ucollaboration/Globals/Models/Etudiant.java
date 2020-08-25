@@ -25,7 +25,7 @@ public class Etudiant {
     protected float mNote; // Evaluation du vendeur.
     protected int mNbEval;
     //protected List<Panier> mBienAcheter = new ArrayList<>(); // Les Bients acheter.
-    protected List<String> mDetailsPrestationsEtu = new ArrayList<>();
+    protected List<String> mDetailsPrestations = new ArrayList<>();
 
     protected String mFaculte;
 
@@ -45,7 +45,7 @@ public class Etudiant {
         this.mNumTelephoneEtu = numTelephoneEtu;
         this.mPhoto = photo;
         this.mNewAdresse = newAdresse;
-        this.mDetailsPrestationsEtu = detailsDespt;
+        this.mDetailsPrestations = detailsDespt;
         this.mNote = note;
         this.mNbEval = nbEval;
     }
@@ -197,11 +197,11 @@ public class Etudiant {
     }*/
 
     public List<String> getDetailsPrestations() {
-        return mDetailsPrestationsEtu;
+        return mDetailsPrestations;
     }
 
     public void setDetailsPrestations(List<String> detailsPrestations) {
-        mDetailsPrestationsEtu = detailsPrestations;
+        mDetailsPrestations = detailsPrestations;
     }
 
     public float getNote() {
@@ -210,14 +210,6 @@ public class Etudiant {
 
     public void setNote(float note) {
         mNote = note;
-    }
-
-    public List<String> getDetailsPrestationsEtu() {
-        return mDetailsPrestationsEtu;
-    }
-
-    public void setDetailsPrestationsEtu(List<String> detailsPrestationsEtu) {
-        mDetailsPrestationsEtu = detailsPrestationsEtu;
     }
 
     public int getNbEval() {
@@ -245,7 +237,7 @@ public class Etudiant {
                 ", mFavorie=" + mFavorie +
                 ", mNote=" + mNote +
                 ", mNbEval=" + mNbEval +
-                ", mDetailsPrestationsEtu=" + mDetailsPrestationsEtu +
+                ", mDetailsPrestationsEtu=" + mDetailsPrestations +
                 ", mFaculte='" + mFaculte + '\'' +
                 '}';
     }

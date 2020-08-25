@@ -1,9 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context=".Globals.Activitys.GererCompte">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/darkWhite2">
+
+        <!-- Photo de profile -->
+        <RelativeLayout
+            android:id="@+id/layout_pp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/padding20">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/gererCompte_pp_user"
+                android:layout_width="@dimen/imgSize150"
+                android:layout_height="@dimen/imgSize150"
+                android:src="@drawable/usericon"
+                android:layout_centerInParent="true"
+                android:clickable="false"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/imgSize24"
+                android:layout_height="@dimen/imgSize24"
+                android:src="@drawable/modifier"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding15"
+            android:layout_below="@id/layout_pp"
+            >
+
+            <TextView
+                android:id="@+id/gererCompte_submitBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enregistrer"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/padding7"
+                android:background="@color/darkAppColor"
+                android:elevation="@dimen/elevation8"
+                android:onClick="btnEnregister"/>
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin10"
+            app:cardElevation="@dimen/elevation8"
+            android:padding="@dimen/padding10"
+            android:layout_below="@id/layout_btnSave">
+
+
+            <!-- Texte à modifier -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding15">
+
+                <!-- Prenom de l'utilisateur -->
+                <EditText
+                    android:id="@+id/gererCompte_prenom_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/userPrenom"
+                    android:inputType="textPersonName"
+                    android:layout_marginBottom="@dimen/margin15"/>
+
+                <!-- Nom de l'utilisateur -->
+                <EditText
+                    android:id="@+id/gererCompte_nom_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/userName"
+                    android:inputType="textPersonName"
+                    android:layout_marginBottom="@dimen/margin15"
+                    android:layout_below="@id/gererCompte_prenom_user"/>
+
+                <!-- Email de l'utilisateur -->
+                <EditText
+                    android:id="@+id/gererCompte_email_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/userEmail"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginBottom="@dimen/margin15"
+                    android:layout_below="@id/gererCompte_nom_user"/>
+
+                <!-- Mot de passe de l'utilisateur -->
+                <EditText
+                    android:id="@+id/gererCompte_pwd_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/userEmail"
+                    android:inputType="textVisiblePassword"
+                    android:layout_marginBottom="@dimen/margin15"
+                    android:layout_below="@id/gererCompte_email_user"/>
+
+                <!-- Numéro de téléphone -->
+                <EditText
+                    android:id="@+id/gererCompte_tel_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/userTelephone"
+                    android:inputType="number"
+                    android:layout_marginBottom="@dimen/margin15"
+                    android:layout_below="@id/gererCompte_pwd_user"/>
+
+                <!-- Adresse de téléphone -->
+                <EditText
+                    android:id="@+id/gererCompte_adresse_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/userAdress"
+                    android:inputType="textPersonName"
+                    android:layout_below="@id/gererCompte_tel_user"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</ScrollView>

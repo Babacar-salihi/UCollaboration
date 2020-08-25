@@ -10,6 +10,7 @@ import java.util.List;
 
 public class Bien implements Serializable {
 
+    // TODO: Ajouter adresse de vente ici...
     private String mIdBien;
     private String mCategorie;
     private String mLibelle;

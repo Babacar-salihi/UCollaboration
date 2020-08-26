@@ -24,6 +24,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
@@ -35,6 +36,7 @@ import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.Picasso;
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -53,7 +55,6 @@ public class DetailsBIen extends AppCompatActivity {
     private List<Bien> mBiensList;
     private Bien mCurrentBien;
     //private ImageView mPhotos;
-    private RecyclerView mPhotoList;
     private TextView mCateg, mLibelle, mPrixUnit, mGarantie, mNombre, mDescription; // Informations sur le produit.
     private LinearLayout mCall, mWhatsApp;
 
@@ -71,9 +72,12 @@ public class DetailsBIen extends AppCompatActivity {
     private final int REQUEST_CALL = 23;
 
     private LinearLayout mFieldSetBien, mFieldSetVendeur, mFieldSetImage;
-    private RelativeLayout mFieldSetAjouter;
+    private LinearLayout mFieldSetAjouter;
     private Animation bottom;
     private Animation top;
+
+    ViewPager mViewPager;
+    WormDotsIndicator mIndicator;
 
 
     @Override
@@ -114,7 +118,6 @@ public class DetailsBIen extends AppCompatActivity {
 
         // Informations sur le produit.
         //this.mPhotos = findViewById(R.id.detailsImages);
-        this.mPhotoList = findViewById(R.id.Details_viewPagerImages);
         this.mCateg = findViewById(R.id.detailsCategorie);
         this.mLibelle = findViewById(R.id.detailsLibelle);
         this.mPrixUnit = findViewById(R.id.detailsPrix);
@@ -122,6 +125,10 @@ public class DetailsBIen extends AppCompatActivity {
         this.mNombre = findViewById(R.id.detailsNombre);
         this.mDescription = findViewById(R.id.detailsDescript);
         this.mNombreAchat = findViewById(R.id.detailsNombreAchat);
+
+        // ViewPager
+        this.mViewPager = findViewById(R.id.Details_viewPagerImages2);
+        this.mIndicator = findViewById(R.id.Details_indicateurView);
 
         // Information sur le vendeur.
         this.mAdresseVendeur = findViewById(R.id.details_Vendeur_Adresse);
@@ -170,10 +177,14 @@ public class DetailsBIen extends AppCompatActivity {
      */
     private void inflateViewPager() {
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getApplicationContext(), mCurrentBien.getImages());
+       /* ViewPagerAdapter adapter = new ViewPagerAdapter(getApplicationContext(), mCurrentBien.getImages());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         this.mPhotoList.setLayoutManager(layoutManager);
-        this.mPhotoList.setAdapter(adapter);
+        this.mPhotoList.setAdapter(adapter);*/
+
+       ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, mCurrentBien.getImages());
+       mViewPager.setAdapter(viewPagerAdapter);
+       mIndicator.setViewPager(mViewPager);
     }
 
 

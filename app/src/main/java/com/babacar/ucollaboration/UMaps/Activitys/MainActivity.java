@@ -54,6 +54,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.babacar.ucollaboration.Globals.Activitys.CreerComptePro.sBosseurEmp;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sConnexTest;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sLieux;
@@ -76,9 +77,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private boolean testeToogle = false; // autres boutons en vue ou pas.
     private AutoCompleteTextView mAutoSearch; // AutoCompletion
 
-    private RelativeLayout mRelativeLayout; // Pour l'affichage du Snackbar.
+    private static RelativeLayout mRelativeLayout; // Pour l'affichage du Snackbar.
     public static int sNbMarker = 0;
     public static boolean sSearchByHisto; // Chercher un lieu depuis l'historique.
+
+    public static Context sContextUmaps;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
         referenceWidgets(); // Méthode pour référencer les widgets.
         mLieux = new ArrayList<>(4);
-
     }
 
     @Override
@@ -123,10 +126,17 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     .into(mMaPosition);
         }
 
-        plus(); // Méthode pour afficher plus options.
+        if (!sBosseurEmp)
+            plus(); // Méthode pour afficher plus options.
+        else {
+
+            mBtnPlus.setEnabled(false);
+            sContextUmaps = this;
+        }
         //getLieux(); // Méthode pour remplir sLieux.
         //chercher(); // Méthode pour chercher un lieu sur la carte.
         chercher2(); // Méthode pour chercher un lieu sur la carte avec auto-completion.
+
     }
 
     /**
@@ -285,7 +295,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                                         mAutoSearch.clearFocus(); // Pour effacer la zone de texte.
                                     }
                                 }
-                            } else { // Si le lieu demendez n'est pas dans la liste proposé.
+                            } else { // Si le lieu demandez n'est pas dans la liste proposé.
                                 sNbMarker = 0;
                                 for(Lieu lieu : sLieux) {
                                     /* Parcourir l'ensemble des lieux et récupérer ceux qui commence par la valeur du AutoCompleteTextView.getText()*/
@@ -298,8 +308,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                                 }
                                 if(sNbMarker == 0) { // Le lieu n'est pas connu.
 
+                                    if (!sBosseurEmp)
+                                        showSnackBar(); // Méthode permettant d'afficher le Snackbar.
                                     Toast.makeText(MainActivity.this, "Désolé! mais ce lieu n'est pas encore connu\n réessayez dans un court instant.", Toast.LENGTH_LONG).show();
-                                    showSnackBar(); // Méthode permettant d'afficher le Snackbar.
                                 }
                                 Log.d("NBLIEUSSS", sNbMarker+"");
 
@@ -416,9 +427,34 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 .show();
     }
 
+    /**
+     * Permet d'afficher le Snackbar pour permettre aux bosseurs d'ajouter leur emplacement.
+     */
+    public void ajouterEmpBosseurSnackBar() {
+
+        Snackbar.make(mRelativeLayout, "Voulez vous ajoutez cet emplacement? ", Snackbar.LENGTH_INDEFINITE)
+                .setAction("OUI", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent ameliorer = new Intent(getApplicationContext(), Aide.class);
+                        startActivity(ameliorer);
+//                        DataBase.addLieuInconnu(mAutoSearch.getText().toString().trim()); // Ajouter le lieu dans la liste des lieux inconnus.
+
+                    }
+                })
+                .setDuration(7000)
+                .show();
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
+        if (sBosseurEmp)
+            sBosseurEmp = false;
+
         startActivity(new Intent(getApplicationContext(), Acceuil.class));
     }
+
 }

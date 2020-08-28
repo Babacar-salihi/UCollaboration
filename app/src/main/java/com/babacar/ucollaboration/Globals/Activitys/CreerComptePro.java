@@ -1,8 +1,10 @@
 package com.babacar.ucollaboration.Globals.Activitys;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -27,9 +29,10 @@ public class CreerComptePro extends AppCompatActivity {
 
     private Spinner mSpinnerProfession;
     private String mCategSocio;
-    private int mNci;
+    private long mNci;
     private EditText mEditTextCategSocio, mEditTextNCI;
     private Button mBtnSave;
+    public static boolean sBosseurEmp; // Permet au bosseur d'ajouter leur emplacement sur la carte.
     //private CardView mCardView;
 
     @Override
@@ -96,10 +99,11 @@ public class CreerComptePro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(), "OKKK", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), mCategSocio, Toast.LENGTH_SHORT).show();
+
 
                 // Si l'utilisateur saisie une "autre" catégorie socio.
-                if (mCategSocio.equalsIgnoreCase("autres")) {
+                if (mCategSocio.equalsIgnoreCase("autres") || (mCategSocio.length() == 0)) {
                     mCategSocio = mEditTextCategSocio.getText().toString().trim();
                     if (TextUtils.isEmpty(mCategSocio)) {
                         Toast.makeText(getApplicationContext(), "Donnez votre catégorie socio-économique", Toast.LENGTH_LONG).show();
@@ -112,20 +116,49 @@ public class CreerComptePro extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Donnez votre numéro de carte", Toast.LENGTH_LONG).show();
                         return;
                     } else {
-                        mNci = Integer.parseInt(str_nci);
+                        mNci = Long.parseLong(str_nci);
                     }
                 }
+
+                Toast.makeText(getApplicationContext(), "OKKK", Toast.LENGTH_SHORT).show();
 
                 Bosseur bosseur = new Bosseur(sCurrentUser.getIdEtu(), 0, mCategSocio, mNci, true);
 
                 DataBase.createBosseur(bosseur);
-                startActivity(new Intent(getApplicationContext(), SplashCreenOK.class));
+                sBosseurEmp = false;
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(CreerComptePro.this);
+                alert.setIcon(R.drawable.adr);
+                alert.setTitle("Finalisation de la création de compte");
+                alert.setMessage("Voulez vous ajoutez votre emplacement dans Umaps?");
+                alert.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        sBosseurEmp = true;
+                        startActivity(new Intent(CreerComptePro.this, MainActivity.class));
+                        Toast.makeText(CreerComptePro.this, "ASTUCE: Double cliqué pour ajouter le lieu!", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                });
+                alert.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        startActivity(new Intent(getApplicationContext(), SplashCreenOK.class));
+                        finish();
+                    }
+                });
+                alert.show();
+
+
+
             }
         });
     }
 
     /**
-     * Permet d'accerder à la carte et ajouter un lieu
+     * Permet d'acceder à la carte et ajouter un lieu
      */
     /*private void ajouterLieu() {
 

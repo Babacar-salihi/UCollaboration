@@ -164,10 +164,10 @@ public class UserSpace extends AppCompatActivity {
         this.mNbArtLike.setText(String.valueOf(sCurrentUser.getFavorie().size()));
 
         if (Integer.parseInt(mNbArtVendu.getText().toString()) > 1)
-            mTextArtVendu.setText("articles vendu");
+            mTextArtVendu.setText("articles vendus");
         if (Integer.parseInt(mNbArtAchat.getText().toString()) > 1)
-            mTextArtAchat.setText("articles acheté");
+            mTextArtAchat.setText("articles achetés");
         if (Integer.parseInt(mNbArtLike.getText().toString()) > 1)
-            mTextArtLike.setText("articles aimé");
+            mTextArtLike.setText("articles aimés");
     }
 }

@@ -10,9 +10,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
+import com.babacar.ucollaboration.Globals.Utilitaires.SplashCreenOK;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
 import com.babacar.ucollaboration.UMaps.Models.LieuInconnu;
+
+import static com.babacar.ucollaboration.Globals.Activitys.CreerComptePro.sBosseurEmp;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.addLieuBosseur;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.addLieuInconnu;
 
 public class Aide extends AppCompatActivity {
 
@@ -33,7 +38,7 @@ public class Aide extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if(str_nomLieu.length() > 0)
+        if(str_nomLieu != null && str_nomLieu.length() > 0)
             mNomLieu.setText(str_nomLieu);
     }
 
@@ -67,14 +72,17 @@ public class Aide extends AppCompatActivity {
             return;
         }
 
+
+
         LieuInconnu newLieu = new LieuInconnu();
         newLieu.setNomLieu(nomLieu);
         newLieu.setDescriptLieu(descript);
 
-        DataBase.addLieuInconnu(newLieu); // Ajouter le lieu dans la liste des lieux inconnus.
-
+        addLieuInconnu(newLieu); // Ajouter le lieu dans la liste des lieux inconnus.
         Toast.makeText(getApplicationContext(),"Merci beaucoup", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+        startActivity(new Intent(getApplicationContext(), SplashCreenOK.class));
         finish();
+
     }
 }

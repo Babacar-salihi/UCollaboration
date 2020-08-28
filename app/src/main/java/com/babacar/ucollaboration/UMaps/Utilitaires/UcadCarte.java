@@ -1,15 +1,18 @@
 package com.babacar.ucollaboration.UMaps.Utilitaires;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
-import android.os.Parcelable;
+import android.view.View;
+import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
+import com.babacar.ucollaboration.UMaps.Activitys.Aide;
+import com.babacar.ucollaboration.UMaps.Activitys.MainActivity;
+import com.babacar.ucollaboration.UMaps.Adapters.PopupAjouterEmp;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
-import com.babacar.ucollaboration.UMaps.SqliteDB.HistoHelper;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -22,8 +25,12 @@ import com.google.android.gms.maps.model.PolygonOptions;
 
 import java.util.Random;
 
+import static com.babacar.ucollaboration.Globals.Activitys.CreerComptePro.sBosseurEmp;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.addLieuBosseur;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sLieux;
 
+import static com.babacar.ucollaboration.UMaps.Activitys.MainActivity.sContextUmaps;
 import static com.babacar.ucollaboration.UMaps.Activitys.MainActivity.sNbMarker;
 import static com.babacar.ucollaboration.UMaps.Activitys.MainActivity.sSearchByHisto;
 
@@ -71,9 +78,16 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
                     mGoogleMap.addMarker(markerOptions);
                     mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
                     mGoogleMap.getUiSettings().setMapToolbarEnabled(true);
+
+                    // Ajouter l'emplacement.
+                    if (sBosseurEmp) {
+                        bosseurEmp(latLng); // Méthode qui permet aux bosseurs d'ajouter leur emplacement sur ma carte.
+                    }
+
                     aireUcad(); // Méthode pour aficher la zone UCAD.
                 }
             });
+
             aireUcad(); // Méthode pour aficher la zone UCAD.
 
         } else {
@@ -81,6 +95,8 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
             moveCamera(sHistoR);
             sSearchByHisto = false;
         }
+
+
 
         mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
         //mGoogleMap.setMyLocationEnabled(true);
@@ -133,8 +149,8 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
 
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
+
         markerOptions.title(lieu.getPosition());
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
         mGoogleMap.clear();
         mGoogleMap.addMarker(markerOptions);
@@ -195,6 +211,60 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
         }
         aireUcad(); // Méthode pour aficher la zone UCAD.
     }
+
+    /**
+     * Permet au bosseur d'ajoute leur emplacement sur la carte en faisant un appui long dessus.
+     */
+    private void bosseurEmp(final LatLng latLng) {
+
+
+        /*AlertDialog.Builder alert = new AlertDialog.Builder(sContextUmaps);
+        alert.setTitle("Mon emplacement");
+        alert.setMessage("Voulez vous ajoutez ce lieu?");
+        alert.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Lieu bosseurEmp = new Lieu();
+                bosseurEmp.setLat(latLng.latitude);
+                bosseurEmp.setLong(latLng.longitude);
+
+                Intent aide = new Intent(sContextUmaps, Aide.class);
+                aide.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                aide.putExtra("Emplace", bosseurEmp);
+                sContextUmaps.startActivity(aide);
+            }
+        });
+        alert.show();*/
+
+        final PopupAjouterEmp dialog = new PopupAjouterEmp(sContextUmaps);
+        dialog.setTitle("Mon emplacement");
+        dialog.setMessage("Voulez vous ajoutez ce lieu?");
+        dialog.getBtnOui().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Lieu bosseurEmp = new Lieu();
+                bosseurEmp.setLat(latLng.latitude);
+                bosseurEmp.setLong(latLng.longitude);
+                addLieuBosseur(bosseurEmp);
+
+                Toast.makeText(sContextUmaps, dialog.getNomEmplacement().getText(), Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+        dialog.getBtnNon().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+            }
+        });
+
+        dialog.build();
+
+    }
+
 
     /**
      * Permet de déliminter la zone de l'UCAD.

@@ -128,6 +128,8 @@ public class Inscription extends AppCompatActivity {
         });
     }
 
+    // TODO: Il y a plus de notion de facultatif, tout est obligatoire.
+
     /**
      * Permet de créer un compte pour l'utilisateur.
      */

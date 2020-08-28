@@ -957,6 +957,16 @@ public class DataBase {
         lieuInconnu.child(key).setValue(lieu);
     }
 
+    /**
+     * Permet d'ajouter l'emplacement d'un bosseur dans la base de donner.
+     */
+    public static void addLieuBosseur(Lieu lieu) {
+
+        lieu.setIdLieu(sCurrentUser.getIdEtu());
+        sRefLieux.child(sCurrentUser.getIdEtu()).setValue(lieu); // Dans le noeud Lieux.
+        sRefUService.child(sCurrentUser.getIdEtu()).child("emplacement").setValue(true); // Update bosseur.
+    }
+
     // =================================== UService =====================================
 
     public static DatabaseReference sRefUService = FirebaseDatabase.getInstance().getReference().child("UService");

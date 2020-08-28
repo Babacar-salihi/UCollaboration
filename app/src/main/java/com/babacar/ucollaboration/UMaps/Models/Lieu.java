@@ -8,6 +8,7 @@ public class Lieu implements Serializable {
     protected String mPosition;
     protected double mLat;
     protected double mLong;
+//    protected String mDescription;
 
     public Lieu() {
     }
@@ -56,6 +57,14 @@ public class Lieu implements Serializable {
     public void setLong(double aLong) {
         mLong = aLong;
     }
+
+//    public String getDescription() {
+//        return mDescription;
+//    }
+//
+//    public void setDescription(String description) {
+//        mDescription = description;
+//    }
 
     @Override
     public String toString() {

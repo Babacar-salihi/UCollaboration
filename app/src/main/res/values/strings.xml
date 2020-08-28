@@ -16,7 +16,7 @@
     <string name="userPwd">Mot de passe</string>
     <string name="userAdress">Votre domicile</string>
     <string name="userDepart">Departement :</string>
-    <string name="titreSpinnerCateg">Categorie socio économique :</string>
+    <string name="titreSpinnerCateg">Catégorie socio-économique :</string>
     <string name="categorie">Catégorie </string>
     <string name="continer">Continuer</string>
     <string name="Acceuil">Acceuil</string>
@@ -207,7 +207,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="textComptePro">Avec ce compte c\'est sûr que vous aurez plus de visibilité et augmanter ainsi votre productivité.</string>
     <string name="selectOneItem">Laissez vous guidez</string>
-    <string name="monEmplacement">Ajoutez votre emplacement</string>
+    <string name="monEmplacement">Nommez votre emplacement</string>
     <string name="userFac">Faculté</string>
     <string name="nomLieu">Nom du lieu</string>
     <string name="hintNomLieu">Donnez le nom du lieu</string>
@@ -232,6 +232,8 @@
     <string name="elect">Eléctronique</string>
     <string name="smartPhone">Téléphone</string>
     <string name="enregistrer">Enregister</string>
+    <string name="non">Non</string>
+    <string name="oui">Oui</string>
 
 
 </resources>

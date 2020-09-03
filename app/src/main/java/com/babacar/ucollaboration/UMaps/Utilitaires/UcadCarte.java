@@ -5,6 +5,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,15 +28,19 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 
 import java.util.Random;
+import java.util.logging.LogRecord;
 
 import static com.babacar.ucollaboration.Globals.Activitys.CreerComptePro.sBosseurEmp;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.addLieuBosseur;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sLieux;
 
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sNomLieu;
 import static com.babacar.ucollaboration.UMaps.Activitys.MainActivity.sContextUmaps;
 import static com.babacar.ucollaboration.UMaps.Activitys.MainActivity.sNbMarker;
 import static com.babacar.ucollaboration.UMaps.Activitys.MainActivity.sSearchByHisto;
+import static com.babacar.ucollaboration.UService.Adapters.RecyclerView_Carte_Acceuil.sEmpBosseur;
+import static com.babacar.ucollaboration.UService.Adapters.RecyclerView_Carte_Acceuil.sSearchBosseurEmp;
 
 
 public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback {
@@ -54,8 +61,7 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
         mGoogleMap = googleMap;
         mGoogleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
-
-        if (!sSearchByHisto) {
+        if ((!sSearchByHisto) && (!sSearchBosseurEmp)) {
 
             LatLng ucad = new LatLng(14.691393650652753, -17.46302403509617);
 
@@ -91,10 +97,15 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
 
             aireUcad(); // Méthode pour aficher la zone UCAD.
 
-        } else {
+        } else if(sSearchByHisto){ // Recherche par historique de recherche
 
             moveCamera(sHistoR);
             sSearchByHisto = false;
+        } else if(sSearchBosseurEmp){ // Recherhcer par emplacement bosseur
+
+            Log.d("OKKKFGHLKJHGFFGK", sSearchBosseurEmp+"");
+            recherche();
+            sSearchBosseurEmp = false;
         }
 
 
@@ -104,9 +115,33 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
         //localisation(); // Méthode permettant de localiser l'utilisateur.
         mGoogleMap.getUiSettings().setScrollGesturesEnabledDuringRotateOrZoom(true);
 
+    }
 
+    /**
+     * Permet de faire une recherche sur la carte par emplacement du bosseur.
+     */
+    private void recherche() {
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
 
+                if (sLieux != null) {
+
+                    for (Lieu lieu : sLieux) {
+
+                        if (lieu.getIdLieu().equalsIgnoreCase(sEmpBosseur.getIdEtu())) {
+
+                            Log.d("OKKKFGHLKJHGFFGK", "Trouver");
+                            moveCamera(lieu);
+                            break;
+                        }
+                    }
+                } else {
+                    recherche();
+                }
+            }
+        }, 2000); // Donnez le temps de charger les lieux.
     }
 
     /**
@@ -245,10 +280,19 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
             @Override
             public void onClick(View v) {
 
+                String nomLieu = dialog.getNomEmplacement().getText().toString().trim();
+                if (TextUtils.isEmpty(nomLieu)) {
+                    Toast.makeText(sContextUmaps, "Nommez votre emplacement", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
                 Lieu bosseurEmp = new Lieu();
                 bosseurEmp.setLat(latLng.latitude);
                 bosseurEmp.setLong(latLng.longitude);
+                bosseurEmp.setPosition(nomLieu);
                 addLieuBosseur(bosseurEmp);
+                sBosseurEmp = false;
 
                 Toast.makeText(sContextUmaps, dialog.getNomEmplacement().getText(), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();

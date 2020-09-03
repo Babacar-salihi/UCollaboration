@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         });
 
-        /*TODO: Récfaire ca*/
+        /*TODO: Refaire ca*/
         if (sCurrentUser != null && (sCurrentUser.getPhoto().length() > 0)) {
 
             Glide.with(this)

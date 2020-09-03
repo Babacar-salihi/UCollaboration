@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.babacar.ucollaboration.R;
+import com.babacar.ucollaboration.UMaps.Activitys.MainActivity;
+import com.babacar.ucollaboration.UMaps.Models.Lieu;
 import com.babacar.ucollaboration.UService.Models.Bosseur;
 import com.bumptech.glide.Glide;
 
@@ -29,6 +32,8 @@ public class RecyclerView_Carte_Acceuil extends RecyclerView.Adapter<ViewHolderC
     private List<Bosseur> mBosseurList;
     private int mNb = 100;
     private final int REQUEST_CODE_CALL = 16;
+    public static boolean sSearchBosseurEmp;
+    public static Bosseur sEmpBosseur;
 
     public RecyclerView_Carte_Acceuil(Context context, List<Bosseur> bosseurList) {
         mContext = context;
@@ -63,6 +68,19 @@ public class RecyclerView_Carte_Acceuil extends RecyclerView.Adapter<ViewHolderC
         holder.mBackAdr.setText(bosseur.getNewAdresse());
         holder.mBackTel.setText("+221 "+bosseur.getNumTelephoneEtu());
         holder.mBackEmail.setText(bosseur.getEmail());
+
+        /* Afficher l'emplacement du bosseur sur la carte */
+        holder.mEmp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sSearchBosseurEmp = true;
+                sEmpBosseur = bosseur;
+                Intent carte = new Intent(mContext, MainActivity.class);
+                carte.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(carte);
+            }
+        });
 
         /* Appeler le bosseur */
         holder.mBtnCall.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +140,6 @@ public class RecyclerView_Carte_Acceuil extends RecyclerView.Adapter<ViewHolderC
         }
     }
 
-    /*TODO: remplacer l'objet bosseur par le numéro de téléphone tout simplement*/
     /**
      * Permet de joindre le bosseur sur WhatsApp
      * @param

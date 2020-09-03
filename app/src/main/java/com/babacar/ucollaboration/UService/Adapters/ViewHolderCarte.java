@@ -19,7 +19,7 @@ class ViewHolderCarte extends RecyclerView.ViewHolder {
     public ImageView mFrontPP, mBackPP;
     public TextView mFrontName, mFrontPress, mBackPress, mBackAdr, mBackTel, mBackEmail;
     public RatingBar mRatingBar;
-    public CardView mBtnCall, mBtnMsg;
+    public CardView mEmp, mBtnCall, mBtnMsg;
 
     public ViewHolderCarte(@NonNull View itemView) {
         super(itemView);
@@ -37,6 +37,7 @@ class ViewHolderCarte extends RecyclerView.ViewHolder {
         this.mBackTel = itemView.findViewById(R.id.back_carte_tel);
         this.mBackEmail = itemView.findViewById(R.id.back_carte_email);
 
+        this.mEmp = itemView.findViewById(R.id.uservice_btn_emp_bosseur);
         this.mBtnCall = itemView.findViewById(R.id.uservice_btn_call_bosseur);
         this.mBtnMsg = itemView.findViewById(R.id.uservice_btn_whats_bosseur);
 

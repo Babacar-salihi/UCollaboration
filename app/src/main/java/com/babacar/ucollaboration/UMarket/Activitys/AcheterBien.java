@@ -439,22 +439,22 @@ public class AcheterBien extends AppCompatActivity {
                     Bien bien = getBienById(mAchatBien.getBiens());
                     getUserById(bien.getVendeur().getIdEtu()); // DownLoading salesman informations.
 
-                /*int text = 0;
-                Log.d("GettingTeste", sTestGettingSalesMan+"");*/
+                    /*int text = 0;
+                    Log.d("GettingTeste", sTestGettingSalesMan+"");*/
 
-                    // Waitting... to get salesman informations. IMPORTANT: NE PAS SUPPRIMER.
-                /*do {
-                    Log.d("WaitAchat", "Waitting... "+text);
+                        // Waitting... to get salesman informations. IMPORTANT: NE PAS SUPPRIMER.
+                    /*do {
+                        Log.d("WaitAchat", "Waitting... "+text);
 
-                    if (text == 1)
-                        getUserById(bien.getVendeur().getIdEtu()); // DownLoading salesman informations.
-                    if (sTestGettingSalesMan == -1) {
+                        if (text == 1)
+                            getUserById(bien.getVendeur().getIdEtu()); // DownLoading salesman informations.
+                        if (sTestGettingSalesMan == -1) {
 
-                        Toast.makeText(getApplicationContext(), "Vérifier votre connexion", Toast.LENGTH_LONG).show();
-                        break;
-                    }
-                    ++text;
-                } while (sTestGettingSalesMan != 1);*/
+                            Toast.makeText(getApplicationContext(), "Vérifier votre connexion", Toast.LENGTH_LONG).show();
+                            break;
+                        }
+                        ++text;
+                    } while (sTestGettingSalesMan != 1);*/
 
                     final int position = getIntent().getIntExtra("PositionAchatBien", 0);
                     final DetailsPrestation detail = new DetailsPrestation();
@@ -476,7 +476,7 @@ public class AcheterBien extends AppCompatActivity {
                                 detail.setQuantite(mAchatBien.getQuantiteAchat()); // Quantité de bien acheter.
                                 detail.setDateVente(currentDate); // Date d'achat du bien (Date de négociation), déterminer par l'acheteur.
                                 detail.setDateRV(mDateRV); // Date de rendez-vous, Déterminée par le vendeur.
-                                /*Ligne de fantôme*///detail.setAcheteur(new Gson().toJson(sCurrentUser));
+                                /*Ligne fantôme*///detail.setAcheteur(new Gson().toJson(sCurrentUser));
                                 detail.setPrixAchat(Integer.parseInt(prixAchat));
                                 detail.setAchatAcheve(false);
                                 detail.setNoted(false);

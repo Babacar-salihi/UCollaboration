@@ -72,6 +72,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/nci"
         android:layout_margin="@dimen/margin20"
+        android:inputType="number"
         android:visibility="invisible"
         />
 

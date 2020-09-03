@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.Toast;
 
+import com.babacar.ucollaboration.Globals.Utilitaires.SplashCreenOK;
 import com.babacar.ucollaboration.UMaps.Activitys.Aide;
 import com.babacar.ucollaboration.UMaps.Activitys.MainActivity;
 import com.babacar.ucollaboration.UMaps.Adapters.PopupAjouterEmp;
@@ -251,6 +252,10 @@ public class UcadCarte extends SupportMapFragment implements OnMapReadyCallback 
 
                 Toast.makeText(sContextUmaps, dialog.getNomEmplacement().getText(), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
+
+                Intent ok = new Intent(sContextUmaps, SplashCreenOK.class);
+                ok.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                sContextUmaps.startActivity(ok);
             }
         });
         dialog.getBtnNon().setOnClickListener(new View.OnClickListener() {

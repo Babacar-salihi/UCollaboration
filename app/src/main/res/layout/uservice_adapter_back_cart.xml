@@ -142,12 +142,37 @@
                 android:padding="@dimen/padding10">
 
 
+                <!-- Emplacement -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/uservice_btn_call_emp"
+                    android:layout_width="@dimen/widthSize60"
+                    android:layout_height="@dimen/widthSize60"
+                    android:layout_alignParentLeft="true"
+                    app:cardElevation="0dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/style_btn_evaluer"
+                        android:gravity="center">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="@dimen/imgSize30"
+                            android:layout_height="@dimen/imgSize30"
+                            android:src="@drawable/adr"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
                 <!-- Appele -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/uservice_btn_call_bosseur"
                     android:layout_width="@dimen/widthSize60"
                     android:layout_height="@dimen/widthSize60"
-                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
                     app:cardElevation="0dp"
                     >
 

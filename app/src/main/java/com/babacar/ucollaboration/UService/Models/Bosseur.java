@@ -1,5 +1,6 @@
 package com.babacar.ucollaboration.UService.Models;
 
+
 import com.babacar.ucollaboration.Globals.Models.Etudiant;
 
 public class Bosseur extends Etudiant {

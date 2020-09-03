@@ -5,30 +5,23 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.icu.util.LocaleData;
 import android.net.Uri;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.babacar.ucollaboration.Globals.Activitys.EmailVerification;
 import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.Globals.Utilitaires.PhotoUtilitaire;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
 import com.babacar.ucollaboration.UMaps.Models.LieuInconnu;
-import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewBien;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.babacar.ucollaboration.UMarket.Modeles.DetailsPrestation;
 import com.babacar.ucollaboration.UMarket.Modeles.ImageBien;
 import com.babacar.ucollaboration.UMarket.Modeles.Panier;
 import com.babacar.ucollaboration.UService.Models.Bosseur;
-import com.google.android.gms.tasks.Continuation;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -72,7 +65,7 @@ public class DataBase {
 
 
 
-    // ===================================== PARTIE BIEN ==========================================================
+    // ===================================== PARTIE BIEN ===============================================================
 
     // ===================================== PUBLICATION BIEN ==========================================================
     /**
@@ -422,6 +415,7 @@ public class DataBase {
                         Toast.makeText(context, "Se compte n'exite pas. Veuillez vérifiez les infos saisies ou créer un autre compte!", Toast.LENGTH_LONG).show();
                     }
                 });
+
     }
 
     /**

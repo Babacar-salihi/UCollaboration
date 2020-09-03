@@ -84,8 +84,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-
-
         </LinearLayout>
 
         <!-- Autres fonctionnalités (ex: ajouter au panier) -->

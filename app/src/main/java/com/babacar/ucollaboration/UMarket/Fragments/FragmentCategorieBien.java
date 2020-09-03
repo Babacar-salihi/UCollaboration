@@ -14,8 +14,6 @@ import android.view.ViewGroup;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Activitys.CategoriesBien;
 
-import java.net.Inet4Address;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -34,7 +32,7 @@ public class FragmentCategorieBien extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mView = inflater.inflate(R.layout.fragment_categorie, container, false);
+        mView = inflater.inflate(R.layout.umarket_fragment_categorie, container, false);
         referenceWidgets(); // Méthode pour référencer les widgets.
 
         this.mCardDocs.setOnClickListener(this);

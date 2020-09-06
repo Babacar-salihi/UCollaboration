@@ -1029,9 +1029,9 @@ public class DataBase {
     /**
      * Permet d'évaluer le vendeur et les autres bosseurs.
      * @param idVendeur
-     * @param note
+     * @param noteA
      */
-    public static void setElevaluation(final String idVendeur, final float note) {
+    public static void setElevaluation(final String idVendeur, final float noteA) {
 
         /*sReference.child("Etudiants")
                 .child(idVendeur).child("note").addValueEventListener(new ValueEventListener() {
@@ -1052,12 +1052,26 @@ public class DataBase {
         });*/
 
         getUserById(idVendeur);
-        vendeur1.setNote(note+vendeur1.getNote());
-        vendeur1.setNbEval(vendeur1.getNbEval()+1);
+        float note = calculeNote(noteA, vendeur1.getNote()); // Calculer le note sur une base de 10.
+
+        vendeur1.setNote(note);
+        //vendeur1.setNote(noteA+vendeur1.getNote());
+        //vendeur1.setNbEval(vendeur1.getNbEval()+1);
         //sReference.child("Etudiants").child(idVendeur).setValue(etudiant);
         Log.d("ETUDIANNN", vendeur1.toString());
-        sReference.child("Etudiants").child(idVendeur).child("note").setValue(vendeur1.getNote());
-        sReference.child("Etudiants").child(idVendeur).child("nbEval").setValue(vendeur1.getNbEval());
+        sReference.child("Etudiants").child(idVendeur).child("note").setValue(note);
+        //sReference.child("Etudiants").child(idVendeur).child("nbEval").setValue(vendeur1.getNbEval());
 
+    }
+
+    private static final int BASE_NOTE = 10; // Base de calcul de la note.
+    /**
+     * Permet de calculer le nombre d'étoiles que doit avoir le vendeur après l'évaluation.
+     * @param noteA
+     * @param noteV
+     */
+    private static float calculeNote(float noteA, float noteV) {
+
+        return (noteV + (noteA/BASE_NOTE));
     }
 }

@@ -227,9 +227,10 @@ public class DetailsBIen extends AppCompatActivity {
             public void run() {
 
                 if (vendeur1 != null)
-                    mNoteBAr.setRating(vendeur1.getNote()/vendeur1.getNbEval());
+                    mNoteBAr.setRating(vendeur1.getNote());
             }
         }, 3000); // Wait two seconds.
+
         if (mCurrentBien.getLivraison())
             mLivraison.setText("Livraison: Disponible");
         else

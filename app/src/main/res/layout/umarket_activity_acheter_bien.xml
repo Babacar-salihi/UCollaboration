@@ -348,6 +348,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fin"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/texteSize20"
             android:textStyle="bold"
             android:fontFamily="@font/philosopherregular"
@@ -358,7 +359,5 @@
             />
 
     </RelativeLayout>
-
-
 
 </ScrollView>

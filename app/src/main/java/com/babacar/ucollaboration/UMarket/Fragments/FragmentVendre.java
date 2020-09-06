@@ -245,7 +245,7 @@ public class FragmentVendre extends Fragment implements AdapterView.OnItemSelect
                 if(sCurrentUser != null){
 
                     Etudiant vendeur = new Etudiant(sCurrentUser.getIdEtu(), sCurrentUser.getPrenomEtu(), sCurrentUser.getNomEtu(),
-                            sCurrentUser.getNumTelephoneEtu(), sCurrentUser.getPhoto(), newVente, sCurrentUser.getDetailsPrestations(), sCurrentUser.getNote(), sCurrentUser.getNbEval()); // Le vendeur.
+                            sCurrentUser.getNumTelephoneEtu(), sCurrentUser.getPhoto(), newVente, sCurrentUser.getDetailsPrestations(), sCurrentUser.getNote()); // Le vendeur.
 
                     Bien newBien = new Bien(); // Le bien.
 

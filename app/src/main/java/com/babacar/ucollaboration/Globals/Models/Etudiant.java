@@ -23,7 +23,7 @@ public class Etudiant {
     protected List<Panier> mPanier = new ArrayList<>(); // Panier de l'utilisateur.
     protected List<String> mFavorie = new ArrayList<>(); // Les favories.
     protected float mNote; // Evaluation du vendeur.
-    protected int mNbEval;
+    //protected int mNbEval;
     //protected List<Panier> mBienAcheter = new ArrayList<>(); // Les Bients acheter.
     protected List<String> mDetailsPrestations = new ArrayList<>();
 
@@ -37,7 +37,7 @@ public class Etudiant {
         mCategorieSocioProf = categorieSocioProf;
     }*/
 
-    public Etudiant(String idEtu, String prenomEtu, String nomEtu, int numTelephoneEtu, String photo, String newAdresse, List<String> detailsDespt, float note, int nbEval) {
+    public Etudiant(String idEtu, String prenomEtu, String nomEtu, int numTelephoneEtu, String photo, String newAdresse, List<String> detailsDespt, float note /*,int nbEval*/) {
 
         this.mIdEtu = idEtu;
         this.mPrenomEtu = prenomEtu;
@@ -47,7 +47,7 @@ public class Etudiant {
         this.mNewAdresse = newAdresse;
         this.mDetailsPrestations = detailsDespt;
         this.mNote = note;
-        this.mNbEval = nbEval;
+        //this.mNbEval = nbEval;
     }
 
     /*public Etudiant(String prenomEtu, String nomEtu, String categorieSocioProf, int numTelephoneEtu, String email, String adresse) {
@@ -212,13 +212,13 @@ public class Etudiant {
         mNote = note;
     }
 
-    public int getNbEval() {
+    /*public int getNbEval() {
         return mNbEval;
     }
 
     public void setNbEval(int nbEval) {
         mNbEval = nbEval;
-    }
+    }*/
 
     @Override
     public String toString() {
@@ -236,7 +236,7 @@ public class Etudiant {
                 ", mPanier=" + mPanier +
                 ", mFavorie=" + mFavorie +
                 ", mNote=" + mNote +
-                ", mNbEval=" + mNbEval +
+                //", mNbEval=" + mNbEval +
                 ", mDetailsPrestationsEtu=" + mDetailsPrestations +
                 ", mFaculte='" + mFaculte + '\'' +
                 '}';

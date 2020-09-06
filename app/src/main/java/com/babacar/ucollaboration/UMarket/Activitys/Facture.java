@@ -114,10 +114,11 @@
                      if (alert.getRat().getRating() > 0 ) {
 
                          DataBase.setElevaluation(bien.getVendeur().getIdEtu(), alert.getRat().getRating());
-                         Toast.makeText(Facture.this, "Merci", Toast.LENGTH_SHORT).show();
                          details.setNoted(true);
                          DataBase.upDateDetailsPrestation(details);
                          alert.dismiss();
+                         Toast.makeText(Facture.this, "Merci", Toast.LENGTH_SHORT).show();
+
                      } else {
 
                          Toast.makeText(Facture.this, "Ajouter des étoiles !", Toast.LENGTH_SHORT).show();

@@ -61,6 +61,8 @@ public class RecyclerView_Carte_Acceuil extends RecyclerView.Adapter<ViewHolderC
         like(holder, bosseur); // Permet de noter le bosseur.
         if (bosseur.isOnLine())
             holder.mOnLine.setVisibility(View.VISIBLE);
+        else
+            holder.mOnLine.setVisibility(View.INVISIBLE);
 
         /* Back */
         Glide.with(mContext).load(bosseur.getPhoto()).into(holder.mBackPP);

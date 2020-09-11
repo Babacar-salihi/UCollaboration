@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Activitys.MainActivity;
 import com.bumptech.glide.Glide;
@@ -140,4 +141,5 @@ public class Acceuil extends AppCompatActivity {
         editor.putString("User", gson.toJson(sCurrentUser));
         editor.apply();
     }
+
 }

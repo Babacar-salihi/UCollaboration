@@ -433,7 +433,9 @@ public class AcheterBien extends AppCompatActivity {
                     final ProgressDialog progressDialog = new ProgressDialog(AcheterBien.this);
                     progressDialog.setTitle("Enregistrement en cours");
                     progressDialog.setMessage("Veuillez patientez s'il vous plait!");
+                    progressDialog.setCancelable(false);
                     progressDialog.show();
+
 
                     /* Création d'objets */
                     Bien bien = getBienById(mAchatBien.getBiens());

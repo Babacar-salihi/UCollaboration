@@ -15,29 +15,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Globals.Activitys.GererCompte"
+        <activity android:name=".UInfos.AllInfo"></activity>
+        <activity
+            android:name=".Globals.Activitys.GererCompte"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".UMarket.Activitys.CategoriesBien"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UMarket.Activitys.CategoriesBien"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UMaps.Activitys.Historique"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UMaps.Activitys.Historique"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity android:name=".UMaps.Activitys.Aide" />
-        <activity android:name=".UMarket.Activitys.ProfileLivreur"
+        <activity
+            android:name=".UMarket.Activitys.ProfileLivreur"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UService.Activitys.CategoriesService"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UService.Activitys.CategoriesService"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Globals.Activitys.CreerComptePro"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Globals.Activitys.CreerComptePro"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Globals.Activitys.UserSpace"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Globals.Activitys.UserSpace"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Globals.Utilitaires.SpalshCreenAcceuil"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Globals.Utilitaires.SpalshCreenAcceuil"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -46,62 +55,77 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Globals.Activitys.Acceuil"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Globals.Activitys.Inscription"
+        <activity
+            android:name=".Globals.Activitys.Acceuil"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".Globals.Activitys.Connexion"
+        <activity
+            android:name=".Globals.Activitys.Inscription"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Globals.Activitys.EmailVerification"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Globals.Activitys.Connexion"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Globals.Utilitaires.SplashCreenOK"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Globals.Activitys.EmailVerification"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/> <!-- UMarket -->
-        <activity android:name=".UMarket.Activitys.Facture"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Globals.Utilitaires.SplashCreenOK"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UMarket.Activitys.ListeVente"
+            android:screenOrientation="portrait" /> <!-- UMarket -->
+        <activity
+            android:name=".UMarket.Activitys.Facture"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UMarket.Activitys.MemeCategorie"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UMarket.Activitys.ListeVente"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UMarket.Activitys.ListeUser"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UMarket.Activitys.MemeCategorie"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UMarket.Activitys.AcheterBien"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UMarket.Activitys.ListeUser"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UMarket.Activitys.Panier"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UMarket.Activitys.AcheterBien"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UMarket.Activitys.DetailsBIen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UMarket.Activitys.Panier"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UMarket.Activitys.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UMarket.Activitys.DetailsBIen"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-
-        <!-- UMaps -->
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UMarket.Activitys.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" /> <!-- UMaps -->
         <service android:name=".UMarket.Activitys.ServiceMinuteur" />
-        <activity android:name=".UMaps.Activitys.MainActivity"
+
+        <activity
+            android:name=".UMaps.Activitys.MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/api_key" />
 
-        <activity android:name=".UService.Activitys.MainActivity"
+        <activity
+            android:name=".UService.Activitys.MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UService.Models.Categorie"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UService.Models.Categorie"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

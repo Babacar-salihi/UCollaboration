@@ -37,7 +37,7 @@ public class Inscription extends AppCompatActivity {
 
     private CircleImageView mUserProfilePic;
     private Spinner mSpinnerFac;
-    private EditText mPrenom, mNom, mNumTel, mNumChambre, mEmail, mPwd, mDomicile, mEditTextDepart;
+    private EditText mPrenom, mNom, mNumTel, mNumChambre, mEmail, mPwd, mDomicile;
     private String mFac;
     private Button mBtnContinuer;
     private ProgressBar mInsProgress;
@@ -71,14 +71,13 @@ public class Inscription extends AppCompatActivity {
         this.mEmail = findViewById(R.id.inscription_userEmail);
         this.mPwd = findViewById(R.id.inscription_userPwd);
         this.mDomicile = findViewById(R.id.inscription_userAdresse);
-        this.mEditTextDepart = findViewById(R.id.inscription_userDepart);
         this.mBtnContinuer = findViewById(R.id.inscription_btnContinuer);
     }
 
     /**
      * Permet de choisir une photo.
      */
-    public void choisirPhoto() {
+    private void choisirPhoto() {
 
         mUserProfilePic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +95,7 @@ public class Inscription extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
 
             mImageUri = data.getData();
             mUserProfilePic.setImageURI(mImageUri);
@@ -133,7 +132,7 @@ public class Inscription extends AppCompatActivity {
     /**
      * Permet de créer un compte pour l'utilisateur.
      */
-    public void creerCompte() {
+    private void creerCompte() {
 
         mBtnContinuer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,6 +186,7 @@ public class Inscription extends AppCompatActivity {
                     mBtnContinuer.setEnabled(false);
                     mInsProgress.setVisibility(View.VISIBLE);
 
+
                     final Etudiant etudiant = new Etudiant();
                     etudiant.setPrenomEtu(prenom);
                     etudiant.setNomEtu(nom);
@@ -204,85 +204,12 @@ public class Inscription extends AppCompatActivity {
                     if (mImageUri != null) { // Inscription avec photo de profile.
                         DataBase.creationCompte(getApplicationContext(), etudiant, mImageUri);
                         // Cette partie permet de bloquer l'ecran de l'utilisateur le temps que l'inscription passe.
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Log.d("mInscriptTest1", sInscriptTest + "");
-                                if (sInscriptTest) {
-
-                                    Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
-                                    Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class); // accéder à la 2ème étape (Vérification email).
-                                    startActivity(versAcceuil);
-                                    finish();
-                                } else { // Else on attend encore 3 secondes.
-
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-
-                                            if (sInscriptTest) {
-
-                                                Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
-                                                Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class);
-                                                startActivity(versAcceuil);
-                                                finish();
-                                            } else { // Sinon on a redonne la main à l'utilisateur.
-                                                Toast.makeText(getApplicationContext(), "Votre connexion est faible réessayez ulterieurment", Toast.LENGTH_LONG).show();
-                                                mBtnContinuer.setEnabled(true);
-                                                mInsProgress.setVisibility(View.GONE);
-                                            }
-                                        }
-                                    }, 2000);
-
-                                }
-                            }
-                        }, 10000);
-
-                        // Cette partie permet de bloquer l'ecran de l'utilisateur le temps que l'inscription passe.
-                    /*if (handler(10000)){ // On attend 10s.
-                        Toast.makeText(getApplicationContext(), "Inscription reussi0", Toast.LENGTH_SHORT).show();
-                    } else {
-                        if (handler(5000)){ // On attend 5s.
-
-                            Toast.makeText(getApplicationContext(), "Inscription reussi1", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Votre connexion est faible reessayez ulterieurment", Toast.LENGTH_LONG).show();
-                            mBtnContinuer.setEnabled(true);
-                            mInsProgress.setVisibility(View.GONE);
-                        }
-
-                    }*/
+                        waitAndVerifInscriptPhoto(10000); // Méthode permettant d'attendre la vérification de l'inscription avec photo.
 
                     } else { // Inscription sans photo de profile.
 
                         DataBase.creationCompte(getApplicationContext(), etudiant);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (sInscriptTest) {
-                                    Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
-                                    Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class);
-                                    startActivity(versAcceuil);
-                                    finish();
-                                } else {
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            if (sInscriptTest) {
-                                                Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
-                                                Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class); // accéder à la 2ème étape (Vérification email).
-                                                startActivity(versAcceuil);
-                                                finish();
-                                            } else {
-                                                Toast.makeText(getApplicationContext(), "Votre connexion est faible réessayez ulterieurment", Toast.LENGTH_LONG).show();
-                                                mBtnContinuer.setEnabled(true);
-                                                mInsProgress.setVisibility(View.GONE);
-                                            }
-                                        }
-                                    }, 3000);
-                                }
-                            }
-                        }, 5000);
+                        waitAndVerifInscript(5000);
                     }
 
                 } else {
@@ -296,35 +223,63 @@ public class Inscription extends AppCompatActivity {
     }
 
     /**
-     * Permet d'attendre un certain temps, le temps que l'inscripttion se termine (Cas de bande passante faible).
+     * Permet d'attendre un certain temps, le temps que l'inscripttion avec photo se termine (Cas de bande passante faible).
      */
-    /*private boolean handler(long duration){
+    private void waitAndVerifInscript(final long duration){
         Log.d("DANSHANDLER", "DANS HANDLER OK");
-        final boolean[] test = {false};
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
-                if(sInscriptTest){
-                    Intent versAcceuil = new Intent(getApplicationContext(), SplashCreenOK.class);
+                if (sInscriptTest) {
+                    Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
+                    Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class);
                     startActivity(versAcceuil);
                     finish();
-                    test[0] = true;
-                    Log.d("DANSHANDLER", "DANS HANDLER OK test =" +test.toString());
                 } else {
-                    test[0] = false;
-                }
 
+                    if ((duration/2) > 0)
+                        waitAndVerifInscript(duration/2);
+                    else {
+
+                        Toast.makeText(getApplicationContext(), "Votre connexion est faible réessayez ulterieurment", Toast.LENGTH_LONG).show();
+                        mBtnContinuer.setEnabled(true);
+                        mInsProgress.setVisibility(View.GONE);
+                    }
+                }
             }
         }, duration);
-        Log.d("DANSHANDLER", "FIN HANDLER");
 
-        Log.d("DANSHANDLER", "FIN HANDLER OK test =" +test.toString());
+    }
 
+    /**
+     * Permet d'attendre un certain temps, le temps que l'inscripttion sans photo se termine (Cas de bande passante faible).
+     */
+    private void waitAndVerifInscriptPhoto(final long duration){
+        Log.d("DANSHANDLER", "DANS HANDLER OK");
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("mInscriptTest1", sInscriptTest + "");
+                if (sInscriptTest) {
 
-        return test[0];
+                    Toast.makeText(getApplicationContext(), "Inscription reussi", Toast.LENGTH_SHORT).show();
+                    Intent versAcceuil = new Intent(getApplicationContext(), EmailVerification.class); // accéder à la 2ème étape (Vérification email).
+                    startActivity(versAcceuil);
+                    finish();
+                } else { // Else on attend encore 3 secondes.
 
-    }*/
+                    if ((duration/2) > 0)
+                        waitAndVerifInscriptPhoto(duration/2);
+                    else {
+                        Toast.makeText(getApplicationContext(), "Votre connexion est faible réessayez ulterieurment", Toast.LENGTH_LONG).show();
+                        mBtnContinuer.setEnabled(true);
+                        mInsProgress.setVisibility(View.GONE);
+                    }
+                }
+            }
+        }, duration);
+
+    }
 
     /**
      * Permet de cacher le clavier après saisie et soumission.

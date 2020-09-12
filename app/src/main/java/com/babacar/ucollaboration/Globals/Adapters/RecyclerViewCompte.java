@@ -96,6 +96,7 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
                             AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
                             alert.setTitle("Déconnexion de compte");
                             alert.setMessage("Voulez vous vraiment vous déconnectez?");
+                            alert.setIcon(R.drawable.deconnex);
                             alert.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -114,6 +115,7 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<ViewHolderCompte> {
 
                         case 5: // Suppression compte.
                             AlertDialog.Builder alert1 = new AlertDialog.Builder(mContext);
+                            alert1.setIcon(R.drawable.supprimer);
                             alert1.setTitle("Suppression de compte");
                             alert1.setMessage("Voulez vous vraiment supprimer votre compte?");
                             alert1.setPositiveButton("Oui", new DialogInterface.OnClickListener() {

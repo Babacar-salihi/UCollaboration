@@ -40,7 +40,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -49,14 +48,13 @@ import java.util.List;
 public class DataBase {
 
     //La rachine dans Firebase Real time: nom de l'application.
-    public static DatabaseReference sReference = FirebaseDatabase.getInstance().getReference().child("SaleOnLine");
+    public static final DatabaseReference sReference = FirebaseDatabase.getInstance().getReference().child("SaleOnLine");
 
     // Pour les biens: Biens.
-    private static StorageReference sStorageRef = FirebaseStorage.getInstance().getReference().child("Biens");
-    private static String key = sReference.push().push().getKey();
+    private static final StorageReference sStorageRef = FirebaseStorage.getInstance().getReference().child("Biens");
 
     // Pour les Utilisateurs: Utilisateurs.
-    public static StorageReference sUserProfile = FirebaseStorage.getInstance().getReference().child("Etudiants");
+    private static final StorageReference sUserProfile = FirebaseStorage.getInstance().getReference().child("Etudiants");
     public static Etudiant sCurrentUser;
     public static Etudiant sAcheteur;
 
@@ -75,8 +73,8 @@ public class DataBase {
      * @param bien
      * @return
      */
-    public static Boolean publierBien(final Context context, final List<Bitmap> bitmap, final Bien bien) {
-        Log.d("KEYYY", key);
+    public static boolean publierBien(final Context context, final List<Bitmap> bitmap, final Bien bien) {
+        final String key = sReference.push().push().getKey();
         //sPUBTest = false;
         final ProgressDialog progressDialog = new ProgressDialog(context);
 
@@ -95,27 +93,6 @@ public class DataBase {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            /*Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                                @Override
-                                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-
-                                    if (!task.isSuccessful()) {
-
-                                        throw task.getException();
-                                    }
-
-                                    String urlDownLoad = sStorageRef.child(key).child(keyImg)
-                                            .getDownloadUrl().toString();
-
-                                    return sStorageRef.child(key).child(keyImg).getDownloadUrl();
-                                }
-                            });*/
-
-                            /*String urlDownload = sStorageRef.child(key).child(keyImg)
-                                    .getDownloadUrl().toString();*/
-
-//                            String urlDownload = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-
                             // Trés important.
                             sStorageRef.child(key).child(keyImg).getDownloadUrl()
                                     .addOnCompleteListener(new OnCompleteListener<Uri>() {
@@ -133,7 +110,7 @@ public class DataBase {
                                     testeImg[0] += 1;
                                     if(testeImg[0] == bitmap.size()) {
 
-                                        saveInDatabase(bien);
+                                        saveInDatabase(bien, key);
                                     }
 
                                 }
@@ -156,12 +133,11 @@ public class DataBase {
     /**
      * Permet de mettre un bien uniquement dans FirebaseDatabase.
      * @param bien
-     * @return
+     * @param key
      */
-    private static boolean saveInDatabase(Bien bien){
+    private static void saveInDatabase(Bien bien, String key){
         bien.setIdBien(key);
         sReference.child("Biens").child(key).setValue(bien);
-        return true;
     }
 
 
@@ -444,7 +420,7 @@ public class DataBase {
     /**
      * Récupérer le panier de l'utilisateur
      */
-    public static void loadPanier(Etudiant user){
+    private static void loadPanier(Etudiant user){
 
         DatabaseReference etudiantPanier = sReference.child("Etudiants").child(user.getIdEtu()).child("Panier");
         etudiantPanier.addValueEventListener(new ValueEventListener() {
@@ -469,7 +445,7 @@ public class DataBase {
     /**
      *  Récupérer les biens favories de l'utilisateur
      */
-    public static void loadFavorie(Etudiant user){
+    private static void loadFavorie(Etudiant user){
 
         DatabaseReference etudiantFavorie = sReference.child("Etudiants").child(user.getIdEtu()).child("Favorie");
         etudiantFavorie.addValueEventListener(new ValueEventListener() {
@@ -580,8 +556,8 @@ public class DataBase {
 
     //======================================== DETAILS PRESTATION ===================================================
 
-    public static List<Bien> sBienList = new ArrayList<>();
-    public static List<Bien> mBiensNvendu = new ArrayList<>();
+    public static final List<Bien> sBienList = new ArrayList<>();
+    public static final List<Bien> mBiensNvendu = new ArrayList<>();
 
     /**
      * Permet de récupérer les biens de la base de données.
@@ -611,7 +587,7 @@ public class DataBase {
                 });
     }
 
-    private static DatabaseReference refDeatils = sReference.child("Details Prestations");
+    private static final DatabaseReference refDeatils = sReference.child("Details Prestations");
     public static String keyDetails = refDeatils.push().push().getKey();
 
     public static void ajouterDetails(DetailsPrestation details) {
@@ -711,7 +687,7 @@ public class DataBase {
     }
 
 
-    public static List<DetailsPrestation> sAllDetails = new ArrayList<>();
+    private static final List<DetailsPrestation> sAllDetails = new ArrayList<>();
     //public static short sTestGettingRetail; // -1: Failure, 0: default, 1: OK;
 
     /**
@@ -881,9 +857,9 @@ public class DataBase {
 
 
     //================================ UMAPS ====================================
-    private static DatabaseReference sRefUmaps = FirebaseDatabase.getInstance().getReference().child("UMaps");
-    public static DatabaseReference sRefLieux = sRefUmaps.child("Lieux");
-    private static String sKeyLieu = sRefLieux.push().getKey();
+    private static final DatabaseReference sRefUmaps = FirebaseDatabase.getInstance().getReference().child("UMaps");
+    public static final DatabaseReference sRefLieux = sRefUmaps.child("Lieux");
+    private static final String sKeyLieu = sRefLieux.push().getKey();
     public static List<Lieu> sLieux = new ArrayList<>();
     public static List<String> sNomLieu = new ArrayList<>();
 
@@ -914,32 +890,6 @@ public class DataBase {
     }
 
     /**
-     * Permet de récupérer les lieux.
-     */
-    /*public static void getLieux() {
-
-        sRefLieux.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                sLieux.clear();
-                sNomLieu.clear();
-                for (DataSnapshot lieu : dataSnapshot.getChildren()) {
-
-                    Lieu lieu1 = lieu.getValue(Lieu.class);
-                    sLieux.add(lieu1);
-                    sNomLieu.add(lieu1.getPosition());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }*/
-
-    /**
      * Permet d'ajouter le lieu dans la liste des lieux inconnus, et serra ultérieurement ajouter par l'administrateur.
      * @param lieu
      */
@@ -963,7 +913,7 @@ public class DataBase {
 
     // =================================== UService =====================================
 
-    public static DatabaseReference sRefUService = FirebaseDatabase.getInstance().getReference().child("UService");
+    public static final DatabaseReference sRefUService = FirebaseDatabase.getInstance().getReference().child("UService");
 
     /**
      * Permet de mettre à jour le compte de l'utilisateur, utilisé lors d'ouverture d'un comptePro.
@@ -982,7 +932,6 @@ public class DataBase {
      */
     private static void onLine(final String idUser) {
 
-        //sRefUService.child(idUser).child("onLine").setValue(true);
         sRefUService.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -1033,35 +982,12 @@ public class DataBase {
      */
     public static void setElevaluation(final String idVendeur, final float noteA) {
 
-        /*sReference.child("Etudiants")
-                .child(idVendeur).child("note").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                etudiant = dataSnapshot.getValue(Etudiant.class);
-                etudiant.setNote(note+etudiant.getNote());
-                etudiant.setNbEval(etudiant.getNbEval()+1);
-                //sReference.child("Etudiants").child(idVendeur).setValue(etudiant);
-                Log.d("ETUDIANNN", etudiant.toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
-
         getUserById(idVendeur);
         float note = calculeNote(noteA, vendeur1.getNote()); // Calculer le note sur une base de 10.
 
         vendeur1.setNote(note);
-        //vendeur1.setNote(noteA+vendeur1.getNote());
-        //vendeur1.setNbEval(vendeur1.getNbEval()+1);
-        //sReference.child("Etudiants").child(idVendeur).setValue(etudiant);
         Log.d("ETUDIANNN", vendeur1.toString());
         sReference.child("Etudiants").child(idVendeur).child("note").setValue(note);
-        //sReference.child("Etudiants").child(idVendeur).child("nbEval").setValue(vendeur1.getNbEval());
-
     }
 
     private static final int BASE_NOTE = 10; // Base de calcul de la note.

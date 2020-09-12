@@ -1,6 +1,5 @@
 package com.babacar.ucollaboration.Globals.Activitys;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,8 +8,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.telecom.Connection;
-import android.telecom.ConnectionService;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -43,7 +41,6 @@ public class Connexion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.global_activity_connexion);
 
-
         referenceWidgets(); // Permet de référencer les widgets.
         connexion(); // Permet de se connecter si on a déja un compte.
         pwdOublie(); // Méthode pour récupérer son mot de passe.
@@ -62,7 +59,7 @@ public class Connexion extends AppCompatActivity {
 
     }
 
-    public void connexion() {
+    private void connexion() {
         mProgress.setVisibility(View.GONE);
         mBtnContinuer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,9 +72,7 @@ public class Connexion extends AppCompatActivity {
                     String email = mEmail.getText().toString().trim();
                     String pwd = mPwd.getText().toString().trim();
 
-                    /**
-                     * Données obligatoires pour se connecter.
-                     */
+                    // Données obligatoires pour se connecter.
                     if (TextUtils.isEmpty(email)) {
                         Toast.makeText(getApplicationContext(), "Saisissez votre email", Toast.LENGTH_SHORT).show();
                         return;
@@ -89,37 +84,49 @@ public class Connexion extends AppCompatActivity {
                     mBtnContinuer.setEnabled(false);
                     mProgress.setVisibility(View.VISIBLE);
                     sConnexTest = false;
-                    Log.d("ConnexTest", String.valueOf(sConnexTest));
                     DataBase.connexion(getApplicationContext(), email, pwd);
-                    // Attente de 7s .
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.d("ConnexTest", String.valueOf(sConnexTest));
-                            if (sConnexTest) {
-
-                                Log.d("ConnexTest", String.valueOf(sConnexTest));
-                                Intent versSplash = new Intent(getApplicationContext(), SplashCreenOK.class);
-                                startActivity(versSplash);
-                                finish();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Veuillez vérifier votre connexion à internet!", Toast.LENGTH_SHORT).show();
-                                mBtnContinuer.setEnabled(true);
-                                mProgress.setVisibility(View.GONE);
-                            }
-
-                        }
-                    }, 10000);
+                    // Attente de 10s .
+                    waitAndVerifConnex(10000); // Méthode permettant d'attendre la vérification.
 
                 } else {
 
                     alertDialog();
                 }
-
-
             }
         });
     }
+
+    /**
+     * Permet d'attendre un certain temps avant d'exécuter le code de verification de la connexion.
+     */
+    private void waitAndVerifConnex(final long time) {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("ConnexTest", String.valueOf(sConnexTest));
+                if (sConnexTest) {
+
+                    Intent versSplash = new Intent(getApplicationContext(), SplashCreenOK.class);
+                    startActivity(versSplash);
+                    finish();
+                } else {
+
+                    Log.d("Timmer", (time/2)+"");
+
+                    if (time/2 > 0) {
+                        waitAndVerifConnex(time/2);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Veuillez vérifier votre connexion à internet!", Toast.LENGTH_SHORT).show();
+                        mBtnContinuer.setEnabled(true);
+                        mProgress.setVisibility(View.GONE);
+                    }
+                }
+
+            }
+        }, time);
+    }
+
 
     /**
      * Permet de récupérer son mot de passe.
@@ -139,7 +146,6 @@ public class Connexion extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     /**

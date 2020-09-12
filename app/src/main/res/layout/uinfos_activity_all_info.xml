@@ -1,9 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UInfos.AllInfo">
+    tools:context=".UInfos.AllInfo"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Documentations -->
+    <LinearLayout
+        android:id="@+id/uinfos_docs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin10"
+        android:padding="@dimen/padding10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/docs"
+            android:textSize="@dimen/sizeTitre"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/philosopherregular"
+            android:layout_marginBottom="@dimen/margin5"
+            />
+
+        <!-- UMarket -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/uinfos_umarketDocs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin5"
+            android:onClick="showDoc"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_margin="@dimen/margin10"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/imgSize50"
+                    android:layout_height="@dimen/imgSize50"
+                    android:src="@drawable/umarket"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/docUmarket"
+                    android:textSize="@dimen/texteSize20"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/philosopherregular"
+                    android:layout_marginLeft="@dimen/margin10"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <!-- UService -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/uinfos_userviceDocs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin5"
+            android:onClick="showDoc"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_margin="@dimen/margin10"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/imgSize50"
+                    android:layout_height="@dimen/imgSize50"
+                    android:src="@drawable/uservice"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/docUservice"
+                    android:textSize="@dimen/texteSize20"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/philosopherregular"
+                    android:layout_marginLeft="@dimen/margin10"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <!-- UMaps -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/uinfos_umapsDocs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin5"
+            android:onClick="showDoc"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_margin="@dimen/margin10"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/imgSize50"
+                    android:layout_height="@dimen/imgSize50"
+                    android:src="@drawable/umaps"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/docUmaps"
+                    android:textSize="@dimen/texteSize20"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/philosopherregular"
+                    android:layout_marginLeft="@dimen/margin10"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+    <!-- A propos -->
+    <LinearLayout
+        android:id="@+id/uinfos_apropos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin10"
+        android:padding="@dimen/padding10"
+        android:layout_below="@id/uinfos_docs"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/apropos"
+            android:textSize="@dimen/sizeTitre"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/philosopherregular"
+            android:layout_marginBottom="@dimen/margin5"
+            />
+
+        <!-- Développeur -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin5"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_margin="@dimen/margin10"
+                >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/imgSize50"
+                    android:layout_height="@dimen/imgSize50"
+                    android:src="@drawable/steve_jobs"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/moi"
+                    android:textSize="@dimen/texteSize20"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/philosopherregular"
+                    android:layout_marginLeft="@dimen/margin10"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Réseau sociaux -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin10"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding10"
+                >
+
+                <!-- LinkedIn -->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/imgSize50"
+                    android:layout_height="@dimen/imgSize50"
+                    android:src="@drawable/linkedin"
+                    />
+
+                <!-- Twitter -->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/imgSize50"
+                    android:layout_height="@dimen/imgSize50"
+                    android:src="@drawable/twitter"
+                    android:layout_marginLeft="@dimen/margin10"/>
+
+                <!-- Instagram -->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/imgSize50"
+                    android:layout_height="@dimen/imgSize50"
+                    android:src="@drawable/insta"
+                    android:layout_marginLeft="@dimen/margin10"/>
+
+                <!-- Facebook -->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/imgSize50"
+                    android:layout_height="@dimen/imgSize50"
+                    android:src="@drawable/facebook"
+                    android:layout_marginLeft="@dimen/margin10"/>
+
+                <!-- Youtube -->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/imgSize50"
+                    android:layout_height="@dimen/imgSize50"
+                    android:src="@drawable/youtube"
+                    android:layout_marginLeft="@dimen/margin10"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <!-- Version de l'application -->
+    <TextView
+        android:id="@+id/uinfos_versionApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/versionApp"
+        android:textSize="@dimen/texteSize20"
+        android:layout_margin="@dimen/margin15"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        />
+
+</RelativeLayout>

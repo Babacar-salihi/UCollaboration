@@ -234,6 +234,13 @@
     <string name="enregistrer">Enregister</string>
     <string name="non">Non</string>
     <string name="oui">Oui</string>
+    <string name="docUmarket">Documentation Umarket</string>
+    <string name="docs">Documentations</string>
+    <string name="docUservice">Documentation Uservice</string>
+    <string name="docUmaps">Documentation Umaps</string>
+    <string name="apropos">A propos</string>
+    <string name="versionApp">Version 1.0.0</string>
+    <string name="moi">Babacar Ndong</string>
 
 
 </resources>

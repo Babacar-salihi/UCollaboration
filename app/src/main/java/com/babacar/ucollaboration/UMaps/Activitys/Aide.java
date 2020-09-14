@@ -72,13 +72,11 @@ public class Aide extends AppCompatActivity {
             return;
         }
 
-
-
         LieuInconnu newLieu = new LieuInconnu();
         newLieu.setNomLieu(nomLieu);
         newLieu.setDescriptLieu(descript);
 
-        addLieuInconnu(newLieu); // Ajouter le lieu dans la liste des lieux inconnus.
+        DataBase.addLieuInconnu(newLieu); // Ajouter le lieu dans la liste des lieux inconnus.
         Toast.makeText(getApplicationContext(),"Merci beaucoup", Toast.LENGTH_LONG).show();
 
         startActivity(new Intent(getApplicationContext(), SplashCreenOK.class));

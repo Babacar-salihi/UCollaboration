@@ -893,12 +893,41 @@ public class DataBase {
      * Permet d'ajouter le lieu dans la liste des lieux inconnus, et serra ultérieurement ajouter par l'administrateur.
      * @param lieu
      */
-    public static void addLieuInconnu(LieuInconnu lieu) {
+    public static void addLieuInconnu(final LieuInconnu lieu) {
 
-        String key = sReference.push().getKey();
-        lieu.setIdLieu(key);
-        DatabaseReference lieuInconnu = sRefUmaps.child("LieuxInconnus");
-        lieuInconnu.child(key).setValue(lieu);
+        final String[] inside = {"non"};
+        sRefUmaps.child("LieuxInconnus").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot lieuInc :
+                     dataSnapshot.getChildren()) {
+
+                    LieuInconnu lieuInconnu = lieuInc.getValue(LieuInconnu.class);
+                    Log.d("LieuName", lieu.getNomLieu()+"\n"+lieuInconnu.getNomLieu());
+
+                    if (lieuInconnu.getNomLieu().equalsIgnoreCase(lieu.getNomLieu())) {
+
+                        inside[0] = "yes";
+                        break;
+                    }
+                }
+
+                if (inside[0].equalsIgnoreCase("non")) {
+
+                    String key = sReference.push().getKey();
+                    lieu.setIdLieu(key);
+                    DatabaseReference lieuInconnu = sRefUmaps.child("LieuxInconnus");
+                    lieuInconnu.child(key).setValue(lieu);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     /**

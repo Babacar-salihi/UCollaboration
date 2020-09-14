@@ -4,6 +4,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -19,6 +21,10 @@ public class AllInfo extends AppCompatActivity {
         setContentView(R.layout.uinfos_activity_all_info);
     }
 
+    /**
+     * Permet d'afficher la documentation...
+     * @param view
+     */
     public void showDoc(View view) {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(AllInfo.this);
@@ -87,6 +93,56 @@ public class AllInfo extends AppCompatActivity {
                 alert.show();
                 break;
 
+        }
+    }
+
+    /**
+     * Permet d'acceder à mon profile dans les réseaux sociaux...
+     * @param view
+     */
+    public void reseaux(View view) {
+
+
+        switch (view.getId()) {
+
+            /* LinkedInd */
+            case R.id.uinfos_linkedIn :
+                connectionTo(Uri.parse("https://www.linkedin.com/in/babacar-ndong-757a271b3/"), "com.linkedInd.android");
+                break;
+
+            /* Twitter */
+            case R.id.uinfos_twitter :
+                connectionTo(Uri.parse("https://twitter.com/Babacar37633838"), "com.twitter.android");
+                break;
+
+            /* Instagram */
+            case R.id.uinfos_insta :
+                connectionTo(Uri.parse("http://instagram.com/_u/bab4car"), "com.instagram.android");
+                break;
+
+            /* Facebook */
+            case R.id.uinfos_facebook :
+                connectionTo(Uri.parse("https://web.facebook.com/babacar.ndong.758"), "com.facebook.android");
+                break;
+
+            /* Youtube */
+            case R.id.uinfos_youtube :
+                connectionTo(Uri.parse("http://instagram.com/_u/bab4car"), "com.instagram.android");
+                break;
+        }
+    }
+
+    /**
+     * Permet de gérer les package et conenxion dans les différents réseaux sociaux.
+     */
+    private void connectionTo(Uri uri, String str_package) {
+
+        Intent instagram = new Intent(Intent.ACTION_VIEW, uri);
+        instagram.setPackage(str_package);
+        try {
+            startActivity(instagram);
+        } catch (Exception e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, uri));
         }
     }
 }

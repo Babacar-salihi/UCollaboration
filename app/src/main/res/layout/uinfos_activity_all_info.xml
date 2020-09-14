@@ -211,38 +211,58 @@
 
                 <!-- LinkedIn -->
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/uinfos_linkedIn"
                     android:layout_width="@dimen/imgSize50"
                     android:layout_height="@dimen/imgSize50"
                     android:src="@drawable/linkedin"
+                    android:layout_marginRight="@dimen/margin10"
+                    android:onClick="reseaux"
                     />
 
                 <!-- Twitter -->
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/uinfos_twitter"
                     android:layout_width="@dimen/imgSize50"
                     android:layout_height="@dimen/imgSize50"
                     android:src="@drawable/twitter"
-                    android:layout_marginLeft="@dimen/margin10"/>
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:layout_marginRight="@dimen/margin10"
+                    android:onClick="reseaux"
+                    />
 
                 <!-- Instagram -->
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/uinfos_insta"
                     android:layout_width="@dimen/imgSize50"
                     android:layout_height="@dimen/imgSize50"
                     android:src="@drawable/insta"
-                    android:layout_marginLeft="@dimen/margin10"/>
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:layout_marginRight="@dimen/margin10"
+                    android:onClick="reseaux"
+                    />
 
                 <!-- Facebook -->
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/uinfos_facebook"
                     android:layout_width="@dimen/imgSize50"
                     android:layout_height="@dimen/imgSize50"
                     android:src="@drawable/facebook"
-                    android:layout_marginLeft="@dimen/margin10"/>
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:layout_marginRight="@dimen/margin10"
+                    android:onClick="reseaux"
+                    />
 
                 <!-- Youtube -->
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/uinfos_youtube"
                     android:layout_width="@dimen/imgSize50"
                     android:layout_height="@dimen/imgSize50"
                     android:src="@drawable/youtube"
-                    android:layout_marginLeft="@dimen/margin10"/>
+                    android:layout_marginLeft="@dimen/margin10"
+                    android:layout_marginRight="@dimen/margin10"
+                    android:onClick="reseaux"
+                    android:visibility="gone"
+                    />
 
             </LinearLayout>
 

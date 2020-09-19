@@ -97,24 +97,24 @@
                     android:layout_below="@id/gererCompte_prenom_user"/>
 
                 <!-- Email de l'utilisateur -->
-                <EditText
+                <!--<EditText
                     android:id="@+id/gererCompte_email_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/userEmail"
                     android:inputType="textEmailAddress"
                     android:layout_marginBottom="@dimen/margin15"
-                    android:layout_below="@id/gererCompte_nom_user"/>
+                    android:layout_below="@id/gererCompte_nom_user"/>-->
 
                 <!-- Mot de passe de l'utilisateur -->
                 <EditText
                     android:id="@+id/gererCompte_pwd_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/userEmail"
-                    android:inputType="textVisiblePassword"
+                    android:hint="@string/userPwd"
+                    android:inputType="textPassword"
                     android:layout_marginBottom="@dimen/margin15"
-                    android:layout_below="@id/gererCompte_email_user"/>
+                    android:layout_below="@id/gererCompte_nom_user"/>
 
                 <!-- Numéro de téléphone -->
                 <EditText

@@ -494,6 +494,7 @@ public class DataBase {
     }
     // ========================================= FIN Connexion ===============================================
 
+    public static String sKey = sReference.child("Etudiants").push().getKey();;
     /**
      * Mettre à jour les infos d'un utilisateur, utiliser surtout lors de l'ajout dans le panier.
      * @param user
@@ -503,7 +504,6 @@ public class DataBase {
                 .child(user.getIdEtu())
                 .child("panier")
                 .setValue(user.getPanier());
-
     }
 
     /**

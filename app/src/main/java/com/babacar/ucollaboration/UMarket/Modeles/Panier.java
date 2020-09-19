@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class Panier implements Serializable {
 
-    private int idPanier;
+    private String idPanier;
     private String mBiens; // L'ensemble des biens du panier
     private int mQuantiteAchat; // Nombre d'article ajouté.
     private int mSommeTotale; // Somme totale des biens ajoutés.
@@ -14,7 +14,7 @@ public class Panier implements Serializable {
     public Panier() {
     }
 
-    public Panier(int idPanier, String biens, int quantiteAchat, int sommeTotale, long timeToExpire) {
+    public Panier(String idPanier, String biens, int quantiteAchat, int sommeTotale, long timeToExpire) {
         this.idPanier = idPanier;
         mBiens = biens;
         mQuantiteAchat = quantiteAchat;
@@ -22,11 +22,11 @@ public class Panier implements Serializable {
         this.mTimeToExpire = timeToExpire;
     }
 
-    public int getIdPanier() {
+    public String getIdPanier() {
         return idPanier;
     }
 
-    public void setIdPanier(int idPanier) {
+    public void setIdPanier(String idPanier) {
         this.idPanier = idPanier;
     }
 

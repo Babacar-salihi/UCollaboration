@@ -1,8 +1,6 @@
 package com.babacar.ucollaboration.UMaps.Utilitaires;
 
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
@@ -12,8 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.babacar.ucollaboration.Globals.Utilitaires.SplashCreenOK;
-import com.babacar.ucollaboration.UMaps.Activitys.Aide;
-import com.babacar.ucollaboration.UMaps.Activitys.MainActivity;
+
 import com.babacar.ucollaboration.UMaps.Adapters.PopupAjouterEmp;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
 
@@ -28,7 +25,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 
 import java.util.Random;
-import java.util.logging.LogRecord;
 
 import static com.babacar.ucollaboration.Globals.Activitys.CreerComptePro.sBosseurEmp;
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.addLieuBosseur;

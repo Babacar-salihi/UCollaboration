@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
+import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sKey;
 import static com.babacar.ucollaboration.UMarket.Fragments.FragmentAcceuil.selectBien;
 
 public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
@@ -160,8 +161,6 @@ public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
 
                                     int teste = 0;
                                     int indexBien = 0;
-                                    Log.d("teste", "Av testeVar ="+teste);
-                                    Log.d("teste", "Av indexVar ="+indexBien);
 
                                     // Teste si le panier contient déjà le bien qu'on veut ajouter
                                     for (Panier panier1 : sCurrentUser.getPanier()) {
@@ -177,6 +176,7 @@ public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
 
                                     if (teste == 0) { // Si le bien n'est pas encore dans le panier.
 
+                                        panier.setIdPanier(sKey);
                                         panier.setQuantiteAchat(1);
                                         // 864001000
                                         panier.setTimeToExpire(864001000); // Le bien reste dans le panier que pour 24H.

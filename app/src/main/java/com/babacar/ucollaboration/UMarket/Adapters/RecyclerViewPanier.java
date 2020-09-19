@@ -1,8 +1,11 @@
 package com.babacar.ucollaboration.UMarket.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,21 +17,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
+import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Activitys.AcheterBien;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.babacar.ucollaboration.UMarket.Modeles.Panier;
 import com.squareup.picasso.Picasso;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
 import static com.babacar.ucollaboration.Globals.DataAccessObject.DataBase.sCurrentUser;
 import static com.babacar.ucollaboration.UMarket.Activitys.MainActivity.getBienById;
+import static com.babacar.ucollaboration.UMarket.Activitys.Panier.notifyChange;
 
 
 public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
 
+    private static Runnable mRunnable;
     private final Context mContext;
     private final List<Panier> mPaniers;
     //private long timer = 864001000;
@@ -53,7 +60,6 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
 
         final Panier panier = mPaniers.get(position);
 
-        Log.d("HelloWord", position+"");
         //final Bien bien = gson.fromJson(panier.getBiens(), Bien.class);
         final Bien bien = getBienById(panier);
 
@@ -71,28 +77,48 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
             @Override
             public void onClick(View v) {
 
-                /*AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
+                AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
                 alert.setTitle("Acheter le bien");
                 alert.setMessage("Voulez vous l\'achtez?");
-                alert.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                alert.setPositiveButton("Acheter", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+                        Intent achat = new Intent(mContext, AcheterBien.class);
+                        achat.putExtra("AchatBien", panier);
+                        achat.putExtra("PositionAchatBien", position);
+                        achat.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        mContext.startActivity(achat);
 
                         mContext.startActivity(new Intent(mContext, AcheterBien.class).putExtra("AchatBien", panier));
                     }
                 });
-                alert.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                alert.setNegativeButton("Supprimer", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
+                        bien.setNombreBien(bien.getNombreBien()+panier.getQuantiteAchat());
+
+                        if (bien.getEtatBien() == -1) {
+                            bien.setEtatBien(0);
+                        }
+                        DataBase.updateBien(bien);
+                        mPaniers.remove(position);
+
+                        DataBase.upDateUserPanier(sCurrentUser);
+                        //holder.mBien.setVisibility(View.GONE);
+                        notifyChange(); // Dire à l'adapter que la liste est modifier.
+                        Log.d("Positihon", position+"");
+
+                        Toast.makeText(mContext, bien.getLibelle()+" supprimé", Toast.LENGTH_SHORT).show();
                     }
                 });
-                alert.show();*/
-                Intent achat = new Intent(mContext, AcheterBien.class);
+                alert.show();
+                /*Intent achat = new Intent(mContext, AcheterBien.class);
                 achat.putExtra("AchatBien", panier);
                 achat.putExtra("PositionAchatBien", position);
                 achat.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(achat);
+                mContext.startActivity(achat);*/
             }
         });
 
@@ -123,11 +149,8 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
             });
 
         }
-
-        Log.d("ShoppingCard", panier.toString());
-
         // Le bouton supprimer.
-        holder.mBtnSupp
+        /*holder.mBtnSupp
                 .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,11 +167,8 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
                 //holder.mBien.setVisibility(View.GONE);
                 Toast.makeText(mContext, bien.getLibelle()+" supprimé", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
-
-        Log.d("SOMMETOTALE1_indexOf%", mPaniers.indexOf(panier)+"");
-        Log.d("SOMMETOTALE1_taille", (mPaniers.size()-1)+"");
     }
 
 
@@ -215,10 +235,6 @@ public class RecyclerViewPanier extends RecyclerView.Adapter<ViewHolderPanier> {
             @Override
             public void onClick(View v) {
                 if (mCurrentBien.getNombreBien() > 0) {
-                    //holder.mBtnPlus.setEnabled(true);
-                    //holder.mBtnMoin.setEnabled(true);
-                    Log.d("TAGNBBIEN",mNbBien+"");
-                    Log.d("TAGNBBIENNPlus",mCurrentBien.getNombreBien()+"");
 
                     if ((mCurrentBien.getNombreBien()-1) == 0) {
 

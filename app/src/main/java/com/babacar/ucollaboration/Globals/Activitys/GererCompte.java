@@ -68,7 +68,7 @@ public class GererCompte extends AppCompatActivity {
         this.mUserPP = findViewById(R.id.gererCompte_pp_user);
         this.mPrenom = findViewById(R.id.gererCompte_prenom_user);
         this.mNom = findViewById(R.id.gererCompte_nom_user);
-        this.mEmail = findViewById(R.id.gererCompte_email_user);
+//        this.mEmail = findViewById(R.id.gererCompte_email_user);
         this.mPwd = findViewById(R.id.gererCompte_pwd_user);
         this.mNumTel = findViewById(R.id.gererCompte_tel_user);
         this.mAdresse = findViewById(R.id.gererCompte_adresse_user);

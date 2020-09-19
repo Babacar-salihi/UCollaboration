@@ -27,6 +27,8 @@ public class Panier extends AppCompatActivity {
     private LinearLayout mPanierVide;
     private Button mInspiration;
     private TextView mSommeTotale;
+    private static RecyclerViewPanier adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class Panier extends AppCompatActivity {
         setContentView(R.layout.umarket_activity_panier);
 
         referenceWidgets(); // Méthode pour référencer les widgets du panier.
+        adapter = new RecyclerViewPanier(this, sCurrentUser.getPanier());
         inflater(); // Méthode pour inflater la liste du panier de l'utilisateur.
         findInspi(); // Méthode permettant à l'utilisateur de trouver des idées d'achat.
     }
@@ -55,7 +58,6 @@ public class Panier extends AppCompatActivity {
     private void inflater(){
 
         if (sCurrentUser != null && !sCurrentUser.getPanier().isEmpty()){
-            RecyclerViewPanier adapter = new RecyclerViewPanier(getApplicationContext(), sCurrentUser.getPanier());
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
             mRecyclerView.setLayoutManager(layoutManager);
             mRecyclerView.setAdapter(adapter);
@@ -63,7 +65,14 @@ public class Panier extends AppCompatActivity {
         } else {
             mPanierVide.setVisibility(View.VISIBLE);
         }
+    }
 
+    /**
+     * Permet de notifier a l'adapter que la liste à changer.
+     */
+    public static void notifyChange() {
+
+        adapter.notifyDataSetChanged();
     }
 
     private int sommeTotale(List<com.babacar.ucollaboration.UMarket.Modeles.Panier> paniers) {

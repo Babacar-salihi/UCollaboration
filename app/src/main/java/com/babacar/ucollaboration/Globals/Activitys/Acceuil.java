@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.R;
-import com.babacar.ucollaboration.UInfos.AllInfo;
+import com.babacar.ucollaboration.UInfos.Activitys.AllInfo;
 import com.babacar.ucollaboration.UMarket.Activitys.MainActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;

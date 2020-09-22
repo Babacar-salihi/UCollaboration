@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UInfos.AllInfo"></activity>
+        <activity android:name=".UInfos.Activitys.Uinfo_Accueil"></activity>
+        <activity android:name=".UInfos.AllInfo" />
         <activity
             android:name=".Globals.Activitys.GererCompte"
             android:configChanges="orientation"

@@ -470,7 +470,7 @@ public class DataBase {
     /**
      * Permet de récupérer un mot de passe.
      */
-    public static void pwdOublié(final Context context, String email) {
+    public static void pwdOublie(final Context context, String email) {
 
         final FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.sendPasswordResetEmail(email)

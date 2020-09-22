@@ -51,7 +51,7 @@ public class Panier extends AppCompatActivity {
         this.mInspiration = findViewById(R.id.panier_trouverIdee);
         this.mSommeTotale = findViewById(R.id.panier_sommeTotaleBiens);
     }
-
+   
     /**
      * Permet de gonfler le panier.
      */
@@ -76,7 +76,6 @@ public class Panier extends AppCompatActivity {
     }
 
     private int sommeTotale(List<com.babacar.ucollaboration.UMarket.Modeles.Panier> paniers) {
-
         int somme = 0;
         for (com.babacar.ucollaboration.UMarket.Modeles.Panier panier : paniers) {
 

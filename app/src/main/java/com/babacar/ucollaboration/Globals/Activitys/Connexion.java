@@ -139,7 +139,7 @@ public class Connexion extends AppCompatActivity {
 
                 if (!TextUtils.isEmpty(mEmail.getText().toString())) {
 
-                    DataBase.pwdOublié(getApplicationContext(), mEmail.getText().toString());
+                    DataBase.pwdOublie(getApplicationContext(), mEmail.getText().toString());
                 } else {
 
                     Toast.makeText(getApplicationContext(), "Donnez votre email!", Toast.LENGTH_SHORT).show();

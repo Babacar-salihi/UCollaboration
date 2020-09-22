@@ -1,4 +1,4 @@
-package com.babacar.ucollaboration.UInfos;
+package com.babacar.ucollaboration.UInfos.Activitys;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

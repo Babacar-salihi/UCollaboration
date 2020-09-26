@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.babacar.ucollaboration.R;
-import com.babacar.ucollaboration.UInfos.Activitys.AllInfo;
+import com.babacar.ucollaboration.UInfos.Activitys.Uinfo_Accueil;
 import com.babacar.ucollaboration.UMarket.Activitys.MainActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -100,7 +100,7 @@ public class Acceuil extends AppCompatActivity {
                 finish(); break;
 
             case R.id.acceuil_uinfo :
-                startActivity(new Intent(getApplicationContext(), AllInfo.class));
+                startActivity(new Intent(getApplicationContext(), Uinfo_Accueil.class));
                 overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left);
                 finish(); break;
         }

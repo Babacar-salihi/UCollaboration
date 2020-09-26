@@ -58,6 +58,9 @@ public class DataBase {
     public static Etudiant sCurrentUser;
     public static Etudiant sAcheteur;
 
+    //Uinfo...
+    public static DatabaseReference mRefUinfo = FirebaseDatabase.getInstance().getReference().child("Articles");
+
     public static boolean sConnexTest; // Connexion reussi ou pas.
     public static boolean sInscriptTest; // Connexion reussi ou pas.
 

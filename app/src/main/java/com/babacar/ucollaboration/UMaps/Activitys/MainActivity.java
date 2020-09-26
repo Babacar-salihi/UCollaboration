@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     protected void onStart() {
         super.onStart();
 
-        sRefLieux.addValueEventListener(new ValueEventListener() {
+        sRefLieux.orderByChild("position").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

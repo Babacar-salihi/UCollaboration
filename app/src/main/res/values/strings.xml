@@ -242,6 +242,7 @@
     <string name="versionApp">Version 1.0</string>
     <string name="moi">Babacar Ndong</string>
     <string name="uinfo_titre">Actualité</string>
+    <string name="uinfo_auteur">Auteur</string>
 
 
 </resources>

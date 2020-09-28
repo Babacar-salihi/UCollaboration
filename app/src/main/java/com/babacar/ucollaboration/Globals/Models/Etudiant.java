@@ -28,6 +28,7 @@ public class Etudiant {
     protected List<String> mDetailsPrestations = new ArrayList<>();
 
     protected String mFaculte;
+    protected int mNbArticleAime;
 
     public Etudiant() {
     }
@@ -220,6 +221,14 @@ public class Etudiant {
         mNbEval = nbEval;
     }*/
 
+    public int getNbArticleAime() {
+        return mNbArticleAime;
+    }
+
+    public void setNbArticleAime(int nbArticleAime) {
+        mNbArticleAime = nbArticleAime;
+    }
+
     @Override
     public String toString() {
         return "Etudiant{" +
@@ -236,9 +245,9 @@ public class Etudiant {
                 ", mPanier=" + mPanier +
                 ", mFavorie=" + mFavorie +
                 ", mNote=" + mNote +
-                //", mNbEval=" + mNbEval +
-                ", mDetailsPrestationsEtu=" + mDetailsPrestations +
+                ", mDetailsPrestations=" + mDetailsPrestations +
                 ", mFaculte='" + mFaculte + '\'' +
+                ", mNbArticleAime=" + mNbArticleAime +
                 '}';
     }
 }

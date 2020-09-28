@@ -1,26 +1,31 @@
 package com.babacar.ucollaboration.UInfos.Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Article {
 
     private String mIdArt;
     private String mAuteur;
     private String mDate_save;
-    private String mDesc;
+    private String mDescription;
     private String mTitre;
     private String mUrl;
-    private String mUrlImage;
+    private String mImage;
+    private List<String> mListIdUserLike = new ArrayList<>(); // Liste des utiisateur qui on aimé l'article.
+    private List<String> mListIdUserComment = new ArrayList<>(); // Liste des utilisateur qui on commenté k'article.
 
-    public Article() {
-    }
+    public Article() {}
 
     public Article(String idArt, String auteur, String date_save, String desc, String titre, String url, String urlImage) {
+
         mIdArt = idArt;
         mAuteur = auteur;
         mDate_save = date_save;
-        mDesc = desc;
+        mDescription = desc;
         mTitre = titre;
         mUrl = url;
-        mUrlImage = urlImage;
+        mImage = urlImage;
     }
 
     public String getIdArt() {
@@ -47,12 +52,12 @@ public class Article {
         mDate_save = date_save;
     }
 
-    public String getDesc() {
-        return mDesc;
+    public String getDescription() {
+        return mDescription;
     }
 
-    public void setDesc(String desc) {
-        mDesc = desc;
+    public void setDescription(String description) {
+        mDescription = description;
     }
 
     public String getTitre() {
@@ -71,11 +76,42 @@ public class Article {
         mUrl = url;
     }
 
-    public String getUrlImage() {
-        return mUrlImage;
+    public String getImage() {
+        return mImage;
     }
 
-    public void setUrlImage(String urlImage) {
-        mUrlImage = urlImage;
+    public void setImage(String image) {
+        mImage = image;
+    }
+
+    public List<String> getListIdUserLike() {
+        return mListIdUserLike;
+    }
+
+    public void setListIdUserLike(List<String> listIdUserLike) {
+        mListIdUserLike = listIdUserLike;
+    }
+
+    public List<String> getListIdUserComment() {
+        return mListIdUserComment;
+    }
+
+    public void setListIdUserComment(List<String> listIdUserComment) {
+        mListIdUserComment = listIdUserComment;
+    }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "mIdArt='" + mIdArt + '\'' +
+                ", mAuteur='" + mAuteur + '\'' +
+                ", mDate_save='" + mDate_save + '\'' +
+                ", mDescription='" + mDescription + '\'' +
+                ", mTitre='" + mTitre + '\'' +
+                ", mUrl='" + mUrl + '\'' +
+                ", mImage='" + mImage + '\'' +
+                ", mListIdUserLike=" + mListIdUserLike +
+                ", mListIdUserComment=" + mListIdUserComment +
+                '}';
     }
 }

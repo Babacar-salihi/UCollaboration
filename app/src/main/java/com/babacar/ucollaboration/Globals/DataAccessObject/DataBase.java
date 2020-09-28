@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import com.babacar.ucollaboration.Globals.Activitys.EmailVerification;
 import com.babacar.ucollaboration.Globals.Models.Etudiant;
 import com.babacar.ucollaboration.Globals.Utilitaires.PhotoUtilitaire;
+import com.babacar.ucollaboration.UInfos.Models.Article;
 import com.babacar.ucollaboration.UMaps.Models.Lieu;
 import com.babacar.ucollaboration.UMaps.Models.LieuInconnu;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
@@ -59,7 +60,7 @@ public class DataBase {
     public static Etudiant sAcheteur;
 
     //Uinfo...
-    public static DatabaseReference mRefUinfo = FirebaseDatabase.getInstance().getReference().child("Articles");
+    public static DatabaseReference mRefUinfo = FirebaseDatabase.getInstance().getReference().child("Uinfos");
 
     public static boolean sConnexTest; // Connexion reussi ou pas.
     public static boolean sInscriptTest; // Connexion reussi ou pas.
@@ -1031,5 +1032,14 @@ public class DataBase {
     private static float calculeNote(float noteA, float noteV) {
 
         return (noteV + (noteA/BASE_NOTE));
+    }
+
+
+    /**
+     * Permet de mettre à jour un article dans firebase.
+     */
+    public static void upDateArticle(Article article) {
+
+        mRefUinfo.child(article.getIdArt()).setValue(article);
     }
 }

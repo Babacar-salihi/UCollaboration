@@ -93,8 +93,8 @@ public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
         }  //holder.mLikeFalse.setVisibility(View.VISIBLE);
 
 
-
-        /* Aimmer un bien */
+        // TODO: A optimiser
+        /* Aimer un bien */
         holder.mLayoutLike
                 .setOnClickListener(new View.OnClickListener() {
             @Override

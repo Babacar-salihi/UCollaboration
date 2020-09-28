@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
@@ -39,7 +40,7 @@ public class Uinfo_Accueil extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        mRefUinfo.addValueEventListener(new ValueEventListener() {
+        mRefUinfo.child("Articles").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -48,6 +49,8 @@ public class Uinfo_Accueil extends AppCompatActivity {
 
                     Article article = articleSnapshot.getValue(Article.class);
                     mArticleList.add(article);
+                    article.setIdArt(articleSnapshot.getKey());
+                    Log.d("Articlee", article.toString());
                 }
 
                 inflater();

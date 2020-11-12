@@ -6,6 +6,12 @@
         android:color="@color/darkAppColor" />
 
     <corners
-        android:radius="@dimen/radius30"/>
+        android:radius="@dimen/dimen17"/>
+
+    <padding
+        android:top="@dimen/dimen10"
+        android:bottom="@dimen/dimen10"
+        android:left="@dimen/dimen17"
+        android:right="@dimen/dimen17"/>
 
 </shape>

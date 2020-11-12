@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:gravity="center"
         android:padding="@dimen/padding7"
         >
 
@@ -31,8 +32,8 @@
 
                 <ImageView
                     android:id="@+id/adapter_panier_photo"
-                    android:layout_width="@dimen/produitImageSize150"
-                    android:layout_height="@dimen/produitImageSize150"
+                    android:layout_width="@dimen/imgSize100"
+                    android:layout_height="@dimen/imgSize100"
                     android:src="@drawable/iphone11"/>
 
                 <TextView
@@ -58,7 +59,7 @@
             <LinearLayout
                 android:id="@+id/panier_layout_Infos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="100">
@@ -67,7 +68,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_weight="33"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="@dimen/margin2">
 
                     <LinearLayout
@@ -149,11 +150,11 @@
 
                         <TextView
                             android:id="@+id/adapter_panier_prixUnitaire"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/unitaire"
                             android:textColor="@android:color/black"
-                            android:gravity="center_horizontal"
+                            android:gravity="center"
                             android:layout_marginTop="@dimen/margin5"
                             android:textSize="@dimen/texteSize20"/>
 
@@ -236,6 +237,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding7"
                 android:layout_alignParentBottom="true"
+                android:visibility="gone"
                 >
 
                 <ImageButton

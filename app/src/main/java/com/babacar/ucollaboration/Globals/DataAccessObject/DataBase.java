@@ -45,6 +45,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.babacar.ucollaboration.Globals.Activitys.GererCompte.sDialog;
+
 
 public class DataBase {
 
@@ -746,7 +748,7 @@ public class DataBase {
      * @param etudiant
      * @param photo
      */
-    public static void upDateUserProfile(Context context, ProgressDialog dialog, List<Integer> verifList, final Etudiant etudiant, Uri photo) {
+    public static void upDateUserProfile(Context context, List<Integer> verifList, final Etudiant etudiant, Uri photo) {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.signInWithEmailAndPassword(sCurrentUser.getEmail(), sCurrentUser.getPassword());
@@ -755,7 +757,7 @@ public class DataBase {
         /* Modification de la photo de profile */
         if (verifList.contains(0)) {
 
-            changeProfilePic(dialog, user.getUid(), etudiant, photo, verifList);
+            changeProfilePic(sDialog, user.getUid(), etudiant, photo, verifList);
         }
 
         /* Prénom */
@@ -765,7 +767,7 @@ public class DataBase {
             sCurrentUser.setPrenomEtu(etudiant.getPrenomEtu());
 
             if (!verifList.contains(0))
-                dialog.dismiss();
+                sDialog.dismiss();
         }
 
         /* Nom */
@@ -775,7 +777,7 @@ public class DataBase {
             sCurrentUser.setNomEtu(etudiant.getNomEtu());
 
             if (!verifList.contains(0))
-                dialog.dismiss();
+                sDialog.dismiss();
         }
 
         /* Email */
@@ -786,7 +788,7 @@ public class DataBase {
             sCurrentUser.setEmail(etudiant.getEmail());
 
             if (!verifList.contains(0))
-                dialog.dismiss();
+                sDialog.dismiss();
         }
 
         /* Pwd */
@@ -797,7 +799,7 @@ public class DataBase {
             sCurrentUser.setPassword(etudiant.getPassword());
 
             if (!verifList.contains(0))
-                dialog.dismiss();
+                sDialog.dismiss();
         }
 
         /* Téléphone */
@@ -807,7 +809,7 @@ public class DataBase {
             sCurrentUser.setNumTelephoneEtu(etudiant.getNumTelephoneEtu());
 
             if (!verifList.contains(0))
-                dialog.dismiss();
+                sDialog.dismiss();
         }
 
         /* Adresse */
@@ -817,7 +819,7 @@ public class DataBase {
             sCurrentUser.setAdresse(etudiant.getAdresse());
 
             if (!verifList.contains(0))
-                dialog.dismiss();
+                sDialog.dismiss();
         }
     }
 

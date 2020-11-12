@@ -89,4 +89,6 @@
     <dimen name="widthSize8">8dp</dimen>
     <dimen name="margin35">35dp</dimen>
     <dimen name="imgSize150">150dp</dimen>
+    <dimen name="dimen10">10dp</dimen>
+    <dimen name="dimen17">17dp</dimen>
 </resources>

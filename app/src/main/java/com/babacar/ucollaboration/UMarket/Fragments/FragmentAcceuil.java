@@ -82,13 +82,13 @@ public class FragmentAcceuil extends Fragment {
         btnTeste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*startActivity(new Intent(getContext(), Facture.class));*/
-                if (sCurrentUser != null){
+            /*startActivity(new Intent(getContext(), Facture.class));*/
+            if (sCurrentUser != null){
 
-                    sCurrentUser.getDetailsPrestations().clear();
-                    sCurrentUser.getPanier().clear();
-                    sCurrentUser.getFavorie().clear();
-                }
+                sCurrentUser.getDetailsPrestations().clear();
+                sCurrentUser.getPanier().clear();
+                sCurrentUser.getFavorie().clear();
+            }
             }
         });
 

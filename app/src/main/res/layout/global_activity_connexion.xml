@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/connexion_layout0"
+    android:background="@color/darkWhite2"
     tools:context=".Globals.Activitys.Connexion">
 
     <LinearLayout
@@ -21,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="@string/CapiConnex"
             android:textSize="@dimen/sizeTitre"
-            android:textColor="@color/darkAppColor"
+            android:textColor="@android:color/black"
             android:textStyle="bold"
             android:fontFamily="@font/philosopherregular"
             android:shadowColor="@android:color/black"
@@ -39,7 +40,6 @@
             android:layout_marginTop="@dimen/margin30"
             android:layout_marginLeft="@dimen/margin10"
             android:layout_marginRight="@dimen/margin10"
-
             android:weightSum="100"
             android:background="@drawable/style_input_email"
             android:layout_below="@id/titreConnex"
@@ -60,6 +60,7 @@
                 android:layout_weight="85"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
+                android:textColor="@color/darkAppColor"
                 android:inputType="textEmailAddress"
                 android:textSize="@dimen/texteSize17"
                 />
@@ -74,7 +75,7 @@
             android:layout_marginRight="@dimen/margin10"
             android:gravity="center"
             android:weightSum="100"
-            android:background="@drawable/style_input_pwd"
+            android:background="@drawable/style_input_email"
             android:layout_below="@id/layout_email"
             >
 
@@ -100,6 +101,7 @@
                 android:layout_weight="85"
                 android:layout_height="wrap_content"
                 android:hint="@string/userPwd"
+                android:textColor="@color/darkAppColor"
                 android:inputType="textPassword"
                 android:textSize="@dimen/texteSize17" />
 
@@ -112,7 +114,7 @@
             android:text="@string/pwdForget"
             android:textSize="@dimen/texteSize17"
             android:fontFamily="@font/philosopheritalic"
-            android:layout_margin="@dimen/margin10"
+            android:layout_margin="@dimen/margin15"
             android:textColor="@color/appColor"
             android:layout_below="@id/layout_email"
 

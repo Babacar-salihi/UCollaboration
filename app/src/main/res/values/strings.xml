@@ -243,6 +243,7 @@
     <string name="moi">Babacar Ndong</string>
     <string name="uinfo_titre">Actualité</string>
     <string name="uinfo_auteur">Auteur</string>
+    <string name="titrePanier">PANIER</string>
 
 
 </resources>

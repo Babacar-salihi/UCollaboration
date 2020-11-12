@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
+    android:background="@color/darkWhite2"
     tools:context=".Globals.Activitys.Inscription">
 
     <LinearLayout
@@ -68,17 +69,22 @@
                 android:hint="@string/userPrenom"
                 android:inputType="text"
                 android:textSize="@dimen/texteSize17"
+                android:textColor="@color/darkAppColor"
+                android:background="@drawable/style_input_email"
                 />
 
             <EditText
                 android:id="@+id/inscription_userNom"
                 android:layout_width="0dp"
-                android:layout_weight="35"
+                android:layout_weight="40"
                 android:layout_height="wrap_content"
                 android:hint="@string/userName"
                 android:inputType="text"
                 android:textSize="@dimen/texteSize17"
+                android:textColor="@color/darkAppColor"
                 android:layout_marginLeft="@dimen/margin10"
+                android:background="@drawable/style_input_email"
+
                 />
 
         </LinearLayout>
@@ -99,17 +105,21 @@
                 android:hint="@string/userTelephone"
                 android:inputType="phone"
                 android:textSize="@dimen/texteSize17"
+                android:textColor="@color/darkAppColor"
+                android:background="@drawable/style_input_email"
                 />
 
             <EditText
                 android:id="@+id/inscription_userChambre"
                 android:layout_width="0dp"
-                android:layout_weight="35"
+                android:layout_weight="40"
                 android:layout_height="wrap_content"
                 android:hint="@string/userChambre"
                 android:inputType="text"
                 android:textSize="@dimen/texteSize17"
+                android:textColor="@color/darkAppColor"
                 android:layout_marginLeft="@dimen/margin10"
+                android:background="@drawable/style_input_email"
                 />
 
         </LinearLayout>
@@ -130,6 +140,8 @@
                 android:hint="@string/userEmail"
                 android:inputType="textEmailAddress"
                 android:textSize="@dimen/texteSize17"
+                android:textColor="@color/darkAppColor"
+                android:background="@drawable/style_input_email"
                 />
 
             <EditText
@@ -140,7 +152,9 @@
                 android:hint="@string/userPwd"
                 android:inputType="textPassword"
                 android:textSize="@dimen/texteSize17"
+                android:textColor="@color/darkAppColor"
                 android:layout_marginLeft="@dimen/margin10"
+                android:background="@drawable/style_input_email"
                 />
 
         </LinearLayout>
@@ -153,7 +167,9 @@
             android:hint="@string/userAdress"
             android:inputType="textEmailAddress"
             android:textSize="@dimen/texteSize17"
+            android:textColor="@color/darkAppColor"
             android:layout_margin="@dimen/margin15"
+            android:background="@drawable/style_input_email"
             />
 
         <!-- Faculte -->

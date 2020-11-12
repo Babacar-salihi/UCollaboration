@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
+    android:background="@color/darkWhite2"
     tools:context=".Globals.Activitys.GererCompte">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/darkWhite2">
+        android:orientation="vertical">
 
         <!-- Photo de profile -->
         <RelativeLayout
@@ -55,8 +55,7 @@
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:layout_alignParentRight="true"
-                android:padding="@dimen/padding7"
-                android:background="@color/darkAppColor"
+                android:background="@drawable/style_btns"
                 android:elevation="@dimen/elevation8"
                 android:onClick="btnEnregister"/>
 

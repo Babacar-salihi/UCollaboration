@@ -19,10 +19,24 @@
             android:orientation="vertical"
             >
 
+            <TextView
+                android:id="@+id/titlePanier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/titrePanier"
+                android:textSize="@dimen/texteSize30"
+                android:background="@color/appColor"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/margin10"
+                android:layout_alignParentTop="true"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/panier_recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titlePanier"/>
 
             <!-- S'affiche si le panier est vide! -->
             <LinearLayout

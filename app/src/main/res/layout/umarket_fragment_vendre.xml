@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding10"
     android:scrollbars="none"
+    android:background="@color/darkWhite2"
     tools:context=".UMarket.Fragments.FragmentVendre">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:padding="@dimen/padding10"
         >
 
         <TextView
@@ -29,7 +30,6 @@
             android:shadowDy="2"
             android:layout_margin="@dimen/margin7"
             android:layout_alignParentTop="true"
-
             />
 
         <!-- Les images -->
@@ -161,11 +161,16 @@
             android:id="@+id/vendre_libelle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/libelleProduit"
-            android:textSize="@dimen/texteSize20"
-            android:layout_margin="@dimen/margin7"
             android:layout_below="@id/vendre_radioGroupLivraison"
-            />
+            android:layout_marginStart="@dimen/margin7"
+            android:layout_marginLeft="@dimen/margin7"
+            android:layout_marginTop="@dimen/margin7"
+            android:layout_marginEnd="@dimen/margin7"
+            android:layout_marginRight="@dimen/margin7"
+            android:background="@drawable/style_input_email"
+            android:hint="@string/libelleProduit"
+            android:textColor="@color/darkAppColor"
+            android:textSize="@dimen/texteSize20" />
 
         <!-- Prix unitaire du bien. ex: 340000 -->
         <EditText
@@ -175,9 +180,10 @@
             android:hint="@string/prixProduit"
             android:inputType="number"
             android:textSize="@dimen/texteSize20"
+            android:textColor="@color/darkAppColor"
             android:layout_margin="@dimen/margin7"
-            android:padding="@dimen/padding7"
             android:layout_below="@id/vendre_libelle"
+            android:background="@drawable/style_input_email"
             />
 
 
@@ -195,8 +201,9 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/garantie"
                 android:textSize="@dimen/texteSize20"
+                android:textColor="@color/darkAppColor"
                 android:layout_margin="@dimen/margin7"
-                android:padding="@dimen/padding7"
+                android:background="@drawable/style_input_email"
                 />
 
             <!-- Nombre de bien. ex: 10 -->
@@ -206,9 +213,10 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/nombre"
                 android:textSize="@dimen/texteSize20"
+                android:textColor="@color/darkAppColor"
                 android:inputType="number"
                 android:layout_margin="@dimen/margin7"
-                android:padding="@dimen/padding7"
+                android:background="@drawable/style_input_email"
                 />
 
         </LinearLayout>
@@ -221,9 +229,10 @@
             android:layout_height="wrap_content"
             android:hint="@string/description"
             android:textSize="@dimen/texteSize20"
+            android:textColor="@color/darkAppColor"
             android:layout_margin="@dimen/margin7"
-            android:padding="@dimen/padding7"
             android:layout_below="@id/layout1"
+            android:background="@drawable/style_input_email"
             />
 
         <!-- Nouvelle adresse de vente -->
@@ -250,9 +259,10 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/newAddressVente"
                 android:textSize="@dimen/texteSize20"
+                android:textColor="@color/darkAppColor"
                 android:layout_margin="@dimen/margin7"
                 android:visibility="gone"
-                android:padding="@dimen/padding7"
+                android:background="@drawable/style_input_email"
                 />
 
         </LinearLayout>
@@ -295,7 +305,7 @@
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:fontFamily="@font/philosopherbold"
-            android:layout_margin="@dimen/margin20"
+            android:layout_marginTop="@dimen/margin20"
             android:layout_below="@id/vendre_typeVente"
             android:background="@drawable/style_btns"
             android:elevation="@dimen/elevation8"

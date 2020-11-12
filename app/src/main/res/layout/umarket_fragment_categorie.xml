@@ -13,6 +13,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/umarket_titreCategorie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/categorie"
+            android:textSize="@dimen/texteSize30"
+            android:background="@color/appColor"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/margin10"
+            android:layout_alignParentTop="true"/>
+
         <!-- row 1 -->
         <LinearLayout
             android:layout_width="match_parent"

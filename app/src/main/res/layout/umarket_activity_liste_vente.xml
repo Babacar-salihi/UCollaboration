@@ -14,13 +14,17 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mesVentes"
-            android:textStyle="bold"
             android:textSize="@dimen/texteSize30"
-            android:textColor="@color/darkAppColor"
-            android:layout_margin="@dimen/margin20"/>
+            android:background="@color/appColor"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/margin10"
+            android:layout_alignParentTop="true"/>
+
 
 
         <TextView

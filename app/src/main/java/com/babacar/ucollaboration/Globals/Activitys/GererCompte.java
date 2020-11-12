@@ -43,11 +43,14 @@ public class GererCompte extends AppCompatActivity {
     private static final int REQUEST_CODE = 980;
     private Uri mImageUri ;
 
+    public static ProgressDialog sDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gerer_compte);
 
+        sDialog = new ProgressDialog(this);
         referenceWidgets(); // Méthode pour référencer les widgets.
         inflateInfo(); // Méthode pour remplir les zonez de testes par les informations de l'utilisteur connecter.
         choisirPhoto(); // Méthode pour choisir une nouvelle photo de profile.
@@ -92,7 +95,7 @@ public class GererCompte extends AppCompatActivity {
         mNom.setText(sCurrentUser.getNomEtu());
 
         // user email
-        mEmail.setText(sCurrentUser.getEmail());
+        //mEmail.setText(sCurrentUser.getEmail());
 
         // user password
         mPwd.setText(sCurrentUser.getPassword());
@@ -114,7 +117,7 @@ public class GererCompte extends AppCompatActivity {
         List<Integer> dataChanged = new ArrayList<>(); // Testeur: Il y a au moins un champs modifier
         String prenom = mPrenom.getText().toString().trim();
         String nom = mNom.getText().toString().trim();
-        String email = mEmail.getText().toString().trim();
+        //String email = mEmail.getText().toString().trim();
         String pwd = mPwd.getText().toString().trim();
         String tel = mNumTel.getText().toString().trim();
         String adresse = mAdresse.getText().toString().trim();
@@ -146,12 +149,12 @@ public class GererCompte extends AppCompatActivity {
         }
 
         /* Email */
-        if (((!(TextUtils.isEmpty(email))) && (!TextUtils.equals(email, sCurrentUser.getEmail())))) {
+        /*if (((!(TextUtils.isEmpty(email))) && (!TextUtils.equals(email, sCurrentUser.getEmail())))) {
 
             Toast.makeText(this, "Email", Toast.LENGTH_SHORT).show();
             updateEtu.setEmail(email);
             dataChanged.add(3);
-        }
+        }*/
 
         /* Password */
         if (((!(TextUtils.isEmpty(pwd))) && (!TextUtils.equals(pwd, sCurrentUser.getPassword())))) {
@@ -179,37 +182,32 @@ public class GererCompte extends AppCompatActivity {
 
         if (!dataChanged.isEmpty()) {
 
-            ProgressDialog dialog = new ProgressDialog(this);
-            dialog.setTitle("Enregistrement en cours...");
-            dialog.setMessage("Veuillez patientez s'il vous plaît!");
-            dialog.setCancelable(false);
-            dialog.show();
+            sDialog.setTitle("Enregistrement en cours...");
+            sDialog.setMessage("Veuillez patientez s'il vous plaît!");
+            sDialog.setCancelable(false);
+            sDialog.show();
 
-            upDateUserProfile(this, dialog,dataChanged, updateEtu,mImageUri);
-            execIntent(dialog);
-
-        }
-
-        else
+            upDateUserProfile(this,dataChanged, updateEtu,mImageUri);
+            execIntent();
+        } else
             Toast.makeText(this, "Rien n'a été changé", Toast.LENGTH_SHORT).show();
     }
 
     /**
      * Permet d'attrendre le temps que les changements s'effectus.
-     * @param dialog
      */
-    private void execIntent(final ProgressDialog dialog) {
+    private void execIntent() {
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                if (dialog.isShowing()) {
+                if (sDialog.isShowing()) {
 
                     intent();
                 } else {
 
-                    execIntent(dialog);
+                    execIntent();
                 }
             }
         }, 2000);

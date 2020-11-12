@@ -392,7 +392,7 @@ public class DataBase {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         sConnexTest = false;
-                        Toast.makeText(context, "Se compte n'exite pas. Veuillez vérifiez les infos saisies ou créer un autre compte!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Ce compte n'exite pas. Veuillez vérifiez les infos saisies ou créer un autre compte!", Toast.LENGTH_LONG).show();
                     }
                 });
 

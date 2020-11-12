@@ -1,6 +1,7 @@
 package com.babacar.ucollaboration.UMarket.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,7 +42,7 @@ public class CategoriesBien extends AppCompatActivity {
         /* Liste de bien de catégorie quelconque */
         getBienByCategorie(); // Méthode permettant de récupérer les biens de catégorie spécifiée.
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(new RecyclerviewCategorieBien(this, mList_biens));
     }

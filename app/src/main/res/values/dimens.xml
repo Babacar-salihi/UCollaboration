@@ -91,4 +91,5 @@
     <dimen name="imgSize150">150dp</dimen>
     <dimen name="dimen10">10dp</dimen>
     <dimen name="dimen17">17dp</dimen>
+    <dimen name="radius300">3000</dimen>
 </resources>

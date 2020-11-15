@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
+import com.babacar.ucollaboration.Globals.Activitys.Acceuil;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UInfos.Adapters.RecyclerviewAccueilActu;
 import com.babacar.ucollaboration.UInfos.Models.Article;
@@ -79,5 +81,16 @@ public class Uinfo_Accueil extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerActu.setLayoutManager(layoutManager);
         mRecyclerActu.setAdapter(new RecyclerviewAccueilActu(getApplicationContext(), mArticleList));
+    }
+
+    /**
+     * Au clique sur le bouton de retour afficher l'activité Accueil
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), Acceuil.class));
+        overridePendingTransition(R.anim.slider_right_init_position, R.anim.slider_out_left);
+        finish();
     }
 }

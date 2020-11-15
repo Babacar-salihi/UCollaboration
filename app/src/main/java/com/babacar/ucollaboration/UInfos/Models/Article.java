@@ -14,6 +14,7 @@ public class Article {
     private String mImage;
     private List<String> mListIdUserLike = new ArrayList<>(); // Liste des utiisateur qui on aimé l'article.
     private List<String> mListIdUserComment = new ArrayList<>(); // Liste des utilisateur qui on commenté k'article.
+    private boolean alaUne;
 
     public Article() {}
 
@@ -100,6 +101,14 @@ public class Article {
         mListIdUserComment = listIdUserComment;
     }
 
+    public boolean isAlaUne() {
+        return alaUne;
+    }
+
+    public void setAlaUne(boolean alaUne) {
+        this.alaUne = alaUne;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -112,6 +121,7 @@ public class Article {
                 ", mImage='" + mImage + '\'' +
                 ", mListIdUserLike=" + mListIdUserLike +
                 ", mListIdUserComment=" + mListIdUserComment +
+                ", alaUne=" + alaUne +
                 '}';
     }
 }

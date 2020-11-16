@@ -306,60 +306,66 @@ public class DetailsBIen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                com.babacar.ucollaboration.UMarket.Modeles.Panier panier = new com.babacar.ucollaboration.UMarket.Modeles.Panier();
+                if (sCurrentUser != null) {
+
+                    com.babacar.ucollaboration.UMarket.Modeles.Panier panier = new com.babacar.ucollaboration.UMarket.Modeles.Panier();
 
                         /*Bien bien2 = selectBien;
                         bien2.setNombreBien(selectBien.getNombreBien()+1);*/
 
-                panier.setBiens(mCurrentBien.getIdBien()); // Bien en String.
+                    panier.setBiens(mCurrentBien.getIdBien()); // Bien en String.
 
-                //Log.d("teste", "Contient = "+sCurrentUser.getPanier().contains(panier));
+                    //Log.d("teste", "Contient = "+sCurrentUser.getPanier().contains(panier));
 
-                int teste = 0;
-                int indexBien = 0;
-                Log.d("teste", "Av testeVar ="+teste);
-                Log.d("teste", "Av indexVar ="+indexBien);
+                    int teste = 0;
+                    int indexBien = 0;
+                    Log.d("teste", "Av testeVar ="+teste);
+                    Log.d("teste", "Av indexVar ="+indexBien);
 
-                // Teste si le panier contient déjà le bien qu'on veut ajouter
-                for (com.babacar.ucollaboration.UMarket.Modeles.Panier panier1 : sCurrentUser.getPanier()) {
+                    // Teste si le panier contient déjà le bien qu'on veut ajouter
+                    for (com.babacar.ucollaboration.UMarket.Modeles.Panier panier1 : sCurrentUser.getPanier()) {
 
-                    if (mCurrentBien.getIdBien().equals(panier1.getBiens())) {
-                        Log.d("BIENEGAL", "OKOKOKOKOKOK");
-                        teste = 1; break;
-                    } else {
-                        Log.d("BIENEGAL", "KOKOKOKOKOKOK");
+                        if (mCurrentBien.getIdBien().equals(panier1.getBiens())) {
+                            Log.d("BIENEGAL", "OKOKOKOKOKOK");
+                            teste = 1; break;
+                        } else {
+                            Log.d("BIENEGAL", "KOKOKOKOKOKOK");
+                        }
+                        indexBien++;
                     }
-                    indexBien++;
+
+                    if (teste == 0) { // Si le bien n'est pas encore dans le panier.
+
+                        panier.setQuantiteAchat(1);
+                        // 864001000
+                        panier.setTimeToExpire(864001000); // Le bien reste dans le panier que pour 24H.
+                        //selectBien.setNombreBien(selectBien.getNombreBien() - 1);
+                        //if (selectBien.)
+                        sCurrentUser.getPanier().add(panier); // Bien définitivement ajouter au panier.
+                        sCurrentUser.getPanier().get(indexBien).setSommeTotale(mCurrentBien.getPrixBien()); // Soux total.
+                    } else { // Si le bien est déjà dans le panier.
+
+                        panier.setQuantiteAchat(sCurrentUser.getPanier().get(indexBien).getQuantiteAchat()+1);
+                        //selectBien.setNombreBien(selectBien.getNombreBien() - 1);
+                        sCurrentUser.getPanier().get(indexBien).setQuantiteAchat(panier.getQuantiteAchat());
+                        sCurrentUser.getPanier().get(indexBien).setSommeTotale(sCurrentUser.getPanier().get(indexBien).getQuantiteAchat()*mCurrentBien.getPrixBien()); // Soux total.
+                    }
+
+                    //DataBase.updateBien(selectBien);
+                    DataBase.upDateUserPanier(sCurrentUser);
+                    mCurrentBien.setNombreBien(mCurrentBien.getNombreBien() - 1);
+
+                    if (mCurrentBien.getNombreBien() == 0) { // Si le nombre de bien est supperieur à 0.
+
+                        mCurrentBien.setEtatBien(-1); // Mettre le bien en indisponible.
+                    }
+                    DataBase.updateBien(mCurrentBien);
+
+                    Toast.makeText(getApplicationContext(), "C'est fait", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Veuillez vous connecter d'abord!", Toast.LENGTH_SHORT).show();
                 }
-
-                if (teste == 0) { // Si le bien n'est pas encore dans le panier.
-
-                    panier.setQuantiteAchat(1);
-                    // 864001000
-                    panier.setTimeToExpire(864001000); // Le bien reste dans le panier que pour 24H.
-                    //selectBien.setNombreBien(selectBien.getNombreBien() - 1);
-                    //if (selectBien.)
-                    sCurrentUser.getPanier().add(panier); // Bien définitivement ajouter au panier.
-                    sCurrentUser.getPanier().get(indexBien).setSommeTotale(mCurrentBien.getPrixBien()); // Soux total.
-                } else { // Si le bien est déjà dans le panier.
-
-                    panier.setQuantiteAchat(sCurrentUser.getPanier().get(indexBien).getQuantiteAchat()+1);
-                    //selectBien.setNombreBien(selectBien.getNombreBien() - 1);
-                    sCurrentUser.getPanier().get(indexBien).setQuantiteAchat(panier.getQuantiteAchat());
-                    sCurrentUser.getPanier().get(indexBien).setSommeTotale(sCurrentUser.getPanier().get(indexBien).getQuantiteAchat()*mCurrentBien.getPrixBien()); // Soux total.
-                }
-
-                //DataBase.updateBien(selectBien);
-                DataBase.upDateUserPanier(sCurrentUser);
-                mCurrentBien.setNombreBien(mCurrentBien.getNombreBien() - 1);
-
-                if (mCurrentBien.getNombreBien() == 0) { // Si le nombre de bien est supperieur à 0.
-
-                    mCurrentBien.setEtatBien(-1); // Mettre le bien en indisponible.
-                }
-                DataBase.updateBien(mCurrentBien);
-
-                Toast.makeText(getApplicationContext(), "C'est fait", Toast.LENGTH_SHORT).show();
             }
         });
 

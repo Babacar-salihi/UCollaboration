@@ -63,7 +63,7 @@
                 android:text="@string/flash"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
-                android:background="@android:color/holo_red_dark"
+                android:background="@drawable/style_type_vente"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:padding="@dimen/padding7"

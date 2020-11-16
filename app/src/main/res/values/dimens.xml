@@ -92,4 +92,5 @@
     <dimen name="dimen10">10dp</dimen>
     <dimen name="dimen17">17dp</dimen>
     <dimen name="radius300">3000</dimen>
+    <dimen name="widthSize160">160dp</dimen>
 </resources>

@@ -73,10 +73,11 @@
 
         <ImageView
             android:id="@+id/adapter_catalogue_produit_imgProd"
-            android:layout_width="@dimen/imgSize180"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/imgSize200"
             android:src="@drawable/iphone11"
             android:layout_marginBottom="@dimen/margin7"
+            android:scaleType="fitXY"
             />
 
         <TextView

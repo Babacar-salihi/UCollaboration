@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/padding10"
     tools:context=".UInfos.Activitys.Uinfo_Accueil"
-    android:background="@color/darkWhite">
+    android:background="@color/darkWhite2">
+
 
     <TextView
         android:id="@+id/uinfos_titre"
@@ -15,18 +15,87 @@
         android:layout_height="wrap_content"
         android:text="@string/uinfo_titre"
         android:textSize="@dimen/texteSize30"
-        android:textColor="@android:color/black"
+        android:background="@color/appColor"
         android:textStyle="bold"
-        android:fontFamily="@font/philosopherregular"
+        android:textColor="@android:color/white"
         android:gravity="center"
-        android:layout_margin="@dimen/margin10"
-        />
+        android:layout_marginBottom="@dimen/margin10"
+        android:layout_alignParentTop="true"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/uinfos_recycleview"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/uinfos_titre"
-        />
+        android:padding="@dimen/padding7"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/uinfos_recycleview_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/uinfo_alaUne"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imgSize200"
+            app:cardCornerRadius="@dimen/radius10"
+            app:cardBackgroundColor="@color/darkWhite2"
+            android:layout_margin="@dimen/margin10"
+            android:layout_below="@id/uinfos_recycleview_filter">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/uinfo_alaUne_Img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentBottom="true">
+
+                    <TextView
+                        android:id="@+id/uinfo_alaUne_titre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/alaUne"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:layout_alignParentBottom="true"
+                        android:textSize="@dimen/textSize17"
+                        android:layout_marginLeft="@dimen/margin10"/>
+
+                    <TextView
+                        android:id="@+id/uinfo_alaUne_descript"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/alaUneDescript"
+                        android:textColor="@android:color/white"
+                        android:layout_marginLeft="@dimen/margin10"
+                        android:textSize="@dimen/texteSize15" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/uinfos_recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/uinfo_alaUne"
+            android:layout_marginTop="@dimen/margin10"
+            />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

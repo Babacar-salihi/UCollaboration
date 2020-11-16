@@ -117,12 +117,12 @@
         android:layout_height="match_parent"
         android:layout_below="@id/catalague_recyclerCategorie"/>
 
-    <Button
-        android:id="@+id/teste"
-        android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="teste"/>
+<!--    <Button-->
+<!--        android:id="@+id/teste"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="gone"-->
+<!--        android:text="teste"/>-->
 
 </RelativeLayout>

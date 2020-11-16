@@ -244,6 +244,10 @@
     <string name="uinfo_titre">Actualité</string>
     <string name="uinfo_auteur">Auteur</string>
     <string name="titrePanier">PANIER</string>
+    <string name="alaUne">Information à la une</string>
+    <string name="alaUneDescript">Description description description description description description description description description description descriptiondescription.</string>
+    <string name="uinfo_details">Détails</string>
+    <string name="datePub">date de publication</string>
 
 
 </resources>

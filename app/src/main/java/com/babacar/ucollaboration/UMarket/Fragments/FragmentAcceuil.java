@@ -77,12 +77,12 @@ public class FragmentAcceuil extends Fragment {
         monPanier(); // Méthode pour accéder au panier de l'utilisateur.
         recherche(); // Méthode pour gérer la recherche d'article.
 
-        Button btnTeste = mView.findViewById(R.id.teste);
+        /*Button btnTeste = mView.findViewById(R.id.teste);
         btnTeste.setVisibility(View.VISIBLE);
         btnTeste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            /*startActivity(new Intent(getContext(), Facture.class));*/
+            *//*startActivity(new Intent(getContext(), Facture.class));*//*
             if (sCurrentUser != null){
 
                 sCurrentUser.getDetailsPrestations().clear();
@@ -90,7 +90,7 @@ public class FragmentAcceuil extends Fragment {
                 sCurrentUser.getFavorie().clear();
             }
             }
-        });
+        });*/
 
         return mView;
     }

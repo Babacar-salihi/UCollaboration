@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.R;
+import com.babacar.ucollaboration.UInfos.Activitys.DetailsArticle;
 import com.babacar.ucollaboration.UInfos.Models.Article;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
@@ -26,6 +28,7 @@ public class RecyclerviewAccueilActu extends RecyclerView.Adapter<ViewHolder_Acc
 
     private Context mContext;
     private List<Article> mArticleList;
+    public static Article selectedActicle;
 
     public RecyclerviewAccueilActu(Context context, List<Article> articles) {
 
@@ -37,7 +40,7 @@ public class RecyclerviewAccueilActu extends RecyclerView.Adapter<ViewHolder_Acc
     @Override
     public ViewHolder_AccueilActu onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.uinfo_adapter_actu, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.uinfo_adapter_actu_2, null);
         ViewHolder_AccueilActu viewHolder = new ViewHolder_AccueilActu(view);
         return viewHolder;
     }
@@ -47,9 +50,13 @@ public class RecyclerviewAccueilActu extends RecyclerView.Adapter<ViewHolder_Acc
 
         final Article article = mArticleList.get(position);
 
-        Glide.with(mContext).load(article.getImage()).into(holder.mImgActu);
+        Glide.with(mContext)
+                .load(article.getImage())
+                .placeholder(R.drawable.progess_bar)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.mImgActu);
         holder.mTitreActu.setText(article.getTitre());
-        holder.mDesc.setText(article.getDescription());
+        //holder.mDesc.setText(article.getDescription()); // Design v_1
         holder.mAuteurActu.setText(article.getAuteur());
         holder.mDateActu.setText(article.getDate_save());
 
@@ -70,9 +77,10 @@ public class RecyclerviewAccueilActu extends RecyclerView.Adapter<ViewHolder_Acc
             @Override
             public void onClick(View v) {
 
-                Intent versSite = new Intent(Intent.ACTION_VIEW, Uri.parse(article.getUrl()));
-                versSite.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(versSite);
+                selectedActicle = article;
+                Intent versDetails = new Intent(mContext, DetailsArticle.class);
+                versDetails.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(versDetails);
             }
         });
 

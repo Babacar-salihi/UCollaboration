@@ -7,6 +7,6 @@
         android:endColor="@color/darkAppColor"/>
 
     <corners
-        android:radius="@dimen/radius10"/>
+        android:radius="@dimen/radius100"/>
 
 </shape>

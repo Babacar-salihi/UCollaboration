@@ -2,6 +2,7 @@ package com.babacar.ucollaboration.UInfos.Adapters;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -13,7 +14,8 @@ import com.babacar.ucollaboration.R;
 
 public class ViewHolder_AccueilActu extends RecyclerView.ViewHolder {
 
-    public CardView mCardActu;
+    public CardView mCardActu; // Design v_1
+    //public LinearLayout mCardActu;
     public ImageView mImgActu;
     public TextView mTitreActu, mDesc, mAuteurActu, mDateActu, mNbLike, mNbComment;
 

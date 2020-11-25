@@ -36,7 +36,6 @@ public class Acceuil extends AppCompatActivity {
         referenceWidgets(); // Méthode permettent de référencer les widgets de "layout.activity_acceuil".
         listener(); // Méthode permettant de gérer les listeners sur le boutons.
         showProfilePic(); // Méthode permettant de gérer l'affichage du profile de l'utilisateur.
-
     }
 
     @Override

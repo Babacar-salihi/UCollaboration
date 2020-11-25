@@ -60,6 +60,7 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
+        android:id="@+id/uinfo_layout_descript"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/uinfo_details_card"
@@ -93,6 +94,36 @@
             android:gravity="right"/>
 
     </LinearLayout>
+
+    <!-- Comment -->
+    <RelativeLayout
+        android:id="@+id/uinfo_layout_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin10"
+        android:background="@drawable/style_input_email"
+        android:layout_above="@id/uinfo_layout_openSite">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/uinfo_details_btn_publier"
+            android:hint="@string/yourComment" />
+
+        <TextView
+            android:id="@+id/uinfo_details_btn_publier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/PublierComment"
+            android:textColor="@color/darkAppColor"
+            android:textSize="@dimen/textSize17"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/uinfo_layout_openSite"

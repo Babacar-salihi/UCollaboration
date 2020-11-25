@@ -16,6 +16,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.babacar.ucollaboration.Globals.Activitys.Acceuil;
 import com.babacar.ucollaboration.R;
@@ -73,7 +74,7 @@ public class Uinfo_Accueil extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        mRefUinfo.child("Articles").addValueEventListener(new ValueEventListener() {
+        mRefUinfo.child("Articles_COUD").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -81,10 +82,25 @@ public class Uinfo_Accueil extends AppCompatActivity {
                 for (DataSnapshot articleSnapshot : dataSnapshot.getChildren()) {
 
                     Article article = articleSnapshot.getValue(Article.class);
-                    mArticleList.add(article);
                     article.setIdArt(articleSnapshot.getKey());
+                    mArticleList.add(article);
                     Log.d("Articlee", article.toString());
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mRefUinfo.child("Inscription UCAD").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Article article = dataSnapshot.getValue(Article.class);
+                article.setIdArt(dataSnapshot.getKey());
+                mArticleList.add(article);
             }
 
             @Override
@@ -100,8 +116,8 @@ public class Uinfo_Accueil extends AppCompatActivity {
                 for (DataSnapshot articleSnapshot : dataSnapshot.getChildren()) {
 
                     Article article = articleSnapshot.getValue(Article.class);
-                    mArticleList.add(article);
                     article.setIdArt(articleSnapshot.getKey());
+                    mArticleList.add(article);
                 }
                 inflater();
                 setALaUne(); // Afficher l'article à la une.

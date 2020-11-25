@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,12 +35,14 @@
 
     <!-- Gére le compte de l'utilisateur connecter -->
     <LinearLayout
+        android:id="@+id/fonction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/padding10"
         android:gravity="center"
-        android:background="@color/appColor">
+        android:background="@color/appColor"
+        android:layout_below="@id/compte_layoutConnex">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/compte_userProfilPic"
@@ -145,6 +147,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/compte_recycleView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fonction"/>
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/versionApp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin10"/>
+
+</RelativeLayout>

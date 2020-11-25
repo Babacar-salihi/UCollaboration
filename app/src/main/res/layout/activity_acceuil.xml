@@ -22,7 +22,8 @@
         <ImageView
             android:layout_width="@dimen/imgSize80"
             android:layout_height="@dimen/imgSize80"
-            android:src="@drawable/logofinalforme"/>
+            android:src="@drawable/logofinalforme"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,7 +89,6 @@
                         />
 
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
             <!-- Uservice -->

@@ -248,6 +248,8 @@
     <string name="alaUneDescript">Description description description description description description description description description description descriptiondescription.</string>
     <string name="uinfo_details">Détails</string>
     <string name="datePub">date de publication</string>
+    <string name="yourComment">Ajouter un commentaire</string>
+    <string name="PublierComment">Publier</string>
 
 
 </resources>

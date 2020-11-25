@@ -68,7 +68,6 @@ public class DataBase {
     public static boolean sInscriptTest; // Connexion reussi ou pas.
 
 
-
     // ===================================== PARTIE BIEN ===============================================================
 
     // ===================================== PUBLICATION BIEN ==========================================================
@@ -1042,6 +1041,6 @@ public class DataBase {
      */
     public static void upDateArticle(Article article) {
 
-        mRefUinfo.child(article.getIdArt()).setValue(article);
+        mRefUinfo.child(article.getTag()).child(article.getIdArt()).setValue(article);
     }
 }

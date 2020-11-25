@@ -24,7 +24,7 @@ public class DetailsArticle extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_article);
+        setContentView(R.layout.uinfo_activity_details_article);
 
         referencerWidget(); // Lié les widgets.
     }

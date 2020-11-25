@@ -12,6 +12,7 @@ public class Article {
     private String mTitre;
     private String mUrl;
     private String mImage;
+    private String mTag;
     private List<String> mListIdUserLike = new ArrayList<>(); // Liste des utiisateur qui on aimé l'article.
     private List<String> mListIdUserComment = new ArrayList<>(); // Liste des utilisateur qui on commenté k'article.
     private boolean alaUne;
@@ -109,6 +110,14 @@ public class Article {
         this.alaUne = alaUne;
     }
 
+    public String getTag() {
+        return mTag;
+    }
+
+    public void setTag(String tag) {
+        mTag = tag;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -119,6 +128,7 @@ public class Article {
                 ", mTitre='" + mTitre + '\'' +
                 ", mUrl='" + mUrl + '\'' +
                 ", mImage='" + mImage + '\'' +
+                ", mTag='" + mTag + '\'' +
                 ", mListIdUserLike=" + mListIdUserLike +
                 ", mListIdUserComment=" + mListIdUserComment +
                 ", alaUne=" + alaUne +

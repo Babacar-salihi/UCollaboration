@@ -140,5 +140,4 @@ public class Acceuil extends AppCompatActivity {
         editor.putString("User", gson.toJson(sCurrentUser));
         editor.apply();
     }
-
 }

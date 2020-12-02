@@ -69,8 +69,16 @@ public class RecyclerviewAccueilActu extends RecyclerView.Adapter<ViewHolder_Acc
                 holder.mImgLike_false.setVisibility(View.INVISIBLE);
             }
         }
-        if (article.getListIdUserComment() != null)
-            holder.mNbComment.setText(String.valueOf(article.getListIdUserComment().size()));
+
+        if (article.getIdCommentaire() != null) {
+
+            holder.mNbComment.setText(String.valueOf(article.getIdCommentaire().size()));
+/*            if (sCurrentUser != null && article.getListIdUserLike().contains(sCurrentUser.getIdEtu())) {
+
+                holder.mImgLike_true.setVisibility(View.VISIBLE);
+                holder.mImgLike_false.setVisibility(View.INVISIBLE);
+            }*/
+        }
 
         // Redirigé vers le site.
         holder.mCardActu.setOnClickListener(new View.OnClickListener() {
@@ -90,29 +98,29 @@ public class RecyclerviewAccueilActu extends RecyclerView.Adapter<ViewHolder_Acc
                     @Override
                     public void onClick(View v) {
 
-                        if (sCurrentUser != null) {
+                    if (sCurrentUser != null) {
 
-                            if (article.getListIdUserLike() != null && article.getListIdUserLike().contains(sCurrentUser.getIdEtu())) { // ne pas imer.
+                        if (article.getListIdUserLike() != null && article.getListIdUserLike().contains(sCurrentUser.getIdEtu())) { // ne pas imer.
 
-                                holder.mImgLike_true.setVisibility(View.GONE);
-                                holder.mImgLike_false.setVisibility(View.VISIBLE);
-                                holder.mNbLike.setText(String.valueOf(article.getListIdUserLike().size()-1));
+                            holder.mImgLike_true.setVisibility(View.GONE);
+                            holder.mImgLike_false.setVisibility(View.VISIBLE);
+                            holder.mNbLike.setText(String.valueOf(article.getListIdUserLike().size()-1));
 
-                                article.getListIdUserLike().remove(sCurrentUser.getIdEtu());
-                                DataBase.upDateArticle(article);
+                            article.getListIdUserLike().remove(sCurrentUser.getIdEtu());
+                            DataBase.upDateArticle(article);
 
-                            } else { // Aimer.
-                                holder.mImgLike_true.setVisibility(View.VISIBLE);
-                                holder.mImgLike_false.setVisibility(View.INVISIBLE);
-                                holder.mNbLike.setText(String.valueOf(article.getListIdUserLike().size()+1));
+                        } else { // Aimer.
+                            holder.mImgLike_true.setVisibility(View.VISIBLE);
+                            holder.mImgLike_false.setVisibility(View.INVISIBLE);
+                            holder.mNbLike.setText(String.valueOf(article.getListIdUserLike().size()+1));
 
-                                article.getListIdUserLike().add(sCurrentUser.getIdEtu());
-                                DataBase.upDateArticle(article);
-                            }
-                        } else {
-
-                            Toast.makeText(mContext, "Connecté vous d'abord à votre compte!", Toast.LENGTH_SHORT).show();
+                            article.getListIdUserLike().add(sCurrentUser.getIdEtu());
+                            DataBase.upDateArticle(article);
                         }
+                    } else {
+
+                        Toast.makeText(mContext, "Connecté vous d'abord à votre compte!", Toast.LENGTH_SHORT).show();
+                    }
 
                     }
                 });

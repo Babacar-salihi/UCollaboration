@@ -141,9 +141,7 @@ public class ListeVente extends AppCompatActivity {
             // Details user, joint au noeud DetailsPrestation
             DetailsPrestation detailsPrestation = DataBase.getDetailById(details);
 
-            Log.d("DetailllllListe",detailsPrestation.toString());
             if (detailsPrestation != null) {
-
                 Bien bien = getBienById(detailsPrestation.getBiens());
 
                 if (bien.getVendeur().getIdEtu().equals(sCurrentUser.getIdEtu())) { // Si le produit est vendu par l'utilisateur connecté.

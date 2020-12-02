@@ -144,10 +144,13 @@ public class UserSpace extends AppCompatActivity {
         for (String details : sCurrentUser.getDetailsPrestations()) {
 
             DetailsPrestation detailsPrestation = getDetailById(details);
-            if (detailsPrestation.getVendeur().equals(sCurrentUser.getIdEtu())) // Vendeur
-                ++nbVente;
-            else
-                ++nbAchat;
+            if (detailsPrestation != null) {
+
+                if (detailsPrestation.getVendeur().equals(sCurrentUser.getIdEtu())) // Vendeur
+                    ++nbVente;
+                else
+                    ++nbAchat;
+            }
         }
 
         if(sCurrentUser.getPhoto() != null)

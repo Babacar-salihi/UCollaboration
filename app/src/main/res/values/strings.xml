@@ -38,7 +38,7 @@
     <string name="titre">Titre</string>
     <string name="message">Message</string>
     <string name="ajouterPanier">Ajouter au panier</string>
-    <string name="voirDetails">Voir les details</string>
+    <string name="voirDetails">Plus...</string>
     <string name="gmail">Gmail</string>
     <string name="yahoo">Yahoo</string>
     <string name="valider">Validez votre compte</string>

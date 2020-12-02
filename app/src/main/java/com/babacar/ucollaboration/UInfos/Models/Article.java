@@ -16,6 +16,7 @@ public class Article {
     private List<String> mListIdUserLike = new ArrayList<>(); // Liste des utiisateur qui on aimé l'article.
     private List<String> mListIdUserComment = new ArrayList<>(); // Liste des utilisateur qui on commenté k'article.
     private boolean alaUne;
+    private List<String> mIdCommentaire = new ArrayList<>(); // Liste des commentaires d'un article donné.
 
     public Article() {}
 
@@ -116,6 +117,14 @@ public class Article {
 
     public void setTag(String tag) {
         mTag = tag;
+    }
+
+    public List<String> getIdCommentaire() {
+        return mIdCommentaire;
+    }
+
+    public void setIdCommentaire(List<String> idCommentaire) {
+        mIdCommentaire = idCommentaire;
     }
 
     @Override

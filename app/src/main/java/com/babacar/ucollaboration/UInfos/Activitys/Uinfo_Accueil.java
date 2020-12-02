@@ -43,6 +43,7 @@ public class Uinfo_Accueil extends AppCompatActivity {
 
     private RecyclerView mRecyclerViewFilter;
 
+
     // A la une.
     private ImageView mALaUne_img;
     public TextView mALaUne_titre, mALaUne_desc;
@@ -74,7 +75,7 @@ public class Uinfo_Accueil extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        mRefUinfo.child("Articles_COUD").addValueEventListener(new ValueEventListener() {
+        mRefUinfo.child("Articles").child("Articles_COUD").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -94,7 +95,7 @@ public class Uinfo_Accueil extends AppCompatActivity {
             }
         });
 
-        mRefUinfo.child("Inscription UCAD").addValueEventListener(new ValueEventListener() {
+        mRefUinfo.child("Articles").child("Inscription UCAD").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -109,7 +110,7 @@ public class Uinfo_Accueil extends AppCompatActivity {
             }
         });
 
-        mRefUinfo.child("YouTube_UCAD_Senegal").addValueEventListener(new ValueEventListener() {
+        mRefUinfo.child("Articles").child("YouTube_UCAD_Senegal").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -128,7 +129,6 @@ public class Uinfo_Accueil extends AppCompatActivity {
 
             }
         });
-
     }
 
     /**
@@ -136,7 +136,7 @@ public class Uinfo_Accueil extends AppCompatActivity {
      */
     private void inflater() {
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),2);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerActu.setLayoutManager(layoutManager);
         mRecyclerActu.setAdapter(new RecyclerviewAccueilActu(getApplicationContext(), mArticleList));
     }

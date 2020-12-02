@@ -180,7 +180,8 @@ public class RecyclerViewBien extends RecyclerView.Adapter<ViewHolderBien> {
                                         panier.setQuantiteAchat(1);
                                         // 24H = 864001000
                                         // 1H = 36000041
-                                        panier.setTimeToExpire(36000041); // Le bien reste dans le panier que pour 1H.
+                                        // 20 min = 1200000
+                                        panier.setTimeToExpire(1200000); // Le bien reste dans le panier que pour 20 min.
                                         //selectBien.setNombreBien(selectBien.getNombreBien() - 1);
                                         //if (selectBien.)
                                         sCurrentUser.getPanier().add(panier); // Bien définitivement ajouter au panier.

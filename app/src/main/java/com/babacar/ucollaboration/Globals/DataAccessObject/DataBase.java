@@ -63,6 +63,11 @@ public class DataBase {
 
     //Uinfo...
     public static DatabaseReference mRefUinfo = FirebaseDatabase.getInstance().getReference().child("Uinfos");
+    // DetailsCommentaires
+    public static DatabaseReference mRefDetailsComment = FirebaseDatabase.getInstance().getReference()
+            .child("Uinfos")
+            .child("DetailsCommentaire");
+
 
     public static boolean sConnexTest; // Connexion reussi ou pas.
     public static boolean sInscriptTest; // Connexion reussi ou pas.
@@ -1041,6 +1046,6 @@ public class DataBase {
      */
     public static void upDateArticle(Article article) {
 
-        mRefUinfo.child(article.getTag()).child(article.getIdArt()).setValue(article);
+        mRefUinfo.child("Articles").child(article.getTag()).child(article.getIdArt()).setValue(article);
     }
 }

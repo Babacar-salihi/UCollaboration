@@ -3,7 +3,6 @@ package com.babacar.ucollaboration.UService.Activitys;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
@@ -14,7 +13,6 @@ import com.babacar.ucollaboration.Globals.Activitys.Acceuil;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UService.Fragments.FragmentAcceuil;
 import com.babacar.ucollaboration.UService.Fragments.FragmentCategorie;
-import com.babacar.ucollaboration.UService.Fragments.FragmentCompte;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -63,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.uservice_menu_categ:
                         selectedFragment = new FragmentCategorie(); break;
 
-                    case R.id.uservice_menu_compte:
-                        selectedFragment = new FragmentCompte(); break;
                 }
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.uservice_fragment0, selectedFragment).commit();

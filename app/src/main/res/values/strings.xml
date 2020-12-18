@@ -22,7 +22,7 @@
     <string name="Acceuil">Acceuil</string>
     <string name="vendre">Vendre</string>
     <string name="Compte">Compte</string>
-    <string name="CapiConnex">AUTHENTIFICATION</string>
+    <string name="CapiConnex">CONNEXION</string>
     <string name="email">Votre email *</string>
     <string name="Publier">VENDRE UN BIEN</string>
     <string name="prixProduit">Prix unitaire: </string>
@@ -38,7 +38,7 @@
     <string name="titre">Titre</string>
     <string name="message">Message</string>
     <string name="ajouterPanier">Ajouter au panier</string>
-    <string name="voirDetails">Plus...</string>
+    <string name="voirDetails">Voir Plus</string>
     <string name="gmail">Gmail</string>
     <string name="yahoo">Yahoo</string>
     <string name="valider">Validez votre compte</string>
@@ -250,6 +250,4 @@
     <string name="datePub">date de publication</string>
     <string name="yourComment">Ajouter un commentaire</string>
     <string name="PublierComment">Publier</string>
-
-
 </resources>

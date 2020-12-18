@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".UInfos.Activitys.DetailsArticle"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
@@ -59,7 +60,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -82,7 +82,7 @@
         <activity
             android:name=".Globals.Utilitaires.SplashCreenOK"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" /> <!-- UMarket -->
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UMarket.Activitys.Facture"
             android:configChanges="orientation"
@@ -114,7 +114,7 @@
         <activity
             android:name=".UMarket.Activitys.MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" /> <!-- UMaps -->
+            android:screenOrientation="portrait" />
         <service android:name=".UMarket.Activitys.ServiceMinuteur" />
 
         <activity

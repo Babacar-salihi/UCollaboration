@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,15 +30,12 @@ import com.babacar.ucollaboration.Globals.DataAccessObject.DataBase;
 import com.babacar.ucollaboration.R;
 import com.babacar.ucollaboration.UMarket.Adapters.RecyclerViewBien;
 import com.babacar.ucollaboration.UMarket.Adapters.ViewPagerAdapter;
-import com.babacar.ucollaboration.UMarket.Fragments.FragmentAcceuil;
 import com.babacar.ucollaboration.UMarket.Modeles.Bien;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.squareup.picasso.Picasso;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -193,9 +189,9 @@ public class DetailsBIen extends AppCompatActivity {
      */
     private void recycler() {
         List<Bien> list = memeCateg(mCurrentBien, mBiensList);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(new RecyclerViewBien(getApplicationContext(), list));
+        mRecyclerView.setAdapter(new RecyclerViewBien(this, list));
     }
 
     /**

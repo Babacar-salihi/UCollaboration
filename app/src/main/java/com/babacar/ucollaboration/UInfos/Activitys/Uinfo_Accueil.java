@@ -95,7 +95,7 @@ public class Uinfo_Accueil extends AppCompatActivity {
             }
         });
 
-        mRefUinfo.child("Articles").child("Inscription UCAD").addValueEventListener(new ValueEventListener() {
+        mRefUinfo.child("Articles").child("Inscription UCAD").child("Inscription UCAD").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

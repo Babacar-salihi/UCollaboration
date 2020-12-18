@@ -109,7 +109,7 @@ public class Historique extends AppCompatActivity {
 
                 if (isDeteted) {
 
-                    Toast.makeText(Historique.this, "OKKKKK", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Historique.this, "Supprimé", Toast.LENGTH_SHORT).show();
                     mHistoList.remove(viewHolder.getAdapterPosition());
                     adapter.notifyDataSetChanged();
                     if (mHistoList.size() == 0) {
